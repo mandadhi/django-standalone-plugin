@@ -103,7 +103,7 @@ Never fill a compatibility cell from memory. Write the source you read, or `unve
 - Skills: [django-core](../skills/django-core/SKILL.md) (version checks in
   [fundamentals](../skills/django-core/references/fundamentals.md)),
   [django-rest-framework](../skills/django-rest-framework/SKILL.md),
-  [postgresql-engineering](../skills/postgresql-engineering/SKILL.md).
+  the PostgreSQL documentation.
 - Rules: [django-dependency-standards](../rules/django-dependency-standards/SKILL.md)
   (`DEP-M1`, `DEP-M2`, `DEP-R2`, `DEP-R3`),
   [django-configuration-standards](../rules/django-configuration-standards/SKILL.md).

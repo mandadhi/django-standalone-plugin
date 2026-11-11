@@ -2,6 +2,47 @@
 
 All notable changes to the standalone Django Engineering Plugin. Versions follow semantic versioning.
 
+## 3.0.0
+
+The `/` menu now shows one workflow entry instead of every internal skill and rule. The agent architecture
+is unchanged.
+
+### Added
+- `/django-engineering:orchestrate <request>`: the entry skill `skills/orchestrate/SKILL.md`
+  (`disable-model-invocation: true`). It hands the request to `django-orchestrator` and carries out what the
+  orchestrator returns. It holds no routing, approval or engineering logic. There is no `commands/` folder.
+- Orchestrator: a *Reconcile* mode (the main session returns the step results of a routing plan for the final
+  report), a *Delivery* section (read-only preparation of branch, staged files, commit message and PR
+  description; the caller runs each commit, push and pull request only after the user approves it; no force
+  push; unrelated changes are never staged), and a reconciliation check that writing steps report
+  mandatory-rule compliance.
+- Policy 1.2.0: `supplementary_skills` with a `when` condition, so `django-frontend`, `django-integrations`,
+  `django-data-processing` and `django-report-generation` reach specialists only when a request needs them.
+  `feature-delivery` gains optional `django-security-agent` (review mode) and `django-documentation-agent`
+  steps; `max_delegations` rises from 6 to 8 to cover the full lifecycle. Architecture-design also matches
+  requirements and specification requests.
+- Writing agents: a completion criterion requiring every applicable MUST of their preloaded rules to be met,
+  or reported by id. `django-model-agent` also preloads `django-performance-standards` (index decisions);
+  `django-architecture-agent` also preloads `django-coding-standards` (where logic lives).
+- Tests: internal skills and rules are not user-invocable; `orchestrate` is the only user-invocable skill and
+  names no specialist; agents' declared rules match their preloads; rule requirement text is not copied into
+  agents or skills; PostgreSQL-specific components stay removed; supplementary skills render into the
+  orchestrator; the live test checks that the session exposes only the entry skill as a slash command.
+
+### Fixed
+- The guard denied `SubagentHandback`, the tool Claude Code 2.1.x subagents use to return their report, because
+  no agent declares it. Every specialist's report was blocked. The new required policy key `runtime_tools`
+  (`["SubagentHandback"]`) lets it through for all agents; every other undeclared tool is still denied.
+
+### Changed
+- All eleven knowledge skills and twelve rules carry `user-invocable: false`. They no longer appear as
+  slash commands. Agents still preload them through their `skills:` frontmatter.
+
+### Removed
+- **Breaking:** the `postgresql-engineering` skill and its references, its preload in `django-model-agent` and
+  `django-performance-agent`, and every link to it. PostgreSQL remains a supported database in examples, and
+  the generic ORM, migration, SQL and database-performance knowledge is unchanged.
+
 ## 2.0.0
 
 Agents are the only interface. **Breaking:** the ten slash commands (`/django-engineering:orchestrate` and the nine

@@ -9,6 +9,9 @@
   },
   "schema_version": "1.0",
   "plugin": "django-engineering",
+  "runtime_tools": [
+    "SubagentHandback"
+  ],
   "tools_deny": [
     "WebFetch",
     "WebSearch"

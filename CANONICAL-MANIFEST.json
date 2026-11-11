@@ -81,9 +81,7 @@
    "id": "AD-12",
    "reason": "Three relative links that are already dead in the canonical source (they name files that do not exist) now point at the existing files that hold that content. Link targets only; no prose changed.",
    "files": [
-    "skills/django-data-processing/references/celery-tasks.md",
-    "skills/postgresql-engineering/SKILL.md",
-    "skills/postgresql-engineering/references/transactions-locking-connections.md"
+    "skills/django-data-processing/references/celery-tasks.md"
    ]
   },
   {
@@ -129,6 +127,101 @@
     "templates/technical-documentation.template.md",
     "templates/test-plan.template.md"
    ]
+  },
+  {
+   "id": "AD-14",
+   "reason": "Version 3.0.0: the postgresql-engineering skill is removed (its files, its preload in the model and performance agents, and every link to it from skills, rules and references, reworded to point at the PostgreSQL documentation); every knowledge skill and rule is marked `user-invocable: false` so it is consumed only by agents; the orchestrator gains reconcile mode, a Delivery (git and pull request) section and a rule-compliance reconciliation check; the orchestration policy gains conditional supplementary skills, optional security and documentation steps in feature delivery and a delegation limit of 8; writing agents gain a rule-compliance completion criterion; the model and architecture agents preload one more rule each; the guard gains a `runtime_tools` policy key (SubagentHandback only, required, fail closed) so subagents can hand their reports back under Claude Code 2.1.x. Agent tools and write modes are unchanged.",
+   "files": [
+    "agents/django-api-agent.md",
+    "agents/django-architecture-agent.md",
+    "agents/django-documentation-agent.md",
+    "agents/django-model-agent.md",
+    "agents/django-orchestrator.md",
+    "agents/django-performance-agent.md",
+    "agents/django-security-agent.md",
+    "agents/django-testing-agent.md",
+    "config/orchestration-policy.yaml",
+    "hooks/django_pack_guard.py",
+    "hooks/security-policy.json",
+    "references/django-migration-safety.md",
+    "references/django-performance-checklist.md",
+    "references/django-version-compatibility.md",
+    "rules/django-api-standards/SKILL.md",
+    "rules/django-coding-standards/SKILL.md",
+    "rules/django-configuration-standards/SKILL.md",
+    "rules/django-database-standards/SKILL.md",
+    "rules/django-dependency-standards/SKILL.md",
+    "rules/django-documentation-standards/SKILL.md",
+    "rules/django-logging-standards/SKILL.md",
+    "rules/django-model-standards/SKILL.md",
+    "rules/django-performance-standards/SKILL.md",
+    "rules/django-project-structure/SKILL.md",
+    "rules/django-security-standards/SKILL.md",
+    "rules/django-testing-standards/SKILL.md",
+    "skills/django-architecture/SKILL.md",
+    "skills/django-architecture/references/event-driven-architecture.md",
+    "skills/django-architecture/references/scalability-patterns.md",
+    "skills/django-core/SKILL.md",
+    "skills/django-core/references/asgi-wsgi.md",
+    "skills/django-core/references/asynchronous-django.md",
+    "skills/django-core/references/production-configuration.md",
+    "skills/django-core/references/settings-configuration.md",
+    "skills/django-core/references/signals-management-commands.md",
+    "skills/django-data-processing/SKILL.md",
+    "skills/django-data-processing/references/data-ingestion-engineering.md",
+    "skills/django-data-processing/references/data-processing-performance.md",
+    "skills/django-data-processing/references/data-reconciliation-engineering.md",
+    "skills/django-data-processing/references/database-loading-and-persistence.md",
+    "skills/django-data-processing/references/etl-and-elt-pipelines.md",
+    "skills/django-data-processing/references/production-architectures-imports-and-pipelines.md",
+    "skills/django-frontend/SKILL.md",
+    "skills/django-integrations/SKILL.md",
+    "skills/django-integrations/references/aws-and-cloud-integrations.md",
+    "skills/django-integrations/references/azure-integrations.md",
+    "skills/django-integrations/references/data-synchronization-and-reconciliation.md",
+    "skills/django-integrations/references/integration-architecture-patterns.md",
+    "skills/django-integrations/references/messaging-and-event-driven-integrations.md",
+    "skills/django-integrations/references/payment-and-financial-integrations.md",
+    "skills/django-integrations/references/webhooks-and-inbound-integrations.md",
+    "skills/django-orm/SKILL.md",
+    "skills/django-orm/references/advanced-query-expressions.md",
+    "skills/django-orm/references/aggregation-and-annotation.md",
+    "skills/django-orm/references/bulk-operations-and-batching.md",
+    "skills/django-orm/references/database-constraints-and-indexes.md",
+    "skills/django-orm/references/field-types-and-options.md",
+    "skills/django-orm/references/managers-and-querysets.md",
+    "skills/django-orm/references/migrations-and-schema-evolution.md",
+    "skills/django-orm/references/model-relationships.md",
+    "skills/django-orm/references/orm-fundamentals.md",
+    "skills/django-orm/references/query-optimization.md",
+    "skills/django-orm/references/queryset-internals.md",
+    "skills/django-orm/references/raw-sql-and-database-access.md",
+    "skills/django-orm/references/transactions-and-concurrency.md",
+    "skills/django-performance/SKILL.md",
+    "skills/django-performance/references/concurrency-and-worker-management.md",
+    "skills/django-performance/references/database-performance.md",
+    "skills/django-performance/references/file-and-data-processing-performance.md",
+    "skills/django-performance/references/performance-architecture-decisions.md",
+    "skills/django-performance/references/performance-testing-and-benchmarking.md",
+    "skills/django-performance/references/production-performance-troubleshooting.md",
+    "skills/django-performance/references/scalability-and-capacity-planning.md",
+    "skills/django-report-generation/SKILL.md",
+    "skills/django-report-generation/references/production-reporting-architectures.md",
+    "skills/django-report-generation/references/report-generation-performance.md",
+    "skills/django-report-generation/references/report-generation-troubleshooting.md",
+    "skills/django-report-generation/references/reporting-data-acquisition-and-preparation.md",
+    "skills/django-report-generation/references/reporting-security-and-compliance.md",
+    "skills/django-rest-framework/SKILL.md",
+    "skills/django-rest-framework/references/filtering-search-and-ordering.md",
+    "skills/django-security-engineering/SKILL.md",
+    "skills/django-security-engineering/references/injection-prevention.md",
+    "skills/django-security-engineering/references/multi-tenant-security.md",
+    "skills/django-security-engineering/references/secrets-and-cryptography.md",
+    "skills/django-testing/SKILL.md",
+    "skills/django-testing/references/ci-cd-test-automation.md",
+    "skills/django-testing/references/database-and-transaction-testing.md",
+    "skills/django-testing/references/performance-and-reliability-testing.md"
+   ]
   }
  ],
  "excluded_harness_components": [
@@ -154,12 +247,12 @@
   {
    "path": ".claude-plugin/marketplace.json",
    "origin": "standalone-authored",
-   "sha256": "98c3e07f74795b9012ff7e9eb4d3564c4bdec73093d430fd4dc51c6f1d2cc757"
+   "sha256": "eaeef50a36aa5ee0529dab62198711f725ee6725a4c99beb5258d59744df5960"
   },
   {
    "path": ".claude-plugin/plugin.json",
    "origin": "standalone-authored",
-   "sha256": "8903f171b70ade74eaa859fff928a110ef4cf02dbc013e7e87d0e9c51a8214b5"
+   "sha256": "31568fb57a95b10ca78246ba0526ff722a6d913c5cdf691457b2c38fed7d4514"
   },
   {
    "path": ".gitattributes",
@@ -174,7 +267,7 @@
   {
    "path": "CHANGELOG.md",
    "origin": "standalone-authored",
-   "sha256": "cca0ec9f20da38bb0daf6a5fa76ca0c05af1a8cf654d609a20eb8c4a668ecb99"
+   "sha256": "12360dcdc4dd2450e2393393a040ab7227f9e5894dfe73867147874821914e80"
   },
   {
    "path": "CONTRIBUTING.md",
@@ -184,7 +277,7 @@
   {
    "path": "README.md",
    "origin": "standalone-authored",
-   "sha256": "f028c4a0f27611cd93c80e7608638da5f766244b825d3d19ac1dcff4e69966f8"
+   "sha256": "2ab478efdf05e8d445227920057929cfac37d4af605393eaa6dd7760d7bfaa93"
   },
   {
    "path": "SECURITY.md",
@@ -194,7 +287,7 @@
   {
    "path": "TEAM_HANDOFF.md",
    "origin": "standalone-authored",
-   "sha256": "0beed6f88909ff1b578c4a231e3d15fc60941f010943ce7042fb0cbbb7106561"
+   "sha256": "2090ca78fd40d449d35c20630817cc897d570990c9c21e9e3313d77c79643e91"
   },
   {
    "path": "agents/django-api-agent.md",
@@ -202,12 +295,13 @@
    "kind": "agent",
    "source": "agents/django-api-agent.md",
    "source_sha256": "d650ce6e32131cdb0c9003327df33609af7bfe20e5e65a8c4537c12de36492e6",
-   "sha256": "0ea0717b33d6d0b0b90633bf1563b99fa364f996a498782acbe551be93d39dee",
+   "sha256": "5b842d8eb0775efcbda3127ebceb872fd45f677df0c622ae167f54963a8f1306",
    "identical": false,
    "adaptations": [
     "AD-01",
     "AD-02",
-    "AD-13"
+    "AD-13",
+    "AD-14"
    ]
   },
   {
@@ -216,12 +310,13 @@
    "kind": "agent",
    "source": "agents/django-architecture-agent.md",
    "source_sha256": "52401d6a7c3266d5c94deef63286dd4f5e2cad73bbe0af8633f511f4fa020644",
-   "sha256": "1eb9ef0d7037a3080d35f43e83a9c7aa55975ebc888e52d70f2e23052a9fa8ee",
+   "sha256": "d917afa0da275543bc0bcd12c2b2a43387efcf021062fff6ee33a8e80bfecd67",
    "identical": false,
    "adaptations": [
     "AD-01",
     "AD-02",
-    "AD-13"
+    "AD-13",
+    "AD-14"
    ]
   },
   {
@@ -244,12 +339,13 @@
    "kind": "agent",
    "source": "agents/django-documentation-agent.md",
    "source_sha256": "1aee2135ff5b953480aa77127e62543b0b595f8f53dfec447b9e86dc3caf1e9d",
-   "sha256": "fb59bd811ab8e00768f26060ea452952543bb0aa5f56082ceb8507e8e00f314d",
+   "sha256": "3de959992fd7596a5d6215b1d8ac4dc82a160d1a491359c81aff85b0ab76fcd6",
    "identical": false,
    "adaptations": [
     "AD-01",
     "AD-02",
-    "AD-13"
+    "AD-13",
+    "AD-14"
    ]
   },
   {
@@ -258,13 +354,14 @@
    "kind": "agent",
    "source": "agents/django-model-agent.md",
    "source_sha256": "c5f681dad7a1bab121065c42facb4ea7adf64d04b131cd4c55809a070ae99949",
-   "sha256": "5d9453ab25b490ae2cb0fb408522c42b53b92c685abe74bf5e100c2011061be7",
+   "sha256": "fc4913bcce5407981ea0b2bbe36c1c2ace6e502eeaefe322e66e248ff5ab7a09",
    "identical": false,
    "adaptations": [
     "AD-01",
     "AD-02",
     "AD-03",
-    "AD-13"
+    "AD-13",
+    "AD-14"
    ]
   },
   {
@@ -273,11 +370,12 @@
    "kind": "agent",
    "source": "agents/django-orchestrator.md",
    "source_sha256": "b061859513570b06c1658b52a6ee77d52f42af9bca854a80c5c9576bc22805a3",
-   "sha256": "fe2804af6f8170b3620670b321bae39b39d9637a363546af4022900ff133144e",
+   "sha256": "7721bd666725edb46495bf05be3806ef5018feffb84a2867f6d15dadaeeaa1fb",
    "identical": false,
    "adaptations": [
     "AD-04",
-    "AD-13"
+    "AD-13",
+    "AD-14"
    ]
   },
   {
@@ -286,12 +384,13 @@
    "kind": "agent",
    "source": "agents/django-performance-agent.md",
    "source_sha256": "f518306b694bdda7eedd5a468b40deb8eccf00a0674bc81dbd23abc9c7e562a8",
-   "sha256": "17ce3652d83811722acdf9a1054ee1b07f2edc1a1df5200f43a3388956058cf7",
+   "sha256": "09e7039d2c34173d305afa43720a1e663a3191a860c40c04a21a73739720eaaf",
    "identical": false,
    "adaptations": [
     "AD-01",
     "AD-02",
-    "AD-13"
+    "AD-13",
+    "AD-14"
    ]
   },
   {
@@ -314,12 +413,13 @@
    "kind": "agent",
    "source": "agents/django-security-agent.md",
    "source_sha256": "ec1ebbe73b4b47273d0983b7c7876a6ca56fefd705383544ad859a47e6154acf",
-   "sha256": "7361de8143259faf0d5501bebcef2cb0aee34387a009c388d05c873e8ee83186",
+   "sha256": "93336927c976876cab0970096fb16940e27783e46a70d1906bf6d2f369d337c7",
    "identical": false,
    "adaptations": [
     "AD-01",
     "AD-02",
-    "AD-13"
+    "AD-13",
+    "AD-14"
    ]
   },
   {
@@ -328,12 +428,13 @@
    "kind": "agent",
    "source": "agents/django-testing-agent.md",
    "source_sha256": "6bd238ee754e2ed24755a24b9c294140776962a51565e24db776053d583712c1",
-   "sha256": "564f9d7186469418bd71b7e1c280ad7fd5c4ef470598ed1e2277a94ce75478aa",
+   "sha256": "b4f76d4c22616c95cb45bce513c9a5443ab6d461d71d8cca5448103319188b6c",
    "identical": false,
    "adaptations": [
     "AD-01",
     "AD-02",
-    "AD-13"
+    "AD-13",
+    "AD-14"
    ]
   },
   {
@@ -342,42 +443,43 @@
    "kind": "policy",
    "source": "config/orchestration-policy.yaml",
    "source_sha256": "a435570b01c7e41defd49e073fbdeea6188a2245516b3917a70df216e019dfa4",
-   "sha256": "dbc8ea01866b067523cac879271b3862cf3781aea9f695567acdc16344ce99fc",
+   "sha256": "652e2108b39ffb240fc7f866d96880413b85f64f5010b1b60e4c4ce4151a7f60",
    "identical": false,
    "adaptations": [
     "AD-07",
-    "AD-13"
+    "AD-13",
+    "AD-14"
    ]
   },
   {
    "path": "docs/agents.md",
    "origin": "standalone-authored",
-   "sha256": "a3723bb908ca4f5038c041e2184e7773d78ad489342230c5c507413bb2daf1b7"
+   "sha256": "5e8cd4c4ef9c01a9165beb871a701bafd46617a548ca80e970ce32e267811056"
   },
   {
    "path": "docs/architecture.md",
    "origin": "standalone-authored",
-   "sha256": "7af8321041dbb6878e3c175555be629588a918ca6af0381d301a256196bddcbb"
+   "sha256": "774d85b5b2eac9513010593f8835c028cf51dbab5cab27df387f321e84305650"
   },
   {
    "path": "docs/installation.md",
    "origin": "standalone-authored",
-   "sha256": "9169e4c035c1c53e232443bddc9ff779063b773d9107eb41777694a9c642efd2"
+   "sha256": "46b0561f2dd74b256b8ea6043786003594fc2c2af45cc3f3b11132678a0996c4"
   },
   {
    "path": "docs/security.md",
    "origin": "standalone-authored",
-   "sha256": "b2611c8f51358f9e0468c97ff47ce2cc1bbad7f5989cb0fbf81f64573c7fb751"
+   "sha256": "37af093e0beb7d23ef508fcb64bae2c8ade8db2575c7e2f4c1fa71a47f217ad9"
   },
   {
    "path": "docs/troubleshooting.md",
    "origin": "standalone-authored",
-   "sha256": "e0cc52c37644fe4cfc7da258525e4decf44fe7b821f1f8f71262f1bbfe70073e"
+   "sha256": "833082cd897189d5d2c4d2a198474d471418450b40470c3302f0642b92652074"
   },
   {
    "path": "docs/usage.md",
    "origin": "standalone-authored",
-   "sha256": "c8b009d02b43baf17a6e6e0062b352cd0f400c051407453cb1ab0da262ee7ac5"
+   "sha256": "e2fbd7b101c658291c8315bc68f9e48e67431970ce762a771fcc3898af3498cc"
   },
   {
    "path": "hooks/README.md",
@@ -390,10 +492,11 @@
    "kind": "hook",
    "source": "hooks/django_pack_guard.py",
    "source_sha256": "cf4794b23cb56c23cec5449ff11558ceae23f48d3f23d4f2fedfbe222c2526ae",
-   "sha256": "8414da378231cdc41e6c6c1f971b3ba965348cdcb5f44c81579848e5a38a3de8",
+   "sha256": "cf8b6c8ccb84acd7a5dd11d14d037db95aec45c5940a8f8be3fda4e18f6eef6c",
    "identical": false,
    "adaptations": [
-    "AD-08"
+    "AD-08",
+    "AD-14"
    ]
   },
   {
@@ -412,10 +515,11 @@
    "kind": "hook",
    "source": "hooks/security-policy.json",
    "source_sha256": "400ec97238c7d8fd6f50c8ad85c9bf70be2c00803026ab79663823b8a659eb2c",
-   "sha256": "334c926b154acf56f28397296b8089400eb951130db8a9db8a723e2225c9ccb5",
+   "sha256": "0ed401e9c93de3bcb6d7b5c043d6e9cb06113408ce25265da2c70a670cc3e391",
    "identical": false,
    "adaptations": [
-    "AD-09"
+    "AD-09",
+    "AD-14"
    ]
   },
   {
@@ -461,9 +565,11 @@
    "kind": "reference",
    "source": "references/django-migration-safety.md",
    "source_sha256": "cd845dccd4729b000e1a1a44af2e79f0fee97f706c47b0c5b9ffc0ed7b12a59a",
-   "sha256": "cd845dccd4729b000e1a1a44af2e79f0fee97f706c47b0c5b9ffc0ed7b12a59a",
-   "identical": true,
-   "adaptations": []
+   "sha256": "886643d8f2a93bc651855a26468b149d288a18f585641dfb351902c25ab1d221",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "references/django-performance-checklist.md",
@@ -471,9 +577,11 @@
    "kind": "reference",
    "source": "references/django-performance-checklist.md",
    "source_sha256": "272f55f6344700ef9182b1e7322f5a10eb44aba9a1b607095e65fde41c5ffe71",
-   "sha256": "272f55f6344700ef9182b1e7322f5a10eb44aba9a1b607095e65fde41c5ffe71",
-   "identical": true,
-   "adaptations": []
+   "sha256": "d9d70c7b86dfee6bec1ee8c92aecfb8415b1f430b54b265c32e842a1d6ec977c",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "references/django-project-discovery.md",
@@ -511,9 +619,11 @@
    "kind": "reference",
    "source": "references/django-version-compatibility.md",
    "source_sha256": "c177b87ddf1e047bd8471df2d567dfba5def9b1ae1c737f2520f94337d4792dd",
-   "sha256": "c177b87ddf1e047bd8471df2d567dfba5def9b1ae1c737f2520f94337d4792dd",
-   "identical": true,
-   "adaptations": []
+   "sha256": "debc95518d32135066b25d341e9a349b9cebbd1881743914c90299121915e4ec",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "requirements-dev.txt",
@@ -523,7 +633,7 @@
   {
    "path": "rules/README.md",
    "origin": "standalone-authored",
-   "sha256": "cdfd9e45b398db618844bc7616e1883cd04404b8c232a4fb881c02347aecaff0"
+   "sha256": "4e22125c13df7bbf6303ada2429b5155039ba7c0126b346b8f8f92d233fd82ed"
   },
   {
    "path": "rules/django-api-standards/SKILL.md",
@@ -531,9 +641,11 @@
    "kind": "rule",
    "source": "rules/django-api-standards/SKILL.md",
    "source_sha256": "1a3657ce776ae3c9976810e33b5d625a8eaffd25f7e828156d589756df2f9817",
-   "sha256": "1a3657ce776ae3c9976810e33b5d625a8eaffd25f7e828156d589756df2f9817",
-   "identical": true,
-   "adaptations": []
+   "sha256": "55935dd222825f73371df95bfe4828d92c3a2d2d58e77e73d2dab7a4eb0e9a5b",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "rules/django-coding-standards/SKILL.md",
@@ -541,9 +653,11 @@
    "kind": "rule",
    "source": "rules/django-coding-standards/SKILL.md",
    "source_sha256": "55b58189ad01b4cf6940283c25590d22fbde26b8d0bd9b1ceb5f85af12f0660e",
-   "sha256": "55b58189ad01b4cf6940283c25590d22fbde26b8d0bd9b1ceb5f85af12f0660e",
-   "identical": true,
-   "adaptations": []
+   "sha256": "377e3ccd33fb64d97826143b78974d2d3beb7036c0480813b5bc8d6d4d777544",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "rules/django-configuration-standards/SKILL.md",
@@ -551,9 +665,11 @@
    "kind": "rule",
    "source": "rules/django-configuration-standards/SKILL.md",
    "source_sha256": "6c802c2f3a8eb061ffb7f263e3701928c814869146d96375714767e71edd4cdb",
-   "sha256": "6c802c2f3a8eb061ffb7f263e3701928c814869146d96375714767e71edd4cdb",
-   "identical": true,
-   "adaptations": []
+   "sha256": "edc5c386f00a4459061e467e8f6cce3e1fadbec2b033bfaaa86bc1f507ac8141",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "rules/django-database-standards/SKILL.md",
@@ -561,9 +677,11 @@
    "kind": "rule",
    "source": "rules/django-database-standards/SKILL.md",
    "source_sha256": "4476bd7c8fc7f96839b0caff2311ee6213fd42ba5e1261944b2dadaa23a8e1da",
-   "sha256": "4476bd7c8fc7f96839b0caff2311ee6213fd42ba5e1261944b2dadaa23a8e1da",
-   "identical": true,
-   "adaptations": []
+   "sha256": "208cdb38bc1925b2b48702125d982ea5168d18b5e5d1a8fca4dc339f4a984cb8",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "rules/django-dependency-standards/SKILL.md",
@@ -571,9 +689,11 @@
    "kind": "rule",
    "source": "rules/django-dependency-standards/SKILL.md",
    "source_sha256": "5bfe39aeba74fb2bdf1485f8b184fd007eab942acb4aaf057f1b7646d1372f9b",
-   "sha256": "5bfe39aeba74fb2bdf1485f8b184fd007eab942acb4aaf057f1b7646d1372f9b",
-   "identical": true,
-   "adaptations": []
+   "sha256": "3aaf6494b7a8cecefefd90a3ca1cce039dd1a943725f09d5ac48e90bcf542b40",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "rules/django-documentation-standards/SKILL.md",
@@ -581,10 +701,11 @@
    "kind": "rule",
    "source": "rules/django-documentation-standards/SKILL.md",
    "source_sha256": "abee7198c8973829fc92161153118b95574c22ea3d11884647b5c64a7d896730",
-   "sha256": "7b64ba362ab5f475dba342202594dde21c7ece77b23cf7c9da3435640cae9b53",
+   "sha256": "939665e0e7edbce3b322b1c7dafd6c755a839f78ff0f503b4c2a3f02c74de506",
    "identical": false,
    "adaptations": [
-    "AD-06"
+    "AD-06",
+    "AD-14"
    ]
   },
   {
@@ -593,9 +714,11 @@
    "kind": "rule",
    "source": "rules/django-logging-standards/SKILL.md",
    "source_sha256": "bde9327163e92f1f144ab0b7be83052f4d2b22ea1900c75c5b7f0f6ed4b723ec",
-   "sha256": "bde9327163e92f1f144ab0b7be83052f4d2b22ea1900c75c5b7f0f6ed4b723ec",
-   "identical": true,
-   "adaptations": []
+   "sha256": "6b2cccb017aafa2bc2ba8d24c6e38c3dcc48fbb2a35089ffceb35df03b08f7db",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "rules/django-model-standards/SKILL.md",
@@ -603,9 +726,11 @@
    "kind": "rule",
    "source": "rules/django-model-standards/SKILL.md",
    "source_sha256": "d57eeee88c44d903d6caa57c2ea6480525600eedc3a09cf1e7c29ea866945238",
-   "sha256": "d57eeee88c44d903d6caa57c2ea6480525600eedc3a09cf1e7c29ea866945238",
-   "identical": true,
-   "adaptations": []
+   "sha256": "52ca0974083750e6ffb8a763aa960709c568510a48d1e9d197537569e0ca63b1",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "rules/django-performance-standards/SKILL.md",
@@ -613,9 +738,11 @@
    "kind": "rule",
    "source": "rules/django-performance-standards/SKILL.md",
    "source_sha256": "a4e6bc6b2eccace0800290313a97594cc85cb7bcbbac3e79c8400191e8b6632c",
-   "sha256": "a4e6bc6b2eccace0800290313a97594cc85cb7bcbbac3e79c8400191e8b6632c",
-   "identical": true,
-   "adaptations": []
+   "sha256": "7acc3ccc78bcd4e23799ad70505293dc7ade1d47286fa04d5a17b2e407ee382a",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "rules/django-project-structure/SKILL.md",
@@ -623,9 +750,11 @@
    "kind": "rule",
    "source": "rules/django-project-structure/SKILL.md",
    "source_sha256": "052c6ee38c282b821c3018d43f6aeb659de99869fa34992c12b7dd509ae98576",
-   "sha256": "052c6ee38c282b821c3018d43f6aeb659de99869fa34992c12b7dd509ae98576",
-   "identical": true,
-   "adaptations": []
+   "sha256": "1738d4c637d36f167766935488422e24530955fd32fd8d7fa5d7819fb50b0cb6",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "rules/django-security-standards/SKILL.md",
@@ -633,10 +762,11 @@
    "kind": "rule",
    "source": "rules/django-security-standards/SKILL.md",
    "source_sha256": "365aa63d3b1abecfd5487a2a69fc18d5d60b2c888ed684ac8426ade2de85397d",
-   "sha256": "a577dc057495b72b3feaac5bbfe74304165adab55e4fac8c7a879d9a2f9cee1b",
+   "sha256": "7f5bc4da7ecc175474b5ef2455a5f152d612c5b2ffb8badd469da3fb8d6439df",
    "identical": false,
    "adaptations": [
-    "AD-06"
+    "AD-06",
+    "AD-14"
    ]
   },
   {
@@ -645,14 +775,16 @@
    "kind": "rule",
    "source": "rules/django-testing-standards/SKILL.md",
    "source_sha256": "ced6be3a68c4be31be15c07b91b55ea062fd880508e53d1724d9e7a203cd1b45",
-   "sha256": "ced6be3a68c4be31be15c07b91b55ea062fd880508e53d1724d9e7a203cd1b45",
-   "identical": true,
-   "adaptations": []
+   "sha256": "d032c77136fcd148cbbea4ecd20c927261da3d245f5301d6f4708357b64cbcea",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/README.md",
    "origin": "standalone-authored",
-   "sha256": "8145e1a2f403cb37d3bb639057eede0e337e79f2d68b6a923e52215326042f6c"
+   "sha256": "cfd058fdf2f7af13730e46158c544a39d1a7c1d757fd54dc01461cd837446b09"
   },
   {
    "path": "skills/django-architecture/SKILL.md",
@@ -660,9 +792,11 @@
    "kind": "skill",
    "source": "skills/django-architecture/SKILL.md",
    "source_sha256": "c22742905de32687f71bc94638b9af5d9855b2ec1e808b4330e96a7c2a77ba44",
-   "sha256": "c22742905de32687f71bc94638b9af5d9855b2ec1e808b4330e96a7c2a77ba44",
-   "identical": true,
-   "adaptations": []
+   "sha256": "65ba0adaf58d50b5e073a05fcdd38377ecbc5db2e27c21facd6981c96a825635",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-architecture/references/architectural-styles.md",
@@ -770,9 +904,11 @@
    "kind": "skill",
    "source": "skills/django-architecture/references/event-driven-architecture.md",
    "source_sha256": "c5510fbeeb94d3d3160acbd2f1a335f191e89213c249fc1838d592cde7a0f167",
-   "sha256": "c5510fbeeb94d3d3160acbd2f1a335f191e89213c249fc1838d592cde7a0f167",
-   "identical": true,
-   "adaptations": []
+   "sha256": "35c7bfad53175630b209c8490fc609aec9154ec0b6c1d1011c463e7015a03e00",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-architecture/references/layered-architecture.md",
@@ -800,9 +936,11 @@
    "kind": "skill",
    "source": "skills/django-architecture/references/scalability-patterns.md",
    "source_sha256": "d646403b2ecd0e728e7257d640dc5b964729152a918fffdfd18ed84ce5d87c75",
-   "sha256": "d646403b2ecd0e728e7257d640dc5b964729152a918fffdfd18ed84ce5d87c75",
-   "identical": true,
-   "adaptations": []
+   "sha256": "f315f4a1416ed850f867df75144a63ab70c33a11e3bba1eed7c76bc4e9fc1f7e",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-architecture/references/service-layer.md",
@@ -820,9 +958,11 @@
    "kind": "skill",
    "source": "skills/django-core/SKILL.md",
    "source_sha256": "fe641524c27427e2d8a902f6649d5795f81790ebe96473f15ef7460e6d0829f4",
-   "sha256": "fe641524c27427e2d8a902f6649d5795f81790ebe96473f15ef7460e6d0829f4",
-   "identical": true,
-   "adaptations": []
+   "sha256": "3ee6cf678a787acd60709b69018e17630d299105086aa85cdf04de1862e057ce",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-core/references/asgi-wsgi.md",
@@ -830,9 +970,11 @@
    "kind": "skill",
    "source": "skills/django-core/references/asgi-wsgi.md",
    "source_sha256": "469a64152a0210ed5043f1d737069fba2c09bbc9cf5ce1b93c76cb8dc616fc1e",
-   "sha256": "469a64152a0210ed5043f1d737069fba2c09bbc9cf5ce1b93c76cb8dc616fc1e",
-   "identical": true,
-   "adaptations": []
+   "sha256": "ac5eb10f7eb947d4d9047d5ba76d6d14a3a167ce9ffe4a6157ab7862f30bcbcb",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-core/references/asynchronous-django.md",
@@ -840,9 +982,11 @@
    "kind": "skill",
    "source": "skills/django-core/references/asynchronous-django.md",
    "source_sha256": "9544717af817dc985b2caca8dd1cb2dda8adb9f6a52b55ca9fbe6e6695d1f9c0",
-   "sha256": "9544717af817dc985b2caca8dd1cb2dda8adb9f6a52b55ca9fbe6e6695d1f9c0",
-   "identical": true,
-   "adaptations": []
+   "sha256": "87a767f7da0afc2bb20fa352c713ba0bf9c9bf83457c26fd04fd5cc12a45d89d",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-core/references/authentication-sessions.md",
@@ -930,9 +1074,11 @@
    "kind": "skill",
    "source": "skills/django-core/references/production-configuration.md",
    "source_sha256": "80cdf2e789fad87764811eb57e28124bf53ebad1794214ba825cbb4aeddb5c38",
-   "sha256": "80cdf2e789fad87764811eb57e28124bf53ebad1794214ba825cbb4aeddb5c38",
-   "identical": true,
-   "adaptations": []
+   "sha256": "8fc84c8e19738686b7bde9077a9643ae1954a7641daf90f5d013f6893d3af07b",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-core/references/project-structure.md",
@@ -960,9 +1106,11 @@
    "kind": "skill",
    "source": "skills/django-core/references/settings-configuration.md",
    "source_sha256": "2113e464debfa4e08b87ed40d386b26f546601800f74fcc194a98d8be3a64550",
-   "sha256": "2113e464debfa4e08b87ed40d386b26f546601800f74fcc194a98d8be3a64550",
-   "identical": true,
-   "adaptations": []
+   "sha256": "a5c4467f23b6a6043445193f62bcabc59134c5833fe2954de698194dd040568f",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-core/references/signals-management-commands.md",
@@ -970,9 +1118,11 @@
    "kind": "skill",
    "source": "skills/django-core/references/signals-management-commands.md",
    "source_sha256": "975ebf4a103be26b54eac5cde79cd6b4821601c53cea1a624bec55b0e81a85d8",
-   "sha256": "975ebf4a103be26b54eac5cde79cd6b4821601c53cea1a624bec55b0e81a85d8",
-   "identical": true,
-   "adaptations": []
+   "sha256": "b552fb0649eb5dd7d1650b93d2e3638370e94b9c9e54b629c2dc29341051bac0",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-core/references/urls-views.md",
@@ -990,9 +1140,11 @@
    "kind": "skill",
    "source": "skills/django-data-processing/SKILL.md",
    "source_sha256": "5a1692031aa0d0828f3a1672c6fca38de82c287a1d32caf111befbe8c1f7828d",
-   "sha256": "5a1692031aa0d0828f3a1672c6fca38de82c287a1d32caf111befbe8c1f7828d",
-   "identical": true,
-   "adaptations": []
+   "sha256": "503b497690e3b87242aeff8dd0ef5fc2c8218df0117be9e4a8be57cb3ae3a83e",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-data-processing/references/celery-tasks.md",
@@ -1032,9 +1184,11 @@
    "kind": "skill",
    "source": "skills/django-data-processing/references/data-ingestion-engineering.md",
    "source_sha256": "947f1669c64ed819695f0dc7b7c945fc8afd9ec50b0cb5a6362d4c862db34e12",
-   "sha256": "947f1669c64ed819695f0dc7b7c945fc8afd9ec50b0cb5a6362d4c862db34e12",
-   "identical": true,
-   "adaptations": []
+   "sha256": "f7af34a07f5bcb0166c006e42a143f6ac428722560c410fe927377a369cfb913",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-data-processing/references/data-processing-fundamentals.md",
@@ -1062,9 +1216,11 @@
    "kind": "skill",
    "source": "skills/django-data-processing/references/data-processing-performance.md",
    "source_sha256": "113cbdbad56d2e0c621e2a5a800666114eb968cca8cc33e4e096c39cbbf7c551",
-   "sha256": "113cbdbad56d2e0c621e2a5a800666114eb968cca8cc33e4e096c39cbbf7c551",
-   "identical": true,
-   "adaptations": []
+   "sha256": "4c46ef1116630fc9efe48cc151d1c431fc40e426e49f2a90b002ef24263a65ac",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-data-processing/references/data-processing-security.md",
@@ -1092,9 +1248,11 @@
    "kind": "skill",
    "source": "skills/django-data-processing/references/data-reconciliation-engineering.md",
    "source_sha256": "7ba6808028293daa08a965dede39963b190ce43cdcd9caf0f90d083ecfe7af13",
-   "sha256": "7ba6808028293daa08a965dede39963b190ce43cdcd9caf0f90d083ecfe7af13",
-   "identical": true,
-   "adaptations": []
+   "sha256": "7141ccf23fa06f54b21c6bfbcd6a1e7e4854724d46f346a298337e4d0ac7e13d",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-data-processing/references/data-transformation-and-mapping.md",
@@ -1122,9 +1280,11 @@
    "kind": "skill",
    "source": "skills/django-data-processing/references/database-loading-and-persistence.md",
    "source_sha256": "bd45230c005103285bb7115f62ae26bd94b1916dfc6032716ae057c96f5229b9",
-   "sha256": "bd45230c005103285bb7115f62ae26bd94b1916dfc6032716ae057c96f5229b9",
-   "identical": true,
-   "adaptations": []
+   "sha256": "11a499c2dd16bb85ee140139a272b4e244e0bd621cdc0b36217ef527579d1acf",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-data-processing/references/django-background-processing.md",
@@ -1142,9 +1302,11 @@
    "kind": "skill",
    "source": "skills/django-data-processing/references/etl-and-elt-pipelines.md",
    "source_sha256": "5d3c8f1cd18fab556fd1de41b01b020f9c8eb99e55457a6828a769a0704c21d4",
-   "sha256": "5d3c8f1cd18fab556fd1de41b01b020f9c8eb99e55457a6828a769a0704c21d4",
-   "identical": true,
-   "adaptations": []
+   "sha256": "34949e6aa3d6a4f732846b342e2404cefa2c77c298f6f2bfe96833f0b7255864",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-data-processing/references/file-processing-engineering.md",
@@ -1192,9 +1354,11 @@
    "kind": "skill",
    "source": "skills/django-data-processing/references/production-architectures-imports-and-pipelines.md",
    "source_sha256": "e9efd92bd28fa27af6d2c02535c6201c94b9fd0f1112e7f7e6606e6119e005b5",
-   "sha256": "e9efd92bd28fa27af6d2c02535c6201c94b9fd0f1112e7f7e6606e6119e005b5",
-   "identical": true,
-   "adaptations": []
+   "sha256": "a227808efe275e6445b0b17556064bfca483fdd03a6237797469a3647e4a3fcc",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-data-processing/references/production-architectures-sync-reconciliation-and-documents.md",
@@ -1212,9 +1376,11 @@
    "kind": "skill",
    "source": "skills/django-frontend/SKILL.md",
    "source_sha256": "f2657e2c620ea78066e3c915e3172f2c98133812d58fe1a9aaced5d2a3d29064",
-   "sha256": "f2657e2c620ea78066e3c915e3172f2c98133812d58fe1a9aaced5d2a3d29064",
-   "identical": true,
-   "adaptations": []
+   "sha256": "9fef72179a8878cad5ab5556af99150996037b40f3db8d7b5f67299ce5b3f8e2",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-frontend/references/alpine-js-engineering.md",
@@ -1422,9 +1588,11 @@
    "kind": "skill",
    "source": "skills/django-integrations/SKILL.md",
    "source_sha256": "f0c4ed6dd043173bac099b35046138a78f2b50b399319be8c15ad07d2f11bd4a",
-   "sha256": "f0c4ed6dd043173bac099b35046138a78f2b50b399319be8c15ad07d2f11bd4a",
-   "identical": true,
-   "adaptations": []
+   "sha256": "d9ba6bbca587426f616e23c01bf55746b1b296ebf197cad89fd4c56b07696759",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-integrations/references/authentication-and-identity-integrations.md",
@@ -1442,9 +1610,11 @@
    "kind": "skill",
    "source": "skills/django-integrations/references/aws-and-cloud-integrations.md",
    "source_sha256": "6b5eb740887129df44f8e1fbbae83607a666ddffe53ed0749db2fd223fced1b9",
-   "sha256": "6b5eb740887129df44f8e1fbbae83607a666ddffe53ed0749db2fd223fced1b9",
-   "identical": true,
-   "adaptations": []
+   "sha256": "c1bd7daf438d33792c9cc26064937f9f44c587bf6f586379a57ff8b9ceca7756",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-integrations/references/azure-integrations.md",
@@ -1452,9 +1622,11 @@
    "kind": "skill",
    "source": "skills/django-integrations/references/azure-integrations.md",
    "source_sha256": "e6c301bf50d5a98b07fa65eb8976e9aab0e41da64433dec7ef8a7702f1b2646b",
-   "sha256": "e6c301bf50d5a98b07fa65eb8976e9aab0e41da64433dec7ef8a7702f1b2646b",
-   "identical": true,
-   "adaptations": []
+   "sha256": "acdd52676e7fe5c88043e565ca444096149fc27e4192ecee83ce15e6c02a0741",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-integrations/references/celery-and-background-integrations.md",
@@ -1472,9 +1644,11 @@
    "kind": "skill",
    "source": "skills/django-integrations/references/data-synchronization-and-reconciliation.md",
    "source_sha256": "218cad813f479001a7af8b023e3c3c6c08dc554817153474caa3c1d966f4cad8",
-   "sha256": "218cad813f479001a7af8b023e3c3c6c08dc554817153474caa3c1d966f4cad8",
-   "identical": true,
-   "adaptations": []
+   "sha256": "27fa2d753b085f0128fbda46e30aae614889bf2aa208c02f4c8cb5431a5efc55",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-integrations/references/email-sms-and-notification-integrations.md",
@@ -1512,9 +1686,11 @@
    "kind": "skill",
    "source": "skills/django-integrations/references/integration-architecture-patterns.md",
    "source_sha256": "05010e3f59d52c4147e7b70b4e5b2d6d53256f70e6b3740dd805b0cc9b0e792c",
-   "sha256": "05010e3f59d52c4147e7b70b4e5b2d6d53256f70e6b3740dd805b0cc9b0e792c",
-   "identical": true,
-   "adaptations": []
+   "sha256": "5a8f6624e5e07d74ab9bd1f0f8ad247cc8e33440d5ebc64edbd82006f19bba4e",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-integrations/references/integration-engineering-fundamentals.md",
@@ -1572,9 +1748,11 @@
    "kind": "skill",
    "source": "skills/django-integrations/references/messaging-and-event-driven-integrations.md",
    "source_sha256": "18a29183318a6f894a67cb49333ce83bbb4a416fa49a7c98d545f5a237fc5d61",
-   "sha256": "18a29183318a6f894a67cb49333ce83bbb4a416fa49a7c98d545f5a237fc5d61",
-   "identical": true,
-   "adaptations": []
+   "sha256": "543d0061e8d49c3cb660e217b703431547d2e16f84f70aa43075d10994107102",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-integrations/references/payment-and-financial-integrations.md",
@@ -1582,9 +1760,11 @@
    "kind": "skill",
    "source": "skills/django-integrations/references/payment-and-financial-integrations.md",
    "source_sha256": "a5f4db3dab8bfdf3fd899e20b4110d567c990dba1962da728c7c9d3ab4bebe22",
-   "sha256": "a5f4db3dab8bfdf3fd899e20b4110d567c990dba1962da728c7c9d3ab4bebe22",
-   "identical": true,
-   "adaptations": []
+   "sha256": "dac5b38ae2480b9b4241abdf42a57f1eba821e81c214e22c02015709f2d2fccf",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-integrations/references/soap-and-legacy-integrations.md",
@@ -1602,9 +1782,11 @@
    "kind": "skill",
    "source": "skills/django-integrations/references/webhooks-and-inbound-integrations.md",
    "source_sha256": "d93fb706e330a3a4d61dce321e835c9aa7b504444c8e71204bf132443276df18",
-   "sha256": "d93fb706e330a3a4d61dce321e835c9aa7b504444c8e71204bf132443276df18",
-   "identical": true,
-   "adaptations": []
+   "sha256": "a116d3cb86116d37dc55d3641e5d11bb7181cffa1c164660629ec15579010ef0",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-orm/SKILL.md",
@@ -1612,9 +1794,11 @@
    "kind": "skill",
    "source": "skills/django-orm/SKILL.md",
    "source_sha256": "9ff129ea67cee249869c6c572ede00dd4fe2ac3cde9383caaf2b5960e177913e",
-   "sha256": "9ff129ea67cee249869c6c572ede00dd4fe2ac3cde9383caaf2b5960e177913e",
-   "identical": true,
-   "adaptations": []
+   "sha256": "a0d9fc3851e4fa995714fa4cedbf142e529a131ad581fd38887f338d8cdb40e3",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-orm/references/advanced-query-expressions.md",
@@ -1622,9 +1806,11 @@
    "kind": "skill",
    "source": "skills/django-orm/references/advanced-query-expressions.md",
    "source_sha256": "6412c08314921af0aaebe107192374cd05c02387be9229f5c8a0917083351be0",
-   "sha256": "6412c08314921af0aaebe107192374cd05c02387be9229f5c8a0917083351be0",
-   "identical": true,
-   "adaptations": []
+   "sha256": "13bf6bb01b9a0132354d08f3e1d89e63af34ab4f0b35bd022ed7c81754757dff",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-orm/references/aggregation-and-annotation.md",
@@ -1632,9 +1818,11 @@
    "kind": "skill",
    "source": "skills/django-orm/references/aggregation-and-annotation.md",
    "source_sha256": "7b7774383b4aec1be89f3eb654fccd811c5521e3e5e52a77a0f445da0235050f",
-   "sha256": "7b7774383b4aec1be89f3eb654fccd811c5521e3e5e52a77a0f445da0235050f",
-   "identical": true,
-   "adaptations": []
+   "sha256": "9565d88efe709608ffda079146537c493a8eee9f97918c82edc797c5110d9971",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-orm/references/bulk-operations-and-batching.md",
@@ -1642,9 +1830,11 @@
    "kind": "skill",
    "source": "skills/django-orm/references/bulk-operations-and-batching.md",
    "source_sha256": "5617450e7510b9303dfecf4501024682b0e03eb43413fb6bb44d3a61c2ff9f54",
-   "sha256": "5617450e7510b9303dfecf4501024682b0e03eb43413fb6bb44d3a61c2ff9f54",
-   "identical": true,
-   "adaptations": []
+   "sha256": "6fd98b9efe030644740226a41ec6f183f495ec5d202a45930bce9743af5543bc",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-orm/references/database-constraints-and-indexes.md",
@@ -1652,9 +1842,11 @@
    "kind": "skill",
    "source": "skills/django-orm/references/database-constraints-and-indexes.md",
    "source_sha256": "0d1d0eb9272a76ad6f95c5c7a753530bdbb69fdaf1524d6086b27cdf5ed1d610",
-   "sha256": "0d1d0eb9272a76ad6f95c5c7a753530bdbb69fdaf1524d6086b27cdf5ed1d610",
-   "identical": true,
-   "adaptations": []
+   "sha256": "eb57a35dd5882571155cb01cd38c008f3a19552523cbc7ceafe65c4a09acb94e",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-orm/references/field-types-and-options.md",
@@ -1662,9 +1854,11 @@
    "kind": "skill",
    "source": "skills/django-orm/references/field-types-and-options.md",
    "source_sha256": "5556b8205847157682f5cf50964f0740969cea2978e2918cc66fc19ae24512cb",
-   "sha256": "5556b8205847157682f5cf50964f0740969cea2978e2918cc66fc19ae24512cb",
-   "identical": true,
-   "adaptations": []
+   "sha256": "2bcd7467b0bcc3e611f51cbf3365c4e6911f1d6df003d49458ff6744a31d6cc2",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-orm/references/managers-and-querysets.md",
@@ -1672,9 +1866,11 @@
    "kind": "skill",
    "source": "skills/django-orm/references/managers-and-querysets.md",
    "source_sha256": "f4a6c6072cf7357f50de99b0bd9be07035182cd0028fe080691018b2a42a8d73",
-   "sha256": "f4a6c6072cf7357f50de99b0bd9be07035182cd0028fe080691018b2a42a8d73",
-   "identical": true,
-   "adaptations": []
+   "sha256": "cea903609ce715628691cc0d4fd8267b473eeebd3ce1bf44de05bcdfd9dbf94c",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-orm/references/migrations-and-schema-evolution.md",
@@ -1682,9 +1878,11 @@
    "kind": "skill",
    "source": "skills/django-orm/references/migrations-and-schema-evolution.md",
    "source_sha256": "1f6d5e0f77ad9b680d9b0ca91726f2e33166c1f9ba3cfeb06208d01539512b94",
-   "sha256": "1f6d5e0f77ad9b680d9b0ca91726f2e33166c1f9ba3cfeb06208d01539512b94",
-   "identical": true,
-   "adaptations": []
+   "sha256": "b193bb0bd75f1055feffb76a90dac07010f00f091778116e66d6bb4ec11f7610",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-orm/references/model-design.md",
@@ -1702,9 +1900,11 @@
    "kind": "skill",
    "source": "skills/django-orm/references/model-relationships.md",
    "source_sha256": "ad9372c5c8c1859ff8dd16be5fb2e09f9ab182ab592dc4c280a06484239dd862",
-   "sha256": "ad9372c5c8c1859ff8dd16be5fb2e09f9ab182ab592dc4c280a06484239dd862",
-   "identical": true,
-   "adaptations": []
+   "sha256": "732a5d38eaf0d4b7d35afe795c9075a3dc506c70703249e461f2834c51f18966",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-orm/references/orm-anti-patterns.md",
@@ -1722,9 +1922,11 @@
    "kind": "skill",
    "source": "skills/django-orm/references/orm-fundamentals.md",
    "source_sha256": "81bc5a449947591e7862ab3864f147cabd527f69d2f47e9888fc5cdaff146826",
-   "sha256": "81bc5a449947591e7862ab3864f147cabd527f69d2f47e9888fc5cdaff146826",
-   "identical": true,
-   "adaptations": []
+   "sha256": "d3c43af0ed09596f62f02fffc7ca98c8503b481b4a259be6cb67a14958784702",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-orm/references/query-optimization.md",
@@ -1732,9 +1934,11 @@
    "kind": "skill",
    "source": "skills/django-orm/references/query-optimization.md",
    "source_sha256": "7f6412021b97072ab892fa6ffb6538a7216e8274fee1a7967e2c850aa97e64cd",
-   "sha256": "7f6412021b97072ab892fa6ffb6538a7216e8274fee1a7967e2c850aa97e64cd",
-   "identical": true,
-   "adaptations": []
+   "sha256": "73cb864708218b33976a072cf2a05bfd803a7224b8a00ed5fc176feda6460ae4",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-orm/references/queryset-api.md",
@@ -1752,9 +1956,11 @@
    "kind": "skill",
    "source": "skills/django-orm/references/queryset-internals.md",
    "source_sha256": "6e6282f3cd7d5c8142485d1fa5af73d43a74a488242dba5390a3fbb0a7b2ad4a",
-   "sha256": "6e6282f3cd7d5c8142485d1fa5af73d43a74a488242dba5390a3fbb0a7b2ad4a",
-   "identical": true,
-   "adaptations": []
+   "sha256": "eb08518ed408e01999e9a50e351e9371121821961a66a17218d69326cf66a294",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-orm/references/raw-sql-and-database-access.md",
@@ -1762,9 +1968,11 @@
    "kind": "skill",
    "source": "skills/django-orm/references/raw-sql-and-database-access.md",
    "source_sha256": "0446c4e1cb026973d4a15c5ed9924f2e1be8fab58aea7d3b11fe222859ee0fd1",
-   "sha256": "0446c4e1cb026973d4a15c5ed9924f2e1be8fab58aea7d3b11fe222859ee0fd1",
-   "identical": true,
-   "adaptations": []
+   "sha256": "37af3e5d683f009e60a46627e3f326bd44dd1feada04b31507f23b0e3ba82d12",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-orm/references/transactions-and-concurrency.md",
@@ -1772,9 +1980,11 @@
    "kind": "skill",
    "source": "skills/django-orm/references/transactions-and-concurrency.md",
    "source_sha256": "d6f4c45a0ea6afa3df9d9338df7ca88f1c639668d8fd8991d96da1831e422237",
-   "sha256": "d6f4c45a0ea6afa3df9d9338df7ca88f1c639668d8fd8991d96da1831e422237",
-   "identical": true,
-   "adaptations": []
+   "sha256": "e4a51aacdbb6522360d164bcbc71b3b323b39aac7c4aff8830659e0a275d4cdb",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-performance/SKILL.md",
@@ -1782,9 +1992,11 @@
    "kind": "skill",
    "source": "skills/django-performance/SKILL.md",
    "source_sha256": "eae8e3414a2cb48c4ea6dd4a1131eed309cc5e84fa99d6896358675a9a4ecb83",
-   "sha256": "eae8e3414a2cb48c4ea6dd4a1131eed309cc5e84fa99d6896358675a9a4ecb83",
-   "identical": true,
-   "adaptations": []
+   "sha256": "e021f215ac9a26f2ee020468fd77db2abc6db9387b3253721f9914e7f0ba5a0b",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-performance/references/api-performance.md",
@@ -1832,9 +2044,11 @@
    "kind": "skill",
    "source": "skills/django-performance/references/concurrency-and-worker-management.md",
    "source_sha256": "6b0b4c9396c6017eb4b73d37b24c656ada42b7f4d98bbe6a176d26ac47938739",
-   "sha256": "6b0b4c9396c6017eb4b73d37b24c656ada42b7f4d98bbe6a176d26ac47938739",
-   "identical": true,
-   "adaptations": []
+   "sha256": "f72d86c14f476c36deb4a54fcc93c3f017e9ab57f3de25bde0d841b108557786",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-performance/references/database-performance.md",
@@ -1842,9 +2056,11 @@
    "kind": "skill",
    "source": "skills/django-performance/references/database-performance.md",
    "source_sha256": "f1a9d723bcf8b02bafb2226b755d9b8c067b1264a333977bc6c03f613e4d0c2a",
-   "sha256": "f1a9d723bcf8b02bafb2226b755d9b8c067b1264a333977bc6c03f613e4d0c2a",
-   "identical": true,
-   "adaptations": []
+   "sha256": "b7b46021fdc0cbda45d108afa9f248297f9aabd66c4b4b07f559bbe8947794be",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-performance/references/django-application-performance.md",
@@ -1862,9 +2078,11 @@
    "kind": "skill",
    "source": "skills/django-performance/references/file-and-data-processing-performance.md",
    "source_sha256": "c02600b18ae908df3c7a2bd7d1edc21121a9288c6c93917816e859f9b9231f41",
-   "sha256": "c02600b18ae908df3c7a2bd7d1edc21121a9288c6c93917816e859f9b9231f41",
-   "identical": true,
-   "adaptations": []
+   "sha256": "5a1fa614377342def519dc30465e9b6ac644bc9995c091bff480645002bb4818",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-performance/references/http-and-static-delivery-performance.md",
@@ -1902,9 +2120,11 @@
    "kind": "skill",
    "source": "skills/django-performance/references/performance-architecture-decisions.md",
    "source_sha256": "95ddf8f79b8f6f84fd553db6cb0a101b2ab0e668f81cc1b55dd4c2c91ae797f3",
-   "sha256": "95ddf8f79b8f6f84fd553db6cb0a101b2ab0e668f81cc1b55dd4c2c91ae797f3",
-   "identical": true,
-   "adaptations": []
+   "sha256": "b55e9e9e975dc956ed99cf387d1ebb177fcc045e639108457d65a33c573b7092",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-performance/references/performance-engineering-fundamentals.md",
@@ -1922,9 +2142,11 @@
    "kind": "skill",
    "source": "skills/django-performance/references/performance-testing-and-benchmarking.md",
    "source_sha256": "15bdb416a1d4e745ac843f150e1c1f3b5f902a808f6fb5a8684a59910e19cde8",
-   "sha256": "15bdb416a1d4e745ac843f150e1c1f3b5f902a808f6fb5a8684a59910e19cde8",
-   "identical": true,
-   "adaptations": []
+   "sha256": "58763d8dfb3fdccdec76ea544692adf233d6b1fd81d393ecd4424b147d98e425",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-performance/references/production-performance-troubleshooting.md",
@@ -1932,9 +2154,11 @@
    "kind": "skill",
    "source": "skills/django-performance/references/production-performance-troubleshooting.md",
    "source_sha256": "068875133d6d142f023da16a0c8b1995af4957b067cf48f8584a80367635c567",
-   "sha256": "068875133d6d142f023da16a0c8b1995af4957b067cf48f8584a80367635c567",
-   "identical": true,
-   "adaptations": []
+   "sha256": "5203021030047a36c9a5f49b3e956f804e03fe90e5c2e3dfe98cd6a0e34119c7",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-performance/references/profiling-and-observability.md",
@@ -1952,9 +2176,11 @@
    "kind": "skill",
    "source": "skills/django-performance/references/scalability-and-capacity-planning.md",
    "source_sha256": "9d7ee55fc52e271793afb13ad089b72a4dbb826a154f28f9c5b095cabe414793",
-   "sha256": "9d7ee55fc52e271793afb13ad089b72a4dbb826a154f28f9c5b095cabe414793",
-   "identical": true,
-   "adaptations": []
+   "sha256": "bd857050685402e1e393bf0d2e9846286bd2e22d49b9d44e839c7bc2e9438b0b",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-report-generation/SKILL.md",
@@ -1962,9 +2188,11 @@
    "kind": "skill",
    "source": "skills/django-report-generation/SKILL.md",
    "source_sha256": "93fa3ffeab1ab372b42ada739af5531c76653f0b5a0c6bc680532183a65c75ab",
-   "sha256": "93fa3ffeab1ab372b42ada739af5531c76653f0b5a0c6bc680532183a65c75ab",
-   "identical": true,
-   "adaptations": []
+   "sha256": "8a4ae0c30de4cb78afbe9ec4579120cc5f215df67bf9b5847a9920e8a2b317a8",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-report-generation/references/background-report-generation.md",
@@ -2052,9 +2280,11 @@
    "kind": "skill",
    "source": "skills/django-report-generation/references/production-reporting-architectures.md",
    "source_sha256": "49648e08749b10d79a10678fc3cba74d57a0bb5919ce0b9910c5f4f6ecee0f45",
-   "sha256": "49648e08749b10d79a10678fc3cba74d57a0bb5919ce0b9910c5f4f6ecee0f45",
-   "identical": true,
-   "adaptations": []
+   "sha256": "1d1561a34183c60c176cb46ee86615927e44ffdda1ac295b40f455a34c363d69",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-report-generation/references/report-formats.md",
@@ -2072,9 +2302,11 @@
    "kind": "skill",
    "source": "skills/django-report-generation/references/report-generation-performance.md",
    "source_sha256": "53be2b86ecc1ade6ad0c7ba7a6e75f89d4068febd28fc94a24ea8d9d56b44b4e",
-   "sha256": "53be2b86ecc1ade6ad0c7ba7a6e75f89d4068febd28fc94a24ea8d9d56b44b4e",
-   "identical": true,
-   "adaptations": []
+   "sha256": "94eac06d02d3c3e83b9a9f3e3fe45b5d4bf728831ba791beab7f78a32560e4fb",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-report-generation/references/report-generation-testing.md",
@@ -2092,9 +2324,11 @@
    "kind": "skill",
    "source": "skills/django-report-generation/references/report-generation-troubleshooting.md",
    "source_sha256": "758bf5d99ebe81ed1a70044e9baa20b3e3fdec1c77b13be0226d873c0632edee",
-   "sha256": "758bf5d99ebe81ed1a70044e9baa20b3e3fdec1c77b13be0226d873c0632edee",
-   "identical": true,
-   "adaptations": []
+   "sha256": "552bad7cae63b89449e6630f6c6efa4fc8313ca549f311329ff016772430e72e",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-report-generation/references/report-templates-and-reusability.md",
@@ -2122,9 +2356,11 @@
    "kind": "skill",
    "source": "skills/django-report-generation/references/reporting-data-acquisition-and-preparation.md",
    "source_sha256": "e3863addf247d942933549c8006c908c0139af5929a096e03c49535316f2e2c4",
-   "sha256": "e3863addf247d942933549c8006c908c0139af5929a096e03c49535316f2e2c4",
-   "identical": true,
-   "adaptations": []
+   "sha256": "cc45bfdbe78076ee5fe949ee7e928f40cade8a1079d14aff85208ed5bffca4c4",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-report-generation/references/reporting-engineering-fundamentals.md",
@@ -2152,9 +2388,11 @@
    "kind": "skill",
    "source": "skills/django-report-generation/references/reporting-security-and-compliance.md",
    "source_sha256": "97a67d7c753555840f9b71c74554ed1853ae4b272ed735377c42227ec6d26a22",
-   "sha256": "97a67d7c753555840f9b71c74554ed1853ae4b272ed735377c42227ec6d26a22",
-   "identical": true,
-   "adaptations": []
+   "sha256": "57b7349134d8d60090d8173689adfa85b97166f18d6ff37025d70dba212950fc",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-report-generation/references/scheduled-reports-and-distribution.md",
@@ -2172,9 +2410,11 @@
    "kind": "skill",
    "source": "skills/django-rest-framework/SKILL.md",
    "source_sha256": "88f68d6eb33026b03295530aedacf5aa9fe36b9b68f159666137b9f719f41458",
-   "sha256": "88f68d6eb33026b03295530aedacf5aa9fe36b9b68f159666137b9f719f41458",
-   "identical": true,
-   "adaptations": []
+   "sha256": "4b4809c016130fa33550761a6948c25c7f281083f5683d9d0c0d864a20161f90",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-rest-framework/references/api-versioning-and-documentation.md",
@@ -2242,9 +2482,11 @@
    "kind": "skill",
    "source": "skills/django-rest-framework/references/filtering-search-and-ordering.md",
    "source_sha256": "f19dc71994ac334add211f5e90b2abb2a10670c32cd3de07f74d6aaccff01759",
-   "sha256": "f19dc71994ac334add211f5e90b2abb2a10670c32cd3de07f74d6aaccff01759",
-   "identical": true,
-   "adaptations": []
+   "sha256": "d84b7ebaeab7a943bfb14b11ede5900d415de0bc27379becfdd9a43d6e56a544",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-rest-framework/references/nested-and-relational-serializers.md",
@@ -2342,9 +2584,11 @@
    "kind": "skill",
    "source": "skills/django-security-engineering/SKILL.md",
    "source_sha256": "d539f8ad367a678d6d2e005fdf80c6341421ef4b5e52eada5cf50312edbaff07",
-   "sha256": "d539f8ad367a678d6d2e005fdf80c6341421ef4b5e52eada5cf50312edbaff07",
-   "identical": true,
-   "adaptations": []
+   "sha256": "9f7a515296881c52af8b117d4c86a175977ce85e1d2a73656fd751d2baf4d212",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-security-engineering/references/api-security.md",
@@ -2432,9 +2676,11 @@
    "kind": "skill",
    "source": "skills/django-security-engineering/references/injection-prevention.md",
    "source_sha256": "7a0337d292176a97c7a57b0afdb8672abb4a72433ed81dd8f71512ddda99a933",
-   "sha256": "7a0337d292176a97c7a57b0afdb8672abb4a72433ed81dd8f71512ddda99a933",
-   "identical": true,
-   "adaptations": []
+   "sha256": "d5989190dfbd76938657951050a17631939907e3bf6335aa48b330006b9d9f1e",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-security-engineering/references/multi-tenant-security.md",
@@ -2442,9 +2688,11 @@
    "kind": "skill",
    "source": "skills/django-security-engineering/references/multi-tenant-security.md",
    "source_sha256": "5388b523fb7a4de21bb1750d5dcb5fc70fdbc1728b038908e2cb904483f3e756",
-   "sha256": "5388b523fb7a4de21bb1750d5dcb5fc70fdbc1728b038908e2cb904483f3e756",
-   "identical": true,
-   "adaptations": []
+   "sha256": "c4b434ff9142ca3b529a7c6fdae61da6ef3cfdd0ddc7e203388c52981aa6b9c7",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-security-engineering/references/secrets-and-cryptography.md",
@@ -2452,9 +2700,11 @@
    "kind": "skill",
    "source": "skills/django-security-engineering/references/secrets-and-cryptography.md",
    "source_sha256": "821c31e2ec867d69ad79be26c19967755408639678461a10a22ac518aaceae1f",
-   "sha256": "821c31e2ec867d69ad79be26c19967755408639678461a10a22ac518aaceae1f",
-   "identical": true,
-   "adaptations": []
+   "sha256": "af59f2f9b18c607d95249da3f4103507b24c20f7add19fa0abd7447f770c33d3",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-security-engineering/references/secure-django-configuration.md",
@@ -2532,9 +2782,11 @@
    "kind": "skill",
    "source": "skills/django-testing/SKILL.md",
    "source_sha256": "9a5fe5e7faf6775d67cc44c42191970aaa43a3753b55466da64332994db973f0",
-   "sha256": "9a5fe5e7faf6775d67cc44c42191970aaa43a3753b55466da64332994db973f0",
-   "identical": true,
-   "adaptations": []
+   "sha256": "81d5ca3dfad853ddb5b0a59f8b4644d0fcdba01feefe4cff5614e58007d52cf4",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-testing/references/async-testing.md",
@@ -2562,9 +2814,11 @@
    "kind": "skill",
    "source": "skills/django-testing/references/ci-cd-test-automation.md",
    "source_sha256": "ded23549885eea929813a938cc7be08bc365be54c0b1ed5bff2960dbcce69022",
-   "sha256": "ded23549885eea929813a938cc7be08bc365be54c0b1ed5bff2960dbcce69022",
-   "identical": true,
-   "adaptations": []
+   "sha256": "3486397967eabe75307bc98538e9a0c5dccaa244bfd6ae95b965be409415c730",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-testing/references/coverage-and-quality-analysis.md",
@@ -2582,9 +2836,11 @@
    "kind": "skill",
    "source": "skills/django-testing/references/database-and-transaction-testing.md",
    "source_sha256": "484fd7b76acb8fd28705fee2ed751ea4a4c1ac04226f144beacaf15a4320d800",
-   "sha256": "484fd7b76acb8fd28705fee2ed751ea4a4c1ac04226f144beacaf15a4320d800",
-   "identical": true,
-   "adaptations": []
+   "sha256": "31aae8633c6ccee228d521db1d098f9545fd294e9c11c3d95919d06621bd0bee",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-testing/references/django-rest-framework-testing.md",
@@ -2652,9 +2908,11 @@
    "kind": "skill",
    "source": "skills/django-testing/references/performance-and-reliability-testing.md",
    "source_sha256": "1f87a11270b5ba10fb3540b464d8f88a948b5d20f9291f3834221e8851572961",
-   "sha256": "1f87a11270b5ba10fb3540b464d8f88a948b5d20f9291f3834221e8851572961",
-   "identical": true,
-   "adaptations": []
+   "sha256": "330049634f3d769cbe9163b273c183642dacb13d1d0e5f6dae7ad5f0b29a7fe2",
+   "identical": false,
+   "adaptations": [
+    "AD-14"
+   ]
   },
   {
    "path": "skills/django-testing/references/pytest-and-pytest-django.md",
@@ -2717,38 +2975,9 @@
    "adaptations": []
   },
   {
-   "path": "skills/postgresql-engineering/SKILL.md",
-   "origin": "canonical",
-   "kind": "skill",
-   "source": "skills/postgresql-engineering/SKILL.md",
-   "source_sha256": "14aeaf69515c967b2c27b116b5ecd2049d2fae8a30b0e4edff3074d0565fa440",
-   "sha256": "36058b06e3a17269f88986e739ff89ac19c2c100ef9a2ccf715c1e393b8c7dd3",
-   "identical": false,
-   "adaptations": [
-    "AD-12"
-   ]
-  },
-  {
-   "path": "skills/postgresql-engineering/references/indexing-and-query-plans.md",
-   "origin": "canonical",
-   "kind": "skill",
-   "source": "skills/postgresql-engineering/references/indexing-and-query-plans.md",
-   "source_sha256": "ff0e57772b204aac5d972f6407fd595d12e982271df85ef48aca82e01b5ba4ee",
-   "sha256": "ff0e57772b204aac5d972f6407fd595d12e982271df85ef48aca82e01b5ba4ee",
-   "identical": true,
-   "adaptations": []
-  },
-  {
-   "path": "skills/postgresql-engineering/references/transactions-locking-connections.md",
-   "origin": "canonical",
-   "kind": "skill",
-   "source": "skills/postgresql-engineering/references/transactions-locking-connections.md",
-   "source_sha256": "bce0aa3ab5f27bb0bbb93f11f285334a4eecade4eca149a2df1ad6ad14dc820f",
-   "sha256": "ab76aa5846983ed51098f5e59d78af0c9fdf9e0d9a3ffbad7fba1df9aabbd99c",
-   "identical": false,
-   "adaptations": [
-    "AD-12"
-   ]
+   "path": "skills/orchestrate/SKILL.md",
+   "origin": "standalone-authored",
+   "sha256": "3edea417c72861fdff02a4e6db998e1b0df688796c4139a5f47414d0b1d6baff"
   },
   {
    "path": "templates/README.md",
@@ -2910,12 +3139,12 @@
   {
    "path": "tests/conftest.py",
    "origin": "standalone-authored",
-   "sha256": "31a8d157d7bd156b5bc1a635d6ebd83b02b2b2612f03f6bf41e96c9f3c680cc3"
+   "sha256": "c3c5378bb84a7801b8c9cdca57964f932f71ec89c0f747df45a062cad5150e12"
   },
   {
    "path": "tests/test_guard.py",
    "origin": "standalone-authored",
-   "sha256": "ff9eecb26cbf564347632e9c02d50eff708753be303f25bffdd0a12fe66cd711"
+   "sha256": "4ad2c0c1c188a2ca52d7b2183784247c69c383ff65963989135ef5dc586c47d6"
   },
   {
    "path": "tests/test_manifest.py",
@@ -2930,17 +3159,17 @@
   {
    "path": "tests/test_orchestration_policy.py",
    "origin": "standalone-authored",
-   "sha256": "816d8743bf94d9b63c1d1834296569da39b6c390daeb9a22e4d84cfe06d61725"
+   "sha256": "58faf263f47cafc03c44474ce45d9477b5bfc6d92b38e96cdb93a80611b87f2e"
   },
   {
    "path": "tests/test_plugin_live.py",
    "origin": "standalone-authored",
-   "sha256": "120b770cd6cbbf544afc0821f1069ccfe86f7d8935db8803fc163bbf93ed078e"
+   "sha256": "1a4f1db3e9d83175be246fa8241c5101fc3c06f23a8aa3684e8aaa6aca9468f5"
   },
   {
    "path": "tests/test_plugin_structure.py",
    "origin": "standalone-authored",
-   "sha256": "b9c1281788089091bbad1db098df9bfffa83dcc29b75cf5035809579d15962bf"
+   "sha256": "cc8a26242318593ac164245d4991de1402587f2553edcdd52afd375b3dcc0228"
   },
   {
    "path": "tests/test_security_policy.py",

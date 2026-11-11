@@ -10,8 +10,8 @@
     {
       "name": "django-engineering",
       "source": "./",
-      "description": "Standalone Django Engineering Plugin: orchestrator, nine specialist agents, twelve skills, twelve rules, templates, shared references and a fail-closed security guard.",
-      "version": "2.0.0",
+      "description": "Standalone Django Engineering Plugin: /django-engineering:orchestrate, an orchestrator and nine specialist agents, internal skills and mandatory rules applied automatically, templates, shared references and a fail-closed security guard.",
+      "version": "3.0.0",
       "category": "backend"
     }
   ]

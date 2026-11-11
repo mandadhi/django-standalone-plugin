@@ -303,7 +303,7 @@ input where a scalar is expected, e.g. `{"$ne": null}` operator injection).
 - Injection is high-impact: SQLi bypasses authorisation and tenant scoping entirely; command
   injection and unsafe deserialisation are remote code execution.
 - Least-privilege DB roles limit SQLi blast radius (no DDL, no superuser, per-service roles) —
-  see [postgresql-engineering](../../postgresql-engineering/SKILL.md).
+  see the PostgreSQL documentation.
 - Database errors leaking into responses (`DEBUG`, verbose API errors) make blind SQLi easy; keep
   generic 500s ([api-security.md](./api-security.md)).
 - Bound sizes before expensive parsing (`DATA_UPLOAD_MAX_MEMORY_SIZE`, explicit max lengths) to

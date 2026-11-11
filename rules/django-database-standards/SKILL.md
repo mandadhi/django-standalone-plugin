@@ -1,5 +1,6 @@
 ---
 name: django-database-standards
+user-invocable: false
 description: >-
   Mandatory Django engineering rule for migrations and database access: immutable applied
   migrations, reversibility, historical models in data migrations, zero-downtime schema changes,
@@ -85,4 +86,4 @@ table-rewriting operations.
 ## Related skills
 
 [django-orm](../../skills/django-orm/SKILL.md) (migrations and schema evolution, transactions and concurrency, raw SQL) ·
-[postgresql-engineering](../../skills/postgresql-engineering/SKILL.md) (indexing, locking, connections).
+the PostgreSQL documentation (indexing, locking, connections).

@@ -1,5 +1,6 @@
 ---
 name: django-report-generation
+user-invocable: false
 description: >-
   Django report generation engineering specialist — reporting fundamentals and requirements,
   reporting subsystem architecture (report definitions, parameters, runs, artifacts, status),
@@ -185,9 +186,8 @@ mechanism or general practice.
 | Profiling, worker sizing, caching, memory, load testing | [django-performance](../django-performance/SKILL.md) |
 | Celery/broker infrastructure, object storage, email providers, external delivery | [django-integrations](../django-integrations/SKILL.md) |
 | Imports, ETL, generic bulk export pipelines, reconciliation | [django-data-processing](../django-data-processing/SKILL.md) |
-| Query plans, isolation levels, materialized view internals, partitioning | [postgresql-engineering](../postgresql-engineering/SKILL.md) |
 
-Examples: a slow aggregation → write it here, tune the plan with django-orm/postgresql-engineering;
+Examples: a slow aggregation → write it here, tune the plan with django-orm;
 a reliable report task → here, Celery deployment → django-integrations; a generic data export
 pipeline feeding another system → django-data-processing, a formatted business report → here.
 

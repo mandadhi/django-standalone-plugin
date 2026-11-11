@@ -348,7 +348,6 @@ Validation: grep for `transaction=True` / `TransactionTestCase` and justify each
 
 - Siblings: [django-testing-framework.md](django-testing-framework.md) · [model-and-orm-testing.md](model-and-orm-testing.md) · [service-and-architecture-testing.md](service-and-architecture-testing.md) · [async-testing.md](async-testing.md) · [ci-cd-test-automation.md](ci-cd-test-automation.md) · [test-maintenance-and-troubleshooting.md](test-maintenance-and-troubleshooting.md)
 - django-orm: [transactions-and-concurrency.md](../../django-orm/references/transactions-and-concurrency.md) · [database-constraints-and-indexes.md](../../django-orm/references/database-constraints-and-indexes.md) · [orm-fundamentals.md](../../django-orm/references/orm-fundamentals.md)
-- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — locking, isolation levels, configuration.
 
 ## 12. Official documentation and external references
 

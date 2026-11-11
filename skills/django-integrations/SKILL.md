@@ -1,5 +1,6 @@
 ---
 name: django-integrations
+user-invocable: false
 description: >-
   Django integrations engineering specialist — integration architecture and boundaries, outbound
   HTTP/REST clients (httpx, requests, provider SDKs), SOAP and legacy systems, OAuth 2.0 / OIDC /
@@ -146,7 +147,6 @@ and synchronisation**; the paired skill owns the mechanism or the general practi
 | Worker/pool sizing, profiling, async performance, queue throughput | [django-performance](../django-performance/SKILL.md) |
 | Transactions, `select_for_update`, constraints, bulk operations | [django-orm](../django-orm/SKILL.md) |
 | Import/export and ETL pipelines over files | [django-data-processing](../django-data-processing/SKILL.md) |
-| Locking, logical replication/CDC internals, partitioning of event tables | [postgresql-engineering](../postgresql-engineering/SKILL.md) |
 
 Common pairings: payment provider → payment + webhooks + reliability (with django-security-engineering);
 event publishing → architecture-patterns + messaging (with django-architecture event-driven

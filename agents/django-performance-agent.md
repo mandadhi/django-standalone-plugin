@@ -8,7 +8,7 @@ description: >-
 tools: Read, Write, Edit, Grep, Glob, Bash
 model: sonnet
 # skills: preloaded into the subagent by Claude Code (namespaced plugin skill ids)
-skills: [django-engineering:django-performance, django-engineering:django-orm, django-engineering:postgresql-engineering, django-engineering:django-security-standards, django-engineering:django-performance-standards, django-engineering:django-database-standards, django-engineering:django-coding-standards, django-engineering:django-testing-standards]
+skills: [django-engineering:django-performance, django-engineering:django-orm, django-engineering:django-security-standards, django-engineering:django-performance-standards, django-engineering:django-database-standards, django-engineering:django-coding-standards, django-engineering:django-testing-standards]
 project: django-agentic-engineering
 abstract: >-
   Measurement-driven Django performance work: identifies ORM, database, caching and request-path
@@ -55,7 +55,6 @@ step needs them, one to three at a time. Do not restate skill content in your ou
 |---|---|
 | `django-performance` | Method, profiling, caching, API and request-path performance, background offloading |
 | `django-orm` | Query construction, QuerySet evaluation, bulk operations, query optimisation |
-| `postgresql-engineering` | Reading `EXPLAIN (ANALYZE, BUFFERS)`, index choice, locking and connections |
 
 ## Mandatory rules
 
@@ -151,6 +150,7 @@ add no tools.
 
 ## Completion criteria
 
+- [ ] Every applicable MUST of the mandatory rules above is met in what you produced, or each unmet MUST is reported with its requirement id and the reason.
 - [ ] Every path in scope has a baseline and a post-change measurement, or an explicit reason why not.
 - [ ] Every applied change has a regression test and leaves existing tests passing.
 - [ ] Recommendations outside your scope name the owning agent.

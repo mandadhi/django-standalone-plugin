@@ -207,7 +207,7 @@ tenant's IDs not reachable ([drf-testing-and-debugging.md](drf-testing-and-debug
 - [views-and-viewsets.md](views-and-viewsets.md) — `filter_queryset()`, `get_object()`
 - [django-orm queryset-api](../../django-orm/references/queryset-api.md),
   [django-orm query-optimization](../../django-orm/references/query-optimization.md)
-- [django-performance](../../django-performance/SKILL.md), [postgresql-engineering](../../postgresql-engineering/SKILL.md) — indexes for search
+- [django-performance](../../django-performance/SKILL.md) — indexes for search
 
 ## 12. Official documentation and external references
 

@@ -360,7 +360,6 @@ network and queueing that server spans may not show.
 - [django-testing performance-and-reliability-testing](../../django-testing/references/performance-and-reliability-testing.md) — query-count budgets, suite speed, CI mechanics.
 - [django-testing](../../django-testing/SKILL.md) — CI pipelines and test fixtures.
 - [django-rest-framework](../../django-rest-framework/SKILL.md) — API endpoints and throttling under test.
-- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — `pg_stat_statements` and database tuning.
 
 ## 12. Official documentation and external references
 

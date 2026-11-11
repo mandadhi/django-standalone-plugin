@@ -251,6 +251,21 @@ def test_undeclared_tools_are_denied(agent_id: str, tool: str) -> None:
     assert verdict(decide(agent_id, tool, {})) == "deny"
 
 
+@pytest.mark.parametrize("agent_id", AGENTS)
+def test_agents_can_hand_their_report_back(agent_id: str) -> None:
+    """Claude Code returns a subagent's result through SubagentHandback; denying it loses every report."""
+    assert decide(agent_id, "SubagentHandback", {"result": "report"}) is None
+
+
+def test_runtime_tools_exception_is_exact_and_fails_closed(tmp_path) -> None:
+    assert policy()["runtime_tools"] == ["SubagentHandback"]
+    broken = {k: v for k, v in policy().items() if k != "runtime_tools"}
+    path = tmp_path / "policy.json"
+    path.write_text(json.dumps(broken), encoding="utf-8")
+    with pytest.raises(guard.GuardError):
+        guard.load_policy(path)
+
+
 def test_the_only_allow_is_reading_plugin_guidance() -> None:
     """The guard can never grant a tool, a write or a shell command."""
     for agent_id in AGENTS:

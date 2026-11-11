@@ -1,5 +1,6 @@
 ---
 name: django-rest-framework
+user-invocable: false
 description: >-
   Django REST Framework engineering specialist — DRF architecture and request lifecycle,
   serializers and validation, relational and nested serializers, views/ViewSets and routers,

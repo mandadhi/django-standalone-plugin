@@ -85,7 +85,7 @@ mandatory scoped entry point enforced by review/linting.
 | Unfiltered `objects` + `.active()` / `.for_tenant(t)` | Low (callers must remember) | Low |
 | Secondary filtered manager (`Product.available`) | Medium (named, visible) | Low |
 | Filtered default manager | High for direct queries | High (admin, dumps, `validate_unique`, related lookups) |
-| Database-level row security (PostgreSQL RLS) | Highest | Operational complexity ([postgresql-engineering](../../postgresql-engineering/SKILL.md)) |
+| Database-level row security (PostgreSQL RLS) | Highest | Operational complexity (the PostgreSQL documentation) |
 
 ## 5. Django implementation patterns
 

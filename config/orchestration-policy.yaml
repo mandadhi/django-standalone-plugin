@@ -11,7 +11,7 @@
 # limit violations and any drift between this file, the orchestrator and the guard policy.
 schema_version: "1.0"
 kind: OrchestrationPolicy
-version: 1.1.0
+version: 1.2.0
 
 # The user-facing orchestrator of the plugin (logical identity `django-orchestrator`).
 orchestrator:
@@ -20,7 +20,7 @@ orchestrator:
   skills: [django-security-standards]      # preloaded into the orchestrator (conduct rules SEC-A*)
 
 limits:
-  max_delegations: 6                       # specialist invocations per request
+  max_delegations: 8                       # specialist invocations per request (the full feature lifecycle)
   max_attempts_per_step: 2                 # one retry of a failed step, never more
   max_clarifying_questions: 3
 
@@ -40,8 +40,8 @@ specialists:
 # its own reading of the request and the repository.
 # Route steps run in order. `after` names earlier steps of the same route (default: the previous
 # included step). An `optional` step is included only when the task needs it: the orchestrator
-# decides from `when`. `supplementary_skills` are pack skills no agent preloads;
-# the brief tells the specialist to read them.
+# decides from `when`. `supplementary_skills` are pack skills no agent preloads; each has a `when`,
+# and the brief names only those whose `when` holds for the request, so specialists load them on demand.
 categories:
   - id: project-analysis
     title: Understand an unfamiliar Django project
@@ -52,7 +52,14 @@ categories:
 
   - id: architecture-design
     title: Design a new Django application or restructure an existing one
-    signals: [design, architect, boundar, layer, refactor, restructur, split, modular, adr, new app]
+    signals: [design, architect, boundar, layer, refactor, restructur, split, modular, adr, new app, requirement, specification, user stor]
+    supplementary_skills:
+      - skill: django-frontend
+        when: The design includes a browser UI (templates, HTMX, React islands or an SPA).
+      - skill: django-integrations
+        when: The design calls, or is called by, an external system.
+      - skill: django-data-processing
+        when: The design includes imports, exports, ETL or bulk data jobs.
     route:
       - agent: django-project-analyzer
         purpose: Establish the current structure the design starts from.
@@ -74,6 +81,13 @@ categories:
   - id: api-development
     title: Build or change Django REST Framework endpoints
     signals: [api, endpoint, serializer, viewset, drf, rest framework, router, pagination, throttl]
+    supplementary_skills:
+      - skill: django-integrations
+        when: An endpoint receives webhooks or calls an external service.
+      - skill: django-report-generation
+        when: An endpoint produces downloadable reports or exports (PDF, Excel, CSV).
+      - skill: django-data-processing
+        when: An endpoint accepts bulk uploads or imports.
     route:
       - agent: django-model-agent
         optional: true
@@ -105,6 +119,11 @@ categories:
   - id: performance
     title: Investigate performance problems
     signals: [slow, performance, optimi, n+1, latency, query count, cach, timeout, memory]
+    supplementary_skills:
+      - skill: django-data-processing
+        when: The slow path is an import, export, ETL or bulk job.
+      - skill: django-report-generation
+        when: The slow path generates a report.
     route:
       - agent: django-performance-agent
         purpose: Measure, find the cause, apply targeted fixes and re-measure.
@@ -132,6 +151,15 @@ categories:
     title: Implement a feature end to end
     signals: [end to end, end-to-end, implement, feature, deliver]
     requires_any: [django-model-agent, django-api-agent]
+    supplementary_skills:
+      - skill: django-frontend
+        when: The feature has a browser UI (templates, forms, HTMX, React).
+      - skill: django-integrations
+        when: The feature calls, or is called by, an external system.
+      - skill: django-data-processing
+        when: The feature imports, exports or bulk-processes data.
+      - skill: django-report-generation
+        when: The feature produces reports or document exports.
     route:
       - agent: django-project-analyzer
         purpose: Establish the project's structure and conventions before changing it.
@@ -152,6 +180,16 @@ categories:
         purpose: Endpoints, permissions and API tests.
       - agent: django-testing-agent
         purpose: Fill test gaps for the whole feature and run the suite.
+      - agent: django-security-agent
+        optional: true
+        when: The feature touches authentication, permissions, file uploads, external calls, settings or personal data.
+        signals: [auth, permission, upload, secret, personal data, webhook, payment]
+        purpose: Review-mode security validation of the change before the gate review.
+      - agent: django-documentation-agent
+        optional: true
+        when: The feature changes documented behaviour, an API contract or configuration, or the user asked for documentation.
+        signals: [document, docs, readme, api reference]
+        purpose: Update the documentation the change makes stale.
       - agent: django-code-review-agent
         purpose: Gate review of the complete change.
 

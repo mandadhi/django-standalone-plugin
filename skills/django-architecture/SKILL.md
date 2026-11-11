@@ -1,5 +1,6 @@
 ---
 name: django-architecture
+user-invocable: false
 description: >-
   Django architecture specialist — analysing requirements, choosing architectural styles,
   modular-monolith and app boundaries, DDD applied pragmatically, layering, service layer and
@@ -104,7 +105,6 @@ refactoring a messy codebase → `architecture-anti-patterns`.
 | Test strategy for services, fakes, boundaries | [django-testing](../django-testing/SKILL.md) |
 | Profiling, query optimisation, load testing | [django-performance](../django-performance/SKILL.md) |
 | Celery, brokers, third-party APIs | [django-integrations](../django-integrations/SKILL.md) |
-| Database scaling, replication, partitioning | [postgresql-engineering](../postgresql-engineering/SKILL.md) |
 
 ## Validation checklist
 

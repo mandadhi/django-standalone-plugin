@@ -4,8 +4,17 @@ Open Claude Code in a Django project (a clean git working tree is recommended).
 
 ## How to call an agent
 
-The plugin ships **no slash commands**. Agents are the interface: name one, and it loads the skills, rules,
-templates and references it needs by itself.
+The plugin exposes **one slash command**, `/django-engineering:orchestrate <request>`. It hands the request to the
+orchestrator, which owns planning, delegation, approvals and the report. Skills and rules are internal:
+agents load them by themselves, and they never appear in the `/` menu.
+
+```text
+/django-engineering:orchestrate Build a REST API for hospital appointment management
+/django-engineering:orchestrate docs/requirements/appointments.md design it and give me the plan only
+/django-engineering:orchestrate review this branch and open a pull request if it passes
+```
+
+You can also name an agent directly:
 
 ```text
 @django-engineering:django-model-agent add an Invoice model with a unique number per tenant
@@ -61,7 +70,11 @@ Claude runs the plan from the main session under the same limits.
 ## Skills and rules
 
 Skills (`django-engineering:django-orm`, ...) and rules (`django-engineering:django-security-standards`, ...)
-are preloaded into the agents that need them. You can also ask Claude to load one directly in a session.
+are internal (`user-invocable: false`): they are not slash commands. Each agent preloads the ones listed in
+its frontmatter `skills:` line. Its `## Mandatory rules` section makes their MUST requirements binding, and
+its completion criteria require each MUST to be met or reported with its id. Skills that no agent
+preloads (frontend, integrations, data processing, report generation) are named per request by the
+orchestrator, as supplementary skills from the policy.
 
 ## Tips
 

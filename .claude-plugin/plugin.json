@@ -1,7 +1,7 @@
 {
   "name": "django-engineering",
-  "version": "2.0.0",
-  "description": "Django Engineering Plugin (standalone): a Django orchestrator and nine specialist agents you invoke by name (no slash commands to learn), twelve Django skills and twelve mandatory engineering rules, with output templates, shared references and a fail-closed security guard. Self-contained: no Python harness, no services.",
+  "version": "3.0.0",
+  "description": "Django Engineering Plugin (standalone): one slash command, /django-engineering:orchestrate, hands a request to the Django orchestrator, which coordinates nine specialist agents from requirements and design to a reviewed pull request. Eleven Django skills and twelve mandatory engineering rules are internal and applied automatically by the agents. Fail-closed security guard; no harness, no services.",
   "author": {
     "name": "Techwave Digital AI"
   },
@@ -11,7 +11,7 @@
     "orchestration",
     "django-rest-framework",
     "python",
-    "postgresql",
+    "orm",
     "security",
     "testing",
     "performance",

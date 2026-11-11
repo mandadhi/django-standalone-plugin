@@ -278,7 +278,7 @@ redelivered mid-run.
 #### Persistence strategy
 
 Raw layer append-only (partition `RawRecord` by month if large — see
-[postgresql-engineering](../../postgresql-engineering/SKILL.md)); canonical layer UPSERT by
+the PostgreSQL documentation); canonical layer UPSERT by
 `(tenant, canonical_key)`; cross-reference table `(source, external_id) → canonical_id`; watermark
 row per source updated in the same transaction as the load.
 
@@ -637,7 +637,7 @@ they are unsafe — use a lock row instead (VERIFY: your pooler mode).
   [file-transfer-and-object-storage.md](../../django-integrations/references/file-transfer-and-object-storage.md),
   [integration-observability-and-operations.md](../../django-integrations/references/integration-observability-and-operations.md).
 - [django-orm: bulk-operations-and-batching.md](../../django-orm/references/bulk-operations-and-batching.md),
-  [postgresql-engineering](../../postgresql-engineering/SKILL.md).
+  the PostgreSQL documentation.
 
 ## 12. Official documentation and external references
 

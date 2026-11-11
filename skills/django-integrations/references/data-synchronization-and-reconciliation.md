@@ -108,7 +108,7 @@ CDC) and emits row-level change events in commit order per table. It captures de
 states, but exposes the source's **physical schema** — always put an ACL between CDC events and your domain.
 For Django as a **source**, prefer the outbox ([integration-architecture-patterns.md](integration-architecture-patterns.md))
 over exposing tables to CDC consumers; for PostgreSQL logical replication details see
-[postgresql-engineering](../../postgresql-engineering/SKILL.md).
+the PostgreSQL documentation.
 
 ## 4. Engineering decisions and trade-offs
 
@@ -421,7 +421,7 @@ Validation checklist:
 - [celery-and-background-integrations.md](celery-and-background-integrations.md) — scheduling sync jobs
 - Bulk import/ETL mechanics: [django-data-processing](../../django-data-processing/SKILL.md)
 - Upserts, constraints, functional indexes: [django-orm](../../django-orm/SKILL.md);
-  logical replication and `pg_trgm`: [postgresql-engineering](../../postgresql-engineering/SKILL.md)
+  logical replication and `pg_trgm`: the PostgreSQL documentation
 
 ## 12. Official documentation and external references
 

@@ -1,5 +1,6 @@
 ---
 name: django-testing
+user-invocable: false
 description: >-
   Django testing engineering specialist — test strategy and risk-based test design, Django's
   test framework (SimpleTestCase/TestCase/TransactionTestCase/LiveServerTestCase), pytest and
@@ -150,7 +151,6 @@ This skill owns **how to prove behaviour**; the paired skill owns **how the mech
 | Which controls must exist, threat models, vulnerability mitigation | [django-security-engineering](../django-security-engineering/SKILL.md) |
 | Profiling, load testing, production performance | [django-performance](../django-performance/SKILL.md) |
 | Celery, brokers, HTTP clients, webhooks, identity providers | [django-integrations](../django-integrations/SKILL.md) |
-| PostgreSQL locking, isolation, plans, configuration | [postgresql-engineering](../postgresql-engineering/SKILL.md) |
 | Templates, JavaScript and frontend build tooling | [django-frontend](../django-frontend/SKILL.md) |
 
 Typical pairings: new API endpoint → django-rest-framework-testing + security-testing (with

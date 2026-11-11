@@ -8,7 +8,7 @@
 > ([database-constraints-and-indexes.md](./database-constraints-and-indexes.md)), field semantics
 > ([field-types-and-options.md](./field-types-and-options.md)), batching mechanics for backfills
 > ([bulk-operations-and-batching.md](./bulk-operations-and-batching.md)), lock internals and
-> `ALTER TABLE` lock levels per engine ([postgresql-engineering](../../postgresql-engineering/SKILL.md)),
+> `ALTER TABLE` lock levels per engine (the PostgreSQL documentation),
 > data import pipelines ([django-data-processing](../../django-data-processing/SKILL.md)),
 > testing migrations ([django-testing](../../django-testing/SKILL.md)).
 
@@ -166,7 +166,7 @@ tables a common technique is to add `CHECK (placed_at IS NOT NULL) NOT VALID`, `
 valid `CHECK` proves no NULLs exist ([ALTER TABLE](https://www.postgresql.org/docs/current/sql-altertable.html),
 [12 release notes](https://www.postgresql.org/docs/release/12.0/)). Drop the helper CHECK afterwards.
 Django does not generate this sequence; use `RunSQL` with `state_operations`. Engine details →
-[postgresql-engineering](../../postgresql-engineering/SKILL.md).
+the PostgreSQL documentation.
 
 ### Renaming a column without downtime
 
@@ -299,7 +299,6 @@ Validation before merging a migration:
 - [transactions-and-concurrency.md](./transactions-and-concurrency.md) — locks and atomicity.
 - [orm-anti-patterns.md](./orm-anti-patterns.md) — migration anti-patterns catalogue.
 - [django-core: models-application-lifecycle](../../django-core/references/models-application-lifecycle.md) — app registry, `post_migrate`.
-- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — lock levels, `NOT VALID`, rewrites.
 - [django-testing](../../django-testing/SKILL.md) — migration tests.
 
 ## 12. Official documentation and external references

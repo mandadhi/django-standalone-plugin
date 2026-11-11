@@ -9,7 +9,7 @@
 > ([migrations-and-schema-evolution.md](./migrations-and-schema-evolution.md)); transaction
 > semantics ([transactions-and-concurrency.md](./transactions-and-concurrency.md)); general
 > application security and threat modelling ([django-security-engineering](../../django-security-engineering/SKILL.md));
-> PostgreSQL features and tuning ([postgresql-engineering](../../postgresql-engineering/SKILL.md)).
+> PostgreSQL features and tuning (the PostgreSQL documentation).
 
 ## 1. Purpose and scope
 
@@ -322,7 +322,7 @@ treated as data). Static checks: Bandit `B608` (hardcoded_sql_expressions, strin
 - [transactions-and-concurrency.md](./transactions-and-concurrency.md) — locks, `atomic`, advisory locks context.
 - [migrations-and-schema-evolution.md](./migrations-and-schema-evolution.md) — `RunSQL`.
 - [orm-anti-patterns.md](./orm-anti-patterns.md) — unnecessary raw SQL; unsafe dynamic SQL.
-- [django-security-engineering](../../django-security-engineering/SKILL.md) · [postgresql-engineering](../../postgresql-engineering/SKILL.md)
+- [django-security-engineering](../../django-security-engineering/SKILL.md)
 
 ## 12. Official documentation and external references
 

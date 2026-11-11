@@ -379,7 +379,6 @@ Validation checklist:
   [performance testing and benchmarking](../../django-performance/references/performance-testing-and-benchmarking.md),
   [concurrency and worker management](../../django-performance/references/concurrency-and-worker-management.md).
 - [django-orm query optimisation](../../django-orm/references/query-optimization.md).
-- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — EXPLAIN, WAL, vacuum, COPY internals.
 
 ## 12. Official documentation and external references
 

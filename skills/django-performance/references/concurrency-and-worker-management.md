@@ -143,7 +143,7 @@ pods. Remedies, in order: fewer idle slots (right-size threads), Django ≥ 5.1 
 pool with a bounded `max_size` per process, or an external pooler (PgBouncer). Pool semantics,
 `CONN_MAX_AGE`, `CONN_HEALTH_CHECKS` and PgBouncer transaction-mode caveats are in
 [database-performance.md](database-performance.md); PostgreSQL-side tuning in
-[postgresql-engineering](../../postgresql-engineering/SKILL.md).
+the PostgreSQL documentation.
 
 More connections is not more throughput: past a point (often a small multiple of DB cores —
 `VERIFY` against your own benchmark), PostgreSQL throughput drops from contention.
@@ -355,7 +355,6 @@ Validation procedure for any concurrency change:
 - [scalability-and-capacity-planning.md](scalability-and-capacity-planning.md) — scaling, load shedding.
 - [production-performance-troubleshooting.md](production-performance-troubleshooting.md) — worker/pool exhaustion incidents.
 - [django-core asgi-wsgi](../../django-core/references/asgi-wsgi.md) — server mechanics and deployment basics.
-- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — `max_connections`, PgBouncer internals.
 
 ## 12. Official documentation and external references
 

@@ -17,7 +17,7 @@ Covered:
 - Azure Monitor via [third-party: azure-monitor-opentelemetry].
 - SDK retry policy and timeout configuration.
 
-Not covered: Azure infrastructure provisioning (Bicep/Terraform), AKS cluster operations, Azure SQL (PostgreSQL is the baseline — Azure Database for PostgreSQL Flexible Server is just PostgreSQL; see [postgresql-engineering](../../postgresql-engineering/SKILL.md)).
+Not covered: Azure infrastructure provisioning (Bicep/Terraform), AKS cluster operations, Azure SQL (PostgreSQL is the baseline — Azure Database for PostgreSQL Flexible Server is just PostgreSQL; see the PostgreSQL documentation).
 
 Not every Django app needs direct Azure access. Many integrate only through HTTP APIs fronted by API Management, or through a single storage account. Add an SDK dependency only for a service the app actually talks to.
 

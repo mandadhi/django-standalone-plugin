@@ -12,7 +12,7 @@ import subprocess
 
 import pytest
 
-from conftest import AGENTS, PLUGIN, ROOT, RULES, SKILLS
+from conftest import AGENTS, ENTRY_SKILLS, PLUGIN, ROOT, RULES, SKILLS
 
 pytestmark = pytest.mark.live
 CLAUDE = shutil.which("claude")
@@ -54,6 +54,7 @@ def test_session_discovers_every_component() -> None:
     agents = set(init.get("agents", []))
     assert {f"{PLUGIN}:{a}" for a in AGENTS} <= agents, sorted(agents)
     commands = set(init.get("slash_commands", []))
-    assert not any(c.startswith(f"{PLUGIN}:") and c.split(":", 1)[1] not in SKILLS + RULES for c in commands), sorted(commands)
-    assert {f"{PLUGIN}:{s}" for s in SKILLS + RULES} <= commands | set(init.get("skills", [])), sorted(commands)
+    ours = {c.split(":", 1)[1] for c in commands if c.startswith(f"{PLUGIN}:")}
+    assert ours == set(ENTRY_SKILLS), f"only the entry skills may be slash commands, got {sorted(ours)}"
+    assert not ({f"{PLUGIN}:{s}" for s in SKILLS + RULES} & commands), "internal skills or rules leaked into /"
     assert not any("harness" in c or c.endswith(":doctor") for c in commands if c.startswith(PLUGIN))

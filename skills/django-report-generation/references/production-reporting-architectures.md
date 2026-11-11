@@ -380,7 +380,6 @@ When an existing architecture misbehaves, start from
 - [django-data-processing — production-architectures-sync-reconciliation-and-documents](../../django-data-processing/references/production-architectures-sync-reconciliation-and-documents.md)
 - [django-integrations — file-transfer-and-object-storage](../../django-integrations/references/file-transfer-and-object-storage.md)
 - [django-security-engineering — multi-tenant-security](../../django-security-engineering/references/multi-tenant-security.md)
-- [postgresql-engineering](../../postgresql-engineering/SKILL.md)
 - <https://docs.djangoproject.com/en/5.2/topics/db/aggregation/>
 - <https://docs.djangoproject.com/en/5.2/ref/request-response/>
 - <https://docs.celeryq.dev/en/stable/userguide/routing.html>

@@ -146,6 +146,7 @@ add no tools.
 
 ## Completion criteria
 
+- [ ] Every applicable MUST of the mandatory rules above is met in what you produced, or each unmet MUST is reported with its requirement id and the reason.
 - [ ] Every requested document exists, and every factual statement is traceable to code.
 - [ ] Endpoints, settings, commands and paths are verified against the code.
 - [ ] No secret, credential or personal data appears in any document.

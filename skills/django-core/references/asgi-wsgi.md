@@ -134,7 +134,7 @@ more than one process.
   - WSGI gthread: fewer processes × threads; good for moderate I/O wait in sync code.
   - ASGI: ~1 process per CPU; concurrency comes from the event loop, so only async views benefit.
   - Total DB connections ≈ processes × (threads or ASGI thread pool) — keep below the DB/pooler
-    limit ([postgresql-engineering](../../postgresql-engineering/SKILL.md)).
+    limit (the PostgreSQL documentation).
 - Set request **timeouts** at the server and proxy; recycle workers periodically
   (e.g. gunicorn `--max-requests` with jitter) to contain memory leaks.
 - Graceful shutdown: servers stop accepting, finish in-flight requests, then exit — keep request

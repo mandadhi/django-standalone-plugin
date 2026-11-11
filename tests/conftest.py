@@ -21,7 +21,9 @@ ORCHESTRATOR = "django-orchestrator"
 AGENTS = sorted(SPECIALISTS + [ORCHESTRATOR])
 SKILLS = sorted(["django-architecture", "django-core", "django-data-processing", "django-frontend",
                  "django-integrations", "django-orm", "django-performance", "django-report-generation",
-                 "django-rest-framework", "django-security-engineering", "django-testing", "postgresql-engineering"])
+                 "django-rest-framework", "django-security-engineering", "django-testing"])
+#: User-invocable entry skills: the only slash commands the plugin exposes. Everything else is internal.
+ENTRY_SKILLS = ["orchestrate"]
 RULES = sorted(["django-api-standards", "django-coding-standards", "django-configuration-standards",
                 "django-database-standards", "django-dependency-standards", "django-documentation-standards",
                 "django-logging-standards", "django-model-standards", "django-performance-standards",

@@ -90,8 +90,8 @@ a human.
   ([migrations and schema evolution](../skills/django-orm/references/migrations-and-schema-evolution.md),
   [constraints and indexes](../skills/django-orm/references/database-constraints-and-indexes.md),
   [transactions](../skills/django-orm/references/transactions-and-concurrency.md)),
-  [postgresql-engineering](../skills/postgresql-engineering/SKILL.md)
-  ([indexing and query plans](../skills/postgresql-engineering/references/indexing-and-query-plans.md)).
+  the PostgreSQL documentation
+  (the PostgreSQL documentation).
 - Rules: [django-database-standards](../rules/django-database-standards/SKILL.md),
   [django-model-standards](../rules/django-model-standards/SKILL.md),
   [django-project-structure](../rules/django-project-structure/SKILL.md).

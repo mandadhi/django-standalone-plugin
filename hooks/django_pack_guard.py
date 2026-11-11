@@ -103,8 +103,9 @@ def load_policy(path: Path = POLICY_FILE) -> dict:
         raise GuardError(f"security policy not found at {path}; reinstall the plugin") from None
     except (OSError, ValueError) as exc:
         raise GuardError(f"security policy at {path} is unreadable: {exc}") from None
-    for key in ("plugin", "agents", "tools_deny", "paths_deny", "commands_deny", "commands_require_approval",
-                "secret_patterns", "documentation_paths", "read_only_commands", "write_modes", "shell"):
+    for key in ("plugin", "agents", "runtime_tools", "tools_deny", "paths_deny", "commands_deny",
+                "commands_require_approval", "secret_patterns", "documentation_paths", "read_only_commands",
+                "write_modes", "shell"):
         if key not in policy:
             raise GuardError(f"security policy at {path} has no '{key}'")
     return policy
@@ -218,6 +219,10 @@ class Guard:
         mode = agent["mode"]
         if tool in self.policy["tools_deny"] or tool in agent["deny"]:
             return _deny(f"tool '{tool}' is denied for {agent_id}")
+        if tool in self.policy["runtime_tools"]:
+            # Claude Code's own control-flow tools (a subagent handing its report back to the caller).
+            # They read, write and run nothing, so no agent declares them and the guard has no opinion.
+            return None
         if tool not in agent["tools"]:
             return _deny(f"tool '{tool}' is not declared by {agent_id} (declared: {', '.join(agent['tools'])})")
         if not isinstance(tool_input, dict):

@@ -9,7 +9,7 @@
 > constraint design ([database-constraints-and-indexes.md](./database-constraints-and-indexes.md)),
 > the `select_for_update()` method signature in the API catalogue ([queryset-api.md](./queryset-api.md)),
 > `F()`/`Case` expression mechanics ([advanced-query-expressions.md](./advanced-query-expressions.md)),
-> PostgreSQL MVCC and lock internals ([postgresql-engineering](../../postgresql-engineering/SKILL.md)),
+> PostgreSQL MVCC and lock internals (the PostgreSQL documentation),
 > outbox and cross-service consistency ([django-architecture: event-driven-architecture](../../django-architecture/references/event-driven-architecture.md)).
 
 ## 1. Purpose and scope
@@ -345,7 +345,6 @@ two-connection test) — `TestCase` wraps everything in one transaction and cann
 - [advanced-query-expressions.md](./advanced-query-expressions.md) — `F`, `Case` in conditional updates.
 - [queryset-api.md](./queryset-api.md) — `select_for_update`, `get_or_create`, `update`.
 - [django-core: signals-management-commands](../../django-core/references/signals-management-commands.md) — `on_commit` from signals.
-- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — MVCC, lock modes, isolation details.
 
 ## 12. Official documentation and external references
 

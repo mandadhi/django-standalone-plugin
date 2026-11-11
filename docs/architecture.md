@@ -4,8 +4,8 @@ The plugin root **is** the Claude Code plugin root. Claude Code loads every comp
 folders declared in `.claude-plugin/plugin.json`; nothing is copied, generated or injected at run time.
 
 ```text
-user ──@django-engineering:django-orchestrator──▶ django-orchestrator  (read-only)
-        (or @<any specialist> directly; the orchestrator is for "I don't know which")
+user ──/django-engineering:orchestrate──▶ entry skill ──▶ django-orchestrator  (read-only)
+        (or @django-engineering:<agent> directly)
                     classify ▸ select route ▸ brief ▸ sequence ▸ reconcile ▸ report
                                               │ Agent tool, only to the nine specialists
               ┌───────────────┬───────────────┼────────────────┬───────────────┐
@@ -17,13 +17,28 @@ user ──@django-engineering:django-orchestrator──▶ django-orchestrator 
    each specialist preloads its skills and rules; reads templates/ and references/ on demand
 ```
 
+## User-facing surface
+
+The `/` menu shows exactly one entry: `/django-engineering:orchestrate`, the `skills/orchestrate/SKILL.md`
+entry skill (`disable-model-invocation: true`, so only the user starts it). It passes the request to
+`django-orchestrator` and carries out what the orchestrator returns. When the orchestrator runs as a subagent
+and cannot start subagents, it returns a routing plan; the main session runs the plan and hands the results
+back to the orchestrator in reconcile mode. All routing, approval and reporting rules stay in the
+orchestrator agent and `config/orchestration-policy.yaml`. Every other skill and every rule carries
+`user-invocable: false`. There is no `commands/` folder.
+
+Git and pull requests: the orchestrator's *Delivery* section prepares the branch, the exact files to stage,
+the commit message and the PR description, read-only. The main session runs each commit, push and
+`gh pr create` only after the user approves that action. It never force-pushes and never stages unrelated
+changes.
+
 ## Components
 
 | Folder | Role |
 |---|---|
 | `agents/` | Orchestrator and nine specialists: *who* does the work and within which limits |
-| `skills/` | Twelve knowledge bundles: *how* Django work is done well |
-| `rules/` | Twelve mandatory rule sets with numbered requirements (`SEC-M4`, `PRF-M1`, ...) |
+| `skills/` | Eleven internal knowledge bundles (*how* Django work is done well) and the `orchestrate` entry skill |
+| `rules/` | Twelve internal mandatory rule sets with numbered requirements (`SEC-M4`, `PRF-M1`, ...) |
 | `templates/` | Twelve report structures agents fill in |
 | `references/` | Seven checklists and lookup tables shared by several agents |
 | `hooks/` | The fail-closed security guard and its policy |
@@ -35,7 +50,7 @@ owns routing. None of them repeats another.
 
 ## Orchestration model
 
-`config/orchestration-policy.yaml` defines the orchestrator, its limits (at most 6 delegations, 2 attempts
+`config/orchestration-policy.yaml` defines the orchestrator, its limits (at most 8 delegations, 2 attempts
 per step, 3 clarifying questions), the nine delegable specialists, the task categories with signals and
 routes (ordered steps with `after` dependencies and optional steps with a `when` condition), step
 constraints, clarification triggers, failure policy, completion criteria and security boundaries.
@@ -57,13 +72,15 @@ Two ways it runs:
 - **Subagent** (an `@` mention): Claude Code subagents usually cannot spawn subagents. The orchestrator
   then returns a **ROUTING PLAN** and the main session executes it with the same limits.
 
-## Why there are no commands
+## Why there is no `commands/` layer
 
-A command only briefed one agent and applied that agent's approval gate. Agents are already invocable by
+Before 2.0.0, each command briefed one agent and applied that agent's approval gate. Agents are already invocable by
 name, so the extra layer duplicated entry points and kept safety logic outside the agent: calling an agent
 directly, or through the orchestrator, bypassed it. The gate (propose, wait for approval, then write) now
 lives in each agent's `## Approval gate` section, so it holds on every path. The orchestrator passes
-approvals through and never grants them.
+approvals through and never grants them. The single slash command added in 3.0.0 is an entry *skill*
+(`skills/orchestrate/`), not a command layer: it holds no gate and no routing, and only hands the request to
+the orchestrator.
 
 Delegation limits and the retry rule are instructions the orchestrator follows; only the **target
 allowlist** is enforced by the guard.

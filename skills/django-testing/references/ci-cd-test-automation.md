@@ -424,7 +424,6 @@ Validation checklist for a pipeline:
 - [test-maintenance-and-troubleshooting.md](test-maintenance-and-troubleshooting.md) — CI-only failures.
 - [django-security-engineering dependency-and-supply-chain-security](../../django-security-engineering/references/dependency-and-supply-chain-security.md) — pipeline hardening.
 - [django-security-engineering secure-django-configuration](../../django-security-engineering/references/secure-django-configuration.md) — what `check --deploy` verifies.
-- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — PostgreSQL configuration.
 
 ## 12. Official documentation and external references
 

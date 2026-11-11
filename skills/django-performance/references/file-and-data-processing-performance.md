@@ -406,7 +406,6 @@ record p95 duration and worker occupancy under concurrent load
 - [django-report-generation](../../django-report-generation/SKILL.md) — PDF/XLSX document generation.
 - [django-orm bulk-operations-and-batching](../../django-orm/references/bulk-operations-and-batching.md) — bulk API semantics.
 - [django-core](../../django-core/SKILL.md) — file handling and storage backends.
-- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — COPY, unlogged tables, WAL tuning.
 
 ## 12. Official documentation and external references
 

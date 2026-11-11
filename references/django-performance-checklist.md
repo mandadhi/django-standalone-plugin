@@ -58,7 +58,6 @@ recommendation for a human.
 | Per-row writes | `.save()` inside `for` loops, `create()` in loops | `PRF-M4` | [bulk operations](../skills/django-orm/references/bulk-operations-and-batching.md) |
 | Slow work in the request | outbound HTTP, file generation, email sending in views | `PRF-M5`, `PRF-M9` | [background task performance](../skills/django-performance/references/background-task-performance.md) |
 | Cache keys missing inputs | `cache.get(`/`cache.set(`, `cache_page` on per-user views | `PRF-M6` | [caching engineering](../skills/django-performance/references/caching-engineering.md) |
-| New filter or ordering without an index decision | new `filter(`/`order_by(` fields on large tables | `PRF-M8` | [indexing and query plans](../skills/postgresql-engineering/references/indexing-and-query-plans.md) |
 | Queries in `__str__` or listing properties | `def __str__` returning related attributes | `MOD-M8` | [ORM anti-patterns](../skills/django-orm/references/orm-anti-patterns.md) |
 
 ## Measurement toolkit
@@ -81,7 +80,7 @@ Without representative data volume, label conclusions `estimated`.
   ([profiling and observability](../skills/django-performance/references/profiling-and-observability.md),
   [performance testing](../skills/django-performance/references/performance-testing-and-benchmarking.md)),
   [django-orm](../skills/django-orm/SKILL.md),
-  [postgresql-engineering](../skills/postgresql-engineering/SKILL.md).
+  the PostgreSQL documentation.
 - Rules: [django-performance-standards](../rules/django-performance-standards/SKILL.md),
   [django-database-standards](../rules/django-database-standards/SKILL.md),
   [django-model-standards](../rules/django-model-standards/SKILL.md).

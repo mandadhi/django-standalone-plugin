@@ -11,7 +11,7 @@
 > ([django-architecture modular-monolith](../../django-architecture/references/modular-monolith.md),
 > [django-architecture scalability-patterns](../../django-architecture/references/scalability-patterns.md));
 > manager/QuerySet mechanics ([django-orm managers-and-querysets](../../django-orm/references/managers-and-querysets.md));
-> PostgreSQL policy internals ([postgresql-engineering](../../postgresql-engineering/SKILL.md)).
+> PostgreSQL policy internals (the PostgreSQL documentation).
 
 ## 1. Purpose and scope
 
@@ -491,7 +491,6 @@ issuing raw SQL without the GUC returns zero rows; a CI grep for `unscoped`, `_b
 - [django-orm database-constraints-and-indexes](../../django-orm/references/database-constraints-and-indexes.md) — composite constraints.
 - [django-architecture modular-monolith](../../django-architecture/references/modular-monolith.md) — tenancy and boundaries.
 - [django-core caching](../../django-core/references/caching.md) · [django-core middleware](../../django-core/references/middleware.md)
-- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — RLS, roles, pooling.
 - [django-integrations](../../django-integrations/SKILL.md) — Celery task conventions.
 
 ## 12. Official documentation and external references

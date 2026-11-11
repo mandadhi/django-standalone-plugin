@@ -362,7 +362,7 @@ Delivery rules:
 - Do not log full payloads at INFO; redact stored payloads where they contain sensitive data.
 - Endpoint latency target: < 200 ms p99 (one INSERT + enqueue). Monitor; slow endpoints get disabled by providers.
 - Bursts (provider backlog replays after an outage) can be 100× normal; the inbox absorbs them, the worker queue drains at a controlled rate.
-- Inbox table growth: index on `(status, received_at)`; prune `PROCESSED` after a retention period; consider partitioning by month at high volume ([postgresql-engineering](../../postgresql-engineering/SKILL.md)).
+- Inbox table growth: index on `(status, received_at)`; prune `PROCESSED` after a retention period; consider partitioning by month at high volume (the PostgreSQL documentation).
 - Outbound: SSRF protections, per-subscription rate limits, response size caps.
 
 ## 9. Common mistakes and anti-patterns
