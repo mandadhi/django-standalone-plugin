@@ -302,6 +302,7 @@ Failure scenarios:
 - [caching-engineering.md](caching-engineering.md) · [background-task-performance.md](background-task-performance.md) ·
   [async-django-performance.md](async-django-performance.md) · [scalability-and-capacity-planning.md](scalability-and-capacity-planning.md).
 - [django-orm](../../django-orm/SKILL.md) — expressions, `F()`, transactions and locking.
+- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — materialised views, triggers, partitioning.
 
 ## 12. Official documentation and external references
 

@@ -2,9 +2,7 @@
 
 The twelve mandatory engineering rules, one `<id>/SKILL.md` each, declared as a second skill folder
 (`./rules/`) in `.claude-plugin/plugin.json`. Claude Code loads them natively as
-`django-engineering:<id>` with `user-invocable: false`: rules are never slash commands. Agents preload the
-rules listed in their frontmatter `skills:` line, treat every MUST as binding, and must meet each
-applicable MUST, or report it by id, before they finish.
+`django-engineering:<id>`; agents preload the rules listed in their frontmatter `skills:` line.
 
 | Rule | Governs |
 |---|---|

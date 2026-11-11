@@ -11,7 +11,7 @@
 > JWT design and API token lifecycles ([api-security.md](./api-security.md)); log redaction
 > ([security-logging-and-auditing.md](./security-logging-and-auditing.md)); secret scanning in
 > CI ([dependency-and-supply-chain-security.md](./dependency-and-supply-chain-security.md));
-> database encryption at rest (the PostgreSQL documentation).
+> database encryption at rest ([postgresql-engineering](../../postgresql-engineering/SKILL.md)).
 
 ## 1. Purpose and scope
 
@@ -378,7 +378,7 @@ def test_signed_value_survives_rotation():
 - [security-logging-and-auditing.md](./security-logging-and-auditing.md) — redaction, `sensitive_variables`.
 - [dependency-and-supply-chain-security.md](./dependency-and-supply-chain-security.md) — secret scanning, image secrets.
 - [security-testing-and-incident-response.md](./security-testing-and-incident-response.md) — leak response.
-- [django-core settings-configuration](../../django-core/references/settings-configuration.md) · [django-integrations](../../django-integrations/SKILL.md)
+- [django-core settings-configuration](../../django-core/references/settings-configuration.md) · [django-integrations](../../django-integrations/SKILL.md) · [postgresql-engineering](../../postgresql-engineering/SKILL.md)
 
 ## 12. Official documentation and external references
 

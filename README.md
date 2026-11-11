@@ -1,9 +1,8 @@
 # Django Engineering Plugin (standalone)
 
-A Claude Code plugin for Django and Django REST Framework engineering: a **Django Orchestrator** reached
-through one slash command, nine **specialist agents**, eleven internal **skills**, twelve mandatory
-**rules** the agents apply automatically, output **templates**, shared **references** and a fail-closed
-**security guard**. It covers the lifecycle from requirements and design to a reviewed pull request.
+A Claude Code plugin for Django and Django REST Framework engineering: a **Django Orchestrator**, nine
+**specialist agents** you invoke by name, twelve **skills**, twelve mandatory **rules**, output
+**templates**, shared **references** and a fail-closed **security guard**.
 
 This is the independent, self-contained distribution. It needs **no Python harness, no services, no
 database and no Python packages**. The only runtime prerequisite besides Claude Code is a `python`
@@ -20,7 +19,7 @@ database and no Python packages**. The only runtime prerequisite besides Claude 
 Start a new session (or `/reload-plugins`), open a Django project and run:
 
 ```text
-/django-engineering:orchestrate Build a REST API for hospital appointments with models, permissions and tests
+@django-engineering:django-orchestrator Add an invoices API with its model and tests
 ```
 
 From a local clone, without installing:
@@ -38,9 +37,8 @@ Full instructions: [docs/installation.md](docs/installation.md).
 |---|---|---|
 | Orchestrator | 1 | `agents/django-orchestrator.md` |
 | Specialist agents | 9 | `agents/` |
-| Slash command (entry skill) | 1 | `skills/orchestrate/` |
-| Internal skills | 11 | `skills/` |
-| Internal mandatory rules | 12 | `rules/` |
+| Skills | 12 | `skills/` |
+| Rules | 12 | `rules/` |
 | Output templates | 12 | `templates/` |
 | Shared references | 7 | `references/` |
 | Security guard | PreToolUse/PostToolUse hook | `hooks/` |
@@ -50,17 +48,9 @@ Specialists: `django-project-analyzer`, `django-architecture-agent`, `django-mod
 `django-api-agent`, `django-security-agent`, `django-testing-agent`, `django-performance-agent`,
 `django-documentation-agent`, `django-code-review-agent`.
 
-**One slash command.** `/django-engineering:orchestrate <request>` hands your request to the orchestrator. The orchestrator plans the
-work, delegates to the specialists, stops at every approval point and reports what was verified. The
-skills and rules are **internal** (`user-invocable: false`), so they never appear in the `/` menu. Each
-agent preloads the ones its work needs and must meet their MUST requirements before it reports done.
-You can still address a specialist directly (`@django-engineering:<agent id>`). See
-[docs/usage.md](docs/usage.md).
-
-Lifecycle the orchestrator covers: requirements and project analysis, architecture and implementation
-plan, models and migrations, DRF APIs, tests, security validation, documentation, gate review, and on
-request a branch, commit and pull request. Each commit, push and pull request needs your explicit
-approval.
+There are **no slash commands**: you address an agent by name (`@django-engineering:<agent id>`) or in plain
+language, and the agent loads its own skills, rules, templates and references. Not sure which agent? Use
+`@django-engineering:django-orchestrator`. See [docs/usage.md](docs/usage.md).
 
 ## Documentation
 

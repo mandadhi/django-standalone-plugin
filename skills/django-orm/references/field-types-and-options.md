@@ -346,6 +346,7 @@ production database engine — SQLite hides `max_length`, many type and constrai
 - [database-constraints-and-indexes.md](./database-constraints-and-indexes.md) — CHECK, unique, partial indexes.
 - [migrations-and-schema-evolution.md](./migrations-and-schema-evolution.md) — altering fields safely.
 - [django-core file-handling](../../django-core/references/file-handling.md) — storage and uploads.
+- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — type internals, TOAST, jsonb.
 
 ## 12. Official documentation and external references
 

@@ -13,7 +13,7 @@
 > ([django-core: logging-exceptions](../../django-core/references/logging-exceptions.md)), load testing
 > and profiling methodology ([django-performance](../../django-performance/SKILL.md)), serializer
 > query tuning ([django-rest-framework](../../django-rest-framework/SKILL.md)), PostgreSQL planner
-> internals (the PostgreSQL documentation).
+> internals ([postgresql-engineering](../../postgresql-engineering/SKILL.md)).
 
 ## 1. Purpose and scope
 
@@ -342,7 +342,7 @@ lists of ids, and invalidate on commit.
 - [bulk-operations-and-batching.md](./bulk-operations-and-batching.md) — large reads/writes.
 - [orm-anti-patterns.md](./orm-anti-patterns.md) — detection checklist.
 - [django-core: caching](../../django-core/references/caching.md) · [django-core: logging-exceptions](../../django-core/references/logging-exceptions.md)
-- [django-performance](../../django-performance/SKILL.md) · [django-rest-framework](../../django-rest-framework/SKILL.md)
+- [django-performance](../../django-performance/SKILL.md) · [postgresql-engineering](../../postgresql-engineering/SKILL.md) · [django-rest-framework](../../django-rest-framework/SKILL.md)
 
 ## 12. Official documentation and external references
 

@@ -9,7 +9,7 @@ description: >-
 tools: Read, Write, Edit, Grep, Glob, Bash
 model: opus
 # skills: preloaded into the subagent by Claude Code (namespaced plugin skill ids)
-skills: [django-engineering:django-core, django-engineering:django-architecture, django-engineering:django-security-engineering, django-engineering:django-security-standards, django-engineering:django-project-structure, django-engineering:django-configuration-standards, django-engineering:django-logging-standards, django-engineering:django-documentation-standards, django-engineering:django-dependency-standards, django-engineering:django-coding-standards]
+skills: [django-engineering:django-core, django-engineering:django-architecture, django-engineering:django-security-engineering, django-engineering:django-security-standards, django-engineering:django-project-structure, django-engineering:django-configuration-standards, django-engineering:django-logging-standards, django-engineering:django-documentation-standards, django-engineering:django-dependency-standards]
 project: django-agentic-engineering
 abstract: >-
   Designs Django application architecture (app boundaries, layering, dependencies, security
@@ -67,7 +67,7 @@ produce, and SHOULD items are recommendations. Cite requirement ids (for example
 findings, and report any MUST you could not meet, with the reason. Rules never add tools and
 never widen your role.
 
-`django-security-standards` · `django-project-structure` · `django-configuration-standards` · `django-logging-standards` · `django-documentation-standards` · `django-dependency-standards` · `django-coding-standards`
+`django-security-standards` · `django-project-structure` · `django-configuration-standards` · `django-logging-standards` · `django-documentation-standards` · `django-dependency-standards`
 
 ## Tools
 
@@ -152,7 +152,6 @@ add no tools.
 
 ## Completion criteria
 
-- [ ] Every applicable MUST of the mandatory rules above is met in what you produced, or each unmet MUST is reported with its requirement id and the reason.
 - [ ] Every requirement maps to an owning app and a work item.
 - [ ] Every significant decision has an ADR with the alternatives considered.
 - [ ] Dependency and security boundaries are stated and checkable.

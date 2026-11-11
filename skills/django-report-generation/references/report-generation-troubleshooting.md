@@ -89,7 +89,7 @@ When you regenerate a wrong historical report, keep the original artifact and it
 | Cancelled report keeps running | Relying on `revoke()`; no cooperative check | Run continues after `cancel_requested=True` | Check `cancel_requested` between chunks; stop and mark `cancelled` |
 | `ValueError` using `iterator()` with prefetch | `prefetch_related` + `iterator()` without `chunk_size` (Django ≥ 5.0 [VERIFY: exact Django version where this became an error]) | Traceback | Pass `chunk_size` |
 | Server-side cursor errors behind PgBouncer | Transaction-pooling mode breaks named cursors | Error mentions cursor does not exist | `DISABLE_SERVER_SIDE_CURSORS = True` for that alias, or session pooling for the reporting alias |
-| `canceling statement due to statement timeout` | Reporting query exceeds `statement_timeout` | Query plan with `EXPLAIN (ANALYZE, BUFFERS)` on a replica | Index for filter/group columns, pre-aggregate, use a reporting alias with a longer timeout. See the PostgreSQL documentation |
+| `canceling statement due to statement timeout` | Reporting query exceeds `statement_timeout` | Query plan with `EXPLAIN (ANALYZE, BUFFERS)` on a replica | Index for filter/group columns, pre-aggregate, use a reporting alias with a longer timeout. See [postgresql-engineering](../../postgresql-engineering/SKILL.md) |
 
 ### 5.3 CSV and structured output
 

@@ -11,8 +11,7 @@
 | Names collide / agents appear twice | The integrated distribution (same plugin name `django-engineering`) is also enabled. Disable or uninstall one of them |
 | Bash unavailable to agents on Windows | Install Git for Windows, or set `CLAUDE_CODE_GIT_BASH_PATH` to `...\Git\bin\bash.exe` |
 | The orchestrator returns a ROUTING PLAN | It ran as a subagent (an `@` mention), where Claude Code cannot start further subagents. Claude runs the plan from the main session; or start with `claude --agent django-engineering:django-orchestrator` for full orchestration |
-| `/django-engineering:orchestrate` is missing | Run `/reload-plugins` or restart. `skills/orchestrate/SKILL.md` must not carry `user-invocable: false`. For an installed plugin, run `claude plugin update` after the version bump |
-| Standards or skills appear in the `/` menu | An older plugin version is cached. Update the plugin; every internal `SKILL.md` carries `user-invocable: false`, and `tests/test_plugin_structure.py` enforces it |
+| `/django-engineering:...` shows no commands | By design: the plugin ships no slash commands. Mention an agent with `@django-engineering:<agent id>`, or ask in plain language |
 | An agent replied `AWAITING APPROVAL:` and changed nothing | Expected: code-changing agents propose first. Tell Claude to go ahead (or say "apply it" in the first request) |
 | A write was refused or asked | Expected: read-only agents cannot write; the security agent asks every time; the documentation agent writes documentation only. See [security.md](security.md) |
 | Approval prompts are refused | You are in non-interactive `-p` mode; run interactively |

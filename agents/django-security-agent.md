@@ -152,7 +152,6 @@ add no tools.
 
 ## Completion criteria
 
-- [ ] Every applicable MUST of the mandatory rules above is met in what you produced, or each unmet MUST is reported with its requirement id and the reason.
 - [ ] The attack surface is mapped, and every vulnerability class in scope was checked or
       explicitly excluded.
 - [ ] Every finding has a location, evidence, impact, severity and recommendation.

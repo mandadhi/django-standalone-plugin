@@ -318,6 +318,7 @@ for q in ctx.captured_queries:
 - [raw-sql-and-database-access.md](./raw-sql-and-database-access.md).
 - [django-core models-application-lifecycle](../../django-core/references/models-application-lifecycle.md),
   [django-core production-configuration](../../django-core/references/production-configuration.md).
+- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — engine internals.
 
 ## 12. Official documentation and external references
 

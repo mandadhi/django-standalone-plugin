@@ -1,6 +1,5 @@
 ---
 name: django-configuration-standards
-user-invocable: false
 description: >-
   Mandatory Django engineering rule for settings and configuration: environment-sourced values
   and secrets, production hardening settings, a single settings selection mechanism, typed and

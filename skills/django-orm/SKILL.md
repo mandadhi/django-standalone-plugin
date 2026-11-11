@@ -1,6 +1,5 @@
 ---
 name: django-orm
-user-invocable: false
 description: >-
   Django ORM engineering specialist — ORM architecture and QuerySet internals, model design,
   fields and relationships, the QuerySet API, expressions, aggregation and annotation, managers,
@@ -125,6 +124,7 @@ Each reference stands alone and follows the same 12-section structure.
 | Application security, authorisation, threat modelling | [django-security-engineering](../django-security-engineering/SKILL.md) |
 | Test strategy, fixtures/factories, query-count assertions in CI | [django-testing](../django-testing/SKILL.md) |
 | Profiling, load testing, end-to-end performance work | [django-performance](../django-performance/SKILL.md) |
+| PostgreSQL internals, plan reading in depth, vacuum, partitioning, replication | [postgresql-engineering](../postgresql-engineering/SKILL.md) |
 | Import/export pipelines, ETL, large-file processing | [django-data-processing](../django-data-processing/SKILL.md) |
 
 ## Validation checklist

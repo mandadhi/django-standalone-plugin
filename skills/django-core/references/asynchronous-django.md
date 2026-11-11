@@ -144,7 +144,7 @@ async def order_events(request):
   well-suited to async because the thread pool can create many connections; the docs recommend
   disabling them in async mode and using pooling — the backend's pool (PostgreSQL
   `OPTIONS={"pool": True}` with psycopg 3, Django ≥ 5.1) or an external pooler. See
-  the PostgreSQL documentation.
+  [postgresql-engineering](../../postgresql-engineering/SKILL.md).
 - Always set **timeouts** on outbound async calls; one hung upstream otherwise holds a request
   open indefinitely.
 - Background work is not "fire-and-forget `asyncio.create_task`" in a view — the task may be

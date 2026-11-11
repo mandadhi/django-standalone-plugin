@@ -1,6 +1,6 @@
 # Database Performance
 
-**Scope:** Diagnosing and improving database-side cost for Django applications on PostgreSQL: index selection against real workloads, reading execution plans, slow-query analysis, connection management and pooling, lock contention, transaction duration and write amplification. PostgreSQL internals (planner, MVCC, vacuum, replication) are owned by the PostgreSQL documentation; index and constraint API mechanics by [django-orm database-constraints-and-indexes](../../django-orm/references/database-constraints-and-indexes.md).
+**Scope:** Diagnosing and improving database-side cost for Django applications on PostgreSQL: index selection against real workloads, reading execution plans, slow-query analysis, connection management and pooling, lock contention, transaction duration and write amplification. PostgreSQL internals (planner, MVCC, vacuum, replication) are owned by [postgresql-engineering](../../postgresql-engineering/SKILL.md); index and constraint API mechanics by [django-orm database-constraints-and-indexes](../../django-orm/references/database-constraints-and-indexes.md).
 
 ## 1. Purpose and scope
 
@@ -8,7 +8,7 @@ Once ORM-level waste is removed ([orm-performance-optimization.md](orm-performan
 
 Covered: index selection (B-tree, composite, partial, covering, expression; GIN/BRIN briefly), index write/storage cost, `EXPLAIN`/`EXPLAIN ANALYZE`, `pg_stat_statements`, `auto_explain`, slow-query logging, `CONN_MAX_AGE`, `CONN_HEALTH_CHECKS`, Django's native PostgreSQL pool (Django ≥ 5.1) vs PgBouncer, lock contention, transaction duration, write amplification, read/write workload characterisation.
 
-Not covered: pool **sizing** math and worker counts ([concurrency-and-worker-management.md](concurrency-and-worker-management.md)), read replicas and database scaling ([scalability-and-capacity-planning.md](scalability-and-capacity-planning.md)), PostgreSQL configuration tuning (`shared_buffers`, `work_mem`, autovacuum) (the PostgreSQL documentation).
+Not covered: pool **sizing** math and worker counts ([concurrency-and-worker-management.md](concurrency-and-worker-management.md)), read replicas and database scaling ([scalability-and-capacity-planning.md](scalability-and-capacity-planning.md)), PostgreSQL configuration tuning (`shared_buffers`, `work_mem`, autovacuum) ([postgresql-engineering](../../postgresql-engineering/SKILL.md)).
 
 Backend note: examples are PostgreSQL. MySQL/MariaDB and SQLite differ materially (see §4 and §8); do not transplant PostgreSQL-specific advice without checking.
 
@@ -29,7 +29,7 @@ Read-heavy OLTP (most Django apps: 90%+ reads, illustrative) benefits from targe
 
 ## 3. Internal mechanics
 
-Only what an agent needs to reason about cost; depth in the PostgreSQL documentation.
+Only what an agent needs to reason about cost; depth in [postgresql-engineering](../../postgresql-engineering/SKILL.md).
 
 - **Planner** chooses plans from table statistics (`ANALYZE`). Stale statistics after bulk loads produce bad row estimates → bad joins. Compare `rows=` estimated vs actual in `EXPLAIN ANALYZE`; >10× divergence is a red flag.
 - **MVCC**: an UPDATE writes a new row version. If no indexed column changes and the page has free space, PostgreSQL performs a **HOT** update and skips index maintenance. Indexing a frequently updated column (e.g. `last_seen_at`) disables HOT for those updates.
@@ -168,9 +168,9 @@ What to look for:
 | `Seq Scan` + `Filter` removing most rows on a large table | Missing/unusable index | Composite or partial index matching predicates |
 | `Sort` with `external merge Disk` | Sort exceeds `work_mem` | Index providing order, or fewer rows before sort |
 | `Nested Loop` with large `loops=` and inner seq scan | Missing index on join key, bad estimate | Index FK column (Django indexes FKs by default), `ANALYZE` |
-| Estimated rows ≪ actual | Stale or insufficient statistics | `ANALYZE`; extended statistics |
+| Estimated rows ≪ actual | Stale or insufficient statistics | `ANALYZE`; extended statistics (postgresql-engineering) |
 | `Buffers: shared read=` high | Data not in cache, I/O-bound | Covering index, smaller working set, caching |
-| `Index Scan` but slow, `Heap Fetches` high | Index-only scan blocked by visibility map | Vacuum health |
+| `Index Scan` but slow, `Heap Fetches` high | Index-only scan blocked by visibility map | Vacuum health (postgresql-engineering) |
 
 ### Slow-query visibility (PostgreSQL configuration, owned by DBAs/infra)
 
@@ -303,7 +303,7 @@ with transaction.atomic():
 | Many endpoints slow at peak | `pg_stat_activity` states and waits | Lock contention, CPU saturation, I/O |
 | Errors "too many clients" / pool timeouts | Connection count per host | Workers × threads × pools exceeds limits |
 | Latency spikes during deploys | Lock waits | Blocking DDL in migrations |
-| Gradual slowdown over weeks | Table/index bloat, stale stats | Vacuum/analyze health |
+| Gradual slowdown over weeks | Table/index bloat, stale stats | Vacuum/analyze health (postgresql-engineering) |
 | Writes slower after a release | New indexes, triggers, wider rows | Write amplification |
 
 **Validation of an index change**
@@ -328,6 +328,7 @@ with transaction.atomic():
 - [scalability-and-capacity-planning.md](scalability-and-capacity-planning.md) — read replicas, database scaling limits.
 - [production-performance-troubleshooting.md](production-performance-troubleshooting.md) — incident workflows.
 - [profiling-and-observability.md](profiling-and-observability.md) — query timing and attribution.
+- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — planner, MVCC, vacuum, configuration, partitioning.
 - [django-orm](../../django-orm/SKILL.md): [database-constraints-and-indexes.md](../../django-orm/references/database-constraints-and-indexes.md), [migrations-and-schema-evolution.md](../../django-orm/references/migrations-and-schema-evolution.md), [transactions-and-concurrency.md](../../django-orm/references/transactions-and-concurrency.md).
 
 ## 12. Official documentation and external references

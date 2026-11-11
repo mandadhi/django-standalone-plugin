@@ -7,7 +7,7 @@
 > staging→production promotion. **Not here:** ORM bulk internals and transaction API details
 > ([django-orm bulk operations](../../django-orm/references/bulk-operations-and-batching.md),
 > [transactions](../../django-orm/references/transactions-and-concurrency.md)), COPY/vacuum/
-> partitioning internals (the PostgreSQL documentation), row
+> partitioning internals ([postgresql-engineering](../../postgresql-engineering/SKILL.md)), row
 > validation ([data-validation-and-cleansing.md](data-validation-and-cleansing.md)), streaming and
 > batching of input ([large-dataset-processing.md](large-dataset-processing.md)).
 
@@ -398,6 +398,7 @@ Validation checklist:
   [transactions](../../django-orm/references/transactions-and-concurrency.md),
   [constraints and indexes](../../django-orm/references/database-constraints-and-indexes.md),
   [migrations](../../django-orm/references/migrations-and-schema-evolution.md).
+- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — COPY internals, vacuum, partitioning.
 - [django-security-engineering injection prevention](../../django-security-engineering/references/injection-prevention.md).
 
 ## 12. Official documentation and external references

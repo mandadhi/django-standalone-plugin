@@ -88,7 +88,7 @@ serialization failures. `now()` [PostgreSQL] returns the transaction start time 
 
 Costs: a long transaction on the primary holds back vacuum (table bloat); on a hot-standby replica,
 long queries can be cancelled by replication conflicts depending on `max_standby_streaming_delay` /
-`hot_standby_feedback` (the PostgreSQL documentation).
+`hot_standby_feedback` ([postgresql-engineering](../../postgresql-engineering/SKILL.md)).
 
 ### 3.5 Time-zone truncation
 
@@ -530,6 +530,7 @@ Validation:
 - [django-data-processing — data-transformation-and-mapping](../../django-data-processing/references/data-transformation-and-mapping.md)
 - [django-data-processing — data-reconciliation-engineering](../../django-data-processing/references/data-reconciliation-engineering.md)
 - [django-performance — database-performance](../../django-performance/references/database-performance.md)
+- [postgresql-engineering](../../postgresql-engineering/SKILL.md)
 - <https://docs.djangoproject.com/en/5.2/topics/db/aggregation/>
 - <https://docs.djangoproject.com/en/5.2/ref/models/database-functions/#trunc>
 - <https://docs.djangoproject.com/en/5.2/ref/models/expressions/#window-functions>

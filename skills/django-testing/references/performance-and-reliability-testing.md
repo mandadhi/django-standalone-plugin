@@ -206,7 +206,7 @@ pytest -m slow                               # separate job
 | Disable debug toolbar, silk, verbose logging in test settings | — | Removes middleware and I/O | — |
 | `pytest -n auto` | **[third-party: pytest-xdist]** | Near-linear on cores | Requires isolation; DB per worker |
 | `--no-migrations` | **[pytest-django]** | Skips migrations | Not in CI (see §4) |
-| PostgreSQL CI tuning (`fsync=off`, `synchronous_commit=off`) | PostgreSQL | Faster commits | Throwaway CI DB only → the PostgreSQL documentation |
+| PostgreSQL CI tuning (`fsync=off`, `synchronous_commit=off`) | PostgreSQL | Faster commits | Throwaway CI DB only → [postgresql-engineering](../../postgresql-engineering/SKILL.md) |
 
 ### Flaky-test detection
 
@@ -338,6 +338,7 @@ unexpired dates.
 - [fixtures-and-test-data.md](fixtures-and-test-data.md) — cheaper test data.
 - django-orm: [query-optimization.md](../../django-orm/references/query-optimization.md).
 - [django-performance](../../django-performance/SKILL.md) — profiling, load testing.
+- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — CI database tuning, plans.
 
 ## 12. Official documentation and external references
 

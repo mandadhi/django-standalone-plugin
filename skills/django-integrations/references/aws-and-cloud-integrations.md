@@ -309,7 +309,7 @@ def invalidate(secret_id: str) -> None:
         _cache.pop(secret_id, None)
 ```
 
-On a downstream 401 after rotation: `invalidate()`, refetch, retry once. Database passwords rotated by Secrets Manager need connection re-creation — Django's `CONN_MAX_AGE` and `CONN_HEALTH_CHECKS` (Django ≥ 4.1) help, but a password change still requires the settings value to update; prefer IAM database authentication or a pooler that handles it (the PostgreSQL documentation).
+On a downstream 401 after rotation: `invalidate()`, refetch, retry once. Database passwords rotated by Secrets Manager need connection re-creation — Django's `CONN_MAX_AGE` and `CONN_HEALTH_CHECKS` (Django ≥ 4.1) help, but a password change still requires the settings value to update; prefer IAM database authentication or a pooler that handles it ([postgresql-engineering](../../postgresql-engineering/SKILL.md)).
 
 ### 5.6 Lambda integration patterns
 

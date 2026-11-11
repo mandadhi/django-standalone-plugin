@@ -1,6 +1,5 @@
 ---
 name: django-data-processing
-user-invocable: false
 description: >-
   Django data processing engineering specialist — processing architectures (batch, stream,
   near-real-time, ETL/ELT), data ingestion (APIs, files, databases, webhooks, cloud storage,
@@ -152,6 +151,7 @@ mechanism or general practice.
 | Test framework mechanics, factories, mocking, task-test mechanics | [django-testing](../django-testing/SKILL.md) |
 | Import/export API endpoints and serializers | [django-rest-framework](../django-rest-framework/SKILL.md) |
 | Rendering/formatting downloadable reports and documents | [django-report-generation](../django-report-generation/SKILL.md) |
+| Query plans, COPY/WAL internals, vacuum, partitioning | [postgresql-engineering](../postgresql-engineering/SKILL.md) |
 
 Examples: QuerySet optimisation → django-orm; designing an external API client → django-integrations,
 but transforming its large datasets → here; Celery broker setup → django-integrations, but

@@ -1,6 +1,5 @@
 ---
 name: django-documentation-standards
-user-invocable: false
 description: >-
   Mandatory Django engineering rule for documentation: docs that match the code and change with
   it, no secrets or personal data in documents, a configuration reference, endpoint-level API

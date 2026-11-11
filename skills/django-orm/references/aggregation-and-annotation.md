@@ -300,6 +300,7 @@ empty relations. See [django-testing](../../django-testing/SKILL.md).
 - [query-optimization.md](./query-optimization.md) — plans, indexes for GROUP BY, pagination.
 - [orm-anti-patterns.md](./orm-anti-patterns.md) — incorrect aggregation catalogue entry.
 - [django-performance](../../django-performance/SKILL.md) — profiling report endpoints.
+- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — HashAggregate vs GroupAggregate, materialized views.
 
 ## 12. Official documentation and external references
 

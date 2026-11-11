@@ -1,6 +1,6 @@
 # Production configuration
 
-> Scope: Django-specific production settings — `DEBUG`, `ALLOWED_HOSTS`, `SECRET_KEY`, HTTPS and proxies, secure cookies, CSRF settings, `SecurityMiddleware` settings, static/media serving, database connections and pooling, logging switches, health checks, deployment/system checks and a readiness checklist. Not covered here: settings mechanics and env vars ([settings-configuration.md](./settings-configuration.md)), middleware order ([middleware.md](./middleware.md)), server choice and workers ([asgi-wsgi.md](./asgi-wsgi.md)), `LOGGING` dict ([logging-exceptions.md](./logging-exceptions.md)), storage backends ([file-handling.md](./file-handling.md)), `CACHES` ([caching.md](./caching.md)), CSP/permissions/deeper hardening ([django-security-engineering](../../django-security-engineering/SKILL.md)), Postgres tuning (the PostgreSQL documentation), Docker/cloud deployment (out of scope).
+> Scope: Django-specific production settings — `DEBUG`, `ALLOWED_HOSTS`, `SECRET_KEY`, HTTPS and proxies, secure cookies, CSRF settings, `SecurityMiddleware` settings, static/media serving, database connections and pooling, logging switches, health checks, deployment/system checks and a readiness checklist. Not covered here: settings mechanics and env vars ([settings-configuration.md](./settings-configuration.md)), middleware order ([middleware.md](./middleware.md)), server choice and workers ([asgi-wsgi.md](./asgi-wsgi.md)), `LOGGING` dict ([logging-exceptions.md](./logging-exceptions.md)), storage backends ([file-handling.md](./file-handling.md)), `CACHES` ([caching.md](./caching.md)), CSP/permissions/deeper hardening ([django-security-engineering](../../django-security-engineering/SKILL.md)), Postgres tuning ([postgresql-engineering](../../postgresql-engineering/SKILL.md)), Docker/cloud deployment (out of scope).
 
 ## Purpose and overview
 
@@ -89,7 +89,7 @@ DATABASES["default"]["OPTIONS"] = {"pool": {"min_size": 2, "max_size": 10, "time
 | ASGI (connections are per-event-loop-thread and don't persist well) | `CONN_MAX_AGE=0` + server-side pooler (PgBouncer) or psycopg pool — verify behaviour in [asgi-wsgi.md](./asgi-wsgi.md) |
 | PgBouncer in transaction mode | `CONN_MAX_AGE=0` or short, `DISABLE_SERVER_SIDE_CURSORS=True` |
 
-Size: `workers × threads × max_size` must stay under the database's `max_connections`. Details → the PostgreSQL documentation.
+Size: `workers × threads × max_size` must stay under the database's `max_connections`. Details → [postgresql-engineering](../../postgresql-engineering/SKILL.md).
 
 ### Static and media
 

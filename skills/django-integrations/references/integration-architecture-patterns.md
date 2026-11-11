@@ -469,7 +469,7 @@ again — the warehouse consumer's inbox drops the duplicate. Without the inbox 
   [payment-and-financial-integrations.md](payment-and-financial-integrations.md).
 - Relay performance: partial index on pending rows, small batches, short publish timeouts, batched deletes.
   Long-held `FOR UPDATE` locks plus large tables cause bloat; monitor table size and relay lag
-  (the PostgreSQL documentation).
+  ([postgresql-engineering](../../postgresql-engineering/SKILL.md)).
 - API composition fans out N requests per page view: cap concurrency and cache per-dependency results
   ([caching-engineering.md](../../django-performance/references/caching-engineering.md)).
 
@@ -519,7 +519,7 @@ Validation checklist:
   [domain-events.md](../../django-architecture/references/domain-events.md),
   [dependency-management.md](../../django-architecture/references/dependency-management.md)
 - Transactions and locking: [django-orm](../../django-orm/SKILL.md),
-  the PostgreSQL documentation
+  [postgresql-engineering](../../postgresql-engineering/SKILL.md)
 
 ## 12. Official documentation and external references
 

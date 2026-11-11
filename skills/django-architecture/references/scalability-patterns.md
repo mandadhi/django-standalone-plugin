@@ -7,7 +7,7 @@
 > configuration ([django-core asgi-wsgi](../../django-core/references/asgi-wsgi.md)), profiling and
 > query tuning ([django-performance](../../django-performance/SKILL.md),
 > [django-orm](../../django-orm/SKILL.md)), PostgreSQL internals
-> (the PostgreSQL documentation), service extraction
+> ([postgresql-engineering](../../postgresql-engineering/SKILL.md)), service extraction
 > ([architectural-styles.md](./architectural-styles.md)).
 
 ## Purpose
@@ -245,7 +245,7 @@ metric?
   [asgi-wsgi](../../django-core/references/asgi-wsgi.md),
   [production-configuration](../../django-core/references/production-configuration.md).
 - [django-performance](../../django-performance/SKILL.md),
-  the PostgreSQL documentation.
+  [postgresql-engineering](../../postgresql-engineering/SKILL.md).
 
 ## Official documentation
 

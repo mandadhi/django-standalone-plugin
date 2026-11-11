@@ -5,7 +5,7 @@ Read this first. It is written so a new team can start without asking the origin
 ## 1. Product scope
 
 **What it is.** A Claude Code plugin that gives a developer a Django/DRF engineering team inside Claude
-Code: one orchestrator (slash command `/django-engineering:orchestrate`), nine specialist agents, eleven internal skills, twelve internal rules, twelve
+Code: one orchestrator, nine specialist agents (invoked by name, no slash commands), twelve skills, twelve rules, twelve
 output templates, seven shared references and a security guard hook.
 
 **What it does.** Analyse a project; design architecture; create or change models and migrations; build
@@ -28,7 +28,7 @@ both in one scope.
 
 ## 2. Architecture
 
-See [docs/architecture.md](docs/architecture.md). In short: the user runs `/django-engineering:orchestrate <request>` (or names an agent); the
+See [docs/architecture.md](docs/architecture.md). In short: the user names an agent (or the orchestrator when unsure); the
 orchestrator classifies the request, selects the smallest route from
 [`config/orchestration-policy.yaml`](config/orchestration-policy.yaml), briefs each specialist, runs the
 steps in order, applies the failure policy, reconciles against the original request and reports. Every
@@ -39,7 +39,7 @@ Repository layout:
 ```text
 .claude-plugin/    plugin.json (component list, version), marketplace.json
 agents/            orchestrator + 9 specialists
-skills/  rules/    11 + 12 internal SKILL.md bundles (user-invocable: false) + skills/orchestrate entry skill
+skills/  rules/    12 + 12 SKILL.md bundles (both declared as skill folders)
 templates/         12 report templates      references/  7 shared references
 hooks/             hooks.json, guard, shell analyser, security-policy.json
 config/            orchestration-policy.yaml
@@ -108,7 +108,7 @@ Rules of the road:
 
 1. Preserve **role, tools and write mode** of every agent. A change that widens a tool or a path needs a
    security review and a matching test. Policy can only take capability away.
-2. Names must be unique across agents, skills and rules. Approval gates live in the agent files (`## Approval gate`). The only user-facing entry is the `orchestrate` entry skill, which holds no routing or safety logic. Every other skill and rule keeps `user-invocable: false`, and there is no `commands/` folder.
+2. Names must be unique across agents, skills and rules. Approval gates live in the agent files (`## Approval gate`); there is no command layer to hold them.
 3. Keep `plugin.json` free of a `hooks` key (the default `hooks/hooks.json` is already loaded).
 4. After intentional edits to canonical files, refresh the hashes: they are recorded in
    `CANONICAL-MANIFEST.json`; `tests/test_manifest.py` fails on any file changed without updating its

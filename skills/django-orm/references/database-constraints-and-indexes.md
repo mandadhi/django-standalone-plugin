@@ -10,7 +10,7 @@
 > plans and profiling ([query-optimization.md](./query-optimization.md)); handling
 > `IntegrityError` under concurrency ([transactions-and-concurrency.md](./transactions-and-concurrency.md));
 > PostgreSQL index internals, GIN/GiST/BRIN tuning, bloat and vacuum
-> (the PostgreSQL documentation).
+> ([postgresql-engineering](../../postgresql-engineering/SKILL.md)).
 
 ## 1. Purpose and scope
 
@@ -343,7 +343,7 @@ does not send it.
   [migrations-and-schema-evolution.md](./migrations-and-schema-evolution.md)
   (`AddIndexConcurrently`, `NOT VALID` + validate).
 - Index bloat and unused indexes are found with PostgreSQL statistics views
-  (`pg_stat_user_indexes.idx_scan`) — the PostgreSQL documentation.
+  (`pg_stat_user_indexes.idx_scan`) — [postgresql-engineering](../../postgresql-engineering/SKILL.md).
 - `CHECK` constraints are cheap to evaluate; unique constraints cost an index lookup per write.
 
 ## 9. Common mistakes and anti-patterns
@@ -390,6 +390,7 @@ run against the production backend, since SQLite and MySQL differ
 - [migrations-and-schema-evolution.md](./migrations-and-schema-evolution.md) — building indexes/constraints safely.
 - [query-optimization.md](./query-optimization.md) — `explain()`, plan reading in Django.
 - [transactions-and-concurrency.md](./transactions-and-concurrency.md) — constraints as concurrency control.
+- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — index types, bloat, statistics.
 
 ## 12. Official documentation and external references
 

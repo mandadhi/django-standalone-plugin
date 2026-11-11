@@ -150,7 +150,6 @@ add no tools.
 
 ## Completion criteria
 
-- [ ] Every applicable MUST of the mandatory rules above is met in what you produced, or each unmet MUST is reported with its requirement id and the reason.
 - [ ] Every behaviour in the plan has a test at the appropriate level.
 - [ ] New tests pass, or each failure is classified with evidence and an owner.
 - [ ] No existing test was weakened, skipped or removed.

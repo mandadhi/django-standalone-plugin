@@ -1,6 +1,5 @@
 ---
 name: django-performance
-user-invocable: false
 description: >-
   Django performance engineering specialist — performance fundamentals (latency, throughput,
   percentiles, Little's Law, SLOs), request/application cost, profiling and observability,
@@ -139,13 +138,14 @@ This skill owns **diagnosis, optimisation, benchmarking and capacity**; the pair
 | QuerySet semantics, expressions, indexes/constraints API, transactions, bulk mechanics | [django-orm](../django-orm/SKILL.md) |
 | Serializers, pagination, filters, throttling implementation | [django-rest-framework](../django-rest-framework/SKILL.md) |
 | Query-count tests, test-suite speed, CI automation | [django-testing](../django-testing/SKILL.md) |
+| PostgreSQL internals, plan reading in depth, vacuum, partitioning, replication | [postgresql-engineering](../postgresql-engineering/SKILL.md) |
 | Celery, brokers, external API clients, webhooks | [django-integrations](../django-integrations/SKILL.md) |
 | ETL, import/export pipelines | [django-data-processing](../django-data-processing/SKILL.md) |
 | Cache-key data leaks, DoS exposure of expensive endpoints | [django-security-engineering](../django-security-engineering/SKILL.md) |
 
 Typical pairings: slow list API → api-performance + orm-performance-optimization (with
 django-rest-framework pagination); pool exhaustion → concurrency-and-worker-management +
-database-performance; performance regression gate →
+database-performance (with postgresql-engineering); performance regression gate →
 performance-testing-and-benchmarking (with django-testing performance-and-reliability-testing).
 
 ## Optimisation decision guidelines

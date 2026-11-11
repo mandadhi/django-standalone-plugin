@@ -1,6 +1,5 @@
 ---
 name: django-project-structure
-user-invocable: false
 description: >-
   Mandatory Django engineering rule for project and app layout: settings selection, entry
   points, app packages and AppConfig, app labels, migrations packages, cross-app references and

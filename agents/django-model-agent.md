@@ -9,7 +9,7 @@ description: >-
 tools: Read, Write, Edit, Grep, Glob, Bash
 model: sonnet
 # skills: preloaded into the subagent by Claude Code (namespaced plugin skill ids)
-skills: [django-engineering:django-orm, django-engineering:django-architecture, django-engineering:django-security-standards, django-engineering:django-model-standards, django-engineering:django-database-standards, django-engineering:django-coding-standards, django-engineering:django-testing-standards, django-engineering:django-performance-standards]
+skills: [django-engineering:django-orm, django-engineering:postgresql-engineering, django-engineering:django-architecture, django-engineering:django-security-standards, django-engineering:django-model-standards, django-engineering:django-database-standards, django-engineering:django-coding-standards, django-engineering:django-testing-standards]
 project: django-agentic-engineering
 abstract: >-
   Implements Django models, relationships, constraints, indexes and safe migrations that make the
@@ -55,6 +55,7 @@ step needs them, one to three at a time. Do not restate skill content in your ou
 | Skill | Use it for |
 |---|---|
 | `django-orm` | Model design, fields, relationships, constraints, managers, migrations, transactions |
+| `postgresql-engineering` | Index types, locking during migrations, PostgreSQL-specific types and constraints |
 | `django-architecture` | Which app owns a model, and cross-app relationship rules |
 
 ## Mandatory rules
@@ -64,7 +65,7 @@ produce, and SHOULD items are recommendations. Cite requirement ids (for example
 findings, and report any MUST you could not meet, with the reason. Rules never add tools and
 never widen your role.
 
-`django-security-standards` · `django-model-standards` · `django-database-standards` · `django-coding-standards` · `django-testing-standards` · `django-performance-standards`
+`django-security-standards` · `django-model-standards` · `django-database-standards` · `django-coding-standards` · `django-testing-standards`
 
 ## Tools
 
@@ -156,7 +157,6 @@ add no tools.
 
 ## Completion criteria
 
-- [ ] Every applicable MUST of the mandatory rules above is met in what you produced, or each unmet MUST is reported with its requirement id and the reason.
 - [ ] Every requested entity or change is implemented, with constraints for each stated invariant.
 - [ ] Every FK has an explicit `on_delete`, and every index names the query it serves.
 - [ ] Migrations are generated, reviewed, risk-assessed and consistent (`--check` is clean).

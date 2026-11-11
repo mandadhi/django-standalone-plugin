@@ -329,7 +329,7 @@ Validation checklist:
 - Other skills: [django-orm — query-optimization](../../django-orm/references/query-optimization.md) ·
   [django-data-processing — large-dataset-processing](../../django-data-processing/references/large-dataset-processing.md) ·
   [django-data-processing — data-processing-performance](../../django-data-processing/references/data-processing-performance.md) ·
-  the PostgreSQL documentation
+  [postgresql-engineering](../../postgresql-engineering/SKILL.md)
 - Official documentation:
   <https://docs.djangoproject.com/en/5.2/topics/db/optimization/> ·
   <https://docs.djangoproject.com/en/5.2/ref/models/querysets/#iterator> ·

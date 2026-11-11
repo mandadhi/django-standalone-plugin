@@ -533,6 +533,7 @@ routed to data stewards, not auto-merged.
 - [django-integrations: payment-and-financial-integrations.md](../../django-integrations/references/payment-and-financial-integrations.md)
 - [django-orm: transactions-and-concurrency.md](../../django-orm/references/transactions-and-concurrency.md)
 - [django-security-engineering: security-logging-and-auditing.md](../../django-security-engineering/references/security-logging-and-auditing.md)
+- [../../postgresql-engineering/SKILL.md](../../postgresql-engineering/SKILL.md) — anti-join plans, indexes.
 
 ## 12. Official documentation and external references
 

@@ -255,7 +255,7 @@ logger.debug("orders query: %s", qs.query)   # no DB hit (just compiles SQL)
 - Building QuerySets in a tight loop (thousands of clones) shows up in profiles; hoist the
   invariant part out of the loop.
 - Server-side cursors hold a transaction/snapshot open on PostgreSQL for the length of the loop —
-  long exports delay vacuum (the PostgreSQL documentation).
+  long exports delay vacuum ([postgresql-engineering](../../postgresql-engineering/SKILL.md)).
 
 ## 9. Common mistakes and anti-patterns
 

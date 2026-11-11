@@ -199,7 +199,7 @@ class Refund(models.Model):
     created_at = models.DateTimeField(db_default=Now())
 ```
 
-`CheckConstraint(condition=...)` is the Django ≥ 5.1 spelling (`check=` deprecated). `decimal_places=3` accommodates three-decimal currencies; validate per-currency precision in `Money`. Use `on_delete=PROTECT` everywhere — financial records are never cascade-deleted. Restrict UPDATE/DELETE on `PaymentEvent` at the DB role level if audit integrity matters (the PostgreSQL documentation).
+`CheckConstraint(condition=...)` is the Django ≥ 5.1 spelling (`check=` deprecated). `decimal_places=3` accommodates three-decimal currencies; validate per-currency precision in `Money`. Use `on_delete=PROTECT` everywhere — financial records are never cascade-deleted. Restrict UPDATE/DELETE on `PaymentEvent` at the DB role level if audit integrity matters ([postgresql-engineering](../../postgresql-engineering/SKILL.md)).
 
 ### Transition function — the single write path
 

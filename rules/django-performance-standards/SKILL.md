@@ -1,6 +1,5 @@
 ---
 name: django-performance-standards
-user-invocable: false
 description: >-
   Mandatory Django engineering rule for performance: no N+1 queries, bounded querysets,
   database-side aggregation, efficient bulk writes, offloading slow work, correctly keyed and
@@ -85,4 +84,4 @@ heavy queries. Grep for `.all()` in loops, `len(` on querysets, `cache.set(` key
 
 [django-performance](../../skills/django-performance/SKILL.md) (method, caching, API and background performance) ·
 [django-orm](../../skills/django-orm/SKILL.md) (query optimisation, bulk operations) ·
-the PostgreSQL documentation (indexes and query plans).
+[postgresql-engineering](../../skills/postgresql-engineering/SKILL.md) (indexes and query plans).

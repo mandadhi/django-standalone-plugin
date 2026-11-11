@@ -402,6 +402,7 @@ display only), `qs.explain()`, and tests that assert results on edge cases (no r
 - [transactions-and-concurrency.md](./transactions-and-concurrency.md) — when `F()` updates are not enough.
 - [query-optimization.md](./query-optimization.md) — plans and measurement.
 - [raw-sql-and-database-access.md](./raw-sql-and-database-access.md) — when expressions run out.
+- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — planner behaviour, window/sort internals.
 
 ## 12. Official documentation and external references
 

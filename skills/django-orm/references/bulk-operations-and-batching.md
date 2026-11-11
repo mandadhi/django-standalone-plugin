@@ -9,7 +9,7 @@
 > ([transactions-and-concurrency.md](./transactions-and-concurrency.md)); set-based raw SQL
 > ([raw-sql-and-database-access.md](./raw-sql-and-database-access.md)); end-to-end import/export
 > pipelines, file parsing, task orchestration ([django-data-processing](../../django-data-processing/SKILL.md));
-> `COPY` and engine tuning (the PostgreSQL documentation).
+> `COPY` and engine tuning ([postgresql-engineering](../../postgresql-engineering/SKILL.md)).
 
 ## 1. Purpose and scope
 
@@ -96,7 +96,7 @@ schema ([database-constraints-and-indexes.md](./database-constraints-and-indexes
 | Insert, silently skip existing | `bulk_create(ignore_conflicts=True)` — loses PKs and *all* error types the DB treats as conflicts |
 | Need `save()` logic / signals per row | Loop with `save()`, or bulk + explicit replacement of the side effects |
 | Read a very large table | `iterator(chunk_size=...)` or keyset batches |
-| Millions of rows on PostgreSQL | `COPY` via psycopg — see the PostgreSQL documentation and [django-data-processing](../../django-data-processing/SKILL.md) |
+| Millions of rows on PostgreSQL | `COPY` via psycopg — see [postgresql-engineering](../../postgresql-engineering/SKILL.md) and [django-data-processing](../../django-data-processing/SKILL.md) |
 
 **One big transaction vs many small ones.** One transaction gives all-or-nothing semantics but
 holds locks and generates a long-running transaction (bloat, replication lag, blocking DDL).
@@ -276,7 +276,7 @@ while True:
   ([docs](https://docs.djangoproject.com/en/5.2/ref/models/querysets/#bulk-create)). Validate
   input first and prefer explicit `unique_fields` upserts where supported.
 - Indexes and constraints slow inserts; for one-off huge loads, PostgreSQL-specific strategies
-  (drop/recreate indexes, `COPY`) belong in the PostgreSQL documentation.
+  (drop/recreate indexes, `COPY`) belong to [postgresql-engineering](../../postgresql-engineering/SKILL.md).
 
 ## 9. Common mistakes and anti-patterns
 
@@ -315,6 +315,7 @@ row counts and checksums before/after imports ([django-testing](../../django-tes
 - [advanced-query-expressions.md](./advanced-query-expressions.md) — `F`/`Case` in `update()`.
 - [orm-anti-patterns.md](./orm-anti-patterns.md) — queries in loops, unbounded QuerySets.
 - [django-data-processing](../../django-data-processing/SKILL.md) — import/export pipelines.
+- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — `COPY`, bloat, vacuum.
 
 ## 12. Official documentation and external references
 

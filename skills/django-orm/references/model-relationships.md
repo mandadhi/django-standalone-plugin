@@ -382,6 +382,7 @@ customer with orders raises `ProtectedError` ([django-testing](../../django-test
 - [aggregation-and-annotation.md](./aggregation-and-annotation.md) — counts across relations.
 - [migrations-and-schema-evolution.md](./migrations-and-schema-evolution.md) — changing relations safely.
 - [django-architecture django-application-boundaries](../../django-architecture/references/django-application-boundaries.md).
+- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — FK internals, recursive CTEs.
 
 ## 12. Official documentation and external references
 

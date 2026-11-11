@@ -1,8 +1,8 @@
 # skills/
 
-The eleven Django engineering skills (`<id>/SKILL.md` plus `<id>/references/*.md`). Claude Code
+The twelve Django engineering skills (`<id>/SKILL.md` plus `<id>/references/*.md`). Claude Code
 discovers them natively from `./skills/` (declared in `.claude-plugin/plugin.json`) and exposes them as
-`django-engineering:<id>` (hidden from the `/` menu: `user-invocable: false`). Each agent preloads the skills named in its frontmatter `skills:` line;
+`django-engineering:<id>`. Each agent preloads the skills named in its frontmatter `skills:` line;
 nothing is injected by any external service.
 
 | Skill | Topic |
@@ -18,13 +18,7 @@ nothing is injected by any external service.
 | `django-data-processing` | Imports, ETL, bulk data, file formats, reconciliation |
 | `django-report-generation` | PDF/Excel/CSV reports, scheduled and background generation |
 | `django-frontend` | Templates, HTMX, Alpine.js, React islands, accessibility |
-
-Agents that do not preload `django-frontend`, `django-integrations`, `django-data-processing` or
-`django-report-generation` receive them per request: the orchestration policy lists them as
-`supplementary_skills` with a `when` condition, and the orchestrator names only the ones that apply.
-
-`orchestrate/` is not a knowledge skill. It is the plugin's single user-invocable entry point
-(`/django-engineering:orchestrate`) and only hands the request to the `django-orchestrator` agent.
+| `postgresql-engineering` | Indexes, EXPLAIN, locking, connections, full-text search |
 
 A skill teaches *how*; a [rule](../rules/README.md) states what every result *must* satisfy. Names must be
 unique across skills, rules and agents (a duplicate would shadow another component), which is why the

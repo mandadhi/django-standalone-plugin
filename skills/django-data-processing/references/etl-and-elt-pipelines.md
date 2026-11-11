@@ -544,7 +544,7 @@ active-run constraint makes duplicate beats harmless (`IntegrityError` → skip)
 ## 11. Related references and skills
 
 - In this skill: [fundamentals](data-processing-fundamentals.md) · [ingestion](data-ingestion-engineering.md) · [validation](data-validation-and-cleansing.md) · [transformation](data-transformation-and-mapping.md) · [loading](database-loading-and-persistence.md) · [reconciliation](data-reconciliation-engineering.md) · [background jobs](django-background-processing.md) · [reliability](processing-reliability-and-recovery.md) · [observability](data-processing-observability.md) · [testing](data-processing-testing.md) · [reference architectures](production-architectures-imports-and-pipelines.md)
-- Other skills: [django-orm bulk operations](../../django-orm/references/bulk-operations-and-batching.md) · [django-orm transactions](../../django-orm/references/transactions-and-concurrency.md) · [service layer](../../django-architecture/references/service-layer.md) · [Celery infrastructure](../../django-integrations/references/celery-and-background-integrations.md) · [test fixtures](../../django-testing/references/fixtures-and-test-data.md)
+- Other skills: [django-orm bulk operations](../../django-orm/references/bulk-operations-and-batching.md) · [django-orm transactions](../../django-orm/references/transactions-and-concurrency.md) · [service layer](../../django-architecture/references/service-layer.md) · [Celery infrastructure](../../django-integrations/references/celery-and-background-integrations.md) · [postgresql-engineering](../../postgresql-engineering/SKILL.md) · [test fixtures](../../django-testing/references/fixtures-and-test-data.md)
 
 ## 12. Official documentation and external references
 

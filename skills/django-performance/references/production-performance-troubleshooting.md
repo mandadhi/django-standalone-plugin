@@ -14,7 +14,7 @@ durably** — with evidence at each step.
 
 Out of scope: general incident process and postmortems (organisation process; an
 `incident-response` skill may exist), designing capacity ([scalability-and-capacity-planning.md](scalability-and-capacity-planning.md)),
-deep PostgreSQL internals (the PostgreSQL documentation).
+deep PostgreSQL internals ([postgresql-engineering](../../postgresql-engineering/SKILL.md)).
 
 ## 2. Core concepts
 
@@ -117,7 +117,7 @@ FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 15;
 - **Mitigate:** cancel runaway queries (`pg_cancel_backend(pid)`; `pg_terminate_backend` as last
   resort); pause the batch job; set `statement_timeout` for the web role if absent.
 - **Fix:** [database-performance.md](database-performance.md) (indexes, plans, locks, transaction
-  duration) (vacuum, configuration).
+  duration), [postgresql-engineering](../../postgresql-engineering/SKILL.md) (vacuum, configuration).
 
 ### Runbook 3 — High CPU on web workers
 
@@ -314,7 +314,7 @@ Post-incident validation:
 - [caching-engineering.md](caching-engineering.md), [background-task-performance.md](background-task-performance.md).
 - [scalability-and-capacity-planning.md](scalability-and-capacity-planning.md) — load shedding, degradation.
 - [performance-testing-and-benchmarking.md](performance-testing-and-benchmarking.md) — regression benchmarks.
-- [django-integrations](../../django-integrations/SKILL.md),
+- [postgresql-engineering](../../postgresql-engineering/SKILL.md), [django-integrations](../../django-integrations/SKILL.md),
   [django-testing](../../django-testing/SKILL.md).
 
 ## 12. Official documentation and external references

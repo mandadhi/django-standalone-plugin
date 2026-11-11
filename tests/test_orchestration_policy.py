@@ -18,13 +18,13 @@ def test_policy_header_and_orchestrator() -> None:
     assert doc["kind"] == "OrchestrationPolicy" and doc["schema_version"] == "1.0"
     assert doc["orchestrator"]["id"] == ORCHESTRATOR
     assert doc["orchestrator"]["path"] == f"agents/{ORCHESTRATOR}.md" and (ROOT / doc["orchestrator"]["path"]).is_file()
-    assert "command" not in doc["orchestrator"], "the orchestrator is reached through its entry skill or by name"
+    assert "command" not in doc["orchestrator"], "the orchestrator is invoked by name; there are no commands"
     assert set(doc["orchestrator"]["skills"]) <= set(SKILLS + RULES)
 
 
 def test_limits_and_specialists() -> None:
     doc = load()
-    assert doc["limits"] == {"max_delegations": 8, "max_attempts_per_step": 2, "max_clarifying_questions": 3}
+    assert doc["limits"] == {"max_delegations": 6, "max_attempts_per_step": 2, "max_clarifying_questions": 3}
     assert doc["specialists"] == SPECIALISTS
     assert ORCHESTRATOR not in doc["specialists"], "the orchestrator must never be delegable"
 
@@ -49,9 +49,8 @@ def test_categories_are_well_formed() -> None:
             seen.append(step["agent"])
         assert required >= 1 or category.get("requires_any"), category["id"]
         assert len(category["route"]) <= doc["limits"]["max_delegations"], category["id"]
-        for item in category.get("supplementary_skills", []):
-            assert item["skill"] in SKILLS and item["skill"] != "orchestrate", (category["id"], item)
-            assert str(item.get("when", "")).strip(), (category["id"], item["skill"], "needs a `when`")
+        for skill in category.get("supplementary_skills", []):
+            assert skill in SKILLS, (category["id"], skill)
         for agent in category.get("requires_any", []):
             assert agent in [s["agent"] for s in category["route"]]
 
@@ -84,8 +83,6 @@ def test_orchestrator_routing_section_matches_the_policy() -> None:
         block = section.split(f"#### `{category['id']}`", 1)[1].split("\n#### ", 1)[0]
         assert re.findall(r"^\d+\. (?:\*optional\* )?`([^`]+)`", block, re.M) == [s["agent"] for s in category["route"]], category["id"]
         assert "Signals: " + ", ".join(f"`{s}`" for s in category["signals"]) in block
-        for item in category.get("supplementary_skills", []):
-            assert f"- `{item['skill']}`: {item['when']}" in block, (category["id"], item["skill"])
     for key in ("clarify_when", "failure_policy", "completion_criteria", "security_boundaries"):
         for item in doc[key]:
             assert f"- {item}" in section, (key, item[:50])

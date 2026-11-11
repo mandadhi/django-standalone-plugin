@@ -1,6 +1,5 @@
 ---
 name: django-model-standards
-user-invocable: false
 description: >-
   Mandatory Django engineering rule for model definitions: database-enforced invariants,
   relationships and on_delete, user-model references, field type choices, sensitive fields,
@@ -90,4 +89,4 @@ values, and any `FloatField`, `null=True` text field or `save()` override in the
 ## Related skills
 
 [django-orm](../../skills/django-orm/SKILL.md) (model design, fields, relationships, constraints and indexes, managers) ·
-the PostgreSQL documentation (backend-specific types and constraints).
+[postgresql-engineering](../../skills/postgresql-engineering/SKILL.md) (backend-specific types and constraints).

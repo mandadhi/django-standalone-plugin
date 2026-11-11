@@ -1,6 +1,5 @@
 ---
 name: django-core
-user-invocable: false
 description: >-
   Django Core engineering specialist — framework architecture, project structure, settings,
   the request/response lifecycle, URLs and views, middleware, models and app startup, forms and

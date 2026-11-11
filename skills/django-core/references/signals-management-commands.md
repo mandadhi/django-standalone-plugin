@@ -143,7 +143,7 @@ The service is idempotent (`filter(status=PENDING, created_at__lt=cutoff)` then 
 
 - **Commands are thin.** All logic in services so the same operation is callable from a task, an admin action or a test.
 - **Idempotent and resumable.** Batch by primary key ranges, commit per batch, make re-runs safe. A crash at batch 40 of 100 should not require manual cleanup.
-- **Concurrency.** Cron overlap is common. Prevent double execution with a DB advisory lock (PostgreSQL `pg_try_advisory_lock`), a cache lock (`cache.add(key, ...)` with timeout, best-effort), or `select_for_update(skip_locked=True)` when claiming rows. Details in django-orm.
+- **Concurrency.** Cron overlap is common. Prevent double execution with a DB advisory lock (PostgreSQL `pg_try_advisory_lock`), a cache lock (`cache.add(key, ...)` with timeout, best-effort), or `select_for_update(skip_locked=True)` when claiming rows. Details in django-orm / postgresql-engineering.
 - **Exit codes matter.** Schedulers alert on non-zero exit; raise `CommandError` for expected failures; let unexpected exceptions crash (with logging).
 - **Logging over stdout for ops.** `self.stdout` for human output; `logger.info(...)` with structured fields for monitoring.
 - **Defaults are safe.** Destructive commands require explicit flags (`--confirm`) and default to dry-run where reasonable.

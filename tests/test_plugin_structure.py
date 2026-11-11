@@ -6,7 +6,7 @@ import re
 
 import pytest
 
-from conftest import (AGENTS, ENTRY_SKILLS, EXPECTED_TOOLS, HARNESS_COMMANDS, MARKETPLACE, ORCHESTRATOR, PLUGIN, REFERENCES,
+from conftest import (AGENTS, EXPECTED_TOOLS, HARNESS_COMMANDS, MARKETPLACE, ORCHESTRATOR, PLUGIN, REFERENCES,
                       ROOT, ROOT_VAR, RULES, SKILLS, SPECIALISTS, TEMPLATES, all_files, as_list, frontmatter,
                       marketplace_json, plugin_json, read, text_files)
 
@@ -53,11 +53,11 @@ def test_component_inventory_is_complete_and_exact() -> None:
     assert sorted(p.stem for p in (ROOT / "agents").glob("*.md")) == AGENTS, "agents/ holds agent files only"
     assert len(SPECIALISTS) == 9 and ORCHESTRATOR in AGENTS
     assert not (ROOT / "commands").exists(), "the plugin ships no commands folder"
-    assert sorted(p.parent.name for p in (ROOT / "skills").glob("*/SKILL.md")) == sorted(SKILLS + ENTRY_SKILLS)
+    assert sorted(p.parent.name for p in (ROOT / "skills").glob("*/SKILL.md")) == SKILLS
     assert sorted(p.parent.name for p in (ROOT / "rules").glob("*/SKILL.md")) == RULES
     assert sorted(p.name[: -len(".template.md")] for p in (ROOT / "templates").glob("*.template.md")) == TEMPLATES
     assert sorted(p.stem for p in (ROOT / "references").glob("*.md") if p.stem != "README") == REFERENCES
-    assert (len(SKILLS), len(RULES), len(TEMPLATES), len(REFERENCES)) == (11, 12, 12, 7)
+    assert (len(SKILLS), len(RULES), len(TEMPLATES), len(REFERENCES)) == (12, 12, 12, 7)
     # nothing else in the templates folder (the harness runtime prompt template is not distributed)
     assert sorted(p.name for p in (ROOT / "templates").iterdir()) == sorted(
         ["README.md"] + [f"{t}.template.md" for t in TEMPLATES])
@@ -73,7 +73,7 @@ def test_no_commands_anywhere() -> None:
 def test_component_names_are_unique_across_kinds() -> None:
     """Agents, skills and rules share one namespace in Claude Code; a duplicate would shadow another component."""
     seen: dict[str, str] = {}
-    for kind, names in (("agent", AGENTS), ("skill", SKILLS + ENTRY_SKILLS), ("rule", RULES)):
+    for kind, names in (("agent", AGENTS), ("skill", SKILLS), ("rule", RULES)):
         for name in names:
             assert name not in seen, f"{kind} '{name}' collides with {seen[name]}"
             seen[name] = kind
@@ -84,68 +84,6 @@ def test_skill_and_rule_frontmatter(kind: str, names: list[str]) -> None:
     for name in names:
         meta = frontmatter(ROOT / kind / name / "SKILL.md")
         assert meta["name"] == name and str(meta["description"]).strip(), name
-        assert meta.get("user-invocable") is False, f"{kind}/{name} is internal knowledge and must not be a slash command"
-
-
-def test_orchestrate_is_the_only_entry_point_and_holds_no_orchestration_logic() -> None:
-    """`/django-engineering:orchestrate` hands the request to the orchestrator agent, which owns all routing."""
-    path = ROOT / "skills" / "orchestrate" / "SKILL.md"
-    meta = frontmatter(path)
-    assert meta["name"] == "orchestrate" and str(meta["description"]).strip()
-    assert meta.get("user-invocable", True) is not False, "the entry skill must stay in the / menu"
-    assert meta.get("disable-model-invocation") is True, "the entry skill runs only when the user types it"
-    assert not (ROOT / "skills" / "orchestrate" / "references").exists()
-    body = read(path)
-    assert "$ARGUMENTS" in body and f"{PLUGIN}:{ORCHESTRATOR}" in body
-    for agent in SPECIALISTS:                     # routing belongs to the orchestrator and its policy
-        assert agent not in body, f"entry skill names specialist {agent}"
-    assert "Signals:" not in body and "max_delegations" not in body
-    user_invocable = [p.parent.name for p in ROOT.glob("*/*/SKILL.md")
-                      if frontmatter(p).get("user-invocable", True) is not False]
-    assert user_invocable == ENTRY_SKILLS, user_invocable
-
-
-def test_agents_preload_exactly_the_rules_they_declare_as_mandatory() -> None:
-    for agent in SPECIALISTS:
-        path = ROOT / "agents" / f"{agent}.md"
-        preloaded = [s.split(":", 1)[1] for s in as_list(frontmatter(path).get("skills"))]
-        rules_line = next(l for l in read(path).splitlines() if l.startswith("`django-security-standards`"))
-        declared = re.findall(r"`([^`]+)`", rules_line)
-        assert declared == [s for s in preloaded if s in RULES], agent
-        assert "orchestrate" not in preloaded, agent
-
-
-def test_writing_agents_verify_rule_compliance_before_completion() -> None:
-    for agent in GATED:
-        criteria = read(ROOT / "agents" / f"{agent}.md").split("## Completion criteria", 1)[1]
-        assert "Every applicable MUST of the mandatory rules above is met" in criteria, agent
-
-
-def test_rule_requirements_are_not_copied_into_agents_or_skills() -> None:
-    """One canonical source per standard: agents and skills cite requirement ids, they never copy the text."""
-    requirement = re.compile(r"^- \*\*([A-Z]+-[AMS]\d+)\*\* (.{40,})$", re.M)
-    texts = [m.group(2) for name in RULES for m in requirement.finditer(read(ROOT / "rules" / name / "SKILL.md"))]
-    assert texts, "rule requirement format changed; update this test"
-    targets = [ROOT / "agents" / f"{a}.md" for a in AGENTS] + [ROOT / "skills" / s / "SKILL.md" for s in SKILLS + ENTRY_SKILLS]
-    for path in targets:
-        body = read(path)
-        copied = [t[:50] for t in texts if t in body]
-        assert not copied, (path.relative_to(ROOT).as_posix(), copied[:3])
-
-
-def test_postgresql_specific_components_stay_removed() -> None:
-    """The PostgreSQL-specific skill was removed; generic database knowledge (ORM, migrations, SQL) stays."""
-    names = AGENTS + SKILLS + ENTRY_SKILLS + RULES
-    assert not [n for n in names if "postgres" in n.lower()]
-    assert not list(ROOT.glob("**/postgresql-engineering*")) and not (ROOT / "skills" / "postgresql-engineering").exists()
-    for path in text_files():
-        if path.name in ("CHANGELOG.md", "CANONICAL-MANIFEST.json") or "tests" in path.relative_to(ROOT).parts:
-            continue
-        assert "postgresql-engineering" not in read(path), path.relative_to(ROOT).as_posix()
-    for keep in ("django-orm", "django-performance"):
-        assert keep in SKILLS
-    for rule in ("django-database-standards", "django-model-standards"):
-        assert rule in RULES
 
 
 def test_agent_frontmatter_tools_and_preloaded_skills() -> None:

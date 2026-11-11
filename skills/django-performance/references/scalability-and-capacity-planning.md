@@ -18,7 +18,7 @@ This reference helps an agent:
 - Design graceful degradation and load shedding so overload fails partially, not totally.
 
 Queueing theory (Little's Law, utilisation vs latency): [performance-engineering-fundamentals.md](performance-engineering-fundamentals.md).
-PostgreSQL replication and partitioning internals: the PostgreSQL documentation.
+PostgreSQL replication and partitioning internals: [postgresql-engineering](../../postgresql-engineering/SKILL.md).
 
 ## 2. Core concepts
 
@@ -236,6 +236,7 @@ confirm degradation paths. See [production-performance-troubleshooting.md](produ
 - [caching-engineering.md](caching-engineering.md) — cache-backed degradation.
 - [background-task-performance.md](background-task-performance.md) — queue scaling.
 - [performance-engineering-fundamentals.md](performance-engineering-fundamentals.md) — Little's Law, utilisation.
+- [postgresql-engineering](../../postgresql-engineering/SKILL.md) — replication, partitioning.
 - [django-rest-framework](../../django-rest-framework/SKILL.md) — throttling mechanics.
 
 ## 12. Official documentation and external references

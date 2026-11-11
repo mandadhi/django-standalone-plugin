@@ -543,7 +543,7 @@ filling, a producer shipping a breaking schema change.
 - Keep handlers short; offload slow external calls to tasks or separate stages so `max.poll.interval.ms` and
   lock durations are not exceeded.
 - Inbox table grows with every message: index `(source, message_id)` unique, prune by age
-  (the PostgreSQL documentation for partitioning large inboxes).
+  ([postgresql-engineering](../../postgresql-engineering/SKILL.md) for partitioning large inboxes).
 - Worker and concurrency sizing: [concurrency-and-worker-management](../../django-performance/references/concurrency-and-worker-management.md).
 
 ## 9. Common mistakes and anti-patterns

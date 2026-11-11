@@ -354,7 +354,7 @@ Further reading: [django-security-engineering — threat-modeling](../../django-
   TLS to object storage, the database and the SMTP relay; SFTP rather than FTP for file drops.
 - **At rest:** object storage server-side encryption is an `[external service]` feature (S3 SSE,
   Azure Storage Service Encryption), enabled on the bucket or account, not by Django. Database
-  encryption at rest is platform-level (the PostgreSQL documentation).
+  encryption at rest is platform-level ([postgresql-engineering](../../postgresql-engineering/SKILL.md)).
   Application-level encryption of artifacts (e.g. `[third-party: cryptography]` Fernet) protects
   against storage-admin access; it adds key management and prevents provider-side direct download
   of plaintext.

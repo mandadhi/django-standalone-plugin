@@ -225,7 +225,7 @@ Key metrics: outbox lag (oldest unsent age), queue depth, consumer error rate, D
 [domain-events.md](./domain-events.md) · [distributed-systems.md](./distributed-systems.md) ·
 [scalability-patterns.md](./scalability-patterns.md) · [architectural-styles.md](./architectural-styles.md) ·
 [django-core signals & commands](../../django-core/references/signals-management-commands.md) ·
-[django-integrations](../../django-integrations/SKILL.md)
+[django-integrations](../../django-integrations/SKILL.md) · [postgresql-engineering](../../postgresql-engineering/SKILL.md)
 
 ## Official documentation
 

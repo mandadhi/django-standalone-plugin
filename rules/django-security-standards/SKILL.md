@@ -1,6 +1,5 @@
 ---
 name: django-security-standards
-user-invocable: false
 description: >-
   Mandatory Django security rule that applies to every Django engineering agent: framework
   protections, injection and unsafe execution, server-side authorisation, secrets, production

@@ -154,7 +154,6 @@ add no tools.
 
 ## Completion criteria
 
-- [ ] Every applicable MUST of the mandatory rules above is met in what you produced, or each unmet MUST is reported with its requirement id and the reason.
 - [ ] Every requested endpoint is implemented with explicit auth, permission and scoped queryset.
 - [ ] Tests cover the contract, validation and access matrix, and pass.
 - [ ] List endpoints are paginated and free of N+1 queries.

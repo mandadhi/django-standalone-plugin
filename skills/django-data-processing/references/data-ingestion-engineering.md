@@ -72,7 +72,7 @@ commits a row whose `updated_at` is *older* than the watermark you already advan
 that row is never seen. Mitigate with an **overlap window** (re-read the last N minutes each run
 and dedupe) or by using the source's commit-ordered change log. A PostgreSQL logical replication
 slot retains WAL until consumed; an abandoned slot can fill the source's disk
-(see the PostgreSQL documentation).
+(see [../../postgresql-engineering/SKILL.md](../../postgresql-engineering/SKILL.md)).
 
 ### 2.5 Pagination styles
 
@@ -480,7 +480,7 @@ class LegacyErpConnector:
 - JSONB payloads inflate tables; for very large feeds land bytes to object storage and keep only
   keys + hashes in the DB.
 - Index `(tenant, source, natural_key)` for dedupe lookups; partition `RawRecord` by time when it
-  exceeds tens of millions of rows (see the PostgreSQL documentation).
+  exceeds tens of millions of rows (see [../../postgresql-engineering/SKILL.md](../../postgresql-engineering/SKILL.md)).
 - Parallelise by independent scope (time window, tenant, partition), not by page of a single
   cursor — cursors are sequential.
 - Throttle against source limits; a faster ingest that triggers 429 storms is slower overall.

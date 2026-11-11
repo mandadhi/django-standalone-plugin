@@ -1,6 +1,5 @@
 ---
 name: django-coding-standards
-user-invocable: false
 description: >-
   Mandatory Django engineering rule for application code: tooling compliance, where logic lives,
   error handling, correct use of Django APIs (URLs, time zones, settings, transactions), async

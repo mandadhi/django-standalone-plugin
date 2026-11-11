@@ -1,6 +1,5 @@
 ---
 name: django-dependency-standards
-user-invocable: false
 description: >-
   Mandatory Django engineering rule for dependencies: a single manifest, locked and pinned
   versions, supported Django and DRF releases, justified additions, vulnerability auditing,

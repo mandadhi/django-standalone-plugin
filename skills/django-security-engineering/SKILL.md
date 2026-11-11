@@ -1,6 +1,5 @@
 ---
 name: django-security-engineering
-user-invocable: false
 description: >-
   Django security engineering specialist — threat modelling and trust boundaries, production
   security settings (DEBUG, ALLOWED_HOSTS, HTTPS/HSTS, proxies), authentication and password
@@ -146,6 +145,7 @@ Each reference stands alone and follows the same 12-section structure.
 | Celery, webhooks, identity providers, outbound HTTP clients | [django-integrations](../django-integrations/SKILL.md) |
 | Caching strategy, load and abuse capacity | [django-performance](../django-performance/SKILL.md) |
 | Imports/exports and large-file processing pipelines | [django-data-processing](../django-data-processing/SKILL.md) |
+| Database roles, RLS internals, encryption at rest | [postgresql-engineering](../postgresql-engineering/SKILL.md) |
 
 Rule of thumb: this skill decides **what must be protected, which control, and how to prove it**;
 the owning skill explains **how the framework mechanism works**.
