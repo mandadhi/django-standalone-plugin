@@ -1,0 +1,18 @@
+{
+  "name": "django-engineering-standalone",
+  "owner": {
+    "name": "Techwave Digital AI"
+  },
+  "metadata": {
+    "description": "Independent marketplace for the standalone Django Engineering Plugin (no Python harness)."
+  },
+  "plugins": [
+    {
+      "name": "django-engineering",
+      "source": "./",
+      "description": "Standalone Django Engineering Plugin: orchestrator, nine specialist agents, ten commands, twelve skills, twelve rules, templates, shared references and a fail-closed security guard.",
+      "version": "1.0.0",
+      "category": "backend"
+    }
+  ]
+}
