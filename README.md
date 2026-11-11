@@ -10,10 +10,9 @@ database and no Python packages**. The only runtime prerequisite besides Claude 
 
 ## Quick start
 
-Inside Claude Code (replace `<owner>/<repository>` with the GitHub repository that hosts this folder):
 
 ```text
-/plugin marketplace add <owner>/<repository>
+/plugin marketplace add mandadhi/django-standalone-plugin
 /plugin install django-engineering@django-engineering-standalone
 ```
 
