@@ -4,10 +4,8 @@ The plugin root **is** the Claude Code plugin root. Claude Code loads every comp
 folders declared in `.claude-plugin/plugin.json`; nothing is copied, generated or injected at run time.
 
 ```text
-user ──/django-engineering:orchestrate──▶ command (thin entry point)
-                                              │ briefs
-                                              ▼
-                                    django-orchestrator  (read-only)
+user ──@django-engineering:django-orchestrator──▶ django-orchestrator  (read-only)
+        (or @<any specialist> directly; the orchestrator is for "I don't know which")
                     classify ▸ select route ▸ brief ▸ sequence ▸ reconcile ▸ report
                                               │ Agent tool, only to the nine specialists
               ┌───────────────┬───────────────┼────────────────┬───────────────┐
@@ -24,7 +22,6 @@ user ──/django-engineering:orchestrate──▶ command (thin entry point)
 | Folder | Role |
 |---|---|
 | `agents/` | Orchestrator and nine specialists: *who* does the work and within which limits |
-| `commands/` | Slash commands: entry points that brief one agent and apply approval gates |
 | `skills/` | Twelve knowledge bundles: *how* Django work is done well |
 | `rules/` | Twelve mandatory rule sets with numbered requirements (`SEC-M4`, `PRF-M1`, ...) |
 | `templates/` | Twelve report structures agents fill in |
@@ -57,12 +54,40 @@ Two ways it runs:
 
 - **Main agent** (`claude --agent django-engineering:django-orchestrator`): it has the `Agent` tool and
   delegates itself.
-- **Subagent** (via `/django-engineering:orchestrate`): Claude Code subagents usually cannot spawn
-  subagents. The orchestrator then returns a **ROUTING PLAN** and the command executes it from the main
-  session with the same limits.
+- **Subagent** (an `@` mention): Claude Code subagents usually cannot spawn subagents. The orchestrator
+  then returns a **ROUTING PLAN** and the main session executes it with the same limits.
+
+## Why there are no commands
+
+A command only briefed one agent and applied that agent's approval gate. Agents are already invocable by
+name, so the extra layer duplicated entry points and kept safety logic outside the agent: calling an agent
+directly, or through the orchestrator, bypassed it. The gate (propose, wait for approval, then write) now
+lives in each agent's `## Approval gate` section, so it holds on every path. The orchestrator passes
+approvals through and never grants them.
 
 Delegation limits and the retry rule are instructions the orchestrator follows; only the **target
 allowlist** is enforced by the guard.
+
+## What skills, rules, templates and the two kinds of references are for
+
+Every file answers one question, so nothing is written twice:
+
+| Component | Question | Scope | Loaded |
+|---|---|---|---|
+| Skill `skills/<id>/SKILL.md` | How does this work and how is it done well? | One topic area | Preloaded into the agents that list it |
+| Skill references `skills/<id>/references/*.md` | The detail behind that skill, one file per sub-topic | **One skill** | On demand, one to three at a time, when a step needs them (keeps context small) |
+| Rule `rules/<id>/SKILL.md` | What must every result satisfy? (numbered MUST/SHOULD ids) | Cross-cutting | Preloaded; ids are cited in findings |
+| Shared reference `references/<id>.md` | What do I check, where, and how do I rate it? (checklists, search patterns, lookup tables) | **Several agents** | Read on demand by the agents that list them |
+| Template `templates/<id>.template.md` | What shape does the report take? | One report kind | Read when the agent writes its report |
+
+The split between the two reference kinds is ownership. A *skill reference* is the long-form depth of a
+single skill: `skills/django-orm/references/query-optimization.md` explains how `select_related` works, and
+only agents that preload `django-orm` ever need it. A *shared reference* belongs to no skill because several
+agents run the same checklist: `references/django-security-checklist.md` is used by the security, API and
+code-review agents, and points at rule ids and skill references instead of copying them. Shared references
+keep those agents consistent and stop each from carrying its own copy of a checklist; skill references are
+progressive disclosure, so an agent loads detail only when a step needs it.
+`tests/test_templates_and_references.py` checks that shared references link instead of copy.
 
 ## What is deliberately absent
 

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import re
 
-from conftest import REFERENCES, ROOT, SPECIALISTS, TEMPLATES, frontmatter, as_list, read
+from conftest import AGENTS, REFERENCES, ROOT, SPECIALISTS, TEMPLATES, frontmatter, as_list, read
 
 HEADER_PLACEHOLDERS = {"subject", "project_name", "scope", "prepared_by", "date", "document_status", "sources"}
 
@@ -32,11 +32,11 @@ def test_template_placeholders_are_declared_and_used() -> None:
         assert used <= declared, (name, used - declared)
 
 
-def test_templates_name_existing_commands_and_agents() -> None:
-    commands = {p.stem for p in (ROOT / "commands").glob("*.md")}
+def test_templates_name_existing_agents_and_no_commands() -> None:
     for name in TEMPLATES:
         meta = frontmatter(ROOT / "templates" / f"{name}.template.md")
-        assert set(as_list(meta["commands"])) <= commands, name
+        assert "commands" not in meta, name
+        assert as_list(meta["agents"]) and set(as_list(meta["agents"])) <= set(AGENTS), name
 
 
 def test_every_template_is_used_by_one_of_its_agents() -> None:

@@ -2,6 +2,35 @@
 
 All notable changes to the standalone Django Engineering Plugin. Versions follow semantic versioning.
 
+## 2.0.0
+
+Agents are the only interface. **Breaking:** the ten slash commands (`/django-engineering:orchestrate` and the nine
+`django-*` commands) are removed.
+
+### Changed
+- Invoke agents by name: `@django-engineering:<agent id>` or plain language. Unsure which? Use
+  `@django-engineering:django-orchestrator`, or `claude --agent django-engineering:django-orchestrator`.
+- The approval gates that lived in the commands now live in the agents (`## Approval gate`): model, API, testing,
+  performance and architecture agents propose first and end with `AWAITING APPROVAL:`; the security agent defaults
+  to review and fixes only approved findings; the documentation agent writes documentation only. The gate now holds
+  however an agent is reached.
+- The orchestrator passes approvals through and never grants them; policy 1.1.0 adds a completion criterion for
+  steps awaiting approval and drops the `orchestrator.command` key.
+- Removed harness vocabulary from agents (`AgentTask`, `AgentResult`, output directory). Agents return reports in
+  their reply and list changed files.
+- Templates no longer carry a `commands:` field.
+- Docs rewritten for the agent-only model; `docs/architecture.md` explains skills, skill references, rules,
+  shared references and templates.
+- Tests: command checks replaced by checks that no commands exist and that every code-changing agent carries its
+  gate. Manifest adaptation AD-13 records the changes.
+
+### Migration
+| Was | Now |
+|---|---|
+| `/django-engineering:orchestrate <request>` | `@django-engineering:django-orchestrator <request>` |
+| `/django-engineering:django-model ...` | `@django-engineering:django-model-agent ...` |
+| `--apply`, `--fix`, `--run-only`, `--dry-run` | Say it in the request: "apply it", "fix SEC-001", "just run the tests", "dry run" |
+
 ## 1.0.0
 
 First independent standalone distribution.

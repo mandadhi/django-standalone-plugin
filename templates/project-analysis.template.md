@@ -6,7 +6,6 @@ description: >-
   observations, ranked risks and unknowns.
 kind: output-template
 agents: [django-project-analyzer]
-commands: [django-analyze]
 project: django-agentic-engineering
 abstract: >-
   Standard structure for a read-only Django project profile that downstream agents can start from,

@@ -6,7 +6,7 @@ import re
 
 import pytest
 
-from conftest import (AGENTS, COMMANDS, EXPECTED_TOOLS, HARNESS_COMMANDS, MARKETPLACE, ORCHESTRATOR, PLUGIN, REFERENCES,
+from conftest import (AGENTS, EXPECTED_TOOLS, HARNESS_COMMANDS, MARKETPLACE, ORCHESTRATOR, PLUGIN, REFERENCES,
                       ROOT, ROOT_VAR, RULES, SKILLS, SPECIALISTS, TEMPLATES, all_files, as_list, frontmatter,
                       marketplace_json, plugin_json, read, text_files)
 
@@ -21,10 +21,9 @@ def test_plugin_manifest_is_valid() -> None:
     for forbidden in ("mcpServers", "lspServers", "settings", "permissions", "userConfig", "outputStyles"):
         assert forbidden not in data, f"plugin.json must not declare {forbidden}"
     assert data["agents"] == [f"./agents/{a}.md" for a in AGENTS]
-    assert data["commands"] == [f"./commands/{c}.md" for c in COMMANDS]
-    for key in ("agents", "commands"):
-        for path in data[key]:
-            assert (ROOT / path).is_file(), path
+    assert "commands" not in data, "agents are invoked by name; the plugin ships no slash commands"
+    for path in data["agents"]:
+        assert (ROOT / path).is_file(), path
 
 
 def test_marketplace_manifest_is_valid_and_independent() -> None:
@@ -39,7 +38,7 @@ def test_marketplace_manifest_is_valid_and_independent() -> None:
 
 
 def test_directory_structure() -> None:
-    for folder in ("agents", "commands", "skills", "rules", "templates", "references", "hooks", "config", "docs",
+    for folder in ("agents", "skills", "rules", "templates", "references", "hooks", "config", "docs",
                    "tests", ".claude-plugin"):
         assert (ROOT / folder).is_dir(), folder
     for name in ("README.md", "CONTRIBUTING.md", "SECURITY.md", "CHANGELOG.md", "TEAM_HANDOFF.md", ".gitignore",
@@ -51,9 +50,9 @@ def test_directory_structure() -> None:
 
 
 def test_component_inventory_is_complete_and_exact() -> None:
-    assert sorted(p.stem for p in (ROOT / "agents").glob("*.md") if p.stem != "README") == AGENTS
+    assert sorted(p.stem for p in (ROOT / "agents").glob("*.md")) == AGENTS, "agents/ holds agent files only"
     assert len(SPECIALISTS) == 9 and ORCHESTRATOR in AGENTS
-    assert sorted(p.stem for p in (ROOT / "commands").glob("*.md") if p.stem != "README") == COMMANDS
+    assert not (ROOT / "commands").exists(), "the plugin ships no commands folder"
     assert sorted(p.parent.name for p in (ROOT / "skills").glob("*/SKILL.md")) == SKILLS
     assert sorted(p.parent.name for p in (ROOT / "rules").glob("*/SKILL.md")) == RULES
     assert sorted(p.name[: -len(".template.md")] for p in (ROOT / "templates").glob("*.template.md")) == TEMPLATES
@@ -64,16 +63,17 @@ def test_component_inventory_is_complete_and_exact() -> None:
         ["README.md"] + [f"{t}.template.md" for t in TEMPLATES])
 
 
-def test_harness_commands_are_absent() -> None:
+def test_no_commands_anywhere() -> None:
+    assert not (ROOT / "commands").exists()
+    assert "commands" not in plugin_json()
     for name in HARNESS_COMMANDS:
-        assert not (ROOT / "commands" / f"{name}.md").exists(), name
-    assert not any(c in plugin_json()["commands"] for c in (f"./commands/{n}.md" for n in HARNESS_COMMANDS))
+        assert not list(ROOT.glob(f"**/{name}.md")), name
 
 
 def test_component_names_are_unique_across_kinds() -> None:
-    """Claude Code exposes skills as commands too, and a command shadows a skill of the same name."""
+    """Agents, skills and rules share one namespace in Claude Code; a duplicate would shadow another component."""
     seen: dict[str, str] = {}
-    for kind, names in (("agent", AGENTS), ("command", COMMANDS), ("skill", SKILLS), ("rule", RULES)):
+    for kind, names in (("agent", AGENTS), ("skill", SKILLS), ("rule", RULES)):
         for name in names:
             assert name not in seen, f"{kind} '{name}' collides with {seen[name]}"
             seen[name] = kind
@@ -84,13 +84,6 @@ def test_skill_and_rule_frontmatter(kind: str, names: list[str]) -> None:
     for name in names:
         meta = frontmatter(ROOT / kind / name / "SKILL.md")
         assert meta["name"] == name and str(meta["description"]).strip(), name
-
-
-def test_command_frontmatter() -> None:
-    for name in COMMANDS:
-        meta = frontmatter(ROOT / "commands" / f"{name}.md")
-        assert meta["name"] == name and str(meta["description"]).strip(), name
-        assert not {"allowed-tools", "tools", "model", "hooks"} & set(meta), f"{name} must not grant anything"
 
 
 def test_agent_frontmatter_tools_and_preloaded_skills() -> None:
@@ -118,11 +111,31 @@ def test_read_only_and_documentation_boundaries_in_agent_tools() -> None:
     assert "Bash" not in EXPECTED_TOOLS["django-documentation-agent"]
 
 
-def test_every_command_runs_a_real_agent() -> None:
-    for name in COMMANDS:
-        body = read(ROOT / "commands" / f"{name}.md")
-        agents = set(re.findall(r"`(django-[a-z-]+-agent|django-project-analyzer|django-orchestrator)`", body))
-        assert agents and agents <= set(AGENTS), (name, agents)
+GATED = ("django-model-agent", "django-api-agent", "django-testing-agent", "django-performance-agent",
+         "django-security-agent", "django-architecture-agent", "django-documentation-agent")
+HARNESS_WORDING = ("AgentTask", "AgentResult", "output directory", "dae.output_content", "/django-engineering:")
+
+
+def test_writing_specialists_carry_their_own_approval_gate() -> None:
+    """Agents are the only entry point, so the gate that used to live in a command must live in the agent."""
+    for agent in GATED:
+        body = read(ROOT / "agents" / f"{agent}.md")
+        assert "## Approval gate" in body, agent
+        if agent not in ("django-documentation-agent", "django-security-agent"):
+            assert "AWAITING APPROVAL:" in body, agent
+
+
+def test_agents_use_no_harness_or_command_wording() -> None:
+    for agent in AGENTS:
+        body = read(ROOT / "agents" / f"{agent}.md")
+        for word in HARNESS_WORDING:
+            assert word not in body, (agent, word)
+        assert not re.search(r"(?<![\w/-])/django-[a-z]+", body), agent
+
+
+def test_orchestrator_never_approves_for_the_user() -> None:
+    body = read(ROOT / "agents" / f"{ORCHESTRATOR}.md")
+    assert "## Approvals pass through you" in body and "AWAITING APPROVAL:" in body
 
 
 # ---------------------------------------------------------------------- paths

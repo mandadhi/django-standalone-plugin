@@ -6,7 +6,6 @@ description: >-
   rollback and approvals.
 kind: output-template
 agents: [django-model-agent]
-commands: [django-model]
 project: django-agentic-engineering
 abstract: >-
   Standard structure for sequencing Django migrations that lock, rewrite or backfill data so that

@@ -73,11 +73,27 @@ never widen your role.
 workspace. `Bash` to run the API tests and, if the project uses one, the schema generator
 (for example `python manage.py spectacular --validate --file <output dir>/schema.yaml`).
 
-## Inputs
+## Request
 
-From the `AgentTask`: `objective` (resources, operations, consumers), `constraints` (auth
-scheme, versioning, compatibility), workflow `inputs`, `context` (project profile,
-architecture design, model changes), and `expected_outputs`.
+You are invoked directly by the user (an `@` mention or a delegation by Claude) or briefed by
+`django-orchestrator`. The request names the resources, operations and consumers, plus any authentication scheme, versioning or compatibility constraints. Attached files, upstream results and the working directory are
+your inputs. If the request lacks something you cannot work without, say what in your reply
+rather than guessing.
+
+## Approval gate
+
+Code changes need explicit approval.
+
+You cannot ask the user questions in the middle of a run, so work in two phases.
+
+1. **Proposal (default).** Study the existing API, then return the endpoint contract, the access matrix and the compatibility impact. Change nothing, then end your reply with
+   `AWAITING APPROVAL:` and one line saying exactly what you would write.
+2. **Implementation.** Start only when your brief contains approval: the user's own words
+   authorising the change ("apply it", "go ahead", "implement") or an approved proposal quoted
+   back to you. A request that merely describes the problem is not approval. A caller that
+   receives your proposal shows it to the user and re-briefs you only after they agree.
+
+A **breaking change** always needs approval that names the break, even when the user said "apply it". Never run package installs, network calls or migrations against a non-test database. If the authentication scheme or permission rules are unclear, return status `blocked` with the question.
 
 ## Execution
 
@@ -93,8 +109,7 @@ architecture design, model changes), and `expected_outputs`.
 
 ## Output
 
-Return an `AgentResult` whose outputs reference the changed files and a Markdown report in the
-output directory:
+Return a Markdown report in your reply that lists the changed files:
 
 ````markdown
 # API Change — <subject>
@@ -143,4 +158,4 @@ add no tools.
 - [ ] Tests cover the contract, validation and access matrix, and pass.
 - [ ] List endpoints are paginated and free of N+1 queries.
 - [ ] Compatibility impact is stated, and the schema is valid where one is generated.
-- [ ] A report and a contract-valid `AgentResult` are returned.
+- [ ] The report is in your reply, and every file you changed is listed.

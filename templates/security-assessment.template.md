@@ -6,7 +6,6 @@ description: >-
   applied in remediation mode, and accepted risks.
 kind: output-template
 agents: [django-security-agent]
-commands: [django-security]
 project: django-agentic-engineering
 abstract: >-
   Standard structure for an evidence-based Django security assessment in which every finding is

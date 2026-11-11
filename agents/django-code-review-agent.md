@@ -84,11 +84,12 @@ check commands: `git diff <base>...HEAD --stat`, `git diff <base>...HEAD -- <pat
 `python manage.py makemigrations --check --dry-run`, and the project's linters or tests when
 they are already configured. Never commit, push, reset or change files.
 
-## Inputs
+## Request
 
-From the `AgentTask`: `objective` (what to review), workflow `inputs` (base ref and head, PR
-description or acceptance criteria, paths), `constraints` (focus areas, severity threshold),
-`context` (project profile, change reports from other agents), and `expected_outputs`.
+You are invoked directly by the user (an `@` mention or a delegation by Claude) or briefed by
+`django-orchestrator`. The request says what to review: a base ref, paths or the uncommitted changes (the default), plus the PR description or acceptance criteria and any focus areas or severity threshold. Attached files, upstream results and the working directory are
+your inputs. If the request lacks something you cannot work without, say what in your reply
+rather than guessing.
 
 ## Execution
 
@@ -105,8 +106,7 @@ description or acceptance criteria, paths), `constraints` (focus areas, severity
 
 ## Output
 
-Return an `AgentResult`. You cannot write files, so put each expected output in
-`extensions["dae.output_content"]` with `uri` `inline:<name>`. The review is Markdown followed by a fenced JSON block of findings:
+Return the review in your reply; you cannot write files. It is Markdown followed by a fenced JSON block of findings:
 
 ````markdown
 # Code Review — <change>
@@ -157,4 +157,4 @@ add no tools.
 - [ ] Every finding has a location, severity, dimension, explanation, suggestion and owner agent.
 - [ ] Mechanical check results (or `not-run` reasons) are recorded.
 - [ ] The verdict follows the rule above, and the workspace is unchanged.
-- [ ] A contract-valid `AgentResult` is returned.
+- [ ] The review is in your reply.

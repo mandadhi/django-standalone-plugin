@@ -6,7 +6,6 @@ description: >-
   for other owners, verification and limitations.
 kind: output-template
 agents: [django-performance-agent]
-commands: [django-optimize]
 project: django-agentic-engineering
 abstract: >-
   Standard structure for Django performance work in which every claimed gain is a measured

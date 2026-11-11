@@ -6,7 +6,6 @@ description: >-
   changed and follow-ups.
 kind: output-template
 agents: [django-testing-agent]
-commands: [django-test]
 project: django-agentic-engineering
 abstract: >-
   Standard structure for planning Django tests and reporting their results, so that every

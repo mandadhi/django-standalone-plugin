@@ -6,7 +6,6 @@ description: >-
   implementation plan, risks and open questions.
 kind: output-template
 agents: [django-architecture-agent]
-commands: [django-design]
 project: django-agentic-engineering
 abstract: >-
   Standard structure for a Django architecture design that other agents can implement without

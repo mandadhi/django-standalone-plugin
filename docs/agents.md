@@ -1,8 +1,8 @@
-# agents/
+# Agents
 
-The ten agents of the Django Engineering Plugin: the **orchestrator** and nine **specialists**.
+The ten agents (in [`agents/`](../agents/)) of the Django Engineering Plugin: the **orchestrator** and nine **specialists**.
 One `<agent-id>.md` per agent (YAML frontmatter + instructions). They are listed explicitly in
-`.claude-plugin/plugin.json`, so this README is never loaded as an agent.
+`.claude-plugin/plugin.json`.
 
 | Agent | Role | Write mode (guard) |
 |---|---|---|
@@ -19,6 +19,21 @@ One `<agent-id>.md` per agent (YAML frontmatter + instructions). They are listed
 
 The modes are enforced by `hooks/django_pack_guard.py` from `hooks/security-policy.json`
 (see [docs/security.md](../docs/security.md)).
+
+## Invoking an agent
+
+There are no slash commands; you address an agent by name:
+
+- `@django-engineering:django-model-agent add an Invoice model with a unique number per tenant`
+- Plain language ("have the Django security agent review the accounts app"); Claude picks the agent.
+- **Not sure which agent?** `@django-engineering:django-orchestrator <request>`: it routes to the
+  smallest set of specialists. For full orchestration run
+  `claude --agent django-engineering:django-orchestrator`.
+
+Agents that can change code (`model`, `api`, `testing`, `performance`, `architecture`, `security`) follow
+an **approval gate** written in their own file: they reply with a proposal ending in `AWAITING APPROVAL:`
+and change nothing until your request, or your follow-up, authorises it. Say "apply it" in the first
+request to skip the second round trip (breaking API changes still ask).
 
 ## Conventions
 

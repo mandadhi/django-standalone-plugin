@@ -6,7 +6,6 @@ description: >-
   recommended follow-up.
 kind: output-template
 agents: [django-code-review-agent]
-commands: [django-review]
 project: django-agentic-engineering
 abstract: >-
   Standard structure for a Django gate review whose verdict follows from its findings and whose
@@ -53,7 +52,7 @@ change, where, why it matters, and who should fix it.
 | Mechanical checks | required | Each check with command and result, `not-run` with the reason | command output |
 | Findings | required | Findings ordered by severity | `file:line` per finding |
 | Not reviewed | optional | Files skipped and why (size, binary, out of scope) | — |
-| Recommended follow-up agents | required | Agents or commands for fixes and deeper reviews | finding ids |
+| Recommended follow-up agents | required | Agents for fixes and deeper reviews | finding ids |
 | Machine-readable summary | optional | The fenced JSON findings block defined by the producing agent | JSON parses |
 
 ## Filling rules

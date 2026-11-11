@@ -21,6 +21,6 @@ nothing is injected by any external service.
 | `postgresql-engineering` | Indexes, EXPLAIN, locking, connections, full-text search |
 
 A skill teaches *how*; a [rule](../rules/README.md) states what every result *must* satisfy. Names must be
-unique across skills, rules, agents and commands (a command shadows a skill of the same name), which is
-why `/django-engineering:django-security` (command) and `django-security-engineering` (skill) differ.
+unique across skills, rules and agents (a duplicate would shadow another component), which is why the
+`django-security-agent` agent and the `django-security-engineering` skill have different names.
 `tests/test_plugin_structure.py` enforces this.

@@ -6,7 +6,6 @@ description: >-
   documentation report that accompanies it.
 kind: output-template
 agents: [django-documentation-agent]
-commands: [django-document]
 project: django-agentic-engineering
 abstract: >-
   Standard structure for Django documentation in which every statement traces to code, plus a

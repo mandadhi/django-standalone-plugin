@@ -11,13 +11,12 @@
 # limit violations and any drift between this file, the orchestrator and the guard policy.
 schema_version: "1.0"
 kind: OrchestrationPolicy
-version: 1.0.0
+version: 1.1.0
 
 # The user-facing orchestrator of the plugin (logical identity `django-orchestrator`).
 orchestrator:
   id: django-orchestrator
   path: agents/django-orchestrator.md
-  command: orchestrate                     # /django-engineering:orchestrate
   skills: [django-security-standards]      # preloaded into the orchestrator (conduct rules SEC-A*)
 
 limits:
@@ -169,7 +168,8 @@ completion_criteria:
   - Every step in the route ran, or is reported as skipped or failed with the reason.
   - The combined result is checked against the user's original objective, not only against each step's brief.
   - Verification actually performed (tests run, checks executed) is listed separately from verification not performed.
-  - Unresolved issues, assumptions and recommended follow-up commands are listed.
+  - Unresolved issues, assumptions and recommended follow-up steps (with the owning specialist) are listed.
+  - A step that returned a proposal and awaits the user's approval is reported as awaiting approval, never as done.
 
 clarify_when:
   - The request is empty or names no Django work.

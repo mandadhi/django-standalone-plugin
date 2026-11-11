@@ -6,7 +6,6 @@ description: >-
   verified.
 kind: output-template
 agents: [django-architecture-agent]
-commands: [django-design]
 project: django-agentic-engineering
 abstract: >-
   Standard structure for recording one hard-to-reverse Django design decision with the options

@@ -6,7 +6,6 @@ description: >-
   filtering, the access matrix, compatibility, files changed and verification.
 kind: output-template
 agents: [django-api-agent]
-commands: [django-api]
 project: django-agentic-engineering
 abstract: >-
   Standard structure for a DRF API proposal or change report in which every endpoint has an

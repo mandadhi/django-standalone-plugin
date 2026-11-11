@@ -18,7 +18,7 @@ def test_policy_header_and_orchestrator() -> None:
     assert doc["kind"] == "OrchestrationPolicy" and doc["schema_version"] == "1.0"
     assert doc["orchestrator"]["id"] == ORCHESTRATOR
     assert doc["orchestrator"]["path"] == f"agents/{ORCHESTRATOR}.md" and (ROOT / doc["orchestrator"]["path"]).is_file()
-    assert doc["orchestrator"]["command"] == "orchestrate" and (ROOT / "commands" / "orchestrate.md").is_file()
+    assert "command" not in doc["orchestrator"], "the orchestrator is invoked by name; there are no commands"
     assert set(doc["orchestrator"]["skills"]) <= set(SKILLS + RULES)
 
 

@@ -12,7 +12,7 @@ import re
 from conftest import ROOT, all_files, policy, read, text_files
 
 #: Files that legitimately name harness components in order to exclude them.
-CONTEXT_FILES = {"TEAM_HANDOFF.md", "CHANGELOG.md", "CANONICAL-MANIFEST.json", "README.md", "commands/README.md",
+CONTEXT_FILES = {"TEAM_HANDOFF.md", "CHANGELOG.md", "CANONICAL-MANIFEST.json", "README.md",
                  "hooks/README.md"}
 #: Harness-only identifiers: forbidden everywhere except the context files and this test.
 STRICT = [r"core\.cli", r"ExecutionManager", r"AgentRunner", r"harness_bootstrap", r"django_harness",
@@ -116,12 +116,6 @@ def test_hooks_json_uses_only_the_plugin_root() -> None:
     paths = re.findall(r"\$\{CLAUDE_PLUGIN_ROOT\}[^\"]*", text)
     assert paths and all(p.startswith("${CLAUDE_PLUGIN_ROOT}/hooks/") for p in paths)
     assert not re.search(r"core|runtime|harness|\.venv", text)
-
-
-def test_orchestrate_command_has_no_execution_mode_resolver() -> None:
-    body = read(ROOT / "commands" / "orchestrate.md")
-    assert "## Agent" in body and "Harness mode" not in body and "Execution mode" not in body
-    assert not re.search(r"^\s*python3?", body, re.M) and "CLAUDE_PLUGIN_ROOT}/harness" not in body
 
 
 def test_guard_runs_without_any_package_but_the_standard_library() -> None:

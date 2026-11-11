@@ -14,15 +14,14 @@ Nothing else: no harness, no database, no Agent SDK.
 
 | | Value |
 |---|---|
-| Plugin name | `django-engineering` (commands appear as `/django-engineering:<command>`) |
+| Plugin name | `django-engineering` (agents appear as `django-engineering:<agent id>`) |
 | Marketplace name | `django-engineering-standalone` (declared in `.claude-plugin/marketplace.json`) |
 | Install id | `django-engineering@django-engineering-standalone` |
 
 The marketplace name differs from the integrated distribution's (`django-agentic-engineering`), so the
 install ids never collide. The **plugin** name is the same on purpose: it gives the documented
-`/django-engineering:orchestrate` experience and the agent namespace the canonical agents and guard policy
-rely on. Consequently, **do not enable both distributions in the same Claude Code scope**; they would
-register the same agent, command and skill names. Uninstall one first.
+`django-engineering:` agent namespace the canonical agents and guard policy rely on. Consequently, **do not enable both distributions in the same Claude Code scope**; they would
+register the same agent and skill names. Uninstall one first.
 
 ## Install from GitHub
 
@@ -53,7 +52,7 @@ claude --plugin-dir .
 ```
 
 The plugin loads for that session straight from the working copy. Use it while editing agents, skills,
-rules or commands. Install from the marketplace for normal use.
+rules. Install from the marketplace for normal use.
 
 You can also register the local folder as a marketplace:
 
@@ -73,8 +72,8 @@ claude plugin list        # django-engineering@django-engineering-standalone, en
 In a session:
 
 - `/agents` lists ten `django-engineering:` agents (the orchestrator and nine specialists).
-- Typing `/django-engineering:` lists the ten commands, including `orchestrate`. Skills and rules appear
-  as `django-engineering:<name>`.
+- Typing `@django-engineering:` offers the ten agents for mention. Skills and rules appear in the `/` menu as
+  `django-engineering:<name>`; the plugin ships no slash commands.
 - `claude plugin details ...` may report **Agents (0)**. This is a display quirk for agents listed file by
   file in `plugin.json`; the session loads all ten.
 

@@ -13,30 +13,30 @@ This folder holds the plugin's output templates, one `<id>.template.md` per repo
 
 ## Django output templates
 
-An output template fixes the structure of one kind of report, so that every agent and command
+An output template fixes the structure of one kind of report, so that every agent
 producing it returns the same sections in the same order. Templates hold structure only. Django
 knowledge stays in the [skills](../skills/README.md), mandatory requirements in the
 [rules](../rules/README.md), and reusable checklists in the [shared references](../references/README.md).
 
-| Template | Purpose | Agents | Commands |
-|---|---|---|---|
-| [project-analysis](project-analysis.template.md) | Evidence-backed profile of an existing project | django-project-analyzer | /django-analyze |
-| [architecture-design](architecture-design.template.md) | App boundaries, layering, boundaries, plan | django-architecture-agent | /django-design |
-| [architecture-decision-record](architecture-decision-record.template.md) | One hard-to-reverse decision with options | django-architecture-agent | /django-design |
-| [django-model-specification](django-model-specification.template.md) | Model, constraint, index and migration proposal or report | django-model-agent | /django-model |
-| [api-specification](api-specification.template.md) | DRF endpoint contract, access matrix, compatibility | django-api-agent | /django-api |
-| [security-assessment](security-assessment.template.md) | Security findings, configuration checks, fixes | django-security-agent | /django-security |
-| [test-plan](test-plan.template.md) | Test plan, run results, classified failures | django-testing-agent | /django-test |
-| [performance-assessment](performance-assessment.template.md) | Measured findings, before/after changes | django-performance-agent | /django-optimize |
-| [technical-documentation](technical-documentation.template.md) | Code-derived documents and the documentation report | django-documentation-agent | /django-document |
-| [code-review-report](code-review-report.template.md) | Merge verdict and severity-ranked findings | django-code-review-agent | /django-review |
-| [implementation-plan](implementation-plan.template.md) | Dependency-ordered work items with owners | django-architecture-agent | /django-design |
-| [migration-plan](migration-plan.template.md) | Phased, verifiable, reversible risky migration | django-model-agent | /django-model |
+| Template | Purpose | Agent |
+|---|---|---|
+| [project-analysis](project-analysis.template.md) | Evidence-backed profile of an existing project | django-project-analyzer |
+| [architecture-design](architecture-design.template.md) | App boundaries, layering, boundaries, plan | django-architecture-agent |
+| [architecture-decision-record](architecture-decision-record.template.md) | One hard-to-reverse decision with options | django-architecture-agent |
+| [django-model-specification](django-model-specification.template.md) | Model, constraint, index and migration proposal or report | django-model-agent |
+| [api-specification](api-specification.template.md) | DRF endpoint contract, access matrix, compatibility | django-api-agent |
+| [security-assessment](security-assessment.template.md) | Security findings, configuration checks, fixes | django-security-agent |
+| [test-plan](test-plan.template.md) | Test plan, run results, classified failures | django-testing-agent |
+| [performance-assessment](performance-assessment.template.md) | Measured findings, before/after changes | django-performance-agent |
+| [technical-documentation](technical-documentation.template.md) | Code-derived documents and the documentation report | django-documentation-agent |
+| [code-review-report](code-review-report.template.md) | Merge verdict and severity-ranked findings | django-code-review-agent |
+| [implementation-plan](implementation-plan.template.md) | Dependency-ordered work items with owners | django-architecture-agent |
+| [migration-plan](migration-plan.template.md) | Phased, verifiable, reversible risky migration | django-model-agent |
 
 ### Format
 
 - **Frontmatter:** `name` (= file name without `.template.md`), `description`,
-  `kind: output-template`, `agents` and `commands` (the producers), and the inventory fields
+  `kind: output-template`, `agents` (the producers), and the inventory fields
   used across this plugin (`project`, `abstract`, `sdlc_phase`, `tech_stack`, `domain`).
 - **Body sections, in this order:** Purpose, When to use, Placeholders, Sections, Filling rules,
   Output structure, Completion checklist.
@@ -82,7 +82,7 @@ These apply to every output template.
 ## Adding a template
 
 1. Create `templates/<id>.template.md` with the frontmatter and sections above.
-2. Name its producers in `agents` and `commands`, and add the id to the `Templates` line of each
-   of those agents' `## Templates and references` section and to each command's Expected output.
+2. Name its producers in `agents`, and add the id to the `Templates` line of each
+   of those agents' `## Templates and references` section.
 3. Add it to the table above and to `EXPECTED_TEMPLATES` in `tests/test_templates_and_references.py`,
    then run the tests.

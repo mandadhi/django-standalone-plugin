@@ -17,7 +17,7 @@ exclusions.
 ## Standards
 
 - Agents keep their role, tools and write mode. Capability may be removed freely and added only with review.
-- Component names are unique across agents, commands, skills and rules.
+- Component names are unique across agents, skills and rules.
 - Markdown links are relative and resolve inside this repository; no symlinks; no absolute paths.
 - No dependency on the Python harness, no network access, no secrets or personal data in any file.
 - Commit messages: imperative, one line summary, body explaining why.

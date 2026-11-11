@@ -5,7 +5,7 @@ Read this first. It is written so a new team can start without asking the origin
 ## 1. Product scope
 
 **What it is.** A Claude Code plugin that gives a developer a Django/DRF engineering team inside Claude
-Code: one orchestrator, nine specialist agents, ten slash commands, twelve skills, twelve rules, twelve
+Code: one orchestrator, nine specialist agents (invoked by name, no slash commands), twelve skills, twelve rules, twelve
 output templates, seven shared references and a security guard hook.
 
 **What it does.** Analyse a project; design architecture; create or change models and migrations; build
@@ -21,14 +21,14 @@ specialists for a request.
 - No harness management commands (`setup-harness`, `harness-status`, `enable-harness`,
   `disable-harness`, `doctor`).
 
-**Identity.** Plugin `django-engineering` (commands are `/django-engineering:<name>`), marketplace
+**Identity.** Plugin `django-engineering` (agents are `django-engineering:<agent id>`), marketplace
 `django-engineering-standalone`, version in `.claude-plugin/plugin.json`. The plugin name is shared with the
 integrated distribution on purpose (see [docs/installation.md](docs/installation.md#identity)); never enable
 both in one scope.
 
 ## 2. Architecture
 
-See [docs/architecture.md](docs/architecture.md). In short: a command briefs the orchestrator; the
+See [docs/architecture.md](docs/architecture.md). In short: the user names an agent (or the orchestrator when unsure); the
 orchestrator classifies the request, selects the smallest route from
 [`config/orchestration-policy.yaml`](config/orchestration-policy.yaml), briefs each specialist, runs the
 steps in order, applies the failure policy, reconciles against the original request and reports. Every
@@ -39,7 +39,6 @@ Repository layout:
 ```text
 .claude-plugin/    plugin.json (component list, version), marketplace.json
 agents/            orchestrator + 9 specialists
-commands/          10 commands
 skills/  rules/    12 + 12 SKILL.md bundles (both declared as skill folders)
 templates/         12 report templates      references/  7 shared references
 hooks/             hooks.json, guard, shell analyser, security-policy.json
@@ -101,7 +100,6 @@ Try changes live: `claude --plugin-dir .` from the repository root, then `/reloa
 | Which skills/rules an agent preloads | frontmatter `skills:` of the agent | nothing else | tests |
 | Routing (categories, routes, limits, specialists) | `config/orchestration-policy.yaml` | the `GENERATED` routing section of `agents/django-orchestrator.md`; `delegates` in `security-policy.json` | tests |
 | A skill / a rule | `skills/<id>/...` / `rules/<id>/SKILL.md` | cross-links; rule ids cited by references | tests |
-| A command | `commands/<name>.md` | the table in `commands/README.md`; `plugin.json` `commands` if added or removed | tests |
 | A template / reference | `templates/..` / `references/..` | the agents' `## Templates and references` lines; the README tables | tests |
 | Guard behaviour or policy | `hooks/django_pack_guard.py`, `hooks/security-policy.json` | `docs/security.md` | tests, add a regression test |
 | Adding or removing a component | the file | `plugin.json` lists, README counts, `tests/test_plugin_structure.py` expected counts | tests |
@@ -110,7 +108,7 @@ Rules of the road:
 
 1. Preserve **role, tools and write mode** of every agent. A change that widens a tool or a path needs a
    security review and a matching test. Policy can only take capability away.
-2. Names must be unique across agents, commands, skills and rules.
+2. Names must be unique across agents, skills and rules. Approval gates live in the agent files (`## Approval gate`); there is no command layer to hold them.
 3. Keep `plugin.json` free of a `hooks` key (the default `hooks/hooks.json` is already loaded).
 4. After intentional edits to canonical files, refresh the hashes: they are recorded in
    `CANONICAL-MANIFEST.json`; `tests/test_manifest.py` fails on any file changed without updating its
@@ -138,10 +136,10 @@ runs with no packages beyond the standard library. Run it from a fresh clone bef
 ## 8. Release process
 
 1. Work on a branch; `python -m pytest`; `claude plugin validate .` and the marketplace validation.
-2. Run `python -m pytest -m live` (needs Claude Code and a login) and smoke-test `/django-engineering:orchestrate
-   --plan-only <request>` in a real Django project.
+2. Run `python -m pytest -m live` (needs Claude Code and a login) and smoke-test `@django-engineering:django-orchestrator
+   plan only: <request>` in a real Django project.
 3. Bump `version` in `.claude-plugin/plugin.json` **and** `.claude-plugin/marketplace.json` (semantic
-   versioning: breaking change of a command/agent contract or a security regression fix = major; new
+   versioning: breaking change of an agent contract or entry point or a security regression fix = major; new
    capability = minor; fixes and wording = patch). `tests/test_plugin_structure.py` requires both to agree.
 4. Update `CHANGELOG.md`; refresh `CANONICAL-MANIFEST.json` hashes for changed files.
 5. Merge, tag `v<version>`, publish the repository. Users run `claude plugin marketplace update

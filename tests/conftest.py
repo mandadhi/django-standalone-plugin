@@ -19,8 +19,6 @@ SPECIALISTS = ["django-project-analyzer", "django-architecture-agent", "django-m
                "django-documentation-agent", "django-code-review-agent"]
 ORCHESTRATOR = "django-orchestrator"
 AGENTS = sorted(SPECIALISTS + [ORCHESTRATOR])
-COMMANDS = sorted(["django-analyze", "django-design", "django-model", "django-api", "django-security", "django-test",
-                   "django-optimize", "django-document", "django-review", "orchestrate"])
 SKILLS = sorted(["django-architecture", "django-core", "django-data-processing", "django-frontend",
                  "django-integrations", "django-orm", "django-performance", "django-report-generation",
                  "django-rest-framework", "django-security-engineering", "django-testing", "postgresql-engineering"])

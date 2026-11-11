@@ -1,7 +1,7 @@
 # Django Engineering Plugin (standalone)
 
 A Claude Code plugin for Django and Django REST Framework engineering: a **Django Orchestrator**, nine
-**specialist agents**, ten slash commands, twelve **skills**, twelve mandatory **rules**, output
+**specialist agents** you invoke by name, twelve **skills**, twelve mandatory **rules**, output
 **templates**, shared **references** and a fail-closed **security guard**.
 
 This is the independent, self-contained distribution. It needs **no Python harness, no services, no
@@ -20,7 +20,7 @@ Inside Claude Code (replace `<owner>/<repository>` with the GitHub repository th
 Start a new session (or `/reload-plugins`), open a Django project and run:
 
 ```text
-/django-engineering:orchestrate Add an invoices API with its model and tests
+@django-engineering:django-orchestrator Add an invoices API with its model and tests
 ```
 
 From a local clone, without installing:
@@ -38,7 +38,6 @@ Full instructions: [docs/installation.md](docs/installation.md).
 |---|---|---|
 | Orchestrator | 1 | `agents/django-orchestrator.md` |
 | Specialist agents | 9 | `agents/` |
-| Commands | 10 (`orchestrate` + nine `django-*`) | `commands/` |
 | Skills | 12 | `skills/` |
 | Rules | 12 | `rules/` |
 | Output templates | 12 | `templates/` |
@@ -50,17 +49,18 @@ Specialists: `django-project-analyzer`, `django-architecture-agent`, `django-mod
 `django-api-agent`, `django-security-agent`, `django-testing-agent`, `django-performance-agent`,
 `django-documentation-agent`, `django-code-review-agent`.
 
-Commands (all `/django-engineering:<name>`): `orchestrate`, `django-analyze`, `django-design`,
-`django-model`, `django-api`, `django-security`, `django-test`, `django-optimize`, `django-document`,
-`django-review`.
+There are **no slash commands**: you address an agent by name (`@django-engineering:<agent id>`) or in plain
+language, and the agent loads its own skills, rules, templates and references. Not sure which agent? Use
+`@django-engineering:django-orchestrator`. See [docs/usage.md](docs/usage.md).
 
 ## Documentation
 
 | Document | For |
 |---|---|
 | [docs/installation.md](docs/installation.md) | Installing, verifying, updating, uninstalling, local development |
-| [docs/usage.md](docs/usage.md) | The orchestrator, each command, examples |
-| [docs/architecture.md](docs/architecture.md) | How the pieces fit; orchestration model |
+| [docs/agents.md](docs/agents.md) | The ten agents, how to invoke them, write modes |
+| [docs/usage.md](docs/usage.md) | The agents, approvals, the orchestrator, examples |
+| [docs/architecture.md](docs/architecture.md) | How the pieces fit; what skills, rules, references and templates are for; orchestration model |
 | [docs/security.md](docs/security.md) | What is enforced, what is not, limitations of standalone mode |
 | [docs/troubleshooting.md](docs/troubleshooting.md) | Common problems |
 | [TEAM_HANDOFF.md](TEAM_HANDOFF.md) | Everything a new owning team needs |

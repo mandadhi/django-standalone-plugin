@@ -49,13 +49,6 @@
    ]
   },
   {
-   "id": "AD-05",
-   "reason": "/orchestrate: removed the execution-mode resolver and the Harness mode section (they call harness_bootstrap, which is not part of this distribution). The standalone Agent path is unchanged.",
-   "files": [
-    "commands/orchestrate.md"
-   ]
-  },
-  {
    "id": "AD-06",
    "reason": "Rules referred to the harness's approval service and secret-pattern configuration; the standalone equivalents are the user's approval prompt and hooks/security-policy.json.",
    "files": [
@@ -106,6 +99,36 @@
    "files": [
     "references/README.md"
    ]
+  },
+  {
+   "id": "AD-13",
+   "reason": "Version 2.0.0: the plugin ships no slash commands. Approval gates that lived in the commands moved into the specialist agents (## Approval gate); harness vocabulary (AgentTask, AgentResult, output directory, dae.output_content) and command names were removed from agents, templates and the orchestration policy; the orchestrator now passes approvals through. Responsibilities, tools, write modes, skills and guard policy are unchanged.",
+   "files": [
+    "agents/django-api-agent.md",
+    "agents/django-architecture-agent.md",
+    "agents/django-code-review-agent.md",
+    "agents/django-documentation-agent.md",
+    "agents/django-model-agent.md",
+    "agents/django-orchestrator.md",
+    "agents/django-performance-agent.md",
+    "agents/django-project-analyzer.md",
+    "agents/django-security-agent.md",
+    "agents/django-testing-agent.md",
+    "config/orchestration-policy.yaml",
+    "templates/README.md",
+    "templates/api-specification.template.md",
+    "templates/architecture-decision-record.template.md",
+    "templates/architecture-design.template.md",
+    "templates/code-review-report.template.md",
+    "templates/django-model-specification.template.md",
+    "templates/implementation-plan.template.md",
+    "templates/migration-plan.template.md",
+    "templates/performance-assessment.template.md",
+    "templates/project-analysis.template.md",
+    "templates/security-assessment.template.md",
+    "templates/technical-documentation.template.md",
+    "templates/test-plan.template.md"
+   ]
   }
  ],
  "excluded_harness_components": [
@@ -123,18 +146,20 @@
   "templates/agent-task.prompt.md",
   "requirements-harness.txt",
   "pyproject.toml (harness package)",
-  "tests/ of the harness"
+  "tests/ of the harness",
+  "commands/ (the whole folder: agents are the interface in 2.0.0)",
+  "commands/ (the whole folder: agents are the interface in 2.0.0)"
  ],
  "files": [
   {
    "path": ".claude-plugin/marketplace.json",
    "origin": "standalone-authored",
-   "sha256": "7ae86fb155cbfe1a257c14ba237bcbf870470bf5ce4a016cb207dc51c61c5404"
+   "sha256": "98c3e07f74795b9012ff7e9eb4d3564c4bdec73093d430fd4dc51c6f1d2cc757"
   },
   {
    "path": ".claude-plugin/plugin.json",
    "origin": "standalone-authored",
-   "sha256": "8a9c05dab6187765ff5e6944110abc4280f5d3d7d60bad05b93d79440f1c7ac3"
+   "sha256": "8903f171b70ade74eaa859fff928a110ef4cf02dbc013e7e87d0e9c51a8214b5"
   },
   {
    "path": ".gitattributes",
@@ -147,16 +172,42 @@
    "sha256": "d5e1165b31626d674cac82f67f8e51732f025c85563eb098fe167080233804f7"
   },
   {
+   "path": "CHANGELOG.md",
+   "origin": "standalone-authored",
+   "sha256": "cca0ec9f20da38bb0daf6a5fa76ca0c05af1a8cf654d609a20eb8c4a668ecb99"
+  },
+  {
+   "path": "CONTRIBUTING.md",
+   "origin": "standalone-authored",
+   "sha256": "7360078ca519b318455867cb49b3b56b82c4f71a98e74f8384e4af92fcb2e86b"
+  },
+  {
+   "path": "README.md",
+   "origin": "standalone-authored",
+   "sha256": "d0e8d2c81ba1725ba39ae09fc4fd9cb08fb8cdbb6cb61437ae312f1a201e0f24"
+  },
+  {
+   "path": "SECURITY.md",
+   "origin": "standalone-authored",
+   "sha256": "7cea46135dcbf9d581d669eeadd412af8f837f1ed9b3c745ac4679752764fd65"
+  },
+  {
+   "path": "TEAM_HANDOFF.md",
+   "origin": "standalone-authored",
+   "sha256": "0beed6f88909ff1b578c4a231e3d15fc60941f010943ce7042fb0cbbb7106561"
+  },
+  {
    "path": "agents/django-api-agent.md",
    "origin": "canonical",
    "kind": "agent",
    "source": "agents/django-api-agent.md",
    "source_sha256": "d650ce6e32131cdb0c9003327df33609af7bfe20e5e65a8c4537c12de36492e6",
-   "sha256": "52f330722c650d6b7ea22710a8f4f2505be5202808925a672855942cd68e05c2",
+   "sha256": "0ea0717b33d6d0b0b90633bf1563b99fa364f996a498782acbe551be93d39dee",
    "identical": false,
    "adaptations": [
     "AD-01",
-    "AD-02"
+    "AD-02",
+    "AD-13"
    ]
   },
   {
@@ -165,11 +216,12 @@
    "kind": "agent",
    "source": "agents/django-architecture-agent.md",
    "source_sha256": "52401d6a7c3266d5c94deef63286dd4f5e2cad73bbe0af8633f511f4fa020644",
-   "sha256": "4d23482aad553674d5307cf4bedb588532707d0cfd1ed8117213c34c50be295b",
+   "sha256": "1eb9ef0d7037a3080d35f43e83a9c7aa55975ebc888e52d70f2e23052a9fa8ee",
    "identical": false,
    "adaptations": [
     "AD-01",
-    "AD-02"
+    "AD-02",
+    "AD-13"
    ]
   },
   {
@@ -178,11 +230,12 @@
    "kind": "agent",
    "source": "agents/django-code-review-agent.md",
    "source_sha256": "c4f82e2a88a140976a0b7ae22167265804eb3af3d211aef3404aa5d326a02a1f",
-   "sha256": "b0fc230ed936df70d52ccf1bb1b79105c0be05e02b047aa4ea431538a9d8d2a1",
+   "sha256": "6d21f827cc3c8160aa55c4dc89d7df786dc939a6652e9a2b115ab5da4118779e",
    "identical": false,
    "adaptations": [
     "AD-01",
-    "AD-02"
+    "AD-02",
+    "AD-13"
    ]
   },
   {
@@ -191,11 +244,12 @@
    "kind": "agent",
    "source": "agents/django-documentation-agent.md",
    "source_sha256": "1aee2135ff5b953480aa77127e62543b0b595f8f53dfec447b9e86dc3caf1e9d",
-   "sha256": "38224367e955ad47389c7c3ce93d0bfe2dcd46e3db4b2779a28482cf0e9e6a6a",
+   "sha256": "fb59bd811ab8e00768f26060ea452952543bb0aa5f56082ceb8507e8e00f314d",
    "identical": false,
    "adaptations": [
     "AD-01",
-    "AD-02"
+    "AD-02",
+    "AD-13"
    ]
   },
   {
@@ -204,12 +258,13 @@
    "kind": "agent",
    "source": "agents/django-model-agent.md",
    "source_sha256": "c5f681dad7a1bab121065c42facb4ea7adf64d04b131cd4c55809a070ae99949",
-   "sha256": "c8cf6e2b29e48a32d0caa6485eaa06422ff2b643b8bcf526438c7599f2330cb3",
+   "sha256": "5d9453ab25b490ae2cb0fb408522c42b53b92c685abe74bf5e100c2011061be7",
    "identical": false,
    "adaptations": [
     "AD-01",
     "AD-02",
-    "AD-03"
+    "AD-03",
+    "AD-13"
    ]
   },
   {
@@ -218,10 +273,11 @@
    "kind": "agent",
    "source": "agents/django-orchestrator.md",
    "source_sha256": "b061859513570b06c1658b52a6ee77d52f42af9bca854a80c5c9576bc22805a3",
-   "sha256": "826e3f327d6b5f5adbba4b3efe8a1625077267c6245e865318879ac34612c316",
+   "sha256": "fe2804af6f8170b3620670b321bae39b39d9637a363546af4022900ff133144e",
    "identical": false,
    "adaptations": [
-    "AD-04"
+    "AD-04",
+    "AD-13"
    ]
   },
   {
@@ -230,11 +286,12 @@
    "kind": "agent",
    "source": "agents/django-performance-agent.md",
    "source_sha256": "f518306b694bdda7eedd5a468b40deb8eccf00a0674bc81dbd23abc9c7e562a8",
-   "sha256": "69833268716efbe035e2cc4cf65c28b7bd4396514a6b673467076cef97079bce",
+   "sha256": "17ce3652d83811722acdf9a1054ee1b07f2edc1a1df5200f43a3388956058cf7",
    "identical": false,
    "adaptations": [
     "AD-01",
-    "AD-02"
+    "AD-02",
+    "AD-13"
    ]
   },
   {
@@ -243,11 +300,12 @@
    "kind": "agent",
    "source": "agents/django-project-analyzer.md",
    "source_sha256": "d02316d287e46c822a4a702aac5956b06285fe0ecae26c398b6f8e626f626815",
-   "sha256": "5546df7a7e492a8ead0dd9b1e769b487108581da6277024eec0fbf9367af08c8",
+   "sha256": "f0dd96288b0473b508f51a08c56feffa0d9afb61fa4a3d3d72295e25c852bf14",
    "identical": false,
    "adaptations": [
     "AD-01",
-    "AD-02"
+    "AD-02",
+    "AD-13"
    ]
   },
   {
@@ -256,11 +314,12 @@
    "kind": "agent",
    "source": "agents/django-security-agent.md",
    "source_sha256": "ec1ebbe73b4b47273d0983b7c7876a6ca56fefd705383544ad859a47e6154acf",
-   "sha256": "782e155c8dbf411b4a54fa6c9054263564a48c3fb5225fc4ce0c92cd816416fc",
+   "sha256": "7361de8143259faf0d5501bebcef2cb0aee34387a009c388d05c873e8ee83186",
    "identical": false,
    "adaptations": [
     "AD-01",
-    "AD-02"
+    "AD-02",
+    "AD-13"
    ]
   },
   {
@@ -269,129 +328,13 @@
    "kind": "agent",
    "source": "agents/django-testing-agent.md",
    "source_sha256": "6bd238ee754e2ed24755a24b9c294140776962a51565e24db776053d583712c1",
-   "sha256": "aa175123eac8a2dd5601834e875df9aa7f4ff995d684c3f7600fa4e9c3f0c6f5",
+   "sha256": "564f9d7186469418bd71b7e1c280ad7fd5c4ef470598ed1e2277a94ce75478aa",
    "identical": false,
    "adaptations": [
     "AD-01",
-    "AD-02"
+    "AD-02",
+    "AD-13"
    ]
-  },
-  {
-   "path": "agents/README.md",
-   "origin": "standalone-authored",
-   "sha256": "91a98322b32a781859d7353ee1700751b1b128b16dcb94fe84a306523267971c"
-  },
-  {
-   "path": "CHANGELOG.md",
-   "origin": "standalone-authored",
-   "sha256": "3d254a3b032e46a29157266f539c3859df71f3f5934583dddcc8f34ad2c7d975"
-  },
-  {
-   "path": "commands/django-analyze.md",
-   "origin": "canonical",
-   "kind": "command",
-   "source": "commands/django-analyze.md",
-   "source_sha256": "edc6a23c8efa17db52f76ea8f18400647628469e6181c6201fa78a42a9e4e533",
-   "sha256": "edc6a23c8efa17db52f76ea8f18400647628469e6181c6201fa78a42a9e4e533",
-   "identical": true,
-   "adaptations": []
-  },
-  {
-   "path": "commands/django-api.md",
-   "origin": "canonical",
-   "kind": "command",
-   "source": "commands/django-api.md",
-   "source_sha256": "a7bcac903dbe54c2077a95498070eaacac8f6ddc4dc3b95fb8cbd748592fd69a",
-   "sha256": "a7bcac903dbe54c2077a95498070eaacac8f6ddc4dc3b95fb8cbd748592fd69a",
-   "identical": true,
-   "adaptations": []
-  },
-  {
-   "path": "commands/django-design.md",
-   "origin": "canonical",
-   "kind": "command",
-   "source": "commands/django-design.md",
-   "source_sha256": "9d556df44bfeadcd12b0abbe2a75e498cf65bb1db446bca9efe03ca012176d04",
-   "sha256": "9d556df44bfeadcd12b0abbe2a75e498cf65bb1db446bca9efe03ca012176d04",
-   "identical": true,
-   "adaptations": []
-  },
-  {
-   "path": "commands/django-document.md",
-   "origin": "canonical",
-   "kind": "command",
-   "source": "commands/django-document.md",
-   "source_sha256": "a79f58406abe9f5468b2b3c6e45cb14ec1c8a7990c352e9102118e2c341f2fc3",
-   "sha256": "a79f58406abe9f5468b2b3c6e45cb14ec1c8a7990c352e9102118e2c341f2fc3",
-   "identical": true,
-   "adaptations": []
-  },
-  {
-   "path": "commands/django-model.md",
-   "origin": "canonical",
-   "kind": "command",
-   "source": "commands/django-model.md",
-   "source_sha256": "1c8484b2f42a6575ec9207657a7698327f0126fd6a91ab9bce233169cbd067e0",
-   "sha256": "1c8484b2f42a6575ec9207657a7698327f0126fd6a91ab9bce233169cbd067e0",
-   "identical": true,
-   "adaptations": []
-  },
-  {
-   "path": "commands/django-optimize.md",
-   "origin": "canonical",
-   "kind": "command",
-   "source": "commands/django-optimize.md",
-   "source_sha256": "7839c32d57982b5ba3e424f1889a2dabb39bf60c401393442064efa61be084d0",
-   "sha256": "7839c32d57982b5ba3e424f1889a2dabb39bf60c401393442064efa61be084d0",
-   "identical": true,
-   "adaptations": []
-  },
-  {
-   "path": "commands/django-review.md",
-   "origin": "canonical",
-   "kind": "command",
-   "source": "commands/django-review.md",
-   "source_sha256": "df693e7a55c87b59afb7c87fe997a832c5695c6385224b11ef8bf997dd53f0b4",
-   "sha256": "df693e7a55c87b59afb7c87fe997a832c5695c6385224b11ef8bf997dd53f0b4",
-   "identical": true,
-   "adaptations": []
-  },
-  {
-   "path": "commands/django-security.md",
-   "origin": "canonical",
-   "kind": "command",
-   "source": "commands/django-security.md",
-   "source_sha256": "db69ed0ebb1576338f8d46b47251a858501e24a993937fe4ea1bb8050846a88c",
-   "sha256": "db69ed0ebb1576338f8d46b47251a858501e24a993937fe4ea1bb8050846a88c",
-   "identical": true,
-   "adaptations": []
-  },
-  {
-   "path": "commands/django-test.md",
-   "origin": "canonical",
-   "kind": "command",
-   "source": "commands/django-test.md",
-   "source_sha256": "756164e95a7746fe6b5cc7472b61f6fd79f5197ec0e18df1016a23c6e62c3051",
-   "sha256": "756164e95a7746fe6b5cc7472b61f6fd79f5197ec0e18df1016a23c6e62c3051",
-   "identical": true,
-   "adaptations": []
-  },
-  {
-   "path": "commands/orchestrate.md",
-   "origin": "canonical",
-   "kind": "command",
-   "source": "commands/orchestrate.md",
-   "source_sha256": "e7d1e12814c152b6939b38e03ef1a29ee86040cacb416c2ff2798c7763aa128c",
-   "sha256": "62540218e4202539863eba3878f19ef3681de838a8093a3d4cf959ba8a4c7a17",
-   "identical": false,
-   "adaptations": [
-    "AD-05"
-   ]
-  },
-  {
-   "path": "commands/README.md",
-   "origin": "standalone-authored",
-   "sha256": "6406ec08a1045e8c8b82f4c361bfff0658d1c7a26d269c9473dee335a3c59d24"
   },
   {
    "path": "config/orchestration-policy.yaml",
@@ -399,26 +342,27 @@
    "kind": "policy",
    "source": "config/orchestration-policy.yaml",
    "source_sha256": "a435570b01c7e41defd49e073fbdeea6188a2245516b3917a70df216e019dfa4",
-   "sha256": "e3021f7b9591cab8dadc5d56b20ff711c7b7597f4bdbb036e82162e9adb00a14",
+   "sha256": "dbc8ea01866b067523cac879271b3862cf3781aea9f695567acdc16344ce99fc",
    "identical": false,
    "adaptations": [
-    "AD-07"
+    "AD-07",
+    "AD-13"
    ]
   },
   {
-   "path": "CONTRIBUTING.md",
+   "path": "docs/agents.md",
    "origin": "standalone-authored",
-   "sha256": "e910ffd510ace9785bbd997f555a2fddc9b72c5faf3dd4fbb3659c82efe3af82"
+   "sha256": "a3723bb908ca4f5038c041e2184e7773d78ad489342230c5c507413bb2daf1b7"
   },
   {
    "path": "docs/architecture.md",
    "origin": "standalone-authored",
-   "sha256": "a2917d337c547b023b2ea578da99e35245a7d4b10835e7bd30a6c3232293c656"
+   "sha256": "7af8321041dbb6878e3c175555be629588a918ca6af0381d301a256196bddcbb"
   },
   {
    "path": "docs/installation.md",
    "origin": "standalone-authored",
-   "sha256": "c4eff679d14b232332eebc9e494d380df1d5aa1636a7cf3324d45f486fc30c93"
+   "sha256": "9169e4c035c1c53e232443bddc9ff779063b773d9107eb41777694a9c642efd2"
   },
   {
    "path": "docs/security.md",
@@ -428,12 +372,17 @@
   {
    "path": "docs/troubleshooting.md",
    "origin": "standalone-authored",
-   "sha256": "dbb1cdeb2f757dc2cdb07f659eee4e504b0944b022fe82993b5a98e35e8c63b1"
+   "sha256": "e0cc52c37644fe4cfc7da258525e4decf44fe7b821f1f8f71262f1bbfe70073e"
   },
   {
    "path": "docs/usage.md",
    "origin": "standalone-authored",
-   "sha256": "6c34c87e0509d029abace295222690f12baa857ffec579cb99581e81f47b0d12"
+   "sha256": "c8b009d02b43baf17a6e6e0062b352cd0f400c051407453cb1ab0da262ee7ac5"
+  },
+  {
+   "path": "hooks/README.md",
+   "origin": "standalone-authored",
+   "sha256": "6bdea3e5244dec015fba4f457f869c8b59f467b494b8ee4d63e728a784d5469f"
   },
   {
    "path": "hooks/django_pack_guard.py",
@@ -456,11 +405,6 @@
    "sha256": "6a9c02d1a3f040fba1e9d93e86b6662788a1060c15761dad3357e0635418fed3",
    "identical": true,
    "adaptations": []
-  },
-  {
-   "path": "hooks/README.md",
-   "origin": "standalone-authored",
-   "sha256": "6bdea3e5244dec015fba4f457f869c8b59f467b494b8ee4d63e728a784d5469f"
   },
   {
    "path": "hooks/security-policy.json",
@@ -490,9 +434,16 @@
    "sha256": "d5b88bcc6bf5b818d02dd9e9b75a537cd9ee3d45b92e300f8323ae6b19912d5b"
   },
   {
-   "path": "README.md",
-   "origin": "standalone-authored",
-   "sha256": "f745e1f249e790928c6a27ffd4e5284475213bb469f6a932971128bf58590da0"
+   "path": "references/README.md",
+   "origin": "canonical",
+   "kind": "readme",
+   "source": "references/README.md",
+   "source_sha256": "df42dab24b92d4b12784fd0f18d80b46956b6b831bb990044bd5626248eae7fc",
+   "sha256": "f058e71454066e5e638d963d3727d54a9db1cf187f25b587ad26c14d6763ba0e",
+   "identical": false,
+   "adaptations": [
+    "AD-11"
+   ]
   },
   {
    "path": "references/django-api-design-checklist.md",
@@ -565,21 +516,14 @@
    "adaptations": []
   },
   {
-   "path": "references/README.md",
-   "origin": "canonical",
-   "kind": "readme",
-   "source": "references/README.md",
-   "source_sha256": "df42dab24b92d4b12784fd0f18d80b46956b6b831bb990044bd5626248eae7fc",
-   "sha256": "f058e71454066e5e638d963d3727d54a9db1cf187f25b587ad26c14d6763ba0e",
-   "identical": false,
-   "adaptations": [
-    "AD-11"
-   ]
-  },
-  {
    "path": "requirements-dev.txt",
    "origin": "standalone-authored",
    "sha256": "00f2eea49187a243189c8e310c77967fe004c511606ded835649bb0d77fc2616"
+  },
+  {
+   "path": "rules/README.md",
+   "origin": "standalone-authored",
+   "sha256": "cdfd9e45b398db618844bc7616e1883cd04404b8c232a4fb881c02347aecaff0"
   },
   {
    "path": "rules/django-api-standards/SKILL.md",
@@ -706,14 +650,19 @@
    "adaptations": []
   },
   {
-   "path": "rules/README.md",
+   "path": "skills/README.md",
    "origin": "standalone-authored",
-   "sha256": "cdfd9e45b398db618844bc7616e1883cd04404b8c232a4fb881c02347aecaff0"
+   "sha256": "8145e1a2f403cb37d3bb639057eede0e337e79f2d68b6a923e52215326042f6c"
   },
   {
-   "path": "SECURITY.md",
-   "origin": "standalone-authored",
-   "sha256": "7cea46135dcbf9d581d669eeadd412af8f837f1ed9b3c745ac4679752764fd65"
+   "path": "skills/django-architecture/SKILL.md",
+   "origin": "canonical",
+   "kind": "skill",
+   "source": "skills/django-architecture/SKILL.md",
+   "source_sha256": "c22742905de32687f71bc94638b9af5d9855b2ec1e808b4330e96a7c2a77ba44",
+   "sha256": "c22742905de32687f71bc94638b9af5d9855b2ec1e808b4330e96a7c2a77ba44",
+   "identical": true,
+   "adaptations": []
   },
   {
    "path": "skills/django-architecture/references/architectural-styles.md",
@@ -866,12 +815,12 @@
    "adaptations": []
   },
   {
-   "path": "skills/django-architecture/SKILL.md",
+   "path": "skills/django-core/SKILL.md",
    "origin": "canonical",
    "kind": "skill",
-   "source": "skills/django-architecture/SKILL.md",
-   "source_sha256": "c22742905de32687f71bc94638b9af5d9855b2ec1e808b4330e96a7c2a77ba44",
-   "sha256": "c22742905de32687f71bc94638b9af5d9855b2ec1e808b4330e96a7c2a77ba44",
+   "source": "skills/django-core/SKILL.md",
+   "source_sha256": "fe641524c27427e2d8a902f6649d5795f81790ebe96473f15ef7460e6d0829f4",
+   "sha256": "fe641524c27427e2d8a902f6649d5795f81790ebe96473f15ef7460e6d0829f4",
    "identical": true,
    "adaptations": []
   },
@@ -1036,12 +985,12 @@
    "adaptations": []
   },
   {
-   "path": "skills/django-core/SKILL.md",
+   "path": "skills/django-data-processing/SKILL.md",
    "origin": "canonical",
    "kind": "skill",
-   "source": "skills/django-core/SKILL.md",
-   "source_sha256": "fe641524c27427e2d8a902f6649d5795f81790ebe96473f15ef7460e6d0829f4",
-   "sha256": "fe641524c27427e2d8a902f6649d5795f81790ebe96473f15ef7460e6d0829f4",
+   "source": "skills/django-data-processing/SKILL.md",
+   "source_sha256": "5a1692031aa0d0828f3a1672c6fca38de82c287a1d32caf111befbe8c1f7828d",
+   "sha256": "5a1692031aa0d0828f3a1672c6fca38de82c287a1d32caf111befbe8c1f7828d",
    "identical": true,
    "adaptations": []
   },
@@ -1258,12 +1207,12 @@
    "adaptations": []
   },
   {
-   "path": "skills/django-data-processing/SKILL.md",
+   "path": "skills/django-frontend/SKILL.md",
    "origin": "canonical",
    "kind": "skill",
-   "source": "skills/django-data-processing/SKILL.md",
-   "source_sha256": "5a1692031aa0d0828f3a1672c6fca38de82c287a1d32caf111befbe8c1f7828d",
-   "sha256": "5a1692031aa0d0828f3a1672c6fca38de82c287a1d32caf111befbe8c1f7828d",
+   "source": "skills/django-frontend/SKILL.md",
+   "source_sha256": "f2657e2c620ea78066e3c915e3172f2c98133812d58fe1a9aaced5d2a3d29064",
+   "sha256": "f2657e2c620ea78066e3c915e3172f2c98133812d58fe1a9aaced5d2a3d29064",
    "identical": true,
    "adaptations": []
   },
@@ -1468,12 +1417,12 @@
    "adaptations": []
   },
   {
-   "path": "skills/django-frontend/SKILL.md",
+   "path": "skills/django-integrations/SKILL.md",
    "origin": "canonical",
    "kind": "skill",
-   "source": "skills/django-frontend/SKILL.md",
-   "source_sha256": "f2657e2c620ea78066e3c915e3172f2c98133812d58fe1a9aaced5d2a3d29064",
-   "sha256": "f2657e2c620ea78066e3c915e3172f2c98133812d58fe1a9aaced5d2a3d29064",
+   "source": "skills/django-integrations/SKILL.md",
+   "source_sha256": "f0c4ed6dd043173bac099b35046138a78f2b50b399319be8c15ad07d2f11bd4a",
+   "sha256": "f0c4ed6dd043173bac099b35046138a78f2b50b399319be8c15ad07d2f11bd4a",
    "identical": true,
    "adaptations": []
   },
@@ -1658,12 +1607,12 @@
    "adaptations": []
   },
   {
-   "path": "skills/django-integrations/SKILL.md",
+   "path": "skills/django-orm/SKILL.md",
    "origin": "canonical",
    "kind": "skill",
-   "source": "skills/django-integrations/SKILL.md",
-   "source_sha256": "f0c4ed6dd043173bac099b35046138a78f2b50b399319be8c15ad07d2f11bd4a",
-   "sha256": "f0c4ed6dd043173bac099b35046138a78f2b50b399319be8c15ad07d2f11bd4a",
+   "source": "skills/django-orm/SKILL.md",
+   "source_sha256": "9ff129ea67cee249869c6c572ede00dd4fe2ac3cde9383caaf2b5960e177913e",
+   "sha256": "9ff129ea67cee249869c6c572ede00dd4fe2ac3cde9383caaf2b5960e177913e",
    "identical": true,
    "adaptations": []
   },
@@ -1828,12 +1777,12 @@
    "adaptations": []
   },
   {
-   "path": "skills/django-orm/SKILL.md",
+   "path": "skills/django-performance/SKILL.md",
    "origin": "canonical",
    "kind": "skill",
-   "source": "skills/django-orm/SKILL.md",
-   "source_sha256": "9ff129ea67cee249869c6c572ede00dd4fe2ac3cde9383caaf2b5960e177913e",
-   "sha256": "9ff129ea67cee249869c6c572ede00dd4fe2ac3cde9383caaf2b5960e177913e",
+   "source": "skills/django-performance/SKILL.md",
+   "source_sha256": "eae8e3414a2cb48c4ea6dd4a1131eed309cc5e84fa99d6896358675a9a4ecb83",
+   "sha256": "eae8e3414a2cb48c4ea6dd4a1131eed309cc5e84fa99d6896358675a9a4ecb83",
    "identical": true,
    "adaptations": []
   },
@@ -2008,12 +1957,12 @@
    "adaptations": []
   },
   {
-   "path": "skills/django-performance/SKILL.md",
+   "path": "skills/django-report-generation/SKILL.md",
    "origin": "canonical",
    "kind": "skill",
-   "source": "skills/django-performance/SKILL.md",
-   "source_sha256": "eae8e3414a2cb48c4ea6dd4a1131eed309cc5e84fa99d6896358675a9a4ecb83",
-   "sha256": "eae8e3414a2cb48c4ea6dd4a1131eed309cc5e84fa99d6896358675a9a4ecb83",
+   "source": "skills/django-report-generation/SKILL.md",
+   "source_sha256": "93fa3ffeab1ab372b42ada739af5531c76653f0b5a0c6bc680532183a65c75ab",
+   "sha256": "93fa3ffeab1ab372b42ada739af5531c76653f0b5a0c6bc680532183a65c75ab",
    "identical": true,
    "adaptations": []
   },
@@ -2218,12 +2167,12 @@
    "adaptations": []
   },
   {
-   "path": "skills/django-report-generation/SKILL.md",
+   "path": "skills/django-rest-framework/SKILL.md",
    "origin": "canonical",
    "kind": "skill",
-   "source": "skills/django-report-generation/SKILL.md",
-   "source_sha256": "93fa3ffeab1ab372b42ada739af5531c76653f0b5a0c6bc680532183a65c75ab",
-   "sha256": "93fa3ffeab1ab372b42ada739af5531c76653f0b5a0c6bc680532183a65c75ab",
+   "source": "skills/django-rest-framework/SKILL.md",
+   "source_sha256": "88f68d6eb33026b03295530aedacf5aa9fe36b9b68f159666137b9f719f41458",
+   "sha256": "88f68d6eb33026b03295530aedacf5aa9fe36b9b68f159666137b9f719f41458",
    "identical": true,
    "adaptations": []
   },
@@ -2388,12 +2337,12 @@
    "adaptations": []
   },
   {
-   "path": "skills/django-rest-framework/SKILL.md",
+   "path": "skills/django-security-engineering/SKILL.md",
    "origin": "canonical",
    "kind": "skill",
-   "source": "skills/django-rest-framework/SKILL.md",
-   "source_sha256": "88f68d6eb33026b03295530aedacf5aa9fe36b9b68f159666137b9f719f41458",
-   "sha256": "88f68d6eb33026b03295530aedacf5aa9fe36b9b68f159666137b9f719f41458",
+   "source": "skills/django-security-engineering/SKILL.md",
+   "source_sha256": "d539f8ad367a678d6d2e005fdf80c6341421ef4b5e52eada5cf50312edbaff07",
+   "sha256": "d539f8ad367a678d6d2e005fdf80c6341421ef4b5e52eada5cf50312edbaff07",
    "identical": true,
    "adaptations": []
   },
@@ -2578,12 +2527,12 @@
    "adaptations": []
   },
   {
-   "path": "skills/django-security-engineering/SKILL.md",
+   "path": "skills/django-testing/SKILL.md",
    "origin": "canonical",
    "kind": "skill",
-   "source": "skills/django-security-engineering/SKILL.md",
-   "source_sha256": "d539f8ad367a678d6d2e005fdf80c6341421ef4b5e52eada5cf50312edbaff07",
-   "sha256": "d539f8ad367a678d6d2e005fdf80c6341421ef4b5e52eada5cf50312edbaff07",
+   "source": "skills/django-testing/SKILL.md",
+   "source_sha256": "9a5fe5e7faf6775d67cc44c42191970aaa43a3753b55466da64332994db973f0",
+   "sha256": "9a5fe5e7faf6775d67cc44c42191970aaa43a3753b55466da64332994db973f0",
    "identical": true,
    "adaptations": []
   },
@@ -2768,14 +2717,16 @@
    "adaptations": []
   },
   {
-   "path": "skills/django-testing/SKILL.md",
+   "path": "skills/postgresql-engineering/SKILL.md",
    "origin": "canonical",
    "kind": "skill",
-   "source": "skills/django-testing/SKILL.md",
-   "source_sha256": "9a5fe5e7faf6775d67cc44c42191970aaa43a3753b55466da64332994db973f0",
-   "sha256": "9a5fe5e7faf6775d67cc44c42191970aaa43a3753b55466da64332994db973f0",
-   "identical": true,
-   "adaptations": []
+   "source": "skills/postgresql-engineering/SKILL.md",
+   "source_sha256": "14aeaf69515c967b2c27b116b5ecd2049d2fae8a30b0e4edff3074d0565fa440",
+   "sha256": "36058b06e3a17269f88986e739ff89ac19c2c100ef9a2ccf715c1e393b8c7dd3",
+   "identical": false,
+   "adaptations": [
+    "AD-12"
+   ]
   },
   {
    "path": "skills/postgresql-engineering/references/indexing-and-query-plans.md",
@@ -2800,26 +2751,17 @@
    ]
   },
   {
-   "path": "skills/postgresql-engineering/SKILL.md",
+   "path": "templates/README.md",
    "origin": "canonical",
-   "kind": "skill",
-   "source": "skills/postgresql-engineering/SKILL.md",
-   "source_sha256": "14aeaf69515c967b2c27b116b5ecd2049d2fae8a30b0e4edff3074d0565fa440",
-   "sha256": "36058b06e3a17269f88986e739ff89ac19c2c100ef9a2ccf715c1e393b8c7dd3",
+   "kind": "readme",
+   "source": "templates/README.md",
+   "source_sha256": "8458ed4039c626970d15d84206c81e28af0ebcb2bca66168a5c92f1a66bf0a9c",
+   "sha256": "599aaa7c0726a873b4acbb1f6d34dbf6a4abc89def247dfb7f6726b1de1e7dcc",
    "identical": false,
    "adaptations": [
-    "AD-12"
+    "AD-10",
+    "AD-13"
    ]
-  },
-  {
-   "path": "skills/README.md",
-   "origin": "standalone-authored",
-   "sha256": "3945feaceed3afa58c34af43293f10def7bf2854938894d60c1f40662bd15b89"
-  },
-  {
-   "path": "TEAM_HANDOFF.md",
-   "origin": "standalone-authored",
-   "sha256": "5183220cddff00b79866f2d98b977250a963703788611b82ae27ac2a896a3997"
   },
   {
    "path": "templates/api-specification.template.md",
@@ -2827,9 +2769,11 @@
    "kind": "template",
    "source": "templates/api-specification.template.md",
    "source_sha256": "b09ca17a11f97c59c8b51c07f0a79b67ba504d9bce6147e83b1660122fa354ae",
-   "sha256": "b09ca17a11f97c59c8b51c07f0a79b67ba504d9bce6147e83b1660122fa354ae",
-   "identical": true,
-   "adaptations": []
+   "sha256": "0008cc75ba7aa0793d512cd9f43665d3a0a9d184aacce43203da6c74efb674ad",
+   "identical": false,
+   "adaptations": [
+    "AD-13"
+   ]
   },
   {
    "path": "templates/architecture-decision-record.template.md",
@@ -2837,9 +2781,11 @@
    "kind": "template",
    "source": "templates/architecture-decision-record.template.md",
    "source_sha256": "be019b2dbba203027fcb7d7d1de4508936a596a4cef1f19e22ddf0131f8bae54",
-   "sha256": "be019b2dbba203027fcb7d7d1de4508936a596a4cef1f19e22ddf0131f8bae54",
-   "identical": true,
-   "adaptations": []
+   "sha256": "42e3d82e029dcd42d6a8b9c3227cd42e2923f6e2b9e614c6fbcaf8700b669697",
+   "identical": false,
+   "adaptations": [
+    "AD-13"
+   ]
   },
   {
    "path": "templates/architecture-design.template.md",
@@ -2847,9 +2793,11 @@
    "kind": "template",
    "source": "templates/architecture-design.template.md",
    "source_sha256": "9e4649874f44b148ffba698338f74480cf7a16bd4672eba0f73788a937585fcb",
-   "sha256": "9e4649874f44b148ffba698338f74480cf7a16bd4672eba0f73788a937585fcb",
-   "identical": true,
-   "adaptations": []
+   "sha256": "f3aefd16d22280bc7b90a16cdfc29b847be80cbf6e44c46e624064c68db615ad",
+   "identical": false,
+   "adaptations": [
+    "AD-13"
+   ]
   },
   {
    "path": "templates/code-review-report.template.md",
@@ -2857,9 +2805,11 @@
    "kind": "template",
    "source": "templates/code-review-report.template.md",
    "source_sha256": "6e5c805a182303beb6eb5b843e804c20bddd060533846e1b7cb48c2424fbc61d",
-   "sha256": "6e5c805a182303beb6eb5b843e804c20bddd060533846e1b7cb48c2424fbc61d",
-   "identical": true,
-   "adaptations": []
+   "sha256": "7966d58c18588b327d3876b62d553192402d9105ebb5e8dc0e2b21a7360baa89",
+   "identical": false,
+   "adaptations": [
+    "AD-13"
+   ]
   },
   {
    "path": "templates/django-model-specification.template.md",
@@ -2867,9 +2817,11 @@
    "kind": "template",
    "source": "templates/django-model-specification.template.md",
    "source_sha256": "f35c7f92ac75c3ee3c8b203ce943b85bdfbe077afb98833f40ca2e2ec7f6cc7b",
-   "sha256": "f35c7f92ac75c3ee3c8b203ce943b85bdfbe077afb98833f40ca2e2ec7f6cc7b",
-   "identical": true,
-   "adaptations": []
+   "sha256": "3f742b96981dbe199fa53e54333207a923dd97f06e19ba7d49c0ac7e7feb193c",
+   "identical": false,
+   "adaptations": [
+    "AD-13"
+   ]
   },
   {
    "path": "templates/implementation-plan.template.md",
@@ -2877,9 +2829,11 @@
    "kind": "template",
    "source": "templates/implementation-plan.template.md",
    "source_sha256": "f1f50405ae664955d600f3f41b6e1eafdf348dcf2280eba7d443f3eac9966048",
-   "sha256": "f1f50405ae664955d600f3f41b6e1eafdf348dcf2280eba7d443f3eac9966048",
-   "identical": true,
-   "adaptations": []
+   "sha256": "8a825eee4fdd7748af8db1c71f7554c2dfb1f95d360c2b73538e1fffa4c48d9b",
+   "identical": false,
+   "adaptations": [
+    "AD-13"
+   ]
   },
   {
    "path": "templates/migration-plan.template.md",
@@ -2887,9 +2841,11 @@
    "kind": "template",
    "source": "templates/migration-plan.template.md",
    "source_sha256": "97e3ae5ed5a02cca0d1f992574d9146637ff7316fc83f4726d5e15dfbdfb4681",
-   "sha256": "97e3ae5ed5a02cca0d1f992574d9146637ff7316fc83f4726d5e15dfbdfb4681",
-   "identical": true,
-   "adaptations": []
+   "sha256": "e54655b957a31cc81867614042dc201abb93ac753534ec0a54f47acd0e9157ab",
+   "identical": false,
+   "adaptations": [
+    "AD-13"
+   ]
   },
   {
    "path": "templates/performance-assessment.template.md",
@@ -2897,9 +2853,11 @@
    "kind": "template",
    "source": "templates/performance-assessment.template.md",
    "source_sha256": "c56c0ed0981e22d172083543ebf6907470c7a980287cc66f155ebe0f1f5f0654",
-   "sha256": "c56c0ed0981e22d172083543ebf6907470c7a980287cc66f155ebe0f1f5f0654",
-   "identical": true,
-   "adaptations": []
+   "sha256": "c8b8e1e32cfa036036047e592a93e804c0b75a06303939f45deb4424e078ab0f",
+   "identical": false,
+   "adaptations": [
+    "AD-13"
+   ]
   },
   {
    "path": "templates/project-analysis.template.md",
@@ -2907,20 +2865,10 @@
    "kind": "template",
    "source": "templates/project-analysis.template.md",
    "source_sha256": "857d50336b518766762dde314f903329909069a698d7ae1c702dca390194fbfe",
-   "sha256": "857d50336b518766762dde314f903329909069a698d7ae1c702dca390194fbfe",
-   "identical": true,
-   "adaptations": []
-  },
-  {
-   "path": "templates/README.md",
-   "origin": "canonical",
-   "kind": "readme",
-   "source": "templates/README.md",
-   "source_sha256": "8458ed4039c626970d15d84206c81e28af0ebcb2bca66168a5c92f1a66bf0a9c",
-   "sha256": "399dd2240e4cabb57b3676ff1e409f5c35f5aa5b480a8d54f7aa2cbc7d8bd2fa",
+   "sha256": "3961414b047f9f16390f0b7b617f91830b39ba47c4d93b896e5cbb659b5682c4",
    "identical": false,
    "adaptations": [
-    "AD-10"
+    "AD-13"
    ]
   },
   {
@@ -2929,9 +2877,11 @@
    "kind": "template",
    "source": "templates/security-assessment.template.md",
    "source_sha256": "6b03c10407f778fc36d4ecb8cc5c735b047a83ef8389bf054869cf5c966f677a",
-   "sha256": "6b03c10407f778fc36d4ecb8cc5c735b047a83ef8389bf054869cf5c966f677a",
-   "identical": true,
-   "adaptations": []
+   "sha256": "cfe25a5f1ba0efc30e3cd87297f4246848627de16e0036bfe2647c90491a3389",
+   "identical": false,
+   "adaptations": [
+    "AD-13"
+   ]
   },
   {
    "path": "templates/technical-documentation.template.md",
@@ -2939,9 +2889,11 @@
    "kind": "template",
    "source": "templates/technical-documentation.template.md",
    "source_sha256": "cbf33b765a20bf959290bb045d8f0dedf9031522ff7d91073819b5c58fdef85e",
-   "sha256": "cbf33b765a20bf959290bb045d8f0dedf9031522ff7d91073819b5c58fdef85e",
-   "identical": true,
-   "adaptations": []
+   "sha256": "aef20c910aca44a859c844f311f7f1bb8b6c02fec58e1898db5be8f44a29604d",
+   "identical": false,
+   "adaptations": [
+    "AD-13"
+   ]
   },
   {
    "path": "templates/test-plan.template.md",
@@ -2949,14 +2901,16 @@
    "kind": "template",
    "source": "templates/test-plan.template.md",
    "source_sha256": "53a92015f6bea15e6a8f0280305232763242de111497936d8a1016e318b3e224",
-   "sha256": "53a92015f6bea15e6a8f0280305232763242de111497936d8a1016e318b3e224",
-   "identical": true,
-   "adaptations": []
+   "sha256": "a08375a1fb52e9da27c0eb940a563248a2d97663e4348b1cf72e17eee7e91d37",
+   "identical": false,
+   "adaptations": [
+    "AD-13"
+   ]
   },
   {
    "path": "tests/conftest.py",
    "origin": "standalone-authored",
-   "sha256": "98c7302db952a9b7fac55906e59ee8cfc93a1998e4707ebacf27bf6f733659fa"
+   "sha256": "31a8d157d7bd156b5bc1a635d6ebd83b02b2b2612f03f6bf41e96c9f3c680cc3"
   },
   {
    "path": "tests/test_guard.py",
@@ -2966,27 +2920,27 @@
   {
    "path": "tests/test_manifest.py",
    "origin": "standalone-authored",
-   "sha256": "8a43129a17999869f2a417b865d3234f53da94a18f69beee5dffd1d5fc1b0a88"
+   "sha256": "9bf030d7fe8a7e372467c9855eff6bbd58d06f9734c12403e82120b213d78180"
   },
   {
    "path": "tests/test_no_harness_dependency.py",
    "origin": "standalone-authored",
-   "sha256": "45236d5fe9075711028aab7be33ff22f08776bd979e72de2b71b48eaae4e4a55"
+   "sha256": "055f013416103ddda22818a2ed9ca799ec72fd8d86e2417734d6a7b27b04ef0b"
   },
   {
    "path": "tests/test_orchestration_policy.py",
    "origin": "standalone-authored",
-   "sha256": "5070cd1084f0fd2635126618a535603e98dd65b5b252be148dc44cc2d8260b41"
+   "sha256": "816d8743bf94d9b63c1d1834296569da39b6c390daeb9a22e4d84cfe06d61725"
   },
   {
    "path": "tests/test_plugin_live.py",
    "origin": "standalone-authored",
-   "sha256": "a0fd719e31d4eb0b4b6baba3cde4ff21aef0241df916e2823355c19e1c6f9cbf"
+   "sha256": "120b770cd6cbbf544afc0821f1069ccfe86f7d8935db8803fc163bbf93ed078e"
   },
   {
    "path": "tests/test_plugin_structure.py",
    "origin": "standalone-authored",
-   "sha256": "183aa3466a87047d70758fad45b81fef39bac6ec7f89aad41c7f7268eefbefff"
+   "sha256": "b9c1281788089091bbad1db098df9bfffa83dcc29b75cf5035809579d15962bf"
   },
   {
    "path": "tests/test_security_policy.py",
@@ -2996,7 +2950,7 @@
   {
    "path": "tests/test_templates_and_references.py",
    "origin": "standalone-authored",
-   "sha256": "c859091afdd31915217c23cae94fe53ff44bb4d06c5d61accf05f7a3fc116b27"
+   "sha256": "b8a10e442635a7713124cf842f9136dc079b0d5293fc5468ce6e0c57d1656965"
   }
  ]
 }

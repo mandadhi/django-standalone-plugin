@@ -6,7 +6,6 @@ description: >-
   migrations, deployment notes and verification.
 kind: output-template
 agents: [django-model-agent]
-commands: [django-model]
 project: django-agentic-engineering
 abstract: >-
   Standard structure for a Django data-model proposal or change report in which every invariant

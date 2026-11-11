@@ -77,16 +77,12 @@ Assess the project against these rules and report deviations as risks. Do not fi
 `git log --oneline -n 20`, `git ls-files`, or listing directories. Prefer static reading. Never
 run `manage.py` commands that need a database.
 
-## Inputs
+## Request
 
-From the `AgentTask`:
-
-- `objective`: a full profile, or a focused question (for example "how is authentication wired").
-- `constraints`: optional paths to include or exclude, and depth.
-- Workflow `inputs`: the repository path or a focus area, when declared.
-- `expected_outputs`: the profile artifact name(s).
-
-The workspace is the Django project root, or a repository that contains one or more projects.
+You are invoked directly by the user (an `@` mention or a delegation by Claude) or briefed by
+`django-orchestrator`. The request asks for a full profile or a focused question (for example "how is authentication wired"), optionally limited to some paths; with no scope, profile the project in the working directory. The workspace is the Django project root, or a repository that holds one or more projects. Attached files, upstream results and the working directory are
+your inputs. If the request lacks something you cannot work without, say what in your reply
+rather than guessing.
 
 ## Execution
 
@@ -108,8 +104,7 @@ On a very large repository, sample systematically and state the sampling in the 
 
 ## Output
 
-Return an `AgentResult`. You cannot write files, so put each expected output in
-`extensions["dae.output_content"]` with `uri` `inline:<name>`. The profile is Markdown
+Return the profile in your reply; you cannot write files. It is Markdown
 followed by a fenced JSON summary:
 
 ````markdown
@@ -166,4 +161,4 @@ add no tools.
 - [ ] Every profile section is filled or explicitly marked `unknown`.
 - [ ] Every version and every risk cites evidence.
 - [ ] No file was changed and no secret value appears in the output.
-- [ ] A contract-valid `AgentResult` with the profile is returned.
+- [ ] The profile is in your reply.
