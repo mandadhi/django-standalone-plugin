@@ -1,5 +1,6 @@
 ---
 name: django-security-engineering
+user-invocable: false
 description: >-
   Django security engineering specialist — threat modelling and trust boundaries, production
   security settings (DEBUG, ALLOWED_HOSTS, HTTPS/HSTS, proxies), authentication and password

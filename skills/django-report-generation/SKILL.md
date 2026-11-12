@@ -1,5 +1,6 @@
 ---
 name: django-report-generation
+user-invocable: false
 description: >-
   Django report generation engineering specialist — reporting fundamentals and requirements,
   reporting subsystem architecture (report definitions, parameters, runs, artifacts, status),

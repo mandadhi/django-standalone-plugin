@@ -1,5 +1,6 @@
 ---
 name: django-architecture
+user-invocable: false
 description: >-
   Django architecture specialist — analysing requirements, choosing architectural styles,
   modular-monolith and app boundaries, DDD applied pragmatically, layering, service layer and

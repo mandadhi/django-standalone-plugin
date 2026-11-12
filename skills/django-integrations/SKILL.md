@@ -1,5 +1,6 @@
 ---
 name: django-integrations
+user-invocable: false
 description: >-
   Django integrations engineering specialist — integration architecture and boundaries, outbound
   HTTP/REST clients (httpx, requests, provider SDKs), SOAP and legacy systems, OAuth 2.0 / OIDC /

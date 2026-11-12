@@ -1,5 +1,6 @@
 ---
 name: postgresql-engineering
+user-invocable: false
 description: >-
   PostgreSQL engineering for Django applications — schema and type choices, B-tree/partial/
   covering/GIN/BRIN indexes, reading EXPLAIN (ANALYZE, BUFFERS), query optimisation, isolation

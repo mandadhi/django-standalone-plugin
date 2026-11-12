@@ -11,7 +11,7 @@
       "name": "django-engineering",
       "source": "./",
       "description": "Standalone Django Engineering Plugin: orchestrator, nine specialist agents, ten commands, twelve skills, twelve rules, templates, shared references and a fail-closed security guard.",
-      "version": "2.0.1",
+      "version": "2.1.0",
       "category": "backend"
     }
   ]

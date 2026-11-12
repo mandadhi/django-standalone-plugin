@@ -1,5 +1,6 @@
 ---
 name: django-testing
+user-invocable: false
 description: >-
   Django testing engineering specialist — test strategy and risk-based test design, Django's
   test framework (SimpleTestCase/TestCase/TransactionTestCase/LiveServerTestCase), pytest and

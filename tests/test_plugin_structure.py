@@ -84,7 +84,9 @@ def test_rules_are_internal_and_never_commands() -> None:
     for rule in RULES:
         assert frontmatter(ROOT / "rules" / rule / "SKILL.md").get("user-invocable") is False, rule
     for skill in SKILLS:
-        assert frontmatter(ROOT / "skills" / skill / "SKILL.md").get("user-invocable") is not False, skill
+        # knowledge skills are internal too: hidden from the slash menu, still model-invocable and preloadable
+        meta = frontmatter(ROOT / "skills" / skill / "SKILL.md")
+        assert meta.get("user-invocable") is False and meta.get("disable-model-invocation") is not True, skill
 
 
 def test_component_names_are_unique_across_kinds() -> None:

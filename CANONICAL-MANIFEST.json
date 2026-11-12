@@ -154,6 +154,24 @@
         "rules/django-security-standards/SKILL.md",
         "rules/django-testing-standards/SKILL.md"
       ]
+    },
+    {
+      "id": "AD-15",
+      "reason": "Knowledge skills carry `user-invocable: false` so Claude Code lists only the ten commands; agents still preload them and models can still invoke them.",
+      "files": [
+        "skills/django-architecture/SKILL.md",
+        "skills/django-core/SKILL.md",
+        "skills/django-data-processing/SKILL.md",
+        "skills/django-frontend/SKILL.md",
+        "skills/django-integrations/SKILL.md",
+        "skills/django-orm/SKILL.md",
+        "skills/django-performance/SKILL.md",
+        "skills/django-report-generation/SKILL.md",
+        "skills/django-rest-framework/SKILL.md",
+        "skills/django-security-engineering/SKILL.md",
+        "skills/django-testing/SKILL.md",
+        "skills/postgresql-engineering/SKILL.md"
+      ]
     }
   ],
   "excluded_harness_components": [
@@ -177,17 +195,286 @@
     {
       "path": ".claude-plugin/marketplace.json",
       "origin": "standalone-authored",
-      "sha256": "569742b467e7ff0bd6dd577b192791ff421d2e4a10ff28d422f1d96d648c9c36"
+      "sha256": "660ae8aea460fc452e7a2da13770ef37bccd8acf626fbe67e55a9570ea54ff54"
     },
     {
       "path": ".claude-plugin/plugin.json",
       "origin": "standalone-authored",
-      "sha256": "7b2117bd822703d6af230968e96c069a9df0f7f0c78965634370e9d43d01a8c7"
+      "sha256": "80c7d02f24be0cc9a6ca7fe00cc2c99b487d6a6f01dfaaebb9c7dbb2e46c380f"
     },
     {
       "path": ".gitattributes",
       "origin": "standalone-authored",
       "sha256": "23302dd90b8bb74b44d365fafef8df20f809b61cb347023951ecf60a88a29651"
+    },
+    {
+      "path": ".github/agents/django-api-agent.agent.md",
+      "origin": "copilot-adapter",
+      "sha256": "7d1bf658a9096d2bba2de78d2b180bb93bc821bd8a52f9d1fe9e83d956c6b748",
+      "derived_from": "agents/django-api-agent.md"
+    },
+    {
+      "path": ".github/agents/django-architecture-agent.agent.md",
+      "origin": "copilot-adapter",
+      "sha256": "59f5ad7f10c7144489cb0a383a3ddff4ed622332aeb082321a5414b2bdd90931",
+      "derived_from": "agents/django-architecture-agent.md"
+    },
+    {
+      "path": ".github/agents/django-code-review-agent.agent.md",
+      "origin": "copilot-adapter",
+      "sha256": "ba2241689d189d73fa5e216bfe77e42fa5d0b1da26ea1544d2ae79671b1c1cc0",
+      "derived_from": "agents/django-code-review-agent.md"
+    },
+    {
+      "path": ".github/agents/django-documentation-agent.agent.md",
+      "origin": "copilot-adapter",
+      "sha256": "35ec46e088b511973d234b36d3155b9c7ecd57bebc6ff365e22a1246f8050025",
+      "derived_from": "agents/django-documentation-agent.md"
+    },
+    {
+      "path": ".github/agents/django-model-agent.agent.md",
+      "origin": "copilot-adapter",
+      "sha256": "0a88aa733d5e51255a6607c37417929c91bce28b773d173a9670a82c2071cb75",
+      "derived_from": "agents/django-model-agent.md"
+    },
+    {
+      "path": ".github/agents/django-orchestrator.agent.md",
+      "origin": "copilot-adapter",
+      "sha256": "a936eb50ccc5bdbc5e2fdaad73ff915cd1092ac908f755b29c2209fd263f2eb8",
+      "derived_from": "agents/django-orchestrator.md"
+    },
+    {
+      "path": ".github/agents/django-performance-agent.agent.md",
+      "origin": "copilot-adapter",
+      "sha256": "4708794fa12943ad5dbce3f587cc0ff736869845c11e432878223e0d8f77d80b",
+      "derived_from": "agents/django-performance-agent.md"
+    },
+    {
+      "path": ".github/agents/django-project-analyzer.agent.md",
+      "origin": "copilot-adapter",
+      "sha256": "d499c1107a76bedcb335d0c2e9f39f4c0f8b53463448a760442b4fa5d776f531",
+      "derived_from": "agents/django-project-analyzer.md"
+    },
+    {
+      "path": ".github/agents/django-security-agent.agent.md",
+      "origin": "copilot-adapter",
+      "sha256": "f6022e72dedf5a5720e0ddc3703095b42638a421e71d6ba6d283b6cabf9a6934",
+      "derived_from": "agents/django-security-agent.md"
+    },
+    {
+      "path": ".github/agents/django-testing-agent.agent.md",
+      "origin": "copilot-adapter",
+      "sha256": "e68a72115b67978658c34e76282a594f4946634a50a883bab6055f8a9d0ba0e9",
+      "derived_from": "agents/django-testing-agent.md"
+    },
+    {
+      "path": ".github/instructions/django-engineering.instructions.md",
+      "origin": "standalone-authored",
+      "sha256": "3d6168909035f3cc6aa1e758d3bd44505dc6758e23383c72db932fa5e4d8b20f"
+    },
+    {
+      "path": ".github/skills/django-analyze/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "9bb6887803371a416ee0ce021096778da312343e28bf1af36b05e37db1701686",
+      "derived_from": "commands/django-analyze.md"
+    },
+    {
+      "path": ".github/skills/django-api-standards/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "46792af9e1b02785bcd09689879a654af22c177dad92a64db578609d30e5d294",
+      "derived_from": "rules/django-api-standards/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-api/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "4fb65d63ac7908805d47e74aa623433a124b87607d888a13699f3045a4098969",
+      "derived_from": "commands/django-api.md"
+    },
+    {
+      "path": ".github/skills/django-architecture/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "424d72f6fc500c828a27a2c75a1f9eb884276bb058971fdc4fd9e9d41b1e03fa",
+      "derived_from": "skills/django-architecture/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-coding-standards/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "3db1fa5ffa9133555ed0ba0908d639fc1cdf96b59d56bfafd574e605ebe39e7b",
+      "derived_from": "rules/django-coding-standards/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-configuration-standards/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "e1fdb4a127a46ecc68e85cf0f161d618e66423fcb8f48d8c4499392f0362aacd",
+      "derived_from": "rules/django-configuration-standards/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-core/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "3d0eefb4884b927da34847a16c28b73460c199a419ee75b101d448e99c11115e",
+      "derived_from": "skills/django-core/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-data-processing/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "90e3f67726ff8577bba419114a67ff8877d0b006fa943876222868d67d6cadb2",
+      "derived_from": "skills/django-data-processing/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-database-standards/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "d16c47c92924c3c9b2c0c4d9b0b8375b7ff1777e9418858f6117426fbacd91e7",
+      "derived_from": "rules/django-database-standards/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-dependency-standards/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "0b6855a573f20831063358a382512eb4e039de29c2e72e9b89a7b11e97a03c62",
+      "derived_from": "rules/django-dependency-standards/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-design/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "623a5023ca6895438d1de134177e25878efc255b1af4403c2b0748601a1233cb",
+      "derived_from": "commands/django-design.md"
+    },
+    {
+      "path": ".github/skills/django-document/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "1e378d5bc34c2fd46bf205d2d846cb07de79cc4cc911961f504494f1afb920ab",
+      "derived_from": "commands/django-document.md"
+    },
+    {
+      "path": ".github/skills/django-documentation-standards/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "ae02baf132355b0c6f952cfdc9c4c9ef933d26c187f76ea28753c81516937c30",
+      "derived_from": "rules/django-documentation-standards/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-frontend/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "c86f5c8ab875465d80cd4762f469afe846ecf1fd8c1da364df069058b45202a9",
+      "derived_from": "skills/django-frontend/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-integrations/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "a59bac24862607e5e4b6f80b36db7e7847fbfbe084db25b2db6a12d3b47401e3",
+      "derived_from": "skills/django-integrations/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-logging-standards/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "436a84279c3da1732ed7edfe1db2580a43f68014cb39e3a4105697594f54c03f",
+      "derived_from": "rules/django-logging-standards/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-model-standards/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "945f66a99743c111c00c88e2641806471aa557f8afc6e837c58003a7e5b0c2fc",
+      "derived_from": "rules/django-model-standards/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-model/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "51ba8c53d7cfdb0094a996e4c2d9f23e79eab4e211b536826293836f57d18464",
+      "derived_from": "commands/django-model.md"
+    },
+    {
+      "path": ".github/skills/django-optimize/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "8776c41ec96e65e9409e53dbcf735a00c69d81267956465cacbba153636ccf4a",
+      "derived_from": "commands/django-optimize.md"
+    },
+    {
+      "path": ".github/skills/django-orm/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "27373c443977f44151755d90a5cf61c4a69b3a1e84b3a4778e875b6a138e9d22",
+      "derived_from": "skills/django-orm/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-performance-standards/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "00874fe0fcc24575244cf6373b0b2e6d9c1010c1524b4d7b13099a4cfee1e8e4",
+      "derived_from": "rules/django-performance-standards/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-performance/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "cdfbc3cb51102962c6955ea7ee67028f699d11fc6fdc1197185115c953914765",
+      "derived_from": "skills/django-performance/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-project-structure/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "669d84de14590305c42ece5713d4c46b82d6562532fbb5be180ae00fd7f8d947",
+      "derived_from": "rules/django-project-structure/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-report-generation/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "a531e1936449a645764ef1ede160426398ff1d5420725943d1c4b4ba1bf21c38",
+      "derived_from": "skills/django-report-generation/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-rest-framework/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "89d4003f57e72ca0f397e1c857e434a5b76354280a58aba507a414afad1b2e68",
+      "derived_from": "skills/django-rest-framework/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-review/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "e50be760763b54a5f551d2f232c03c5ebe664f0c3ded63e5dac6e5fa4c9c622a",
+      "derived_from": "commands/django-review.md"
+    },
+    {
+      "path": ".github/skills/django-security-engineering/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "b46f3622b72886a795d388e04d1011e0ccd642bc9f20ec8603f92d7178826d32",
+      "derived_from": "skills/django-security-engineering/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-security-standards/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "d0152be89e23164b57f1dad83f65acaae79b907a3edb44362218f1426753aa77",
+      "derived_from": "rules/django-security-standards/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-security/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "e51cd57e1a66884893647dddb7970b82b5b9d66136665c141cff370f632ba765",
+      "derived_from": "commands/django-security.md"
+    },
+    {
+      "path": ".github/skills/django-test/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "97e4979ccda775dbbf595865127e4c2b06e4fc3096656dcf70e810b104e1dfc3",
+      "derived_from": "commands/django-test.md"
+    },
+    {
+      "path": ".github/skills/django-testing-standards/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "5cec7e82ac4ddaf4c43f59779ba023328b13845159b0ba888f6fae4bef5f1fda",
+      "derived_from": "rules/django-testing-standards/SKILL.md"
+    },
+    {
+      "path": ".github/skills/django-testing/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "12f342ff555bc6b738ad569925cc8a1f2653fd85d4801c3c5b78f8878f410210",
+      "derived_from": "skills/django-testing/SKILL.md"
+    },
+    {
+      "path": ".github/skills/orchestrate/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "b41fc623e1cbc863293e0b513095dab392a903a0582ca723dd5e8f7984f535aa",
+      "derived_from": "commands/orchestrate.md"
+    },
+    {
+      "path": ".github/skills/postgresql-engineering/SKILL.md",
+      "origin": "copilot-adapter",
+      "sha256": "be234101cfa23afc01918a9b1a6a2779f8c10d8fa85f8548ad5ed039c66ec999",
+      "derived_from": "skills/postgresql-engineering/SKILL.md"
     },
     {
       "path": ".gitignore",
@@ -197,7 +484,7 @@
     {
       "path": "CHANGELOG.md",
       "origin": "standalone-authored",
-      "sha256": "81ec2baeed0a02266aaf21f757e83c7fb5211bc1fc1aac8737b653d4f20d3cb3"
+      "sha256": "5492fe358e45a5820f018f29459cfbc705ebe106923392737d0c338368f01093"
     },
     {
       "path": "CONTRIBUTING.md",
@@ -207,7 +494,7 @@
     {
       "path": "README.md",
       "origin": "standalone-authored",
-      "sha256": "43785fa341c90c6622b723bc32724e71b14d5691e648b02527a7e8887bc2af9c"
+      "sha256": "f2afb6776ce7d446e199c2b1438282e74f2dd8e6cc3481b0da51dffd321420a0"
     },
     {
       "path": "SECURITY.md",
@@ -490,6 +777,11 @@
       "sha256": "d8435a4b6ac7880beeee0e424077a23256a80c350473b8e7c0d7efb58d3a946b"
     },
     {
+      "path": "docs/copilot.md",
+      "origin": "standalone-authored",
+      "sha256": "4d7e3a8eff6fccd340228fa268d6252e110542415c47420512b64852378b06e4"
+    },
+    {
       "path": "docs/installation.md",
       "origin": "standalone-authored",
       "sha256": "5dcdcee6116fdd7ae3ef5a358fe356fff1353517963f5d52e4a8b4e541228710"
@@ -498,6 +790,11 @@
       "path": "docs/security.md",
       "origin": "standalone-authored",
       "sha256": "b2611c8f51358f9e0468c97ff47ce2cc1bbad7f5989cb0fbf81f64573c7fb751"
+    },
+    {
+      "path": "docs/testing.md",
+      "origin": "standalone-authored",
+      "sha256": "434746b9a995d6a8bc99840b272b3c72cfe6ad551b2fe7177284e7892efaa872"
     },
     {
       "path": "docs/troubleshooting.md",
@@ -812,9 +1109,11 @@
       "kind": "skill",
       "source": "skills/django-architecture/SKILL.md",
       "source_sha256": "c22742905de32687f71bc94638b9af5d9855b2ec1e808b4330e96a7c2a77ba44",
-      "sha256": "c22742905de32687f71bc94638b9af5d9855b2ec1e808b4330e96a7c2a77ba44",
-      "identical": true,
-      "adaptations": []
+      "sha256": "5d0173312a2998b10a4a741be4d2dd183e9e4bd81c2c0b926bd02f080a3f3688",
+      "identical": false,
+      "adaptations": [
+        "AD-15"
+      ]
     },
     {
       "path": "skills/django-architecture/references/architectural-styles.md",
@@ -972,9 +1271,11 @@
       "kind": "skill",
       "source": "skills/django-core/SKILL.md",
       "source_sha256": "fe641524c27427e2d8a902f6649d5795f81790ebe96473f15ef7460e6d0829f4",
-      "sha256": "fe641524c27427e2d8a902f6649d5795f81790ebe96473f15ef7460e6d0829f4",
-      "identical": true,
-      "adaptations": []
+      "sha256": "3ee6cf678a787acd60709b69018e17630d299105086aa85cdf04de1862e057ce",
+      "identical": false,
+      "adaptations": [
+        "AD-15"
+      ]
     },
     {
       "path": "skills/django-core/references/asgi-wsgi.md",
@@ -1142,9 +1443,11 @@
       "kind": "skill",
       "source": "skills/django-data-processing/SKILL.md",
       "source_sha256": "5a1692031aa0d0828f3a1672c6fca38de82c287a1d32caf111befbe8c1f7828d",
-      "sha256": "5a1692031aa0d0828f3a1672c6fca38de82c287a1d32caf111befbe8c1f7828d",
-      "identical": true,
-      "adaptations": []
+      "sha256": "bf5568b4de816389d45d3d68998d4111ea73d0400e8d92671ee31b8730c42afe",
+      "identical": false,
+      "adaptations": [
+        "AD-15"
+      ]
     },
     {
       "path": "skills/django-data-processing/references/celery-tasks.md",
@@ -1364,9 +1667,11 @@
       "kind": "skill",
       "source": "skills/django-frontend/SKILL.md",
       "source_sha256": "f2657e2c620ea78066e3c915e3172f2c98133812d58fe1a9aaced5d2a3d29064",
-      "sha256": "f2657e2c620ea78066e3c915e3172f2c98133812d58fe1a9aaced5d2a3d29064",
-      "identical": true,
-      "adaptations": []
+      "sha256": "9fef72179a8878cad5ab5556af99150996037b40f3db8d7b5f67299ce5b3f8e2",
+      "identical": false,
+      "adaptations": [
+        "AD-15"
+      ]
     },
     {
       "path": "skills/django-frontend/references/alpine-js-engineering.md",
@@ -1574,9 +1879,11 @@
       "kind": "skill",
       "source": "skills/django-integrations/SKILL.md",
       "source_sha256": "f0c4ed6dd043173bac099b35046138a78f2b50b399319be8c15ad07d2f11bd4a",
-      "sha256": "f0c4ed6dd043173bac099b35046138a78f2b50b399319be8c15ad07d2f11bd4a",
-      "identical": true,
-      "adaptations": []
+      "sha256": "f0662c913efd496197e0a9594170195a34051c1432995993306deb8266cc9980",
+      "identical": false,
+      "adaptations": [
+        "AD-15"
+      ]
     },
     {
       "path": "skills/django-integrations/references/authentication-and-identity-integrations.md",
@@ -1764,9 +2071,11 @@
       "kind": "skill",
       "source": "skills/django-orm/SKILL.md",
       "source_sha256": "9ff129ea67cee249869c6c572ede00dd4fe2ac3cde9383caaf2b5960e177913e",
-      "sha256": "9ff129ea67cee249869c6c572ede00dd4fe2ac3cde9383caaf2b5960e177913e",
-      "identical": true,
-      "adaptations": []
+      "sha256": "b95090b09766b317377e24a6623dd63fbf267168b988c29e42816a8ed0352cd9",
+      "identical": false,
+      "adaptations": [
+        "AD-15"
+      ]
     },
     {
       "path": "skills/django-orm/references/advanced-query-expressions.md",
@@ -1934,9 +2243,11 @@
       "kind": "skill",
       "source": "skills/django-performance/SKILL.md",
       "source_sha256": "eae8e3414a2cb48c4ea6dd4a1131eed309cc5e84fa99d6896358675a9a4ecb83",
-      "sha256": "eae8e3414a2cb48c4ea6dd4a1131eed309cc5e84fa99d6896358675a9a4ecb83",
-      "identical": true,
-      "adaptations": []
+      "sha256": "b9bb3f8a47243ab46dcff1708831da0b10484fe375b41d61b69f85c782f1eb75",
+      "identical": false,
+      "adaptations": [
+        "AD-15"
+      ]
     },
     {
       "path": "skills/django-performance/references/api-performance.md",
@@ -2114,9 +2425,11 @@
       "kind": "skill",
       "source": "skills/django-report-generation/SKILL.md",
       "source_sha256": "93fa3ffeab1ab372b42ada739af5531c76653f0b5a0c6bc680532183a65c75ab",
-      "sha256": "93fa3ffeab1ab372b42ada739af5531c76653f0b5a0c6bc680532183a65c75ab",
-      "identical": true,
-      "adaptations": []
+      "sha256": "2ebe1201f63e036eedc55d7654fb335f4d30c9e23b3387608ec7911204756ede",
+      "identical": false,
+      "adaptations": [
+        "AD-15"
+      ]
     },
     {
       "path": "skills/django-report-generation/references/background-report-generation.md",
@@ -2324,9 +2637,11 @@
       "kind": "skill",
       "source": "skills/django-rest-framework/SKILL.md",
       "source_sha256": "88f68d6eb33026b03295530aedacf5aa9fe36b9b68f159666137b9f719f41458",
-      "sha256": "88f68d6eb33026b03295530aedacf5aa9fe36b9b68f159666137b9f719f41458",
-      "identical": true,
-      "adaptations": []
+      "sha256": "4b4809c016130fa33550761a6948c25c7f281083f5683d9d0c0d864a20161f90",
+      "identical": false,
+      "adaptations": [
+        "AD-15"
+      ]
     },
     {
       "path": "skills/django-rest-framework/references/api-versioning-and-documentation.md",
@@ -2494,9 +2809,11 @@
       "kind": "skill",
       "source": "skills/django-security-engineering/SKILL.md",
       "source_sha256": "d539f8ad367a678d6d2e005fdf80c6341421ef4b5e52eada5cf50312edbaff07",
-      "sha256": "d539f8ad367a678d6d2e005fdf80c6341421ef4b5e52eada5cf50312edbaff07",
-      "identical": true,
-      "adaptations": []
+      "sha256": "19adc4a2d686f80ed861f7e5cae8af3d79fd128ee125a541e153d1aad97db128",
+      "identical": false,
+      "adaptations": [
+        "AD-15"
+      ]
     },
     {
       "path": "skills/django-security-engineering/references/api-security.md",
@@ -2684,9 +3001,11 @@
       "kind": "skill",
       "source": "skills/django-testing/SKILL.md",
       "source_sha256": "9a5fe5e7faf6775d67cc44c42191970aaa43a3753b55466da64332994db973f0",
-      "sha256": "9a5fe5e7faf6775d67cc44c42191970aaa43a3753b55466da64332994db973f0",
-      "identical": true,
-      "adaptations": []
+      "sha256": "a488eba215f27b6c6999272d61f94a216452b402f73669e9f92b1bb3fd27331b",
+      "identical": false,
+      "adaptations": [
+        "AD-15"
+      ]
     },
     {
       "path": "skills/django-testing/references/async-testing.md",
@@ -2874,10 +3193,11 @@
       "kind": "skill",
       "source": "skills/postgresql-engineering/SKILL.md",
       "source_sha256": "14aeaf69515c967b2c27b116b5ecd2049d2fae8a30b0e4edff3074d0565fa440",
-      "sha256": "36058b06e3a17269f88986e739ff89ac19c2c100ef9a2ccf715c1e393b8c7dd3",
+      "sha256": "15e040fda1d188aae3db6f1f80feb42e8b76715627c2034f0f48041f79e5c1c0",
       "identical": false,
       "adaptations": [
-        "AD-12"
+        "AD-12",
+        "AD-15"
       ]
     },
     {
@@ -3065,6 +3385,11 @@
       "sha256": "a36da538adef84c0e1bfe6bad7e5f52057071e4724bdbcbeac61086be2e4480a"
     },
     {
+      "path": "tests/test_copilot_adapter.py",
+      "origin": "standalone-authored",
+      "sha256": "d1e2045933d2ddf09a82175144fa37f1adafce9dee4d48720bcd0faa60ea402c"
+    },
+    {
       "path": "tests/test_guard.py",
       "origin": "standalone-authored",
       "sha256": "ff9eecb26cbf564347632e9c02d50eff708753be303f25bffdd0a12fe66cd711"
@@ -3087,12 +3412,12 @@
     {
       "path": "tests/test_plugin_live.py",
       "origin": "standalone-authored",
-      "sha256": "56bf5f56033eb7b5127975103ba15ea77efd993c4b9c1532e9a61accfd701932"
+      "sha256": "a1c08d97424dfd54aa4db80b7e529525f38c64af71d9219b814d2cb2a0870cd3"
     },
     {
       "path": "tests/test_plugin_structure.py",
       "origin": "standalone-authored",
-      "sha256": "6a96bfbf10f13104fec9ea84a361a3089de91a37af74810c91bcf249d55f41f4"
+      "sha256": "9dcfbd5cf4148af11feb09562a500ed489cced0495c2d54150209a0f106d6e07"
     },
     {
       "path": "tests/test_security_policy.py",
@@ -3103,6 +3428,413 @@
       "path": "tests/test_templates_and_references.py",
       "origin": "standalone-authored",
       "sha256": "b8a10e442635a7713124cf842f9136dc079b0d5293fc5468ce6e0c57d1656965"
+    },
+    {
+      "path": "tools/sync_copilot_adapter.py",
+      "origin": "standalone-authored",
+      "sha256": "3735d3a4bc26aaf3c4f6dded1c5e5e901d0b1e452359d605624551e86c6904a2"
     }
-  ]
+  ],
+  "copilot_adapter": {
+    "generator": "tools/sync_copilot_adapter.py",
+    "note": "Canonical sources are the Claude Code files; Copilot files are derived and verified by --check. Intentional platform differences: frontmatter fields, tool aliases, skill-preload list, path tokens, no hook port (docs/copilot.md).",
+    "mappings": [
+      {
+        "canonical_source": "agents/django-api-agent.md",
+        "claude_code_destination": "agents/django-api-agent.md",
+        "copilot_destination": ".github/agents/django-api-agent.agent.md",
+        "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
+        "source_sha256": "0ea0717b33d6d0b0b90633bf1563b99fa364f996a498782acbe551be93d39dee",
+        "generated_sha256": "7d1bf658a9096d2bba2de78d2b180bb93bc821bd8a52f9d1fe9e83d956c6b748",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "agents/django-architecture-agent.md",
+        "claude_code_destination": "agents/django-architecture-agent.md",
+        "copilot_destination": ".github/agents/django-architecture-agent.agent.md",
+        "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
+        "source_sha256": "1eb9ef0d7037a3080d35f43e83a9c7aa55975ebc888e52d70f2e23052a9fa8ee",
+        "generated_sha256": "59f5ad7f10c7144489cb0a383a3ddff4ed622332aeb082321a5414b2bdd90931",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "agents/django-code-review-agent.md",
+        "claude_code_destination": "agents/django-code-review-agent.md",
+        "copilot_destination": ".github/agents/django-code-review-agent.agent.md",
+        "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
+        "source_sha256": "6d21f827cc3c8160aa55c4dc89d7df786dc939a6652e9a2b115ab5da4118779e",
+        "generated_sha256": "ba2241689d189d73fa5e216bfe77e42fa5d0b1da26ea1544d2ae79671b1c1cc0",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "agents/django-documentation-agent.md",
+        "claude_code_destination": "agents/django-documentation-agent.md",
+        "copilot_destination": ".github/agents/django-documentation-agent.agent.md",
+        "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
+        "source_sha256": "fb59bd811ab8e00768f26060ea452952543bb0aa5f56082ceb8507e8e00f314d",
+        "generated_sha256": "35ec46e088b511973d234b36d3155b9c7ecd57bebc6ff365e22a1246f8050025",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "agents/django-model-agent.md",
+        "claude_code_destination": "agents/django-model-agent.md",
+        "copilot_destination": ".github/agents/django-model-agent.agent.md",
+        "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
+        "source_sha256": "5d9453ab25b490ae2cb0fb408522c42b53b92c685abe74bf5e100c2011061be7",
+        "generated_sha256": "0a88aa733d5e51255a6607c37417929c91bce28b773d173a9670a82c2071cb75",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "agents/django-orchestrator.md",
+        "claude_code_destination": "agents/django-orchestrator.md",
+        "copilot_destination": ".github/agents/django-orchestrator.agent.md",
+        "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
+        "source_sha256": "e5a8f2a19c5bbe8e8d8f8a51142f20f8607477badb6bf71db5bd2d9c71679cd1",
+        "generated_sha256": "a936eb50ccc5bdbc5e2fdaad73ff915cd1092ac908f755b29c2209fd263f2eb8",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "agents/django-performance-agent.md",
+        "claude_code_destination": "agents/django-performance-agent.md",
+        "copilot_destination": ".github/agents/django-performance-agent.agent.md",
+        "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
+        "source_sha256": "17ce3652d83811722acdf9a1054ee1b07f2edc1a1df5200f43a3388956058cf7",
+        "generated_sha256": "4708794fa12943ad5dbce3f587cc0ff736869845c11e432878223e0d8f77d80b",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "agents/django-project-analyzer.md",
+        "claude_code_destination": "agents/django-project-analyzer.md",
+        "copilot_destination": ".github/agents/django-project-analyzer.agent.md",
+        "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
+        "source_sha256": "f0dd96288b0473b508f51a08c56feffa0d9afb61fa4a3d3d72295e25c852bf14",
+        "generated_sha256": "d499c1107a76bedcb335d0c2e9f39f4c0f8b53463448a760442b4fa5d776f531",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "agents/django-security-agent.md",
+        "claude_code_destination": "agents/django-security-agent.md",
+        "copilot_destination": ".github/agents/django-security-agent.agent.md",
+        "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
+        "source_sha256": "7361de8143259faf0d5501bebcef2cb0aee34387a009c388d05c873e8ee83186",
+        "generated_sha256": "f6022e72dedf5a5720e0ddc3703095b42638a421e71d6ba6d283b6cabf9a6934",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "agents/django-testing-agent.md",
+        "claude_code_destination": "agents/django-testing-agent.md",
+        "copilot_destination": ".github/agents/django-testing-agent.agent.md",
+        "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
+        "source_sha256": "564f9d7186469418bd71b7e1c280ad7fd5c4ef470598ed1e2277a94ce75478aa",
+        "generated_sha256": "e68a72115b67978658c34e76282a594f4946634a50a883bab6055f8a9d0ba0e9",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "commands/django-analyze.md",
+        "claude_code_destination": "commands/django-analyze.md",
+        "copilot_destination": ".github/skills/django-analyze/SKILL.md",
+        "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
+        "source_sha256": "edc6a23c8efa17db52f76ea8f18400647628469e6181c6201fa78a42a9e4e533",
+        "generated_sha256": "9bb6887803371a416ee0ce021096778da312343e28bf1af36b05e37db1701686",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "rules/django-api-standards/SKILL.md",
+        "claude_code_destination": "rules/django-api-standards/SKILL.md",
+        "copilot_destination": ".github/skills/django-api-standards/SKILL.md",
+        "adaptation_type": "standard as internal skill: user-invocable false",
+        "source_sha256": "55935dd222825f73371df95bfe4828d92c3a2d2d58e77e73d2dab7a4eb0e9a5b",
+        "generated_sha256": "46792af9e1b02785bcd09689879a654af22c177dad92a64db578609d30e5d294",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "commands/django-api.md",
+        "claude_code_destination": "commands/django-api.md",
+        "copilot_destination": ".github/skills/django-api/SKILL.md",
+        "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
+        "source_sha256": "a7bcac903dbe54c2077a95498070eaacac8f6ddc4dc3b95fb8cbd748592fd69a",
+        "generated_sha256": "4fb65d63ac7908805d47e74aa623433a124b87607d888a13699f3045a4098969",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "skills/django-architecture/SKILL.md",
+        "claude_code_destination": "skills/django-architecture/SKILL.md",
+        "copilot_destination": ".github/skills/django-architecture/SKILL.md",
+        "adaptation_type": "knowledge skill: user-invocable false, links re-based to canonical references/",
+        "source_sha256": "5d0173312a2998b10a4a741be4d2dd183e9e4bd81c2c0b926bd02f080a3f3688",
+        "generated_sha256": "424d72f6fc500c828a27a2c75a1f9eb884276bb058971fdc4fd9e9d41b1e03fa",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "rules/django-coding-standards/SKILL.md",
+        "claude_code_destination": "rules/django-coding-standards/SKILL.md",
+        "copilot_destination": ".github/skills/django-coding-standards/SKILL.md",
+        "adaptation_type": "standard as internal skill: user-invocable false",
+        "source_sha256": "377e3ccd33fb64d97826143b78974d2d3beb7036c0480813b5bc8d6d4d777544",
+        "generated_sha256": "3db1fa5ffa9133555ed0ba0908d639fc1cdf96b59d56bfafd574e605ebe39e7b",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "rules/django-configuration-standards/SKILL.md",
+        "claude_code_destination": "rules/django-configuration-standards/SKILL.md",
+        "copilot_destination": ".github/skills/django-configuration-standards/SKILL.md",
+        "adaptation_type": "standard as internal skill: user-invocable false",
+        "source_sha256": "edc5c386f00a4459061e467e8f6cce3e1fadbec2b033bfaaa86bc1f507ac8141",
+        "generated_sha256": "e1fdb4a127a46ecc68e85cf0f161d618e66423fcb8f48d8c4499392f0362aacd",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "skills/django-core/SKILL.md",
+        "claude_code_destination": "skills/django-core/SKILL.md",
+        "copilot_destination": ".github/skills/django-core/SKILL.md",
+        "adaptation_type": "knowledge skill: user-invocable false, links re-based to canonical references/",
+        "source_sha256": "3ee6cf678a787acd60709b69018e17630d299105086aa85cdf04de1862e057ce",
+        "generated_sha256": "3d0eefb4884b927da34847a16c28b73460c199a419ee75b101d448e99c11115e",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "skills/django-data-processing/SKILL.md",
+        "claude_code_destination": "skills/django-data-processing/SKILL.md",
+        "copilot_destination": ".github/skills/django-data-processing/SKILL.md",
+        "adaptation_type": "knowledge skill: user-invocable false, links re-based to canonical references/",
+        "source_sha256": "bf5568b4de816389d45d3d68998d4111ea73d0400e8d92671ee31b8730c42afe",
+        "generated_sha256": "90e3f67726ff8577bba419114a67ff8877d0b006fa943876222868d67d6cadb2",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "rules/django-database-standards/SKILL.md",
+        "claude_code_destination": "rules/django-database-standards/SKILL.md",
+        "copilot_destination": ".github/skills/django-database-standards/SKILL.md",
+        "adaptation_type": "standard as internal skill: user-invocable false",
+        "source_sha256": "186472b2aed8667ab5caf44553f4daf150c75b827c219909a0257288adf5161a",
+        "generated_sha256": "d16c47c92924c3c9b2c0c4d9b0b8375b7ff1777e9418858f6117426fbacd91e7",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "rules/django-dependency-standards/SKILL.md",
+        "claude_code_destination": "rules/django-dependency-standards/SKILL.md",
+        "copilot_destination": ".github/skills/django-dependency-standards/SKILL.md",
+        "adaptation_type": "standard as internal skill: user-invocable false",
+        "source_sha256": "3aaf6494b7a8cecefefd90a3ca1cce039dd1a943725f09d5ac48e90bcf542b40",
+        "generated_sha256": "0b6855a573f20831063358a382512eb4e039de29c2e72e9b89a7b11e97a03c62",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "commands/django-design.md",
+        "claude_code_destination": "commands/django-design.md",
+        "copilot_destination": ".github/skills/django-design/SKILL.md",
+        "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
+        "source_sha256": "9d556df44bfeadcd12b0abbe2a75e498cf65bb1db446bca9efe03ca012176d04",
+        "generated_sha256": "623a5023ca6895438d1de134177e25878efc255b1af4403c2b0748601a1233cb",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "commands/django-document.md",
+        "claude_code_destination": "commands/django-document.md",
+        "copilot_destination": ".github/skills/django-document/SKILL.md",
+        "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
+        "source_sha256": "a79f58406abe9f5468b2b3c6e45cb14ec1c8a7990c352e9102118e2c341f2fc3",
+        "generated_sha256": "1e378d5bc34c2fd46bf205d2d846cb07de79cc4cc911961f504494f1afb920ab",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "rules/django-documentation-standards/SKILL.md",
+        "claude_code_destination": "rules/django-documentation-standards/SKILL.md",
+        "copilot_destination": ".github/skills/django-documentation-standards/SKILL.md",
+        "adaptation_type": "standard as internal skill: user-invocable false",
+        "source_sha256": "939665e0e7edbce3b322b1c7dafd6c755a839f78ff0f503b4c2a3f02c74de506",
+        "generated_sha256": "ae02baf132355b0c6f952cfdc9c4c9ef933d26c187f76ea28753c81516937c30",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "skills/django-frontend/SKILL.md",
+        "claude_code_destination": "skills/django-frontend/SKILL.md",
+        "copilot_destination": ".github/skills/django-frontend/SKILL.md",
+        "adaptation_type": "knowledge skill: user-invocable false, links re-based to canonical references/",
+        "source_sha256": "9fef72179a8878cad5ab5556af99150996037b40f3db8d7b5f67299ce5b3f8e2",
+        "generated_sha256": "c86f5c8ab875465d80cd4762f469afe846ecf1fd8c1da364df069058b45202a9",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "skills/django-integrations/SKILL.md",
+        "claude_code_destination": "skills/django-integrations/SKILL.md",
+        "copilot_destination": ".github/skills/django-integrations/SKILL.md",
+        "adaptation_type": "knowledge skill: user-invocable false, links re-based to canonical references/",
+        "source_sha256": "f0662c913efd496197e0a9594170195a34051c1432995993306deb8266cc9980",
+        "generated_sha256": "a59bac24862607e5e4b6f80b36db7e7847fbfbe084db25b2db6a12d3b47401e3",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "rules/django-logging-standards/SKILL.md",
+        "claude_code_destination": "rules/django-logging-standards/SKILL.md",
+        "copilot_destination": ".github/skills/django-logging-standards/SKILL.md",
+        "adaptation_type": "standard as internal skill: user-invocable false",
+        "source_sha256": "6b2cccb017aafa2bc2ba8d24c6e38c3dcc48fbb2a35089ffceb35df03b08f7db",
+        "generated_sha256": "436a84279c3da1732ed7edfe1db2580a43f68014cb39e3a4105697594f54c03f",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "rules/django-model-standards/SKILL.md",
+        "claude_code_destination": "rules/django-model-standards/SKILL.md",
+        "copilot_destination": ".github/skills/django-model-standards/SKILL.md",
+        "adaptation_type": "standard as internal skill: user-invocable false",
+        "source_sha256": "3629dde4b33c440a1c0c2926251c5e2b1d691e8f86394901dc75bca37aa8f602",
+        "generated_sha256": "945f66a99743c111c00c88e2641806471aa557f8afc6e837c58003a7e5b0c2fc",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "commands/django-model.md",
+        "claude_code_destination": "commands/django-model.md",
+        "copilot_destination": ".github/skills/django-model/SKILL.md",
+        "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
+        "source_sha256": "1c8484b2f42a6575ec9207657a7698327f0126fd6a91ab9bce233169cbd067e0",
+        "generated_sha256": "51ba8c53d7cfdb0094a996e4c2d9f23e79eab4e211b536826293836f57d18464",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "commands/django-optimize.md",
+        "claude_code_destination": "commands/django-optimize.md",
+        "copilot_destination": ".github/skills/django-optimize/SKILL.md",
+        "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
+        "source_sha256": "7839c32d57982b5ba3e424f1889a2dabb39bf60c401393442064efa61be084d0",
+        "generated_sha256": "8776c41ec96e65e9409e53dbcf735a00c69d81267956465cacbba153636ccf4a",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "skills/django-orm/SKILL.md",
+        "claude_code_destination": "skills/django-orm/SKILL.md",
+        "copilot_destination": ".github/skills/django-orm/SKILL.md",
+        "adaptation_type": "knowledge skill: user-invocable false, links re-based to canonical references/",
+        "source_sha256": "b95090b09766b317377e24a6623dd63fbf267168b988c29e42816a8ed0352cd9",
+        "generated_sha256": "27373c443977f44151755d90a5cf61c4a69b3a1e84b3a4778e875b6a138e9d22",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "rules/django-performance-standards/SKILL.md",
+        "claude_code_destination": "rules/django-performance-standards/SKILL.md",
+        "copilot_destination": ".github/skills/django-performance-standards/SKILL.md",
+        "adaptation_type": "standard as internal skill: user-invocable false",
+        "source_sha256": "2cdca6380f8b570066a25031538900c0894e0931bd55c6a9dfb1a0c44147ffed",
+        "generated_sha256": "00874fe0fcc24575244cf6373b0b2e6d9c1010c1524b4d7b13099a4cfee1e8e4",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "skills/django-performance/SKILL.md",
+        "claude_code_destination": "skills/django-performance/SKILL.md",
+        "copilot_destination": ".github/skills/django-performance/SKILL.md",
+        "adaptation_type": "knowledge skill: user-invocable false, links re-based to canonical references/",
+        "source_sha256": "b9bb3f8a47243ab46dcff1708831da0b10484fe375b41d61b69f85c782f1eb75",
+        "generated_sha256": "cdfbc3cb51102962c6955ea7ee67028f699d11fc6fdc1197185115c953914765",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "rules/django-project-structure/SKILL.md",
+        "claude_code_destination": "rules/django-project-structure/SKILL.md",
+        "copilot_destination": ".github/skills/django-project-structure/SKILL.md",
+        "adaptation_type": "standard as internal skill: user-invocable false",
+        "source_sha256": "1738d4c637d36f167766935488422e24530955fd32fd8d7fa5d7819fb50b0cb6",
+        "generated_sha256": "669d84de14590305c42ece5713d4c46b82d6562532fbb5be180ae00fd7f8d947",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "skills/django-report-generation/SKILL.md",
+        "claude_code_destination": "skills/django-report-generation/SKILL.md",
+        "copilot_destination": ".github/skills/django-report-generation/SKILL.md",
+        "adaptation_type": "knowledge skill: user-invocable false, links re-based to canonical references/",
+        "source_sha256": "2ebe1201f63e036eedc55d7654fb335f4d30c9e23b3387608ec7911204756ede",
+        "generated_sha256": "a531e1936449a645764ef1ede160426398ff1d5420725943d1c4b4ba1bf21c38",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "skills/django-rest-framework/SKILL.md",
+        "claude_code_destination": "skills/django-rest-framework/SKILL.md",
+        "copilot_destination": ".github/skills/django-rest-framework/SKILL.md",
+        "adaptation_type": "knowledge skill: user-invocable false, links re-based to canonical references/",
+        "source_sha256": "4b4809c016130fa33550761a6948c25c7f281083f5683d9d0c0d864a20161f90",
+        "generated_sha256": "89d4003f57e72ca0f397e1c857e434a5b76354280a58aba507a414afad1b2e68",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "commands/django-review.md",
+        "claude_code_destination": "commands/django-review.md",
+        "copilot_destination": ".github/skills/django-review/SKILL.md",
+        "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
+        "source_sha256": "df693e7a55c87b59afb7c87fe997a832c5695c6385224b11ef8bf997dd53f0b4",
+        "generated_sha256": "e50be760763b54a5f551d2f232c03c5ebe664f0c3ded63e5dac6e5fa4c9c622a",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "skills/django-security-engineering/SKILL.md",
+        "claude_code_destination": "skills/django-security-engineering/SKILL.md",
+        "copilot_destination": ".github/skills/django-security-engineering/SKILL.md",
+        "adaptation_type": "knowledge skill: user-invocable false, links re-based to canonical references/",
+        "source_sha256": "19adc4a2d686f80ed861f7e5cae8af3d79fd128ee125a541e153d1aad97db128",
+        "generated_sha256": "b46f3622b72886a795d388e04d1011e0ccd642bc9f20ec8603f92d7178826d32",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "rules/django-security-standards/SKILL.md",
+        "claude_code_destination": "rules/django-security-standards/SKILL.md",
+        "copilot_destination": ".github/skills/django-security-standards/SKILL.md",
+        "adaptation_type": "standard as internal skill: user-invocable false",
+        "source_sha256": "7f5bc4da7ecc175474b5ef2455a5f152d612c5b2ffb8badd469da3fb8d6439df",
+        "generated_sha256": "d0152be89e23164b57f1dad83f65acaae79b907a3edb44362218f1426753aa77",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "commands/django-security.md",
+        "claude_code_destination": "commands/django-security.md",
+        "copilot_destination": ".github/skills/django-security/SKILL.md",
+        "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
+        "source_sha256": "db69ed0ebb1576338f8d46b47251a858501e24a993937fe4ea1bb8050846a88c",
+        "generated_sha256": "e51cd57e1a66884893647dddb7970b82b5b9d66136665c141cff370f632ba765",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "commands/django-test.md",
+        "claude_code_destination": "commands/django-test.md",
+        "copilot_destination": ".github/skills/django-test/SKILL.md",
+        "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
+        "source_sha256": "756164e95a7746fe6b5cc7472b61f6fd79f5197ec0e18df1016a23c6e62c3051",
+        "generated_sha256": "97e4979ccda775dbbf595865127e4c2b06e4fc3096656dcf70e810b104e1dfc3",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "rules/django-testing-standards/SKILL.md",
+        "claude_code_destination": "rules/django-testing-standards/SKILL.md",
+        "copilot_destination": ".github/skills/django-testing-standards/SKILL.md",
+        "adaptation_type": "standard as internal skill: user-invocable false",
+        "source_sha256": "d032c77136fcd148cbbea4ecd20c927261da3d245f5301d6f4708357b64cbcea",
+        "generated_sha256": "5cec7e82ac4ddaf4c43f59779ba023328b13845159b0ba888f6fae4bef5f1fda",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "skills/django-testing/SKILL.md",
+        "claude_code_destination": "skills/django-testing/SKILL.md",
+        "copilot_destination": ".github/skills/django-testing/SKILL.md",
+        "adaptation_type": "knowledge skill: user-invocable false, links re-based to canonical references/",
+        "source_sha256": "a488eba215f27b6c6999272d61f94a216452b402f73669e9f92b1bb3fd27331b",
+        "generated_sha256": "12f342ff555bc6b738ad569925cc8a1f2653fd85d4801c3c5b78f8878f410210",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "commands/orchestrate.md",
+        "claude_code_destination": "commands/orchestrate.md",
+        "copilot_destination": ".github/skills/orchestrate/SKILL.md",
+        "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
+        "source_sha256": "62540218e4202539863eba3878f19ef3681de838a8093a3d4cf959ba8a4c7a17",
+        "generated_sha256": "b41fc623e1cbc863293e0b513095dab392a903a0582ca723dd5e8f7984f535aa",
+        "sync_status": "in-sync"
+      },
+      {
+        "canonical_source": "skills/postgresql-engineering/SKILL.md",
+        "claude_code_destination": "skills/postgresql-engineering/SKILL.md",
+        "copilot_destination": ".github/skills/postgresql-engineering/SKILL.md",
+        "adaptation_type": "knowledge skill: user-invocable false, links re-based to canonical references/",
+        "source_sha256": "15e040fda1d188aae3db6f1f80feb42e8b76715627c2034f0f48041f79e5c1c0",
+        "generated_sha256": "be234101cfa23afc01918a9b1a6a2779f8c10d8fa85f8548ad5ed039c66ec999",
+        "sync_status": "in-sync"
+      }
+    ]
+  }
 }

@@ -1,5 +1,6 @@
 ---
 name: django-performance
+user-invocable: false
 description: >-
   Django performance engineering specialist — performance fundamentals (latency, throughput,
   percentiles, Little's Law, SLOs), request/application cost, profiling and observability,

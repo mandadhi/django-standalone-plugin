@@ -1,5 +1,6 @@
 ---
 name: django-data-processing
+user-invocable: false
 description: >-
   Django data processing engineering specialist — processing architectures (batch, stream,
   near-real-time, ETL/ELT), data ingestion (APIs, files, databases, webhooks, cloud storage,

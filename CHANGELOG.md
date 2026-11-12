@@ -2,6 +2,23 @@
 
 All notable changes to the standalone Django Engineering Plugin. Versions follow semantic versioning.
 
+## 2.1.0
+
+Unified Claude Code + GitHub Copilot plugin.
+
+### Added
+- GitHub Copilot adapter under `.github/`, generated from the canonical sources by `tools/sync_copilot_adapter.py`:
+  ten user-invocable command skills, ten custom agents (only the orchestrator user-invocable; specialists hidden but
+  delegable), twelve hidden knowledge skills, twelve hidden standards, one thin instructions file.
+- `docs/copilot.md`, `docs/testing.md`, `tests/test_copilot_adapter.py`, manifest section `copilot_adapter`.
+
+### Changed
+- The twelve knowledge skills now carry `user-invocable: false` (manifest adaptation AD-15). Claude Code lists only
+  the ten commands. Test expectations in `test_plugin_structure.py` and `test_plugin_live.py` changed accordingly.
+
+### Not done
+- No Copilot port of the security guard hook; no live Copilot validation (see docs/testing.md).
+
 ## 2.0.1
 
 Discovery fixes. Commands restored (unchanged from 1.x, one `commands/` folder): `/django-engineering:orchestrate`

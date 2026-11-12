@@ -1,5 +1,6 @@
 ---
 name: django-frontend
+user-invocable: false
 description: >-
   Django frontend engineering specialist — frontend architecture selection (server-rendered,
   HTMX, Alpine.js, React islands, SPA), Django templates as UI composition, semantic HTML, CSS and

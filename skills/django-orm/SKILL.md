@@ -1,5 +1,6 @@
 ---
 name: django-orm
+user-invocable: false
 description: >-
   Django ORM engineering specialist — ORM architecture and QuerySet internals, model design,
   fields and relationships, the QuerySet API, expressions, aggregation and annotation, managers,

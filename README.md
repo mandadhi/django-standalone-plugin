@@ -1,12 +1,17 @@
 # Django Engineering Plugin (standalone)
 
-A Claude Code plugin for Django and Django REST Framework engineering: a **Django Orchestrator**, nine
+A Claude Code and GitHub Copilot plugin (one repository, one canonical engineering core, two native adapters) for Django and Django REST Framework engineering: a **Django Orchestrator**, nine
 **specialist agents** (invoke by name or with ten slash commands), twelve **skills**, twelve internal mandatory **rules**, output
 **templates**, shared **references** and a fail-closed **security guard**.
 
 This is the independent, self-contained distribution. It needs **no Python harness, no services, no
 database and no Python packages**. The only runtime prerequisite besides Claude Code is a `python`
 (3.8+) interpreter on `PATH`, which runs the security guard hook (standard library only).
+
+> **Both platforms, same ten commands.** Claude Code uses `.claude-plugin/` and the canonical folders directly. GitHub
+> Copilot uses thin files derived from them in `.github/` (ten slash-command skills, ten custom agents, internal
+> skills and standards), kept in sync by `tools/sync_copilot_adapter.py`. See [docs/copilot.md](docs/copilot.md).
+> Copilot discovery and delegation are not live-tested yet ([docs/testing.md](docs/testing.md)).
 
 ## Quick start
 
@@ -61,6 +66,8 @@ preloaded into agents; they are never commands. Not sure which agent? Use
 | Document | For |
 |---|---|
 | [docs/installation.md](docs/installation.md) | Installing, verifying, updating, uninstalling, local development |
+| [docs/copilot.md](docs/copilot.md) | GitHub Copilot adapter: install, visibility, security model, limitations |
+| [docs/testing.md](docs/testing.md) | Tests, live validation status, parity matrix |
 | [docs/agents.md](docs/agents.md) | The ten agents, how to invoke them, write modes |
 | [docs/usage.md](docs/usage.md) | The agents, approvals, the orchestrator, examples |
 | [docs/architecture.md](docs/architecture.md) | How the pieces fit; what skills, rules, references and templates are for; orchestration model |

@@ -1,6 +1,6 @@
 {
   "name": "django-engineering",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Django Engineering Plugin (standalone): a Django orchestrator and nine specialist agents, ten slash commands (/django-engineering:orchestrate and nine specialist commands), twelve Django skills and twelve mandatory engineering rules (internal, preloaded into agents, never slash commands), with output templates, shared references and a fail-closed security guard. Self-contained: no Python harness, no services.",
   "author": {
     "name": "Techwave Digital AI"
