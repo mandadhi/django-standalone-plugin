@@ -1,5 +1,6 @@
 ---
 name: django-database-standards
+user-invocable: false
 description: >-
   Mandatory Django engineering rule for migrations and database access: immutable applied
   migrations, reversibility, historical models in data migrations, zero-downtime schema changes,

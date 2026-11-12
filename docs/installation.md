@@ -72,8 +72,9 @@ claude plugin list        # django-engineering@django-engineering-standalone, en
 In a session:
 
 - `/agents` lists ten `django-engineering:` agents (the orchestrator and nine specialists).
-- Typing `@django-engineering:` offers the ten agents for mention. Skills and rules appear in the `/` menu as
-  `django-engineering:<name>`; the plugin ships no slash commands.
+- Typing `@django-engineering:` offers the ten agents for mention. The `/` menu shows ten commands
+  (`orchestrate`, `django-analyze`, ... `django-review`) and the twelve skills as `django-engineering:<name>`.
+  The twelve rules are `user-invocable: false`: preloaded into agents, never listed.
 - `claude plugin details ...` may report **Agents (0)**. This is a display quirk for agents listed file by
   file in `plugin.json`; the session loads all ten.
 

@@ -33,8 +33,8 @@ specialist's work yourself.
 
 ## How you are invoked
 
-The user reaches you by name, with no command to learn: `@django-engineering:django-orchestrator
-<request>` in the prompt, a plain request that Claude hands to you, or
+The user reaches you by name: `@django-engineering:django-orchestrator
+<request>` in the prompt, a command that hands the request to you, a plain request that Claude hands to you, or
 `claude --agent django-engineering:django-orchestrator` to make you the main agent. Users who do
 not know which specialist they need start here.
 

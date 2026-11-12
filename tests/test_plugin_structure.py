@@ -6,7 +6,7 @@ import re
 
 import pytest
 
-from conftest import (AGENTS, EXPECTED_TOOLS, HARNESS_COMMANDS, MARKETPLACE, ORCHESTRATOR, PLUGIN, REFERENCES,
+from conftest import (AGENTS, COMMANDS, EXPECTED_TOOLS, HARNESS_COMMANDS, MARKETPLACE, ORCHESTRATOR, PLUGIN, REFERENCES,
                       ROOT, ROOT_VAR, RULES, SKILLS, SPECIALISTS, TEMPLATES, all_files, as_list, frontmatter,
                       marketplace_json, plugin_json, read, text_files)
 
@@ -21,8 +21,8 @@ def test_plugin_manifest_is_valid() -> None:
     for forbidden in ("mcpServers", "lspServers", "settings", "permissions", "userConfig", "outputStyles"):
         assert forbidden not in data, f"plugin.json must not declare {forbidden}"
     assert data["agents"] == [f"./agents/{a}.md" for a in AGENTS]
-    assert "commands" not in data, "agents are invoked by name; the plugin ships no slash commands"
-    for path in data["agents"]:
+    assert data["commands"] == [f"./commands/{c}.md" for c in COMMANDS]
+    for path in data["agents"] + data["commands"]:
         assert (ROOT / path).is_file(), path
 
 
@@ -38,7 +38,7 @@ def test_marketplace_manifest_is_valid_and_independent() -> None:
 
 
 def test_directory_structure() -> None:
-    for folder in ("agents", "skills", "rules", "templates", "references", "hooks", "config", "docs",
+    for folder in ("agents", "commands", "skills", "rules", "templates", "references", "hooks", "config", "docs",
                    "tests", ".claude-plugin"):
         assert (ROOT / folder).is_dir(), folder
     for name in ("README.md", "CONTRIBUTING.md", "SECURITY.md", "CHANGELOG.md", "TEAM_HANDOFF.md", ".gitignore",
@@ -52,7 +52,8 @@ def test_directory_structure() -> None:
 def test_component_inventory_is_complete_and_exact() -> None:
     assert sorted(p.stem for p in (ROOT / "agents").glob("*.md")) == AGENTS, "agents/ holds agent files only"
     assert len(SPECIALISTS) == 9 and ORCHESTRATOR in AGENTS
-    assert not (ROOT / "commands").exists(), "the plugin ships no commands folder"
+    assert sorted(p.stem for p in (ROOT / "commands").glob("*.md") if p.stem != "README") == sorted(COMMANDS),         "commands/ holds the ten user-facing commands only"
+    assert not (ROOT / "commands" / "commands").exists()
     assert sorted(p.parent.name for p in (ROOT / "skills").glob("*/SKILL.md")) == SKILLS
     assert sorted(p.parent.name for p in (ROOT / "rules").glob("*/SKILL.md")) == RULES
     assert sorted(p.name[: -len(".template.md")] for p in (ROOT / "templates").glob("*.template.md")) == TEMPLATES
@@ -63,11 +64,27 @@ def test_component_inventory_is_complete_and_exact() -> None:
         ["README.md"] + [f"{t}.template.md" for t in TEMPLATES])
 
 
-def test_no_commands_anywhere() -> None:
-    assert not (ROOT / "commands").exists()
-    assert "commands" not in plugin_json()
+def test_commands_are_thin_delegates_to_one_agent_each() -> None:
+    expected = {"orchestrate": ORCHESTRATOR, "django-analyze": "django-project-analyzer",
+                "django-design": "django-architecture-agent", "django-model": "django-model-agent",
+                "django-api": "django-api-agent", "django-security": "django-security-agent",
+                "django-test": "django-testing-agent", "django-optimize": "django-performance-agent",
+                "django-document": "django-documentation-agent", "django-review": "django-code-review-agent"}
+    assert sorted(expected) == sorted(COMMANDS)
+    for command, agent in expected.items():
+        text = read(ROOT / "commands" / f"{command}.md")
+        assert frontmatter(ROOT / "commands" / f"{command}.md")["name"] == command
+        assert f"`{agent}` subagent" in text or (command == "orchestrate" and "`django-orchestrator`" in text), command
     for name in HARNESS_COMMANDS:
         assert not list(ROOT.glob(f"**/{name}.md")), name
+
+
+def test_rules_are_internal_and_never_commands() -> None:
+    assert "./rules/" in plugin_json()["skills"] and not any("rules" in c for c in plugin_json()["commands"])
+    for rule in RULES:
+        assert frontmatter(ROOT / "rules" / rule / "SKILL.md").get("user-invocable") is False, rule
+    for skill in SKILLS:
+        assert frontmatter(ROOT / "skills" / skill / "SKILL.md").get("user-invocable") is not False, skill
 
 
 def test_component_names_are_unique_across_kinds() -> None:

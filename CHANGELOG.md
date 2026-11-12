@@ -2,6 +2,13 @@
 
 All notable changes to the standalone Django Engineering Plugin. Versions follow semantic versioning.
 
+## 2.0.1
+
+Discovery fixes. Commands restored (unchanged from 1.x, one `commands/` folder): `/django-engineering:orchestrate`
+and nine specialist commands, each delegating to its agent. The twelve rules now carry `user-invocable: false`, so
+they are no longer listed as slash commands (they were exposed because `plugin.json` registers `./rules/` as skills,
+which Claude Code also turns into `/` entries); agents still preload them. `plugin.json` lists the ten commands.
+
 ## 2.0.0
 
 Agents are the only interface. **Breaking:** the ten slash commands (`/django-engineering:orchestrate` and the nine

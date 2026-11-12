@@ -1,5 +1,6 @@
 ---
 name: django-model-standards
+user-invocable: false
 description: >-
   Mandatory Django engineering rule for model definitions: database-enforced invariants,
   relationships and on_delete, user-model references, field type choices, sensitive fields,

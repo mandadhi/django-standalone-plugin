@@ -12,7 +12,7 @@ import subprocess
 
 import pytest
 
-from conftest import AGENTS, PLUGIN, ROOT, RULES, SKILLS
+from conftest import AGENTS, COMMANDS, PLUGIN, ROOT, RULES, SKILLS
 
 pytestmark = pytest.mark.live
 CLAUDE = shutil.which("claude")
@@ -53,7 +53,9 @@ def test_session_discovers_every_component() -> None:
     assert init, proc.stdout[:500] + proc.stderr[:500]
     agents = set(init.get("agents", []))
     assert {f"{PLUGIN}:{a}" for a in AGENTS} <= agents, sorted(agents)
-    commands = set(init.get("slash_commands", []))
-    assert not any(c.startswith(f"{PLUGIN}:") and c.split(":", 1)[1] not in SKILLS + RULES for c in commands), sorted(commands)
-    assert {f"{PLUGIN}:{s}" for s in SKILLS + RULES} <= commands | set(init.get("skills", [])), sorted(commands)
-    assert not any("harness" in c or c.endswith(":doctor") for c in commands if c.startswith(PLUGIN))
+    commands = {c for c in init.get("slash_commands", []) if c.startswith(f"{PLUGIN}:")}
+    skills = {c for c in init.get("skills", []) if c.startswith(f"{PLUGIN}:")}
+    assert commands == {f"{PLUGIN}:{c}" for c in COMMANDS} | {f"{PLUGIN}:{s}" for s in SKILLS}, sorted(commands)
+    assert skills == {f"{PLUGIN}:{s}" for s in SKILLS}, sorted(skills)
+    assert not any(c.split(":", 1)[1] in RULES for c in commands | skills), "rules must stay internal"
+    assert not any("harness" in c or c.endswith(":doctor") for c in commands)

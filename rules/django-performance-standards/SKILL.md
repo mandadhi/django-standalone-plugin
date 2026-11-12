@@ -1,5 +1,6 @@
 ---
 name: django-performance-standards
+user-invocable: false
 description: >-
   Mandatory Django engineering rule for performance: no N+1 queries, bounded querysets,
   database-side aggregation, efficient bulk writes, offloading slow work, correctly keyed and

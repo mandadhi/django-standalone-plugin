@@ -1,5 +1,6 @@
 ---
 name: django-testing-standards
+user-invocable: false
 description: >-
   Mandatory Django engineering rule for tests: tests with every behaviour change and bug fix,
   test-database-only execution, isolation from networks and external services, determinism,

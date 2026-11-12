@@ -1,5 +1,6 @@
 ---
 name: django-api-standards
+user-invocable: false
 description: >-
   Mandatory Django REST Framework engineering rule: default-deny permissions, caller-scoped
   querysets, explicit serializer fields, pagination, consistent error responses, throttling of

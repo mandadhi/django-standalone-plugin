@@ -57,11 +57,11 @@ Two ways it runs:
 - **Subagent** (an `@` mention): Claude Code subagents usually cannot spawn subagents. The orchestrator
   then returns a **ROUTING PLAN** and the main session executes it with the same limits.
 
-## Why there are no commands
+## Commands are thin entry points
 
-A command only briefed one agent and applied that agent's approval gate. Agents are already invocable by
-name, so the extra layer duplicated entry points and kept safety logic outside the agent: calling an agent
-directly, or through the orchestrator, bypassed it. The gate (propose, wait for approval, then write) now
+A command only briefs one agent; it does not own safety logic. Agents are also invocable by name, so the
+approval gate cannot live in the command: calling an agent directly, or through the orchestrator, would
+bypass it. The gate (propose, wait for approval, then write) now
 lives in each agent's `## Approval gate` section, so it holds on every path. The orchestrator passes
 approvals through and never grants them.
 

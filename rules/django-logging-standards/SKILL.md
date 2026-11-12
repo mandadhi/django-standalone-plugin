@@ -1,5 +1,6 @@
 ---
 name: django-logging-standards
+user-invocable: false
 description: >-
   Mandatory Django engineering rule for logging and error reporting: module loggers, central
   LOGGING configuration, no secrets or excess personal data in logs, logging exceptions once,

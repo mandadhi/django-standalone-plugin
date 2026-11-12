@@ -1,7 +1,7 @@
 # Django Engineering Plugin (standalone)
 
 A Claude Code plugin for Django and Django REST Framework engineering: a **Django Orchestrator**, nine
-**specialist agents** you invoke by name, twelve **skills**, twelve mandatory **rules**, output
+**specialist agents** (invoke by name or with ten slash commands), twelve **skills**, twelve internal mandatory **rules**, output
 **templates**, shared **references** and a fail-closed **security guard**.
 
 This is the independent, self-contained distribution. It needs **no Python harness, no services, no
@@ -48,9 +48,13 @@ Specialists: `django-project-analyzer`, `django-architecture-agent`, `django-mod
 `django-api-agent`, `django-security-agent`, `django-testing-agent`, `django-performance-agent`,
 `django-documentation-agent`, `django-code-review-agent`.
 
-There are **no slash commands**: you address an agent by name (`@django-engineering:<agent id>`) or in plain
-language, and the agent loads its own skills, rules, templates and references. Not sure which agent? Use
-`@django-engineering:django-orchestrator`. See [docs/usage.md](docs/usage.md).
+Ten slash commands are the entry points: `/django-engineering:orchestrate <request>` hands any request to the
+orchestrator; `django-analyze`, `django-design`, `django-model`, `django-api`, `django-security`, `django-test`,
+`django-optimize`, `django-document` and `django-review` each brief one specialist (see [commands/](commands/README.md)).
+You can also address an agent by name (`@django-engineering:<agent id>`) or in plain
+language, and the agent loads its own skills, rules, templates and references. The twelve rules are internal standards
+preloaded into agents; they are never commands. Not sure which agent? Use
+`/django-engineering:orchestrate` or `@django-engineering:django-orchestrator`. See [docs/usage.md](docs/usage.md).
 
 ## Documentation
 

@@ -4,8 +4,8 @@ Open Claude Code in a Django project (a clean git working tree is recommended).
 
 ## How to call an agent
 
-The plugin ships **no slash commands**. Agents are the interface: name one, and it loads the skills, rules,
-templates and references it needs by itself.
+Use a slash command (`/django-engineering:orchestrate <request>`, `/django-engineering:django-model ...`) or name
+an agent directly. Either way the agent loads the skills, rules, templates and references it needs by itself.
 
 ```text
 @django-engineering:django-model-agent add an Invoice model with a unique number per tenant

@@ -32,6 +32,8 @@ TEMPLATES = sorted(["api-specification", "architecture-decision-record", "archit
 REFERENCES = sorted(["django-api-design-checklist", "django-migration-safety", "django-performance-checklist",
                      "django-project-discovery", "django-security-checklist", "django-testing-strategy",
                      "django-version-compatibility"])
+COMMANDS = ["orchestrate", "django-analyze", "django-design", "django-model", "django-api", "django-security",
+            "django-test", "django-optimize", "django-document", "django-review"]
 HARNESS_COMMANDS = ["setup-harness", "harness-status", "enable-harness", "disable-harness", "doctor"]
 
 #: Declared tools of every agent (the ceiling). Mirrors agents/<id>.md frontmatter; a change here must be deliberate.

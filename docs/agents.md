@@ -22,7 +22,8 @@ The modes are enforced by `hooks/django_pack_guard.py` from `hooks/security-poli
 
 ## Invoking an agent
 
-There are no slash commands; you address an agent by name:
+Each agent has a slash command (`/django-engineering:orchestrate` for the orchestrator, see
+[commands/README.md](../commands/README.md)). You can also address an agent by name:
 
 - `@django-engineering:django-model-agent add an Invoice model with a unique number per tenant`
 - Plain language ("have the Django security agent review the accounts app"); Claude picks the agent.

@@ -5,7 +5,7 @@ Read this first. It is written so a new team can start without asking the origin
 ## 1. Product scope
 
 **What it is.** A Claude Code plugin that gives a developer a Django/DRF engineering team inside Claude
-Code: one orchestrator, nine specialist agents (invoked by name, no slash commands), twelve skills, twelve rules, twelve
+Code: one orchestrator, nine specialist agents (ten slash commands, or invoke by name), twelve skills, twelve rules, twelve
 output templates, seven shared references and a security guard hook.
 
 **What it does.** Analyse a project; design architecture; create or change models and migrations; build
@@ -108,7 +108,7 @@ Rules of the road:
 
 1. Preserve **role, tools and write mode** of every agent. A change that widens a tool or a path needs a
    security review and a matching test. Policy can only take capability away.
-2. Names must be unique across agents, skills and rules. Approval gates live in the agent files (`## Approval gate`); there is no command layer to hold them.
+2. Names must be unique across agents, skills and rules. Approval gates live in the agent files (`## Approval gate`); commands only brief an agent and never hold them.
 3. Keep `plugin.json` free of a `hooks` key (the default `hooks/hooks.json` is already loaded).
 4. After intentional edits to canonical files, refresh the hashes: they are recorded in
    `CANONICAL-MANIFEST.json`; `tests/test_manifest.py` fails on any file changed without updating its
