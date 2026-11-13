@@ -6,7 +6,8 @@ Read this first. It is written so a new team can start without asking the origin
 
 **What it is.** A Claude Code plugin that gives a developer a Django/DRF engineering team inside Claude
 Code: one orchestrator, nine specialist agents (ten slash commands, or invoke by name), twelve skills, twelve rules, twelve
-output templates, seven shared references and a security guard hook.
+output templates (twenty, with the SDLC documentation templates), ten shared references and a security guard hook, plus the SDLC
+documentation catalog and registry validator (see docs/sdlc-documentation.md).
 
 **What it does.** Analyse a project; design architecture; create or change models and migrations; build
 DRF APIs; assess and harden security; write and run tests; find and fix performance problems; write
@@ -40,7 +41,7 @@ Repository layout:
 .claude-plugin/    plugin.json (component list, version), marketplace.json
 agents/            orchestrator + 9 specialists
 skills/  rules/    12 + 12 SKILL.md bundles (both declared as skill folders)
-templates/         12 report templates      references/  7 shared references
+templates/         20 templates             references/  10 shared references   config/ policy + SDLC catalog   tools/ adapter generator + registry validator
 hooks/             hooks.json, guard, shell analyser, security-policy.json
 config/            orchestration-policy.yaml
 docs/ tests/       documentation and the validation suite

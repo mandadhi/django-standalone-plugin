@@ -46,7 +46,18 @@ Tell the agent to apply these, by id. In the Django Engineering Pack they live a
 (installed plugin: under `${CLAUDE_PLUGIN_ROOT}`, and preloaded into the agent).
 
 - Skills: `django-security-engineering` · `django-rest-framework` · `django-integrations`
-- Rules: `django-security-standards` · `django-configuration-standards` · `django-logging-standards` · `django-dependency-standards` · `django-api-standards` · `django-coding-standards` · `django-testing-standards`
+- Rules: `django-security-standards` · `django-configuration-standards` · `django-logging-standards` · `django-dependency-standards` · `django-api-standards` · `django-coding-standards` · `django-testing-standards` · `django-documentation-standards`
+
+## Documentation context
+
+Tell the agent to follow `DOC-M9` to `DOC-M16` and the registry protocol in the pack at `references/sdlc-documentation-registry.md`
+(installed plugin: `${CLAUDE_PLUGIN_ROOT}/references/sdlc-documentation-registry.md`): read `docs/sdlc/registry.json` first, consume current
+documents, review stale ones, never edit an `approved` document in place, report conflicts, and state assumptions
+instead of inventing details. The workflow is defined once, in that reference; this command adds only the following.
+
+- Consume the security design (SEC), HLD, API specification, configuration and deployment documents; report findings that contradict them.
+- The security agent returns SEC content in its report and writes or changes SEC only with the user's approval (its confirm-writes mode); otherwise run
+  `/django-document` to persist the content. No secret values or exploit details in any document.
 
 ## Authorization
 
@@ -57,6 +68,8 @@ Tell the agent to apply these, by id. In the Django Engineering Pack they live a
   conversation), list the findings that would be fixed, and ask the user to approve that list.
   Then brief the agent in remediation mode for the approved findings only. Each fix comes with
   a test showing the issue is blocked.
+- **Documents:** the security design (SEC) is written or changed only with the user's approval; in
+  review mode its content is returned in the report.
 - Never: exploits or requests against live systems, network calls, package installs, reading
   denied files, or printing secret values. A found secret is reported by location and type,
   with a rotation recommendation.

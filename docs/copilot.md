@@ -95,3 +95,11 @@ not a sandbox: on Copilot, rely on the client's tool permission prompts and work
   is the supported shape. If a client forbids even that, the orchestrator's ROUTING PLAN fallback applies.
 - Claude Code has no per-agent "hidden" flag, so the nine specialists remain visible in `/agents` and `@` mentions
   there; only commands and knowledge skills are hidden from `/`.
+
+## SDLC documentation on Copilot
+
+Copilot uses the same documentation system as Claude Code: the same registry format (`docs/sdlc/registry.json`), catalog,
+templates, references, rule `django-documentation-standards` and orchestration policy. The generator derives each agent's
+*Documentation context* section and each command's section from the canonical files and `--check` fails if the Copilot copy
+loses or changes them or if a documentation asset is copied into `.github/`. The `.github/instructions` file points Copilot at the
+registry. Live Copilot behaviour is not verified (see [testing.md](testing.md)).

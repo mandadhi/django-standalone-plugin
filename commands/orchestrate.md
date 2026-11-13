@@ -59,6 +59,17 @@ The orchestrator preloads `django-security-standards`. Each specialist preloads 
 registered skills and rules; the orchestrator adds the routing policy's supplementary skills to
 a brief only when the category lists them.
 
+## Documentation context
+
+Tell the agent to follow `DOC-M9` to `DOC-M16` and the registry protocol in the pack at `references/sdlc-documentation-registry.md`
+(installed plugin: `${CLAUDE_PLUGIN_ROOT}/references/sdlc-documentation-registry.md`): read `docs/sdlc/registry.json` first, consume current
+documents, review stale ones, never edit an `approved` document in place, report conflicts, and state assumptions
+instead of inventing details. The workflow is defined once, in that reference; this command adds only the following.
+
+- Before routing, the orchestrator reads the registry and the change set, puts a documentation context in each brief and reports the
+  documentation outcome. Stage-specific work follows the stage table in the orchestration policy; this command adds no second workflow.
+- Documents are written by the specialists that own them, within their own write modes. The orchestrator never writes documents or approves them.
+
 ## Authorization
 
 The orchestrator is read-only. Files change only through the specialists it delegates to, each
@@ -73,7 +84,8 @@ production-affecting operations need your explicit approval.
 2. Brief `django-orchestrator`:
    - **Objective:** the request, verbatim.
    - **Constraints:** `--plan-only` and `--category` if given; any limits the user stated.
-   - **Inputs:** attached files and the current working directory.
+   - **Inputs:** attached files, the current working directory and any documentation context the user gave
+     (registry output, change list, SDLC stage).
    - **Expected outputs:** the orchestrator's final report, or a ROUTING PLAN.
 3. If a ROUTING PLAN came back and `--plan-only` was not given, execute it as described under
    *Agent*.
@@ -83,7 +95,8 @@ production-affecting operations need your explicit approval.
 
 The orchestrator's report: outcome (complete, partial or not started), the route and why each
 specialist was chosen, per-step results, verification performed and not performed, assumptions,
-unresolved issues and recommended follow-up commands. With `--plan-only`: the routing plan.
+unresolved issues, the documentation outcome (registry state, documents consumed, updated and recommended,
+stale or conflicting documents, approved documents left untouched) and recommended follow-up commands. With `--plan-only`: the routing plan.
 
 ## Completion criteria
 

@@ -50,6 +50,18 @@ In the Django Engineering Pack they live at `skills/<id>/SKILL.md` and `rules/<i
 - Skills: `django-core` · `django-architecture` · `django-orm` · `django-rest-framework` · `django-security-engineering` · `django-testing` · `django-performance`
 - Rules: `django-security-standards` · `django-project-structure` · `django-coding-standards` · `django-model-standards` · `django-api-standards` · `django-database-standards` · `django-testing-standards` · `django-performance-standards` · `django-configuration-standards` · `django-logging-standards` · `django-documentation-standards` · `django-dependency-standards`
 
+## Documentation context
+
+Tell the agent to follow `DOC-M9` to `DOC-M16` and the registry protocol in the pack at `references/sdlc-documentation-registry.md`
+(installed plugin: `${CLAUDE_PLUGIN_ROOT}/references/sdlc-documentation-registry.md`): read `docs/sdlc/registry.json` first, consume current
+documents, review stale ones, never edit an `approved` document in place, report conflicts, and state assumptions
+instead of inventing details. The workflow is defined once, in that reference; this command adds only the following.
+
+- Consume the registry and the documents of the changed area. Add a documentation assessment to the review: affected documents (impact assessment),
+  approved documents the change contradicts, undocumented public behaviour, registry problems and diagrams that no longer match the code, each with the
+  owner to update it.
+- **Nothing is written**; the review stays read-only.
+
 ## Authorization
 
 Read-only, always. This command has no fix mode. Neither the command nor the agent edits,

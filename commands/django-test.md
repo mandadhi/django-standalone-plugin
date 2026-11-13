@@ -45,7 +45,18 @@ Tell the agent to apply these, by id. In the Django Engineering Pack they live a
 (installed plugin: under `${CLAUDE_PLUGIN_ROOT}`, and preloaded into the agent).
 
 - Skills: `django-testing` · `django-core` · `django-rest-framework`
-- Rules: `django-security-standards` · `django-testing-standards` · `django-coding-standards`
+- Rules: `django-security-standards` · `django-testing-standards` · `django-coding-standards` · `django-documentation-standards`
+
+## Documentation context
+
+Tell the agent to follow `DOC-M9` to `DOC-M16` and the registry protocol in the pack at `references/sdlc-documentation-registry.md`
+(installed plugin: `${CLAUDE_PLUGIN_ROOT}/references/sdlc-documentation-registry.md`): read `docs/sdlc/registry.json` first, consume current
+documents, review stale ones, never edit an `approved` document in place, report conflicts, and state assumptions
+instead of inventing details. The workflow is defined once, in that reference; this command adds only the following.
+
+- Consume requirements, user stories, acceptance criteria, design documents and the traceability matrix. Expected results come from documents, not from the code under test.
+- The agent also writes the testing documents it owns (test strategy, plan, cases, execution and defect reports) and the test columns of the traceability matrix,
+  under the same approval as the test code. Execution reports state only runs that happened.
 
 ## Authorization
 
@@ -53,8 +64,9 @@ Tell the agent to apply these, by id. In the Django Engineering Pack they live a
 - **Otherwise, plan first.** The agent returns the test plan and may run the existing tests for
   the scope; it must not change files. Show the plan and ask the user to approve it, unless
   `--apply` was given. Then brief the agent to write and run the approved tests.
-- Only test code and test support files change. Application code is never changed: code
-  defects are reported with the command that should fix them.
+- Only test code, test support files and the testing documents under `docs/` (with their registry
+  entries) change. Application code is never changed: code defects are reported with the command
+  that should fix them. An `approved` document is never edited in place.
 - Tests run only on the runner's test database. If the test settings point at a shared or
   non-local database, stop and report it. No package installs or network calls.
 

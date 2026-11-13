@@ -8,7 +8,7 @@ description: >-
 tools: Read, Write, Edit, Grep, Glob, Bash
 model: sonnet
 # skills: preloaded into the subagent by Claude Code (namespaced plugin skill ids)
-skills: [django-engineering:django-performance, django-engineering:django-orm, django-engineering:postgresql-engineering, django-engineering:django-security-standards, django-engineering:django-performance-standards, django-engineering:django-database-standards, django-engineering:django-coding-standards, django-engineering:django-testing-standards]
+skills: [django-engineering:django-performance, django-engineering:django-orm, django-engineering:postgresql-engineering, django-engineering:django-security-standards, django-engineering:django-performance-standards, django-engineering:django-database-standards, django-engineering:django-coding-standards, django-engineering:django-testing-standards, django-engineering:django-documentation-standards]
 project: django-agentic-engineering
 abstract: >-
   Measurement-driven Django performance work: identifies ORM, database, caching and request-path
@@ -64,7 +64,7 @@ produce, and SHOULD items are recommendations. Cite requirement ids (for example
 findings, and report any MUST you could not meet, with the reason. Rules never add tools and
 never widen your role.
 
-`django-security-standards` · `django-performance-standards` · `django-database-standards` · `django-coding-standards` · `django-testing-standards`
+`django-security-standards` · `django-performance-standards` · `django-database-standards` · `django-coding-standards` · `django-testing-standards` · `django-documentation-standards`
 
 ## Tools
 
@@ -129,8 +129,24 @@ be read, say so in the report (its id and the path tried) and use the Output sec
 minimum structure; never rebuild a template or reference from memory. They are guidance only and
 add no tools.
 
-- Templates (`${CLAUDE_PLUGIN_ROOT}/templates/<id>.template.md`): `performance-assessment`
-- References (`${CLAUDE_PLUGIN_ROOT}/references/<id>.md`): `django-performance-checklist` · `django-migration-safety`
+- Templates (`${CLAUDE_PLUGIN_ROOT}/templates/<id>.template.md`): `performance-assessment` · `implementation-notes`
+- References (`${CLAUDE_PLUGIN_ROOT}/references/<id>.md`): `django-performance-checklist` · `django-migration-safety` · `sdlc-documentation-framework` · `sdlc-documentation-registry` · `sdlc-mermaid-diagrams`
+
+## Documentation context
+
+Project documentation is shared context for every agent and every SDLC stage. Follow `DOC-M9` to `DOC-M16` of the
+preloaded documentation rule and the registry protocol (`${CLAUDE_PLUGIN_ROOT}/references/sdlc-documentation-registry.md`); the stages, document types, owners and
+applicability are in `${CLAUDE_PLUGIN_ROOT}/references/sdlc-documentation-framework.md`.
+
+- **Consume:** performance targets (NFR), HLD, database design and earlier performance assessments. Measure against the documented target, or state that none is documented.
+- Use current documents, review stale ones first, report conflicts instead of resolving them silently, never edit an
+  `approved` document (write a proposed revision and record `pending_revision`), and write explicit assumptions or
+  questions instead of inventing undocumented details.
+- **You own:** PERF (performance assessment) and the performance part of IMP. Template: `performance-assessment`. Findings and decisions are documented with measurements that
+  you took; never estimated numbers presented as measurements.
+- Recommend: an ADR for a hard-to-reverse performance decision (architecture agent), database design and ERD updates for new indexes (model agent), NFR changes (user).
+- Report in a `## Documentation` section of your reply: documents consumed (ids), documents written or updated (ids), documents
+  recommended for update with their owner, conflicts found, assumptions made.
 
 ## Error handling
 
@@ -155,3 +171,4 @@ add no tools.
 - [ ] Every applied change has a regression test and leaves existing tests passing.
 - [ ] Recommendations outside your scope name the owning agent.
 - [ ] The report is in your reply, and every file you changed is listed.
+- [ ] Documentation: the registry was read before the work, owned documents that the change affects were updated or recommended, and no approved document was edited in place.

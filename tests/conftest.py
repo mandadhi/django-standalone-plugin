@@ -28,10 +28,14 @@ RULES = sorted(["django-api-standards", "django-coding-standards", "django-confi
                 "django-project-structure", "django-security-standards", "django-testing-standards"])
 TEMPLATES = sorted(["api-specification", "architecture-decision-record", "architecture-design", "code-review-report",
                     "django-model-specification", "implementation-plan", "migration-plan", "performance-assessment",
-                    "project-analysis", "security-assessment", "technical-documentation", "test-plan"])
+                    "project-analysis", "security-assessment", "technical-documentation", "test-plan",
+                    # SDLC documentation framework
+                    "requirements-specification", "traceability-matrix", "detailed-design", "implementation-notes",
+                    "test-report", "deployment-and-release", "operational-runbook", "maintenance-record"])
 REFERENCES = sorted(["django-api-design-checklist", "django-migration-safety", "django-performance-checklist",
                      "django-project-discovery", "django-security-checklist", "django-testing-strategy",
-                     "django-version-compatibility"])
+                     "django-version-compatibility", "sdlc-documentation-framework", "sdlc-documentation-registry",
+                     "sdlc-mermaid-diagrams"])
 COMMANDS = ["orchestrate", "django-analyze", "django-design", "django-model", "django-api", "django-security",
             "django-test", "django-optimize", "django-document", "django-review"]
 HARNESS_COMMANDS = ["setup-harness", "harness-status", "enable-harness", "disable-harness", "doctor"]

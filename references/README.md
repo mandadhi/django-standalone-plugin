@@ -36,6 +36,9 @@ single skill and is used by several agents.
 | [django-migration-safety](django-migration-safety.md) | Pre-merge migration checks, operation risk, red flags, escalation | model, performance, code-review |
 | [django-api-design-checklist](django-api-design-checklist.md) | Per-endpoint DRF checklist and contract-change classification | api, code-review |
 | [django-performance-checklist](django-performance-checklist.md) | Symptom to cause, search patterns, measurement toolkit | performance, code-review |
+| [sdlc-documentation-framework](sdlc-documentation-framework.md) | SDLC stages, document types, owners, applicability, change-impact map | all specialists |
+| [sdlc-documentation-registry](sdlc-documentation-registry.md) | Registry format and the documentation-first protocol | all specialists |
+| [sdlc-mermaid-diagrams](sdlc-mermaid-diagrams.md) | Diagram types, source files, embedding, validation | all specialists |
 
 ## Format
 

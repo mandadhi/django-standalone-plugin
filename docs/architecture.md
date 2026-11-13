@@ -94,3 +94,14 @@ progressive disclosure, so an agent loads detail only when a step needs it.
 No Python runtime services, workflow engine, execution database, checkpoints, run records, approver or
 audit log. Those belong to the separate Django Agentic Harness product, which this distribution neither
 contains nor depends on.
+
+## SDLC documentation layer
+
+Documentation is shared context across the orchestrator and all agents. It adds data and rules, not a runtime: the catalog
+(`config/sdlc-documentation-catalog.json`) defines stages, document types, owners, templates and change-impact rules; the
+registry (`docs/sdlc/registry.json` in the documented project) indexes the documents; the rule `django-documentation-standards`
+(`DOC-M9` to `DOC-M16`) and the registry reference define the documentation-first protocol every agent follows; the
+orchestration policy's `documentation` section maps stages onto the existing routes. The guard is unchanged: documentation
+writes stay within `docs/**` and Markdown for the documentation-only agent, read-only agents never write, and agents do not run
+scripts stored outside the project (the optional validator `tools/sdlc_registry.py` is run by a person or CI). See
+[sdlc-documentation.md](sdlc-documentation.md).

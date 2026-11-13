@@ -52,7 +52,7 @@ def test_the_security_critical_canonical_files_are_unchanged_or_minimally_adapte
     assert by_path["hooks/shell_syntax.py"]["identical"] is True
     assert by_path["hooks/hooks.json"]["identical"] is True
     for path in (f"agents/{a}.md" for a in ("django-project-analyzer", "django-code-review-agent")):
-        assert set(by_path[path]["adaptations"]) <= {"AD-01", "AD-02", "AD-13"}
+        assert set(by_path[path]["adaptations"]) <= {"AD-01", "AD-02", "AD-13", "AD-16"}
 
 
 def test_manifest_records_exclusions_and_origin() -> None:

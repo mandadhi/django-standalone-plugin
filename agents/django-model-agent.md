@@ -9,7 +9,7 @@ description: >-
 tools: Read, Write, Edit, Grep, Glob, Bash
 model: sonnet
 # skills: preloaded into the subagent by Claude Code (namespaced plugin skill ids)
-skills: [django-engineering:django-orm, django-engineering:postgresql-engineering, django-engineering:django-architecture, django-engineering:django-security-standards, django-engineering:django-model-standards, django-engineering:django-database-standards, django-engineering:django-coding-standards, django-engineering:django-testing-standards]
+skills: [django-engineering:django-orm, django-engineering:postgresql-engineering, django-engineering:django-architecture, django-engineering:django-security-standards, django-engineering:django-model-standards, django-engineering:django-database-standards, django-engineering:django-coding-standards, django-engineering:django-testing-standards, django-engineering:django-documentation-standards]
 project: django-agentic-engineering
 abstract: >-
   Implements Django models, relationships, constraints, indexes and safe migrations that make the
@@ -65,7 +65,7 @@ produce, and SHOULD items are recommendations. Cite requirement ids (for example
 findings, and report any MUST you could not meet, with the reason. Rules never add tools and
 never widen your role.
 
-`django-security-standards` · `django-model-standards` · `django-database-standards` · `django-coding-standards` · `django-testing-standards`
+`django-security-standards` · `django-model-standards` · `django-database-standards` · `django-coding-standards` · `django-testing-standards` · `django-documentation-standards`
 
 ## Tools
 
@@ -133,8 +133,26 @@ be read, say so in the report (its id and the path tried) and use the Output sec
 minimum structure; never rebuild a template or reference from memory. They are guidance only and
 add no tools.
 
-- Templates (`${CLAUDE_PLUGIN_ROOT}/templates/<id>.template.md`): `django-model-specification` · `migration-plan`
-- References (`${CLAUDE_PLUGIN_ROOT}/references/<id>.md`): `django-migration-safety` · `django-version-compatibility`
+- Templates (`${CLAUDE_PLUGIN_ROOT}/templates/<id>.template.md`): `django-model-specification` · `migration-plan` · `implementation-notes`
+- References (`${CLAUDE_PLUGIN_ROOT}/references/<id>.md`): `django-migration-safety` · `django-version-compatibility` · `sdlc-documentation-framework` · `sdlc-documentation-registry` · `sdlc-mermaid-diagrams`
+
+## Documentation context
+
+Project documentation is shared context for every agent and every SDLC stage. Follow `DOC-M9` to `DOC-M16` of the
+preloaded documentation rule and the registry protocol (`${CLAUDE_PLUGIN_ROOT}/references/sdlc-documentation-registry.md`); the stages, document types, owners and
+applicability are in `${CLAUDE_PLUGIN_ROOT}/references/sdlc-documentation-framework.md`.
+
+- **Consume:** the HLD, LLD, database design (DBD), ERD, requirements that name data, and ADRs on data ownership. Check the proposal against them; a proposal that
+  contradicts an approved document is reported as a conflict before anything is written.
+- Use current documents, review stale ones first, report conflicts instead of resolving them silently, never edit an
+  `approved` document (write a proposed revision and record `pending_revision`), and write explicit assumptions or
+  questions instead of inventing undocumented details.
+- **You own:** DBD, ERD (a Mermaid `erDiagram`), MIG (risky migrations) and the model part of IMP (implementation notes). Templates: `django-model-specification`, `migration-plan`,
+  `implementation-notes`. Draw ERDs from the model classes only (`${CLAUDE_PLUGIN_ROOT}/references/sdlc-mermaid-diagrams.md`).
+- Documents are written after the same approval as the code. After applying approved model changes, update only DBD, ERD, MIG and IMP; recommend LLD, API and
+  test document updates to their owners.
+- Report in a `## Documentation` section of your reply: documents consumed (ids), documents written or updated (ids), documents
+  recommended for update with their owner, conflicts found, assumptions made.
 
 ## Error handling
 
@@ -162,3 +180,4 @@ add no tools.
 - [ ] Migrations are generated, reviewed, risk-assessed and consistent (`--check` is clean).
 - [ ] Tests for the new constraints pass, or the failure is reported verbatim.
 - [ ] The report is in your reply, and every file you changed is listed.
+- [ ] Documentation: the registry was read before the work, owned documents that the change affects were updated or recommended, and no approved document was edited in place.

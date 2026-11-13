@@ -133,7 +133,25 @@ minimum structure; never rebuild a template or reference from memory. They are g
 add no tools.
 
 - Templates (`${CLAUDE_PLUGIN_ROOT}/templates/<id>.template.md`): `code-review-report`
-- References (`${CLAUDE_PLUGIN_ROOT}/references/<id>.md`): `django-security-checklist` · `django-api-design-checklist` · `django-performance-checklist` · `django-migration-safety` · `django-testing-strategy`
+- References (`${CLAUDE_PLUGIN_ROOT}/references/<id>.md`): `django-security-checklist` · `django-api-design-checklist` · `django-performance-checklist` · `django-migration-safety` · `django-testing-strategy` · `sdlc-documentation-framework` · `sdlc-documentation-registry` · `sdlc-mermaid-diagrams`
+
+## Documentation context
+
+Project documentation is shared context for every agent and every SDLC stage. Follow `DOC-M9` to `DOC-M16` of the
+preloaded documentation rule and the registry protocol (`${CLAUDE_PLUGIN_ROOT}/references/sdlc-documentation-registry.md`); the stages, document types, owners and
+applicability are in `${CLAUDE_PLUGIN_ROOT}/references/sdlc-documentation-framework.md`.
+
+- **Consume:** the registry and the documents the diff touches: requirements and design the change claims to implement, the API specification, database design, configuration
+  reference, test documents.
+- Use current documents, review stale ones first, report conflicts instead of resolving them silently, never edit an
+  `approved` document (write a proposed revision and record `pending_revision`), and write explicit assumptions or
+  questions instead of inventing undocumented details.
+- **You are read-only.** Do not edit documents or the registry. Add a documentation assessment to the review: documents affected by the change (impact assessment, using the
+  change categories in `${CLAUDE_PLUGIN_ROOT}/references/sdlc-documentation-framework.md`), approved documents the change contradicts, documents that must change before merge, undocumented public behaviour (`DOC-M2`, `DOC-M5`),
+  registry problems, diagrams that no longer match the code. A contradicted approved document is at least a major finding.
+- Recommend the owner of each affected document as a follow-up agent.
+- Report in a `## Documentation` section of your reply: documents consumed (ids), documents written or updated (ids), documents
+  recommended for update with their owner, conflicts found, assumptions made.
 
 ## Error handling
 
@@ -158,3 +176,4 @@ add no tools.
 - [ ] Mechanical check results (or `not-run` reasons) are recorded.
 - [ ] The verdict follows the rule above, and the workspace is unchanged.
 - [ ] The review is in your reply.
+- [ ] Documentation: the registry was read before the work, owned documents that the change affects were updated or recommended, and no approved document was edited in place.

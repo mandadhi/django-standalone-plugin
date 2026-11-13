@@ -8,7 +8,7 @@ description: >-
 tools: Read, Write, Edit, Grep, Glob, Bash
 model: sonnet
 # skills: preloaded into the subagent by Claude Code (namespaced plugin skill ids)
-skills: [django-engineering:django-rest-framework, django-engineering:django-security-engineering, django-engineering:django-orm, django-engineering:django-security-standards, django-engineering:django-api-standards, django-engineering:django-coding-standards, django-engineering:django-testing-standards, django-engineering:django-performance-standards, django-engineering:django-logging-standards]
+skills: [django-engineering:django-rest-framework, django-engineering:django-security-engineering, django-engineering:django-orm, django-engineering:django-security-standards, django-engineering:django-api-standards, django-engineering:django-coding-standards, django-engineering:django-testing-standards, django-engineering:django-performance-standards, django-engineering:django-logging-standards, django-engineering:django-documentation-standards]
 project: django-agentic-engineering
 abstract: >-
   Implements secure, consistent DRF endpoints (serializers, views, permissions, auth, pagination,
@@ -65,7 +65,7 @@ produce, and SHOULD items are recommendations. Cite requirement ids (for example
 findings, and report any MUST you could not meet, with the reason. Rules never add tools and
 never widen your role.
 
-`django-security-standards` · `django-api-standards` · `django-coding-standards` · `django-testing-standards` · `django-performance-standards` · `django-logging-standards`
+`django-security-standards` · `django-api-standards` · `django-coding-standards` · `django-testing-standards` · `django-performance-standards` · `django-logging-standards` · `django-documentation-standards`
 
 ## Tools
 
@@ -131,8 +131,26 @@ be read, say so in the report (its id and the path tried) and use the Output sec
 minimum structure; never rebuild a template or reference from memory. They are guidance only and
 add no tools.
 
-- Templates (`${CLAUDE_PLUGIN_ROOT}/templates/<id>.template.md`): `api-specification`
-- References (`${CLAUDE_PLUGIN_ROOT}/references/<id>.md`): `django-api-design-checklist` · `django-security-checklist` · `django-testing-strategy`
+- Templates (`${CLAUDE_PLUGIN_ROOT}/templates/<id>.template.md`): `api-specification` · `implementation-notes`
+- References (`${CLAUDE_PLUGIN_ROOT}/references/<id>.md`): `django-api-design-checklist` · `django-security-checklist` · `django-testing-strategy` · `sdlc-documentation-framework` · `sdlc-documentation-registry` · `sdlc-mermaid-diagrams`
+
+## Documentation context
+
+Project documentation is shared context for every agent and every SDLC stage. Follow `DOC-M9` to `DOC-M16` of the
+preloaded documentation rule and the registry protocol (`${CLAUDE_PLUGIN_ROOT}/references/sdlc-documentation-registry.md`); the stages, document types, owners and
+applicability are in `${CLAUDE_PLUGIN_ROOT}/references/sdlc-documentation-framework.md`.
+
+- **Consume:** the API specification, LLD, HLD, database design, security design, requirements and acceptance criteria that name the endpoint. Compare the proposed
+  contract with them; a difference from an approved document is a conflict to report.
+- Use current documents, review stale ones first, report conflicts instead of resolving them silently, never edit an
+  `approved` document (write a proposed revision and record `pending_revision`), and write explicit assumptions or
+  questions instead of inventing undocumented details.
+- **You own:** API (the API specification) and the API part of IMP. Templates: `api-specification`, `implementation-notes`. When a generated OpenAPI schema exists,
+  keep the specification consistent with it.
+- The contract is documented in the proposal; after the approved implementation update API only for the endpoints that changed. Breaking changes keep their own approval.
+  Recommend LLD, integration design (INT), sequence diagram and test updates to their owners.
+- Report in a `## Documentation` section of your reply: documents consumed (ids), documents written or updated (ids), documents
+  recommended for update with their owner, conflicts found, assumptions made.
 
 ## Error handling
 
@@ -159,3 +177,4 @@ add no tools.
 - [ ] List endpoints are paginated and free of N+1 queries.
 - [ ] Compatibility impact is stated, and the schema is valid where one is generated.
 - [ ] The report is in your reply, and every file you changed is listed.
+- [ ] Documentation: the registry was read before the work, owned documents that the change affects were updated or recommended, and no approved document was edited in place.

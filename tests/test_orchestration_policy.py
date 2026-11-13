@@ -24,7 +24,7 @@ def test_policy_header_and_orchestrator() -> None:
 
 def test_limits_and_specialists() -> None:
     doc = load()
-    assert doc["limits"] == {"max_delegations": 6, "max_attempts_per_step": 2, "max_clarifying_questions": 3}
+    assert doc["limits"] == {"max_delegations": 7, "max_attempts_per_step": 2, "max_clarifying_questions": 3}
     assert doc["specialists"] == SPECIALISTS
     assert ORCHESTRATOR not in doc["specialists"], "the orchestrator must never be delegable"
 

@@ -58,7 +58,7 @@ def test_component_inventory_is_complete_and_exact() -> None:
     assert sorted(p.parent.name for p in (ROOT / "rules").glob("*/SKILL.md")) == RULES
     assert sorted(p.name[: -len(".template.md")] for p in (ROOT / "templates").glob("*.template.md")) == TEMPLATES
     assert sorted(p.stem for p in (ROOT / "references").glob("*.md") if p.stem != "README") == REFERENCES
-    assert (len(SKILLS), len(RULES), len(TEMPLATES), len(REFERENCES)) == (12, 12, 12, 7)
+    assert (len(SKILLS), len(RULES), len(TEMPLATES), len(REFERENCES)) == (12, 12, 20, 10)
     # nothing else in the templates folder (the harness runtime prompt template is not distributed)
     assert sorted(p.name for p in (ROOT / "templates").iterdir()) == sorted(
         ["README.md"] + [f"{t}.template.md" for t in TEMPLATES])
@@ -216,8 +216,9 @@ def test_agent_template_and_reference_citations_exist() -> None:
             assert ids and ids <= universe, (agent, ids - universe)
 
 
-def test_config_contains_only_the_orchestration_policy() -> None:
-    assert sorted(p.name for p in (ROOT / "config").rglob("*") if p.is_file()) == ["orchestration-policy.yaml"]
+def test_config_contains_only_the_policy_and_the_documentation_catalog() -> None:
+    assert sorted(p.name for p in (ROOT / "config").rglob("*") if p.is_file()) == [
+        "orchestration-policy.yaml", "sdlc-documentation-catalog.json"]
 
 
 def test_gitignore_covers_secrets_and_caches() -> None:

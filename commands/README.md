@@ -14,7 +14,7 @@ relays the result. Commands are invoked as `/django-engineering:<command>`.
 | [/django-engineering:django-security](django-security.md) | `django-security-agent` | only with `--fix` | review, then approval of the findings to fix |
 | [/django-engineering:django-test](django-test.md) | `django-testing-agent` | test code only | plan, then approval (or `--apply`); none with `--run-only` |
 | [/django-engineering:django-optimize](django-optimize.md) | `django-performance-agent` | targeted optimisations and tests | baseline, approval (or `--apply`), re-measure |
-| [/django-engineering:django-document](django-document.md) | `django-documentation-agent` | documentation files only | none with `--dry-run` |
+| [/django-engineering:django-document](django-document.md) | `django-documentation-agent` | documentation files only | none with `--dry-run` or `--check` |
 | [/django-engineering:django-review](django-review.md) | `django-code-review-agent` | never | read-only |
 
 `/django-engineering:orchestrate` is the deterministic entry point to the orchestrator. If the
@@ -23,3 +23,7 @@ main session run that plan with the same limits (see [docs/architecture.md](../d
 
 Only these ten files are commands. Engineering standards (`rules/`) and skills (`skills/`) are never
 commands: standards are marked `user-invocable: false` and are preloaded into the agents that need them.
+
+Every command carries a *Documentation context* section: the documentation-first protocol is defined once in
+`references/sdlc-documentation-registry.md`, and each command adds only its own consume/update roles
+([docs/sdlc-documentation.md](../docs/sdlc-documentation.md)).

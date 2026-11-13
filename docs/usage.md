@@ -30,7 +30,7 @@ orchestrator the main agent: `claude --agent django-engineering:django-orchestra
 | `django-security-agent` | Security assessment; fixes on request | only approved findings; every write asks |
 | `django-testing-agent` | Write and run tests | test code only, after approval |
 | `django-performance-agent` | Measure and fix performance | after approval |
-| `django-documentation-agent` | Code-derived documentation | documentation files only |
+| `django-documentation-agent` | SDLC documentation: registry, requirements, deployment, runbooks, maintenance, code-derived documents | documentation files only |
 | `django-code-review-agent` | Pre-merge review with a verdict | never |
 
 Reports follow the templates in [`templates/`](../templates/README.md).

@@ -45,7 +45,18 @@ Tell the agent to apply these, by id. In the Django Engineering Pack they live a
 (installed plugin: under `${CLAUDE_PLUGIN_ROOT}`, and preloaded into the agent).
 
 - Skills: `django-performance` · `django-orm` · `postgresql-engineering`
-- Rules: `django-security-standards` · `django-performance-standards` · `django-database-standards` · `django-coding-standards` · `django-testing-standards`
+- Rules: `django-security-standards` · `django-performance-standards` · `django-database-standards` · `django-coding-standards` · `django-testing-standards` · `django-documentation-standards`
+
+## Documentation context
+
+Tell the agent to follow `DOC-M9` to `DOC-M16` and the registry protocol in the pack at `references/sdlc-documentation-registry.md`
+(installed plugin: `${CLAUDE_PLUGIN_ROOT}/references/sdlc-documentation-registry.md`): read `docs/sdlc/registry.json` first, consume current
+documents, review stale ones, never edit an `approved` document in place, report conflicts, and state assumptions
+instead of inventing details. The workflow is defined once, in that reference; this command adds only the following.
+
+- Consume performance targets (NFR) and the database design; measure against them or state that none exists.
+- The agent documents measured findings and decisions as a performance assessment (PERF) under the same approval as the code changes, and recommends an ADR
+  (`/django-design`) or database design updates (`/django-model`) where its findings call for them.
 
 ## Authorization
 
@@ -54,7 +65,8 @@ Tell the agent to apply these, by id. In the Django Engineering Pack they live a
 2. **Approval.** Show the findings and the proposed changes, and ask the user to approve them,
    unless `--apply` was given.
 3. **Optimise and re-measure.** Brief the agent with the approved changes. It applies them,
-   adds regression tests and measures again.
+   adds regression tests, measures again and documents the measured findings (performance
+   assessment, registered). An `approved` document is never edited in place.
 
 Index or schema changes that need a migration are handed to `/django-model`, not applied here.
 Never measure against production or shared databases or caches, and never run load tests

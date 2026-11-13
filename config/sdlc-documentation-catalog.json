@@ -1,0 +1,905 @@
+{
+  "schema_version": "1.0",
+  "kind": "SdlcDocumentationCatalog",
+  "description": "Canonical SDLC document types, owners, templates and change-impact rules shared by the Claude Code and GitHub Copilot adapters. tools/sdlc_registry.py and the agents read this file; it holds no document content.",
+  "profiles": [
+    "minimal",
+    "standard",
+    "enterprise"
+  ],
+  "facts": [
+    "has_models",
+    "has_api",
+    "has_integrations",
+    "has_deployment",
+    "has_ci"
+  ],
+  "statuses": [
+    "missing",
+    "draft",
+    "approved",
+    "stale"
+  ],
+  "stages": [
+    {
+      "id": "requirements",
+      "name": "Requirements and Analysis",
+      "order": 1
+    },
+    {
+      "id": "architecture",
+      "name": "Architecture and High-Level Design",
+      "order": 2
+    },
+    {
+      "id": "detailed-design",
+      "name": "Detailed Design",
+      "order": 3
+    },
+    {
+      "id": "development",
+      "name": "Development",
+      "order": 4
+    },
+    {
+      "id": "testing",
+      "name": "Testing and Quality Assurance",
+      "order": 5
+    },
+    {
+      "id": "deployment",
+      "name": "Deployment and Release",
+      "order": 6
+    },
+    {
+      "id": "maintenance",
+      "name": "Maintenance and Evolution",
+      "order": 7
+    }
+  ],
+  "types": [
+    {
+      "type": "BRD",
+      "name": "Business Requirements Document",
+      "stage": "requirements",
+      "owner": "django-documentation-agent",
+      "template": "requirements-specification",
+      "min_profile": "enterprise",
+      "applies_when": "Business case, stakeholders or funding context exist and were provided; never inferred from code."
+    },
+    {
+      "type": "SRS",
+      "name": "Software Requirements Specification",
+      "stage": "requirements",
+      "owner": "django-documentation-agent",
+      "template": "requirements-specification",
+      "min_profile": "standard",
+      "applies_when": "The system has stakeholders other than its developers, or requirements must be verified.",
+      "depends_on": [
+        "BRD"
+      ]
+    },
+    {
+      "type": "FRD",
+      "name": "Functional Requirements Document",
+      "stage": "requirements",
+      "owner": "django-documentation-agent",
+      "template": "requirements-specification",
+      "min_profile": "enterprise",
+      "applies_when": "Functional behaviour needs a detailed, separately reviewed specification.",
+      "depends_on": [
+        "SRS"
+      ]
+    },
+    {
+      "type": "NFR",
+      "name": "Non-Functional Requirements",
+      "stage": "requirements",
+      "owner": "django-documentation-agent",
+      "template": "requirements-specification",
+      "min_profile": "standard",
+      "applies_when": "Performance, security, availability or compliance targets are stated or needed.",
+      "depends_on": [
+        "SRS"
+      ]
+    },
+    {
+      "type": "US",
+      "name": "User Stories",
+      "stage": "requirements",
+      "owner": "django-documentation-agent",
+      "template": "requirements-specification",
+      "min_profile": "minimal",
+      "applies_when": "Work is planned from user-visible behaviour.",
+      "depends_on": [
+        "SRS"
+      ]
+    },
+    {
+      "type": "AC",
+      "name": "Acceptance Criteria",
+      "stage": "requirements",
+      "owner": "django-documentation-agent",
+      "template": "requirements-specification",
+      "min_profile": "minimal",
+      "applies_when": "Any requirement or story is to be tested or accepted.",
+      "depends_on": [
+        "US"
+      ]
+    },
+    {
+      "type": "RTM",
+      "name": "Requirements Traceability Matrix",
+      "stage": "requirements",
+      "owner": "django-documentation-agent",
+      "template": "traceability-matrix",
+      "min_profile": "standard",
+      "applies_when": "Requirements exist and design, code or tests must be traced to them.",
+      "depends_on": [
+        "SRS",
+        "AC"
+      ],
+      "contributors": [
+        "django-testing-agent"
+      ]
+    },
+    {
+      "type": "HLD",
+      "name": "High-Level Design",
+      "stage": "architecture",
+      "owner": "django-architecture-agent",
+      "template": "architecture-design",
+      "min_profile": "standard",
+      "applies_when": "Always for more than one app or an external integration.",
+      "depends_on": [
+        "SRS"
+      ]
+    },
+    {
+      "type": "SAD",
+      "name": "System Architecture",
+      "stage": "architecture",
+      "owner": "django-architecture-agent",
+      "template": "architecture-design",
+      "min_profile": "enterprise",
+      "applies_when": "Multiple systems, environments or teams need a whole-system view.",
+      "depends_on": [
+        "HLD"
+      ]
+    },
+    {
+      "type": "SOL",
+      "name": "Solution Architecture",
+      "stage": "architecture",
+      "owner": "django-architecture-agent",
+      "template": "architecture-design",
+      "min_profile": "enterprise",
+      "applies_when": "A solution spans systems and needs an end-to-end technology and integration view.",
+      "depends_on": [
+        "HLD"
+      ]
+    },
+    {
+      "type": "ADR",
+      "name": "Architecture Decision Record",
+      "stage": "architecture",
+      "owner": "django-architecture-agent",
+      "template": "architecture-decision-record",
+      "min_profile": "minimal",
+      "applies_when": "One per hard-to-reverse architectural decision actually made.",
+      "on_demand": true
+    },
+    {
+      "type": "TDR",
+      "name": "Technology Decision Record",
+      "stage": "architecture",
+      "owner": "django-architecture-agent",
+      "template": "architecture-decision-record",
+      "min_profile": "standard",
+      "applies_when": "One per technology or library choice actually made.",
+      "on_demand": true
+    },
+    {
+      "type": "CTX",
+      "name": "System Context Diagram",
+      "stage": "architecture",
+      "owner": "django-architecture-agent",
+      "template": "architecture-design",
+      "min_profile": "standard",
+      "applies_when": "The system has external users or systems.",
+      "depends_on": [
+        "HLD"
+      ],
+      "diagram": true,
+      "mermaid_kinds": [
+        "flowchart",
+        "graph",
+        "C4Context"
+      ],
+      "default_dir": "diagrams"
+    },
+    {
+      "type": "C4",
+      "name": "C4 Architecture Diagrams",
+      "stage": "architecture",
+      "owner": "django-architecture-agent",
+      "template": "architecture-design",
+      "min_profile": "standard",
+      "applies_when": "More than one container (web, workers, databases, caches).",
+      "depends_on": [
+        "HLD"
+      ],
+      "diagram": true,
+      "mermaid_kinds": [
+        "C4Context",
+        "C4Container",
+        "C4Component",
+        "C4Dynamic",
+        "C4Deployment",
+        "flowchart"
+      ],
+      "default_dir": "diagrams"
+    },
+    {
+      "type": "CMP",
+      "name": "Component Diagram",
+      "stage": "architecture",
+      "owner": "django-architecture-agent",
+      "template": "architecture-design",
+      "min_profile": "standard",
+      "applies_when": "More than one Django app or layered module.",
+      "depends_on": [
+        "HLD"
+      ],
+      "diagram": true,
+      "mermaid_kinds": [
+        "flowchart",
+        "graph",
+        "classDiagram",
+        "C4Component"
+      ],
+      "default_dir": "diagrams"
+    },
+    {
+      "type": "LLD",
+      "name": "Low-Level Design",
+      "stage": "detailed-design",
+      "owner": "django-architecture-agent",
+      "template": "detailed-design",
+      "min_profile": "standard",
+      "applies_when": "Behaviour, data or interfaces need detail beyond the HLD.",
+      "depends_on": [
+        "HLD"
+      ]
+    },
+    {
+      "type": "DBD",
+      "name": "Database Design",
+      "stage": "detailed-design",
+      "owner": "django-model-agent",
+      "template": "django-model-specification",
+      "min_profile": "standard",
+      "applies_when": "The project has models.",
+      "depends_on": [
+        "HLD"
+      ],
+      "requires_fact": "has_models"
+    },
+    {
+      "type": "ERD",
+      "name": "Entity Relationship Diagram",
+      "stage": "detailed-design",
+      "owner": "django-model-agent",
+      "template": "django-model-specification",
+      "min_profile": "standard",
+      "applies_when": "The project has related models.",
+      "depends_on": [
+        "DBD"
+      ],
+      "requires_fact": "has_models",
+      "diagram": true,
+      "mermaid_kinds": [
+        "erDiagram"
+      ],
+      "default_dir": "diagrams"
+    },
+    {
+      "type": "API",
+      "name": "API Specification",
+      "stage": "detailed-design",
+      "owner": "django-api-agent",
+      "template": "api-specification",
+      "min_profile": "standard",
+      "applies_when": "The project exposes an HTTP or DRF API.",
+      "depends_on": [
+        "LLD"
+      ],
+      "requires_fact": "has_api"
+    },
+    {
+      "type": "SEQ",
+      "name": "Sequence Diagrams",
+      "stage": "detailed-design",
+      "owner": "django-architecture-agent",
+      "template": "detailed-design",
+      "min_profile": "standard",
+      "applies_when": "Non-trivial request, task or integration flows exist.",
+      "depends_on": [
+        "LLD"
+      ],
+      "diagram": true,
+      "mermaid_kinds": [
+        "sequenceDiagram"
+      ],
+      "default_dir": "diagrams"
+    },
+    {
+      "type": "ACT",
+      "name": "Activity Diagrams",
+      "stage": "detailed-design",
+      "owner": "django-architecture-agent",
+      "template": "detailed-design",
+      "min_profile": "enterprise",
+      "applies_when": "Complex branching processes need explanation.",
+      "depends_on": [
+        "LLD"
+      ],
+      "diagram": true,
+      "mermaid_kinds": [
+        "flowchart",
+        "stateDiagram-v2",
+        "stateDiagram"
+      ],
+      "default_dir": "diagrams"
+    },
+    {
+      "type": "DFD",
+      "name": "Data Flow Diagrams",
+      "stage": "detailed-design",
+      "owner": "django-architecture-agent",
+      "template": "detailed-design",
+      "min_profile": "enterprise",
+      "applies_when": "Data moves between stores, tasks and external systems.",
+      "depends_on": [
+        "LLD"
+      ],
+      "diagram": true,
+      "mermaid_kinds": [
+        "flowchart",
+        "graph"
+      ],
+      "default_dir": "diagrams"
+    },
+    {
+      "type": "WFL",
+      "name": "Workflow Diagrams",
+      "stage": "detailed-design",
+      "owner": "django-architecture-agent",
+      "template": "detailed-design",
+      "min_profile": "enterprise",
+      "applies_when": "State machines or business workflows exist in the code.",
+      "depends_on": [
+        "LLD"
+      ],
+      "diagram": true,
+      "mermaid_kinds": [
+        "flowchart",
+        "stateDiagram-v2",
+        "stateDiagram",
+        "graph"
+      ],
+      "default_dir": "diagrams"
+    },
+    {
+      "type": "INT",
+      "name": "Integration Design",
+      "stage": "detailed-design",
+      "owner": "django-architecture-agent",
+      "template": "detailed-design",
+      "min_profile": "standard",
+      "applies_when": "The system calls or is called by external systems.",
+      "depends_on": [
+        "HLD"
+      ],
+      "requires_fact": "has_integrations"
+    },
+    {
+      "type": "CD",
+      "name": "Component Design",
+      "stage": "detailed-design",
+      "owner": "django-architecture-agent",
+      "template": "detailed-design",
+      "min_profile": "enterprise",
+      "applies_when": "Individual components need their own design records.",
+      "depends_on": [
+        "LLD"
+      ]
+    },
+    {
+      "type": "SEC",
+      "name": "Security Design",
+      "stage": "detailed-design",
+      "owner": "django-security-agent",
+      "template": "detailed-design",
+      "min_profile": "standard",
+      "applies_when": "Authentication, authorisation, secrets or data protection decisions exist.",
+      "depends_on": [
+        "HLD"
+      ]
+    },
+    {
+      "type": "IMP",
+      "name": "Implementation Notes",
+      "stage": "development",
+      "owner": "django-model-agent",
+      "template": "implementation-notes",
+      "min_profile": "minimal",
+      "applies_when": "Implementation deviates from design or contains non-obvious decisions.",
+      "on_demand": true,
+      "contributors": [
+        "django-api-agent",
+        "django-testing-agent",
+        "django-performance-agent"
+      ]
+    },
+    {
+      "type": "MOD",
+      "name": "Module Documentation",
+      "stage": "development",
+      "owner": "django-documentation-agent",
+      "template": "technical-documentation",
+      "min_profile": "standard",
+      "applies_when": "Apps or modules need onboarding-level documentation.",
+      "depends_on": [
+        "LLD"
+      ]
+    },
+    {
+      "type": "CFG",
+      "name": "Configuration Reference",
+      "stage": "development",
+      "owner": "django-documentation-agent",
+      "template": "technical-documentation",
+      "min_profile": "minimal",
+      "applies_when": "Always: every setting and environment variable the code reads (DOC-M4)."
+    },
+    {
+      "type": "MIG",
+      "name": "Migration Documentation",
+      "stage": "development",
+      "owner": "django-model-agent",
+      "template": "migration-plan",
+      "min_profile": "standard",
+      "applies_when": "A risky, data or zero-downtime migration exists.",
+      "depends_on": [
+        "DBD"
+      ],
+      "requires_fact": "has_models",
+      "on_demand": true
+    },
+    {
+      "type": "CODE",
+      "name": "Code Documentation",
+      "stage": "development",
+      "owner": "django-documentation-agent",
+      "template": "technical-documentation",
+      "min_profile": "enterprise",
+      "applies_when": "Docstring or generated code reference is wanted."
+    },
+    {
+      "type": "TST",
+      "name": "Test Strategy",
+      "stage": "testing",
+      "owner": "django-testing-agent",
+      "template": "test-plan",
+      "min_profile": "standard",
+      "applies_when": "More than a handful of tests or several test levels.",
+      "depends_on": [
+        "NFR"
+      ]
+    },
+    {
+      "type": "TPL",
+      "name": "Test Plan",
+      "stage": "testing",
+      "owner": "django-testing-agent",
+      "template": "test-plan",
+      "min_profile": "standard",
+      "applies_when": "A release or feature needs a defined test scope.",
+      "depends_on": [
+        "TST"
+      ]
+    },
+    {
+      "type": "TC",
+      "name": "Test Cases",
+      "stage": "testing",
+      "owner": "django-testing-agent",
+      "template": "test-plan",
+      "min_profile": "standard",
+      "applies_when": "Requirements or acceptance criteria exist to test against.",
+      "depends_on": [
+        "AC",
+        "TPL"
+      ]
+    },
+    {
+      "type": "TER",
+      "name": "Test Execution Report",
+      "stage": "testing",
+      "owner": "django-testing-agent",
+      "template": "test-report",
+      "min_profile": "standard",
+      "applies_when": "Tests were actually run and results must be recorded.",
+      "on_demand": true
+    },
+    {
+      "type": "DEF",
+      "name": "Defect Report",
+      "stage": "testing",
+      "owner": "django-testing-agent",
+      "template": "test-report",
+      "min_profile": "standard",
+      "applies_when": "A defect was actually found.",
+      "on_demand": true
+    },
+    {
+      "type": "PERF",
+      "name": "Performance Assessment",
+      "stage": "testing",
+      "owner": "django-performance-agent",
+      "template": "performance-assessment",
+      "min_profile": "standard",
+      "applies_when": "Performance was investigated and measured.",
+      "on_demand": true
+    },
+    {
+      "type": "DEP",
+      "name": "Deployment Architecture",
+      "stage": "deployment",
+      "owner": "django-documentation-agent",
+      "template": "deployment-and-release",
+      "min_profile": "standard",
+      "applies_when": "Deployment files or an environment description exist.",
+      "depends_on": [
+        "HLD"
+      ],
+      "requires_fact": "has_deployment"
+    },
+    {
+      "type": "INF",
+      "name": "Infrastructure Design",
+      "stage": "deployment",
+      "owner": "django-documentation-agent",
+      "template": "deployment-and-release",
+      "min_profile": "enterprise",
+      "applies_when": "Infrastructure is defined as code or described by the user.",
+      "depends_on": [
+        "DEP"
+      ],
+      "requires_fact": "has_deployment"
+    },
+    {
+      "type": "CICD",
+      "name": "CI/CD Design",
+      "stage": "deployment",
+      "owner": "django-documentation-agent",
+      "template": "deployment-and-release",
+      "min_profile": "standard",
+      "applies_when": "A pipeline definition exists.",
+      "requires_fact": "has_ci"
+    },
+    {
+      "type": "DPL",
+      "name": "Deployment Diagram",
+      "stage": "deployment",
+      "owner": "django-documentation-agent",
+      "template": "deployment-and-release",
+      "min_profile": "standard",
+      "applies_when": "A deployment architecture exists.",
+      "depends_on": [
+        "DEP"
+      ],
+      "diagram": true,
+      "mermaid_kinds": [
+        "flowchart",
+        "graph",
+        "C4Deployment"
+      ],
+      "default_dir": "diagrams"
+    },
+    {
+      "type": "ENV",
+      "name": "Environment Configuration Reference",
+      "stage": "deployment",
+      "owner": "django-documentation-agent",
+      "template": "deployment-and-release",
+      "min_profile": "standard",
+      "applies_when": "More than one environment.",
+      "depends_on": [
+        "CFG"
+      ]
+    },
+    {
+      "type": "REL",
+      "name": "Release Plan",
+      "stage": "deployment",
+      "owner": "django-documentation-agent",
+      "template": "deployment-and-release",
+      "min_profile": "standard",
+      "applies_when": "A release is being prepared.",
+      "on_demand": true
+    },
+    {
+      "type": "RBK",
+      "name": "Rollback Plan",
+      "stage": "deployment",
+      "owner": "django-documentation-agent",
+      "template": "deployment-and-release",
+      "min_profile": "standard",
+      "applies_when": "A release or migration needs a way back.",
+      "depends_on": [
+        "REL"
+      ],
+      "on_demand": true
+    },
+    {
+      "type": "RUN",
+      "name": "Operational Runbooks",
+      "stage": "deployment",
+      "owner": "django-documentation-agent",
+      "template": "operational-runbook",
+      "min_profile": "standard",
+      "applies_when": "The system is operated by people other than its developers.",
+      "depends_on": [
+        "DEP"
+      ]
+    },
+    {
+      "type": "CHG",
+      "name": "Changelog",
+      "stage": "maintenance",
+      "owner": "django-documentation-agent",
+      "template": "maintenance-record",
+      "min_profile": "minimal",
+      "applies_when": "Always, once releases exist."
+    },
+    {
+      "type": "INC",
+      "name": "Incident Report",
+      "stage": "maintenance",
+      "owner": "django-documentation-agent",
+      "template": "maintenance-record",
+      "min_profile": "standard",
+      "applies_when": "An incident actually occurred and facts were provided.",
+      "on_demand": true
+    },
+    {
+      "type": "RCA",
+      "name": "Root Cause Analysis",
+      "stage": "maintenance",
+      "owner": "django-documentation-agent",
+      "template": "maintenance-record",
+      "min_profile": "standard",
+      "applies_when": "An incident or defect needs a root cause analysis.",
+      "depends_on": [
+        "INC"
+      ],
+      "on_demand": true
+    },
+    {
+      "type": "TDEBT",
+      "name": "Technical Debt Register",
+      "stage": "maintenance",
+      "owner": "django-documentation-agent",
+      "template": "maintenance-record",
+      "min_profile": "standard",
+      "applies_when": "Debt was found by review, analysis or the user."
+    },
+    {
+      "type": "ARU",
+      "name": "Architecture Updates",
+      "stage": "maintenance",
+      "owner": "django-architecture-agent",
+      "template": "maintenance-record",
+      "min_profile": "standard",
+      "applies_when": "Architecture changed after the HLD was approved.",
+      "depends_on": [
+        "HLD"
+      ],
+      "on_demand": true
+    }
+  ],
+  "change_categories": [
+    {
+      "id": "requirements",
+      "description": "Requirements changed",
+      "path_globs": [
+        "docs/requirements/**"
+      ],
+      "affects": [
+        "BRD",
+        "SRS",
+        "FRD",
+        "NFR",
+        "US",
+        "AC",
+        "RTM"
+      ]
+    },
+    {
+      "id": "architecture",
+      "description": "App structure, entry points or system boundaries changed",
+      "path_globs": [
+        "**/apps.py",
+        "**/asgi.py",
+        "**/wsgi.py"
+      ],
+      "affects": [
+        "HLD",
+        "SAD",
+        "SOL",
+        "C4",
+        "CTX",
+        "CMP",
+        "ADR",
+        "TDR",
+        "ARU"
+      ]
+    },
+    {
+      "id": "model",
+      "description": "Models or migrations changed",
+      "path_globs": [
+        "**/models.py",
+        "**/models/**",
+        "**/migrations/**"
+      ],
+      "affects": [
+        "DBD",
+        "ERD",
+        "LLD",
+        "MIG"
+      ]
+    },
+    {
+      "id": "api",
+      "description": "Serializers, views, URLs or permissions changed",
+      "path_globs": [
+        "**/serializers.py",
+        "**/serializers/**",
+        "**/views.py",
+        "**/views/**",
+        "**/viewsets.py",
+        "**/urls.py",
+        "**/permissions.py",
+        "**/api/**"
+      ],
+      "affects": [
+        "API",
+        "LLD",
+        "INT",
+        "SEQ"
+      ]
+    },
+    {
+      "id": "config",
+      "description": "Settings or environment variables changed",
+      "path_globs": [
+        "**/settings.py",
+        "**/settings/**",
+        "**/.env.example",
+        "**/config/**"
+      ],
+      "affects": [
+        "CFG",
+        "DEP",
+        "ENV"
+      ]
+    },
+    {
+      "id": "dependency",
+      "description": "Dependencies changed",
+      "path_globs": [
+        "requirements*.txt",
+        "**/requirements*.txt",
+        "pyproject.toml",
+        "poetry.lock",
+        "Pipfile",
+        "Pipfile.lock",
+        "package.json"
+      ],
+      "affects": [
+        "CFG",
+        "DEP",
+        "ENV",
+        "TDEBT"
+      ]
+    },
+    {
+      "id": "tests",
+      "description": "Tests or test configuration changed",
+      "path_globs": [
+        "**/tests/**",
+        "**/test_*.py",
+        "**/*_test.py",
+        "**/conftest.py",
+        "pytest.ini",
+        "tox.ini"
+      ],
+      "affects": [
+        "TPL",
+        "TC",
+        "TER"
+      ]
+    },
+    {
+      "id": "deployment",
+      "description": "Container, pipeline or infrastructure files changed",
+      "path_globs": [
+        "Dockerfile*",
+        "**/Dockerfile*",
+        "docker-compose*",
+        "**/docker-compose*",
+        "**/.github/workflows/**",
+        ".github/workflows/**",
+        "**/.gitlab-ci.yml",
+        "Jenkinsfile",
+        "deploy/**",
+        "k8s/**",
+        "helm/**",
+        "terraform/**"
+      ],
+      "affects": [
+        "DEP",
+        "INF",
+        "CICD",
+        "DPL",
+        "ENV",
+        "REL",
+        "RBK",
+        "RUN"
+      ]
+    },
+    {
+      "id": "security",
+      "description": "Authentication, middleware or security configuration changed",
+      "path_globs": [
+        "**/middleware.py",
+        "**/authentication.py",
+        "**/auth*.py",
+        "**/security*.py"
+      ],
+      "affects": [
+        "SEC"
+      ]
+    },
+    {
+      "id": "background",
+      "description": "Tasks, signals or management commands changed",
+      "path_globs": [
+        "**/tasks.py",
+        "**/celery.py",
+        "**/signals.py",
+        "**/management/commands/**"
+      ],
+      "affects": [
+        "MOD",
+        "LLD",
+        "RUN",
+        "DFD"
+      ]
+    },
+    {
+      "id": "code",
+      "description": "Other application code changed",
+      "path_globs": [
+        "**/*.py"
+      ],
+      "affects": [
+        "MOD",
+        "CODE"
+      ]
+    }
+  ]
+}

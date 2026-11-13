@@ -47,7 +47,18 @@ Tell the agent to apply these, by id. In the Django Engineering Pack they live a
 (installed plugin: under `${CLAUDE_PLUGIN_ROOT}`, and preloaded into the agent).
 
 - Skills: `django-rest-framework` · `django-security-engineering` · `django-orm`
-- Rules: `django-security-standards` · `django-api-standards` · `django-coding-standards` · `django-testing-standards` · `django-performance-standards` · `django-logging-standards`
+- Rules: `django-security-standards` · `django-api-standards` · `django-coding-standards` · `django-testing-standards` · `django-performance-standards` · `django-logging-standards` · `django-documentation-standards`
+
+## Documentation context
+
+Tell the agent to follow `DOC-M9` to `DOC-M16` and the registry protocol in the pack at `references/sdlc-documentation-registry.md`
+(installed plugin: `${CLAUDE_PLUGIN_ROOT}/references/sdlc-documentation-registry.md`): read `docs/sdlc/registry.json` first, consume current
+documents, review stale ones, never edit an `approved` document in place, report conflicts, and state assumptions
+instead of inventing details. The workflow is defined once, in that reference; this command adds only the following.
+
+- Consume the API specification, LLD, database design, security design and acceptance criteria. A contract that differs from an approved document is reported first.
+- After the user approves and the change is applied, the agent updates the API specification for the endpoints that changed and registers it. Documentation is
+  written under the same approval as the code. LLD, integration design and test updates are recommended to their owners.
 
 ## Authorization
 
@@ -58,7 +69,8 @@ Code changes need explicit approval.
 2. **Approval.** Show the proposal and ask the user to approve it, unless `--apply` was given.
    A breaking change always needs the user's explicit approval, even with `--apply`.
 3. **Implementation.** Brief the agent with the approved contract. It writes API code and
-   tests in the workspace and runs them.
+   tests in the workspace and runs them, then updates the API specification and the registry. An
+   `approved` document is never edited in place.
 
 Never: package installs, network calls, or migrations against a non-test database.
 

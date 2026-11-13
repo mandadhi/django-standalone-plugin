@@ -2,6 +2,37 @@
 
 All notable changes to the standalone Django Engineering Plugin. Versions follow semantic versioning.
 
+## 2.2.0
+
+SDLC-wide documentation management.
+
+### Added
+- SDLC documentation framework: seven stages and 50 document types in `config/sdlc-documentation-catalog.json`
+  (owner agent, template, applicability, dependencies, change-impact rules); `docs/sdlc-documentation.md`.
+- File-based documentation registry (`docs/sdlc/registry.json` in the documented project) and the documentation-first
+  protocol `DOC-M9` to `DOC-M16` in `django-documentation-standards`.
+- References `sdlc-documentation-framework`, `sdlc-documentation-registry`, `sdlc-mermaid-diagrams`; eight templates
+  (requirements-specification, traceability-matrix, detailed-design, implementation-notes, test-report,
+  deployment-and-release, operational-runbook, maintenance-record).
+- `tools/sdlc_registry.py`: standard-library validator for the registry (schema, files, staleness, approved-document
+  protection, impact assessment, Mermaid structure) run by a person or CI.
+- Tests: `tests/test_sdlc_documentation.py`, `tests/test_sdlc_registry.py`, representative project `tests/fixtures/shop_project`.
+
+### Changed
+- Documentation agent is the registry and consistency coordinator and owner of requirements, deployment, runbook and
+  maintenance documents; architecture, model, api, security, testing and performance agents own and update their own
+  documents. All agents carry a Documentation context section and preload `django-documentation-standards`; read-only
+  agents report documentation findings.
+- All ten commands carry a Documentation context section; `/django-document` gains `--stage`, `--profile`, `--check`,
+  `--impact`. The orchestrator reads the registry, briefs with documentation context and reports the documentation outcome.
+- Orchestration policy 1.2.0: `documentation` section (protocol, stage table), `documentation-first` step constraint,
+  optional documentation step in `feature-delivery`, `max_delegations` 6 to 7 to fit it.
+- Copilot adapter generator: re-bases pack-content links from rules, verifies documentation parity, records the shared
+  documentation system and adaptation AD-16 in the manifest.
+
+### Not changed
+- Security guard, hook policy, write modes, approval gates and tool lists are unchanged.
+
 ## 2.1.0
 
 Unified Claude Code + GitHub Copilot plugin.

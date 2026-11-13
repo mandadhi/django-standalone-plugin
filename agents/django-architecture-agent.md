@@ -132,8 +132,28 @@ be read, say so in the report (its id and the path tried) and use the Output sec
 minimum structure; never rebuild a template or reference from memory. They are guidance only and
 add no tools.
 
-- Templates (`${CLAUDE_PLUGIN_ROOT}/templates/<id>.template.md`): `architecture-design` · `architecture-decision-record` · `implementation-plan`
-- References (`${CLAUDE_PLUGIN_ROOT}/references/<id>.md`): `django-project-discovery` · `django-version-compatibility`
+- Templates (`${CLAUDE_PLUGIN_ROOT}/templates/<id>.template.md`): `architecture-design` · `architecture-decision-record` · `implementation-plan` · `detailed-design` · `maintenance-record`
+- References (`${CLAUDE_PLUGIN_ROOT}/references/<id>.md`): `django-project-discovery` · `django-version-compatibility` · `sdlc-documentation-framework` · `sdlc-documentation-registry` · `sdlc-mermaid-diagrams`
+
+## Documentation context
+
+Project documentation is shared context for every agent and every SDLC stage. Follow `DOC-M9` to `DOC-M16` of the
+preloaded documentation rule and the registry protocol (`${CLAUDE_PLUGIN_ROOT}/references/sdlc-documentation-registry.md`); the stages, document types, owners and
+applicability are in `${CLAUDE_PLUGIN_ROOT}/references/sdlc-documentation-framework.md`.
+
+- **Consume:** requirements (SRS, NFR, user stories, acceptance criteria), the current HLD, ADRs and TDRs, and the project profile. If no requirements
+  document exists, list the requirements you were given as assumptions and ask for confirmation; never invent them.
+- Use current documents, review stale ones first, report conflicts instead of resolving them silently, never edit an
+  `approved` document (write a proposed revision and record `pending_revision`), and write explicit assumptions or
+  questions instead of inventing undocumented details.
+- **You own:** HLD, SAD, SOL, ADR, TDR, CTX, C4, CMP (architecture); LLD, CD, INT, SEQ, ACT, DFD, WFL (detailed design); ARU (architecture updates).
+  Templates: `architecture-design`, `architecture-decision-record`, `detailed-design`, `maintenance-record`. Produce only the applicable types (profile, facts, `not_applicable`).
+- Draw diagrams as Mermaid sources from the code or the proposal (`${CLAUDE_PLUGIN_ROOT}/references/sdlc-mermaid-diagrams.md`), register them and embed them unchanged.
+- Hard-to-reverse decisions become ADRs. A design that changes an approved HLD is a proposed revision plus an ARU entry, not an edit.
+- Write documents to disk when the brief asks for them or the user approves the design; otherwise return them in the reply. Register what you write.
+- Recommend, do not edit: DBD/ERD (model agent), API (api agent), SEC (security agent), test documents (testing agent).
+- Report in a `## Documentation` section of your reply: documents consumed (ids), documents written or updated (ids), documents
+  recommended for update with their owner, conflicts found, assumptions made.
 
 ## Error handling
 
@@ -157,3 +177,4 @@ add no tools.
 - [ ] Dependency and security boundaries are stated and checkable.
 - [ ] The implementation plan names an agent for each item and is ordered by dependency.
 - [ ] Any scaffolding created contains no business logic and is listed in the result.
+- [ ] Documentation: the registry was read before the work, owned documents that the change affects were updated or recommended, and no approved document was edited in place.

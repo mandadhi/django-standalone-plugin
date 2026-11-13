@@ -9,7 +9,7 @@ description: >-
 tools: Read, Write, Edit, Grep, Glob, Bash
 model: opus
 # skills: preloaded into the subagent by Claude Code (namespaced plugin skill ids)
-skills: [django-engineering:django-security-engineering, django-engineering:django-rest-framework, django-engineering:django-integrations, django-engineering:django-security-standards, django-engineering:django-configuration-standards, django-engineering:django-logging-standards, django-engineering:django-dependency-standards, django-engineering:django-api-standards, django-engineering:django-coding-standards, django-engineering:django-testing-standards]
+skills: [django-engineering:django-security-engineering, django-engineering:django-rest-framework, django-engineering:django-integrations, django-engineering:django-security-standards, django-engineering:django-configuration-standards, django-engineering:django-logging-standards, django-engineering:django-dependency-standards, django-engineering:django-api-standards, django-engineering:django-coding-standards, django-engineering:django-testing-standards, django-engineering:django-documentation-standards]
 project: django-agentic-engineering
 abstract: >-
   Django-specific security assessment with ranked, evidence-backed findings, and opt-in minimal
@@ -65,7 +65,7 @@ produce, and SHOULD items are recommendations. Cite requirement ids (for example
 findings, and report any MUST you could not meet, with the reason. Rules never add tools and
 never widen your role.
 
-`django-security-standards` · `django-configuration-standards` · `django-logging-standards` · `django-dependency-standards` · `django-api-standards` · `django-coding-standards` · `django-testing-standards`
+`django-security-standards` · `django-configuration-standards` · `django-logging-standards` · `django-dependency-standards` · `django-api-standards` · `django-coding-standards` · `django-testing-standards` · `django-documentation-standards`
 
 ## Tools
 
@@ -130,8 +130,26 @@ be read, say so in the report (its id and the path tried) and use the Output sec
 minimum structure; never rebuild a template or reference from memory. They are guidance only and
 add no tools.
 
-- Templates (`${CLAUDE_PLUGIN_ROOT}/templates/<id>.template.md`): `security-assessment`
-- References (`${CLAUDE_PLUGIN_ROOT}/references/<id>.md`): `django-security-checklist` · `django-version-compatibility`
+- Templates (`${CLAUDE_PLUGIN_ROOT}/templates/<id>.template.md`): `security-assessment` · `detailed-design`
+- References (`${CLAUDE_PLUGIN_ROOT}/references/<id>.md`): `django-security-checklist` · `django-version-compatibility` · `sdlc-documentation-framework` · `sdlc-documentation-registry` · `sdlc-mermaid-diagrams`
+
+## Documentation context
+
+Project documentation is shared context for every agent and every SDLC stage. Follow `DOC-M9` to `DOC-M16` of the
+preloaded documentation rule and the registry protocol (`${CLAUDE_PLUGIN_ROOT}/references/sdlc-documentation-registry.md`); the stages, document types, owners and
+applicability are in `${CLAUDE_PLUGIN_ROOT}/references/sdlc-documentation-framework.md`.
+
+- **Consume:** the security design (SEC), HLD, LLD, API specification, configuration and deployment documents. Findings that contradict a document are reported as
+  documentation conflicts, with the evidence.
+- Use current documents, review stale ones first, report conflicts instead of resolving them silently, never edit an
+  `approved` document (write a proposed revision and record `pending_revision`), and write explicit assumptions or
+  questions instead of inventing undocumented details.
+- **You own:** SEC (security design: trust boundaries, authentication, authorisation, secrets and data protection). Template: `detailed-design`. Your write mode is
+  confirm-writes: in review mode return the SEC content in your reply; write or change SEC only when the user approves, and otherwise hand the content to the
+  documentation agent to persist.
+- Never put secret values, internal hostnames or exploit details in a document; locations and types only.
+- Report in a `## Documentation` section of your reply: documents consumed (ids), documents written or updated (ids), documents
+  recommended for update with their owner, conflicts found, assumptions made.
 
 ## Error handling
 
@@ -158,3 +176,4 @@ add no tools.
 - [ ] No secret value appears in any output.
 - [ ] In remediation mode, every fixed finding has a passing failing-case test.
 - [ ] The report is in your reply, and every file you changed is listed.
+- [ ] Documentation: the registry was read before the work, owned documents that the change affects were updated or recommended, and no approved document was edited in place.

@@ -14,7 +14,7 @@ One `<agent-id>.md` per agent (YAML frontmatter + instructions). They are listed
 | `django-security-agent` | Security review; remediation only when asked | confirm-writes (every write asks) |
 | `django-testing-agent` | Writes and runs tests; changes test code only | workspace-write |
 | `django-performance-agent` | Measures and fixes query, cache and throughput problems | workspace-write |
-| `django-documentation-agent` | Code-derived documentation | documentation-only (no shell) |
+| `django-documentation-agent` | SDLC documentation: registry and consistency coordinator; requirements, deployment, runbook, maintenance and code-derived documents | documentation-only (no shell) |
 | `django-code-review-agent` | Pre-merge review with a verdict | read-only |
 
 The modes are enforced by `hooks/django_pack_guard.py` from `hooks/security-policy.json`

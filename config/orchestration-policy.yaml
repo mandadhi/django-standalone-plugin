@@ -11,16 +11,16 @@
 # limit violations and any drift between this file, the orchestrator and the guard policy.
 schema_version: "1.0"
 kind: OrchestrationPolicy
-version: 1.1.0
+version: 1.2.0
 
 # The user-facing orchestrator of the plugin (logical identity `django-orchestrator`).
 orchestrator:
   id: django-orchestrator
   path: agents/django-orchestrator.md
-  skills: [django-security-standards]      # preloaded into the orchestrator (conduct rules SEC-A*)
+  skills: [django-security-standards, django-documentation-standards]   # conduct rules SEC-A*; documentation-first rules DOC-M9..M16
 
 limits:
-  max_delegations: 6                       # specialist invocations per request
+  max_delegations: 7                       # specialist invocations per request (feature-delivery has one more optional step: documentation)
   max_attempts_per_step: 2                 # one retry of a failed step, never more
   max_clarifying_questions: 3
 
@@ -115,11 +115,11 @@ categories:
         purpose: Add the index or schema change through a safe migration.
 
   - id: documentation
-    title: Produce technical documentation
-    signals: [document, docs, readme, runbook, api reference, guide, write up]
+    title: Produce, maintain or check project documentation across the SDLC
+    signals: [document, docs, readme, runbook, api reference, guide, write up, requirement, srs, brd, traceab, registry, diagram, release plan, rollback, changelog, incident, impact assess, stale doc]
     route:
       - agent: django-documentation-agent
-        purpose: Code-derived documentation; never changes application code.
+        purpose: Registry, requirements, deployment, runbook and maintenance documents, cross-document consistency and impact assessment; never changes application code.
 
   - id: code-review
     title: Review an existing implementation or change
@@ -152,8 +152,13 @@ categories:
         purpose: Endpoints, permissions and API tests.
       - agent: django-testing-agent
         purpose: Fill test gaps for the whole feature and run the suite.
+      - agent: django-documentation-agent
+        optional: true
+        when: The change affects registered documents that their owners did not update, the registry shows stale or missing applicable documents for the stage, or requirements or deployment documents are part of the delivery.
+        signals: [document, requirement, deploy, release, runbook]
+        purpose: Reconcile the registry, update the documents the documentation agent owns and report cross-document conflicts before review.
       - agent: django-code-review-agent
-        purpose: Gate review of the complete change.
+        purpose: Gate review of the complete change, including documentation consistency.
 
 # Passed to every delegated step, in the brief.
 step_constraints:
@@ -163,6 +168,64 @@ step_constraints:
     description: Report failures, skipped work and assumptions explicitly; never claim tests passed unless you ran them and saw them pass.
   - id: no-secrets
     description: Never print secret values; report only their location and type.
+  - id: documentation-first
+    description: Read the documentation registry and the documents relevant to the task before working; consume current documents, review stale ones, never edit approved ones in place, report conflicts, state assumptions instead of inventing details, and update the documents you own (DOC-M9 to DOC-M16).
+
+# SDLC documentation context. Documentation is shared project context for the orchestrator and every specialist,
+# on both platforms. This section adds no routing engine: stages are hints that map onto the categories above,
+# and the registry format, catalog and protocol live in references/ and config/.
+documentation:
+  registry: docs/sdlc/registry.json
+  catalog: config/sdlc-documentation-catalog.json
+  validator: tools/sdlc_registry.py        # run by a person or CI (agents cannot run scripts stored outside the project)
+  protocol:
+    - id: read-registry
+      description: Read the registry and the documents relevant to the request before routing; open only the entries the work needs.
+    - id: consume-current
+      description: Pass current documents (draft or approved, sources unchanged) to the specialists by id as inputs.
+    - id: review-stale
+      description: Name stale documents in the briefs; the owner reviews them before relying on them.
+    - id: generate-missing
+      description: A missing document is generated only when the stage or request needs it, its type is applicable to the project profile and facts, and the owner is in the route.
+    - id: protect-approved
+      description: Approved documents are never edited in place; revisions are proposals the user approves.
+    - id: report-conflicts
+      description: Conflicts between documents, or between a document and the code, are reported and put to the user, never resolved silently.
+    - id: no-invention
+      description: Missing facts become stated assumptions or clarification questions; undocumented implementation details are never invented.
+    - id: update-owned
+      description: Each specialist updates the documents it owns that its change affects; the documentation agent coordinates the registry and cross-document consistency and is not the only writer.
+    - id: impact-assessment
+      description: Before or after a change, classify the changed files with the catalog's change categories and update only the affected documents.
+  stages:
+    - id: requirements
+      title: Requirements and Analysis
+      leads: [django-documentation-agent]
+      categories: [documentation]
+    - id: architecture
+      title: Architecture and High-Level Design
+      leads: [django-architecture-agent]
+      categories: [architecture-design]
+    - id: detailed-design
+      title: Detailed Design
+      leads: [django-architecture-agent, django-model-agent, django-api-agent, django-security-agent]
+      categories: [architecture-design, data-model, api-development, security-assessment]
+    - id: development
+      title: Development
+      leads: [django-model-agent, django-api-agent, django-performance-agent]
+      categories: [data-model, api-development, performance, feature-delivery]
+    - id: testing
+      title: Testing and Quality Assurance
+      leads: [django-testing-agent, django-performance-agent]
+      categories: [testing, performance]
+    - id: deployment
+      title: Deployment and Release
+      leads: [django-documentation-agent]
+      categories: [documentation]
+    - id: maintenance
+      title: Maintenance and Evolution
+      leads: [django-documentation-agent, django-architecture-agent, django-code-review-agent]
+      categories: [documentation, code-review]
 
 completion_criteria:
   - Every step in the route ran, or is reported as skipped or failed with the reason.
@@ -170,6 +233,7 @@ completion_criteria:
   - Verification actually performed (tests run, checks executed) is listed separately from verification not performed.
   - Unresolved issues, assumptions and recommended follow-up steps (with the owning specialist) are listed.
   - A step that returned a proposal and awaits the user's approval is reported as awaiting approval, never as done.
+  - Documentation outcome is reported, covering documents consumed, updated and recommended (ids and owners), stale and conflicting documents, registry state, and approved documents left untouched.
 
 clarify_when:
   - The request is empty or names no Django work.

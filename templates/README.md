@@ -32,6 +32,14 @@ knowledge stays in the [skills](../skills/README.md), mandatory requirements in 
 | [code-review-report](code-review-report.template.md) | Merge verdict and severity-ranked findings | django-code-review-agent |
 | [implementation-plan](implementation-plan.template.md) | Dependency-ordered work items with owners | django-architecture-agent |
 | [migration-plan](migration-plan.template.md) | Phased, verifiable, reversible risky migration | django-model-agent |
+| [requirements-specification](requirements-specification.template.md) | BRD, SRS, FRD, NFR, user stories, acceptance criteria | django-documentation-agent |
+| [traceability-matrix](traceability-matrix.template.md) | Requirement to design, code and test trace, with gaps | django-documentation-agent, django-testing-agent |
+| [detailed-design](detailed-design.template.md) | LLD, component, integration and security design with diagrams | django-architecture-agent, django-security-agent |
+| [implementation-notes](implementation-notes.template.md) | What was built, deviations from design, documentation impact | model, api, testing, performance agents |
+| [test-report](test-report.template.md) | Test execution report and defect report | django-testing-agent |
+| [deployment-and-release](deployment-and-release.template.md) | Deployment, infrastructure, CI/CD, environments, release and rollback | django-documentation-agent |
+| [operational-runbook](operational-runbook.template.md) | Operator procedure with verification and rollback | django-documentation-agent |
+| [maintenance-record](maintenance-record.template.md) | Changelog, incident, RCA, debt register, architecture update | django-documentation-agent, django-architecture-agent |
 
 ### Format
 

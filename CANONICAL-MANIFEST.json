@@ -172,6 +172,34 @@
         "skills/django-testing/SKILL.md",
         "skills/postgresql-engineering/SKILL.md"
       ]
+    },
+    {
+      "id": "AD-16",
+      "reason": "SDLC documentation framework: documentation-first protocol (DOC-M9..M16), registry and catalog references, Documentation context sections in agents and commands, documentation policy and stage table in the orchestration policy. One shared documentation system for Claude Code and Copilot.",
+      "files": [
+        "agents/django-api-agent.md",
+        "agents/django-architecture-agent.md",
+        "agents/django-code-review-agent.md",
+        "agents/django-documentation-agent.md",
+        "agents/django-model-agent.md",
+        "agents/django-orchestrator.md",
+        "agents/django-performance-agent.md",
+        "agents/django-project-analyzer.md",
+        "agents/django-security-agent.md",
+        "agents/django-testing-agent.md",
+        "commands/django-analyze.md",
+        "commands/django-api.md",
+        "commands/django-design.md",
+        "commands/django-document.md",
+        "commands/django-model.md",
+        "commands/django-optimize.md",
+        "commands/django-review.md",
+        "commands/django-security.md",
+        "commands/django-test.md",
+        "commands/orchestrate.md",
+        "config/orchestration-policy.yaml",
+        "rules/django-documentation-standards/SKILL.md"
+      ]
     }
   ],
   "excluded_harness_components": [
@@ -195,12 +223,12 @@
     {
       "path": ".claude-plugin/marketplace.json",
       "origin": "standalone-authored",
-      "sha256": "660ae8aea460fc452e7a2da13770ef37bccd8acf626fbe67e55a9570ea54ff54"
+      "sha256": "ea9d7f86a5bb0beeb6e85053ff8dc4c3316929f9a700d6a379fcc68feb8f5108"
     },
     {
       "path": ".claude-plugin/plugin.json",
       "origin": "standalone-authored",
-      "sha256": "80c7d02f24be0cc9a6ca7fe00cc2c99b487d6a6f01dfaaebb9c7dbb2e46c380f"
+      "sha256": "246d7562a3aa947fe8be0916009589d80a8cfc861eb0d59cdf5dd54a20c28030"
     },
     {
       "path": ".gitattributes",
@@ -210,72 +238,72 @@
     {
       "path": ".github/agents/django-api-agent.agent.md",
       "origin": "copilot-adapter",
-      "sha256": "7d1bf658a9096d2bba2de78d2b180bb93bc821bd8a52f9d1fe9e83d956c6b748",
+      "sha256": "7645c7991180c24c0027707e466c85bb983ac8f6e02807b64f0f4814271a0a0b",
       "derived_from": "agents/django-api-agent.md"
     },
     {
       "path": ".github/agents/django-architecture-agent.agent.md",
       "origin": "copilot-adapter",
-      "sha256": "59f5ad7f10c7144489cb0a383a3ddff4ed622332aeb082321a5414b2bdd90931",
+      "sha256": "d1e52e22b5feee062e5739cd60e88b37224c6aed8d3c37cd64acaefc97a68565",
       "derived_from": "agents/django-architecture-agent.md"
     },
     {
       "path": ".github/agents/django-code-review-agent.agent.md",
       "origin": "copilot-adapter",
-      "sha256": "ba2241689d189d73fa5e216bfe77e42fa5d0b1da26ea1544d2ae79671b1c1cc0",
+      "sha256": "a3209bff67ae42a7e6f3d5d9b0a3b5e63f7ea7b7206678f7ead3d6c0685afaa5",
       "derived_from": "agents/django-code-review-agent.md"
     },
     {
       "path": ".github/agents/django-documentation-agent.agent.md",
       "origin": "copilot-adapter",
-      "sha256": "35ec46e088b511973d234b36d3155b9c7ecd57bebc6ff365e22a1246f8050025",
+      "sha256": "341b483de10492dcfd17f1918bd1495c0f9a3d9cb44d455051344aca24ff8aa3",
       "derived_from": "agents/django-documentation-agent.md"
     },
     {
       "path": ".github/agents/django-model-agent.agent.md",
       "origin": "copilot-adapter",
-      "sha256": "0a88aa733d5e51255a6607c37417929c91bce28b773d173a9670a82c2071cb75",
+      "sha256": "c046f977d96d16373772a6eb53fbce9691b7b25497eca656a6aff6a310e94642",
       "derived_from": "agents/django-model-agent.md"
     },
     {
       "path": ".github/agents/django-orchestrator.agent.md",
       "origin": "copilot-adapter",
-      "sha256": "a936eb50ccc5bdbc5e2fdaad73ff915cd1092ac908f755b29c2209fd263f2eb8",
+      "sha256": "ef600fb5eb992c1dcdb3e28efa6284cb606a04ac795a6ac4dd03f83230227a10",
       "derived_from": "agents/django-orchestrator.md"
     },
     {
       "path": ".github/agents/django-performance-agent.agent.md",
       "origin": "copilot-adapter",
-      "sha256": "4708794fa12943ad5dbce3f587cc0ff736869845c11e432878223e0d8f77d80b",
+      "sha256": "ecee661d4f4f7657bc18be0809ee349eadfeaf1a2f2d0d6f68a718725dd51a62",
       "derived_from": "agents/django-performance-agent.md"
     },
     {
       "path": ".github/agents/django-project-analyzer.agent.md",
       "origin": "copilot-adapter",
-      "sha256": "d499c1107a76bedcb335d0c2e9f39f4c0f8b53463448a760442b4fa5d776f531",
+      "sha256": "793aa7c39e70063072f0a651023b50a944f97499beafe78d5a364c5b14c59463",
       "derived_from": "agents/django-project-analyzer.md"
     },
     {
       "path": ".github/agents/django-security-agent.agent.md",
       "origin": "copilot-adapter",
-      "sha256": "f6022e72dedf5a5720e0ddc3703095b42638a421e71d6ba6d283b6cabf9a6934",
+      "sha256": "28db503114903d86ded9496d70cb98e928f3ee1043e59e62b3179b32fb7f73a1",
       "derived_from": "agents/django-security-agent.md"
     },
     {
       "path": ".github/agents/django-testing-agent.agent.md",
       "origin": "copilot-adapter",
-      "sha256": "e68a72115b67978658c34e76282a594f4946634a50a883bab6055f8a9d0ba0e9",
+      "sha256": "6faf6905498c542567fd18303f17c0ceeed788bc9ebba1a94ec02d36db9c9bb1",
       "derived_from": "agents/django-testing-agent.md"
     },
     {
       "path": ".github/instructions/django-engineering.instructions.md",
       "origin": "standalone-authored",
-      "sha256": "3d6168909035f3cc6aa1e758d3bd44505dc6758e23383c72db932fa5e4d8b20f"
+      "sha256": "fb713c34ac5a6f2d38dc61943235ff9dd012f23057eedf60ee66db43a024d4dc"
     },
     {
       "path": ".github/skills/django-analyze/SKILL.md",
       "origin": "copilot-adapter",
-      "sha256": "9bb6887803371a416ee0ce021096778da312343e28bf1af36b05e37db1701686",
+      "sha256": "cbeee652d5e360f8bd2da4321a6d10a9c392dda87589becd6a77f570547bf084",
       "derived_from": "commands/django-analyze.md"
     },
     {
@@ -287,7 +315,7 @@
     {
       "path": ".github/skills/django-api/SKILL.md",
       "origin": "copilot-adapter",
-      "sha256": "4fb65d63ac7908805d47e74aa623433a124b87607d888a13699f3045a4098969",
+      "sha256": "d7b45bab6269f635e3c354e7c1141b6e34deb3d3dee65a18a23230d62d5275ef",
       "derived_from": "commands/django-api.md"
     },
     {
@@ -335,19 +363,19 @@
     {
       "path": ".github/skills/django-design/SKILL.md",
       "origin": "copilot-adapter",
-      "sha256": "623a5023ca6895438d1de134177e25878efc255b1af4403c2b0748601a1233cb",
+      "sha256": "1462ebe2304fb65592bb28f5d4a02b394cc7a8821de0503a2661f53ee9f9f203",
       "derived_from": "commands/django-design.md"
     },
     {
       "path": ".github/skills/django-document/SKILL.md",
       "origin": "copilot-adapter",
-      "sha256": "1e378d5bc34c2fd46bf205d2d846cb07de79cc4cc911961f504494f1afb920ab",
+      "sha256": "488750b866a4a6b99e85011edaeb4da53982d1409c75c29aafe4384008d17ebe",
       "derived_from": "commands/django-document.md"
     },
     {
       "path": ".github/skills/django-documentation-standards/SKILL.md",
       "origin": "copilot-adapter",
-      "sha256": "ae02baf132355b0c6f952cfdc9c4c9ef933d26c187f76ea28753c81516937c30",
+      "sha256": "83324acbb252de1f150d8d919f5347bc38e92f231c3889b5cef54c2f917dad6c",
       "derived_from": "rules/django-documentation-standards/SKILL.md"
     },
     {
@@ -377,13 +405,13 @@
     {
       "path": ".github/skills/django-model/SKILL.md",
       "origin": "copilot-adapter",
-      "sha256": "51ba8c53d7cfdb0094a996e4c2d9f23e79eab4e211b536826293836f57d18464",
+      "sha256": "ced9b0a8b9aeee024bc95ac681c5eca8b7d2db0783b9c41114a35e6166363a2c",
       "derived_from": "commands/django-model.md"
     },
     {
       "path": ".github/skills/django-optimize/SKILL.md",
       "origin": "copilot-adapter",
-      "sha256": "8776c41ec96e65e9409e53dbcf735a00c69d81267956465cacbba153636ccf4a",
+      "sha256": "b3bb33b8abe3d42e52f00b6716778a6ddd3c55be96505c93c43b0a23f056f88e",
       "derived_from": "commands/django-optimize.md"
     },
     {
@@ -425,7 +453,7 @@
     {
       "path": ".github/skills/django-review/SKILL.md",
       "origin": "copilot-adapter",
-      "sha256": "e50be760763b54a5f551d2f232c03c5ebe664f0c3ded63e5dac6e5fa4c9c622a",
+      "sha256": "1781635233baf1c1929b8d3c8f765b580937da1cd93c51828e8e91715750fe05",
       "derived_from": "commands/django-review.md"
     },
     {
@@ -443,13 +471,13 @@
     {
       "path": ".github/skills/django-security/SKILL.md",
       "origin": "copilot-adapter",
-      "sha256": "e51cd57e1a66884893647dddb7970b82b5b9d66136665c141cff370f632ba765",
+      "sha256": "dd799b5718a50ba42d88a6567a88cd0dd5b545892f8a10f8ab65ae978bf2c66b",
       "derived_from": "commands/django-security.md"
     },
     {
       "path": ".github/skills/django-test/SKILL.md",
       "origin": "copilot-adapter",
-      "sha256": "97e4979ccda775dbbf595865127e4c2b06e4fc3096656dcf70e810b104e1dfc3",
+      "sha256": "08454343aafa6408f5e4fac66d6b99eda2379c776b466e815eda793f89909835",
       "derived_from": "commands/django-test.md"
     },
     {
@@ -467,7 +495,7 @@
     {
       "path": ".github/skills/orchestrate/SKILL.md",
       "origin": "copilot-adapter",
-      "sha256": "b41fc623e1cbc863293e0b513095dab392a903a0582ca723dd5e8f7984f535aa",
+      "sha256": "06768119eaaafa5b8b67a4d0429209c81613d38fec8ca6124b07e2e28fe3baed",
       "derived_from": "commands/orchestrate.md"
     },
     {
@@ -484,7 +512,7 @@
     {
       "path": "CHANGELOG.md",
       "origin": "standalone-authored",
-      "sha256": "5492fe358e45a5820f018f29459cfbc705ebe106923392737d0c338368f01093"
+      "sha256": "9ee37ebcafab8aa3527a15530aab3554f66736632f53fa003ebcf562b171d0f0"
     },
     {
       "path": "CONTRIBUTING.md",
@@ -494,7 +522,7 @@
     {
       "path": "README.md",
       "origin": "standalone-authored",
-      "sha256": "f2afb6776ce7d446e199c2b1438282e74f2dd8e6cc3481b0da51dffd321420a0"
+      "sha256": "7b1432c17ca82c3eec4f1d7b50af7f455fd9f99c0b56408346f70d87dca9ed43"
     },
     {
       "path": "SECURITY.md",
@@ -504,7 +532,7 @@
     {
       "path": "TEAM_HANDOFF.md",
       "origin": "standalone-authored",
-      "sha256": "4cd0ca71ea21ddc843c73886e70e9ff08caffa7039f5a76f2afa068a1fdfa134"
+      "sha256": "e4cf76be3371d9e9314209b7028260bc5bfb7857b4e1f48531f9cdfc21c7405e"
     },
     {
       "path": "agents/django-api-agent.md",
@@ -512,12 +540,13 @@
       "kind": "agent",
       "source": "agents/django-api-agent.md",
       "source_sha256": "d650ce6e32131cdb0c9003327df33609af7bfe20e5e65a8c4537c12de36492e6",
-      "sha256": "0ea0717b33d6d0b0b90633bf1563b99fa364f996a498782acbe551be93d39dee",
+      "sha256": "94785861b3e6d94fbe5d7f76f1cf1e61a29264db4a7c971db6b5ccecd4dc3578",
       "identical": false,
       "adaptations": [
         "AD-01",
         "AD-02",
-        "AD-13"
+        "AD-13",
+        "AD-16"
       ]
     },
     {
@@ -526,12 +555,13 @@
       "kind": "agent",
       "source": "agents/django-architecture-agent.md",
       "source_sha256": "52401d6a7c3266d5c94deef63286dd4f5e2cad73bbe0af8633f511f4fa020644",
-      "sha256": "1eb9ef0d7037a3080d35f43e83a9c7aa55975ebc888e52d70f2e23052a9fa8ee",
+      "sha256": "1fce853e683686962dcf8ad07e242ae39075107dfd4adde8ba74337630cb6221",
       "identical": false,
       "adaptations": [
         "AD-01",
         "AD-02",
-        "AD-13"
+        "AD-13",
+        "AD-16"
       ]
     },
     {
@@ -540,12 +570,13 @@
       "kind": "agent",
       "source": "agents/django-code-review-agent.md",
       "source_sha256": "c4f82e2a88a140976a0b7ae22167265804eb3af3d211aef3404aa5d326a02a1f",
-      "sha256": "6d21f827cc3c8160aa55c4dc89d7df786dc939a6652e9a2b115ab5da4118779e",
+      "sha256": "04db674fc34f66784183ecbe99d6ce4e81732aaf361912097a62fd70955c19fe",
       "identical": false,
       "adaptations": [
         "AD-01",
         "AD-02",
-        "AD-13"
+        "AD-13",
+        "AD-16"
       ]
     },
     {
@@ -554,12 +585,13 @@
       "kind": "agent",
       "source": "agents/django-documentation-agent.md",
       "source_sha256": "1aee2135ff5b953480aa77127e62543b0b595f8f53dfec447b9e86dc3caf1e9d",
-      "sha256": "fb59bd811ab8e00768f26060ea452952543bb0aa5f56082ceb8507e8e00f314d",
+      "sha256": "6544fca4014e70e267cda602fb95c4008168bdfe055c76da0cb1a6ef4f40bcbd",
       "identical": false,
       "adaptations": [
         "AD-01",
         "AD-02",
-        "AD-13"
+        "AD-13",
+        "AD-16"
       ]
     },
     {
@@ -568,13 +600,14 @@
       "kind": "agent",
       "source": "agents/django-model-agent.md",
       "source_sha256": "c5f681dad7a1bab121065c42facb4ea7adf64d04b131cd4c55809a070ae99949",
-      "sha256": "5d9453ab25b490ae2cb0fb408522c42b53b92c685abe74bf5e100c2011061be7",
+      "sha256": "f351d1127fb1602e5c6601040585bd49851ee949d652156057f97e9cb95f0bb7",
       "identical": false,
       "adaptations": [
         "AD-01",
         "AD-02",
         "AD-03",
-        "AD-13"
+        "AD-13",
+        "AD-16"
       ]
     },
     {
@@ -583,11 +616,12 @@
       "kind": "agent",
       "source": "agents/django-orchestrator.md",
       "source_sha256": "b061859513570b06c1658b52a6ee77d52f42af9bca854a80c5c9576bc22805a3",
-      "sha256": "e5a8f2a19c5bbe8e8d8f8a51142f20f8607477badb6bf71db5bd2d9c71679cd1",
+      "sha256": "7659aeb015c7e862b10cf1b840a2f4c81a5ef3e758112dae72d12b7c0f2f24c4",
       "identical": false,
       "adaptations": [
         "AD-04",
-        "AD-13"
+        "AD-13",
+        "AD-16"
       ]
     },
     {
@@ -596,12 +630,13 @@
       "kind": "agent",
       "source": "agents/django-performance-agent.md",
       "source_sha256": "f518306b694bdda7eedd5a468b40deb8eccf00a0674bc81dbd23abc9c7e562a8",
-      "sha256": "17ce3652d83811722acdf9a1054ee1b07f2edc1a1df5200f43a3388956058cf7",
+      "sha256": "255319dbc31abe99fe7dffe638c138691d752a710896ce50a35c6f769a82a38e",
       "identical": false,
       "adaptations": [
         "AD-01",
         "AD-02",
-        "AD-13"
+        "AD-13",
+        "AD-16"
       ]
     },
     {
@@ -610,12 +645,13 @@
       "kind": "agent",
       "source": "agents/django-project-analyzer.md",
       "source_sha256": "d02316d287e46c822a4a702aac5956b06285fe0ecae26c398b6f8e626f626815",
-      "sha256": "f0dd96288b0473b508f51a08c56feffa0d9afb61fa4a3d3d72295e25c852bf14",
+      "sha256": "b207bc9f650852a755832497c155e4be457ff814d2e08dad722ea4d5b17e94a5",
       "identical": false,
       "adaptations": [
         "AD-01",
         "AD-02",
-        "AD-13"
+        "AD-13",
+        "AD-16"
       ]
     },
     {
@@ -624,12 +660,13 @@
       "kind": "agent",
       "source": "agents/django-security-agent.md",
       "source_sha256": "ec1ebbe73b4b47273d0983b7c7876a6ca56fefd705383544ad859a47e6154acf",
-      "sha256": "7361de8143259faf0d5501bebcef2cb0aee34387a009c388d05c873e8ee83186",
+      "sha256": "abc9fb188fecdc102e3c70a4435acd08cecf911e5ab6079d2a3c4dbc5560d87c",
       "identical": false,
       "adaptations": [
         "AD-01",
         "AD-02",
-        "AD-13"
+        "AD-13",
+        "AD-16"
       ]
     },
     {
@@ -638,18 +675,19 @@
       "kind": "agent",
       "source": "agents/django-testing-agent.md",
       "source_sha256": "6bd238ee754e2ed24755a24b9c294140776962a51565e24db776053d583712c1",
-      "sha256": "564f9d7186469418bd71b7e1c280ad7fd5c4ef470598ed1e2277a94ce75478aa",
+      "sha256": "221d8829990684dda7979c78917a80559b8184196a9e52126d62005464ca7949",
       "identical": false,
       "adaptations": [
         "AD-01",
         "AD-02",
-        "AD-13"
+        "AD-13",
+        "AD-16"
       ]
     },
     {
       "path": "commands/README.md",
       "origin": "standalone-authored",
-      "sha256": "6883cb89953370975d1dbfae6dd4dd926e98c79edc3092d6295b419e2cec6803"
+      "sha256": "14c9f54456151ff6c2fa303c1a2fb520e6b979256f30c0930c51ddc090edf0d7"
     },
     {
       "path": "commands/django-analyze.md",
@@ -657,9 +695,11 @@
       "kind": "command",
       "source": "commands/django-analyze.md",
       "source_sha256": "edc6a23c8efa17db52f76ea8f18400647628469e6181c6201fa78a42a9e4e533",
-      "sha256": "edc6a23c8efa17db52f76ea8f18400647628469e6181c6201fa78a42a9e4e533",
-      "identical": true,
-      "adaptations": []
+      "sha256": "b1c3a0a247d479cd3bf450f818ab0b449f706a352a7285a9f8ce214ca21b08b1",
+      "identical": false,
+      "adaptations": [
+        "AD-16"
+      ]
     },
     {
       "path": "commands/django-api.md",
@@ -667,9 +707,11 @@
       "kind": "command",
       "source": "commands/django-api.md",
       "source_sha256": "a7bcac903dbe54c2077a95498070eaacac8f6ddc4dc3b95fb8cbd748592fd69a",
-      "sha256": "a7bcac903dbe54c2077a95498070eaacac8f6ddc4dc3b95fb8cbd748592fd69a",
-      "identical": true,
-      "adaptations": []
+      "sha256": "b0f1879b92167d32581b2df435558f52ab1b23ca832a3a436b9ff93d38156b77",
+      "identical": false,
+      "adaptations": [
+        "AD-16"
+      ]
     },
     {
       "path": "commands/django-design.md",
@@ -677,9 +719,11 @@
       "kind": "command",
       "source": "commands/django-design.md",
       "source_sha256": "9d556df44bfeadcd12b0abbe2a75e498cf65bb1db446bca9efe03ca012176d04",
-      "sha256": "9d556df44bfeadcd12b0abbe2a75e498cf65bb1db446bca9efe03ca012176d04",
-      "identical": true,
-      "adaptations": []
+      "sha256": "6967e5d39c37df531807f49ca145c896ad1d80daaf1463c004fc3e754a10f169",
+      "identical": false,
+      "adaptations": [
+        "AD-16"
+      ]
     },
     {
       "path": "commands/django-document.md",
@@ -687,9 +731,11 @@
       "kind": "command",
       "source": "commands/django-document.md",
       "source_sha256": "a79f58406abe9f5468b2b3c6e45cb14ec1c8a7990c352e9102118e2c341f2fc3",
-      "sha256": "a79f58406abe9f5468b2b3c6e45cb14ec1c8a7990c352e9102118e2c341f2fc3",
-      "identical": true,
-      "adaptations": []
+      "sha256": "d9d431a9b41269cc7793be3ec9678e81e2c61d9588b746801527b94dea5cf8f8",
+      "identical": false,
+      "adaptations": [
+        "AD-16"
+      ]
     },
     {
       "path": "commands/django-model.md",
@@ -697,9 +743,11 @@
       "kind": "command",
       "source": "commands/django-model.md",
       "source_sha256": "1c8484b2f42a6575ec9207657a7698327f0126fd6a91ab9bce233169cbd067e0",
-      "sha256": "1c8484b2f42a6575ec9207657a7698327f0126fd6a91ab9bce233169cbd067e0",
-      "identical": true,
-      "adaptations": []
+      "sha256": "ca70c0f00b75f63b326b1625b7b43eadd2b740ca2da5bcbda0d93b0ef908707c",
+      "identical": false,
+      "adaptations": [
+        "AD-16"
+      ]
     },
     {
       "path": "commands/django-optimize.md",
@@ -707,9 +755,11 @@
       "kind": "command",
       "source": "commands/django-optimize.md",
       "source_sha256": "7839c32d57982b5ba3e424f1889a2dabb39bf60c401393442064efa61be084d0",
-      "sha256": "7839c32d57982b5ba3e424f1889a2dabb39bf60c401393442064efa61be084d0",
-      "identical": true,
-      "adaptations": []
+      "sha256": "cdb23cf70abcc6b7a4f04c18cc4d80358b2b9f6a56be9efeff4a5758c75343f5",
+      "identical": false,
+      "adaptations": [
+        "AD-16"
+      ]
     },
     {
       "path": "commands/django-review.md",
@@ -717,9 +767,11 @@
       "kind": "command",
       "source": "commands/django-review.md",
       "source_sha256": "df693e7a55c87b59afb7c87fe997a832c5695c6385224b11ef8bf997dd53f0b4",
-      "sha256": "df693e7a55c87b59afb7c87fe997a832c5695c6385224b11ef8bf997dd53f0b4",
-      "identical": true,
-      "adaptations": []
+      "sha256": "408354a8dc1f91efb54815ae1b510adbd7eee67b4cbcfb6a7f9a8394f5b997ff",
+      "identical": false,
+      "adaptations": [
+        "AD-16"
+      ]
     },
     {
       "path": "commands/django-security.md",
@@ -727,9 +779,11 @@
       "kind": "command",
       "source": "commands/django-security.md",
       "source_sha256": "db69ed0ebb1576338f8d46b47251a858501e24a993937fe4ea1bb8050846a88c",
-      "sha256": "db69ed0ebb1576338f8d46b47251a858501e24a993937fe4ea1bb8050846a88c",
-      "identical": true,
-      "adaptations": []
+      "sha256": "ede9e2590ae3140a1a053ac2dd8bf9b76e682cff98d8d3d81f053d60292574e1",
+      "identical": false,
+      "adaptations": [
+        "AD-16"
+      ]
     },
     {
       "path": "commands/django-test.md",
@@ -737,9 +791,11 @@
       "kind": "command",
       "source": "commands/django-test.md",
       "source_sha256": "756164e95a7746fe6b5cc7472b61f6fd79f5197ec0e18df1016a23c6e62c3051",
-      "sha256": "756164e95a7746fe6b5cc7472b61f6fd79f5197ec0e18df1016a23c6e62c3051",
-      "identical": true,
-      "adaptations": []
+      "sha256": "cb52967f81642e99ee9a64bd4f72ecaa48f68a735504a5eba9997e1eac61e9ef",
+      "identical": false,
+      "adaptations": [
+        "AD-16"
+      ]
     },
     {
       "path": "commands/orchestrate.md",
@@ -747,10 +803,11 @@
       "kind": "command",
       "source": "commands/orchestrate.md",
       "source_sha256": "e7d1e12814c152b6939b38e03ef1a29ee86040cacb416c2ff2798c7763aa128c",
-      "sha256": "62540218e4202539863eba3878f19ef3681de838a8093a3d4cf959ba8a4c7a17",
+      "sha256": "8d199769236422e7caed1bbe844177316f617e6abc17b7104249729bc608e995",
       "identical": false,
       "adaptations": [
-        "AD-05"
+        "AD-05",
+        "AD-16"
       ]
     },
     {
@@ -759,32 +816,43 @@
       "kind": "policy",
       "source": "config/orchestration-policy.yaml",
       "source_sha256": "a435570b01c7e41defd49e073fbdeea6188a2245516b3917a70df216e019dfa4",
-      "sha256": "dbc8ea01866b067523cac879271b3862cf3781aea9f695567acdc16344ce99fc",
+      "sha256": "8b1184be7971521cfd166633c9909a5dbd87d617f9f37457b99abc764e1e9b09",
       "identical": false,
       "adaptations": [
         "AD-07",
-        "AD-13"
+        "AD-13",
+        "AD-16"
       ]
+    },
+    {
+      "path": "config/sdlc-documentation-catalog.json",
+      "origin": "standalone-authored",
+      "sha256": "dd4ad2cdb28786a914ec02c28d5fa720f92b66ec845151ed9214dc85279b9cb5"
     },
     {
       "path": "docs/agents.md",
       "origin": "standalone-authored",
-      "sha256": "d01e6e768b1b6083477722920b76a4fd973f342fa6d7b00cf9d8c8585b17c190"
+      "sha256": "e506b95c7c04f8de2bf87c451f9ffb9a3f2a4065ad5762ab8b4d69aaf9e16b01"
     },
     {
       "path": "docs/architecture.md",
       "origin": "standalone-authored",
-      "sha256": "d8435a4b6ac7880beeee0e424077a23256a80c350473b8e7c0d7efb58d3a946b"
+      "sha256": "82861043b85f5bee2e460eb2dfbaa742db5368600fbc4a54ba2ed95668cb56dd"
     },
     {
       "path": "docs/copilot.md",
       "origin": "standalone-authored",
-      "sha256": "4d7e3a8eff6fccd340228fa268d6252e110542415c47420512b64852378b06e4"
+      "sha256": "ffe1c2389efbba6b604c0d2ef1980ce9f2599cfad4e1d7c346f041aecaa75e04"
     },
     {
       "path": "docs/installation.md",
       "origin": "standalone-authored",
       "sha256": "5dcdcee6116fdd7ae3ef5a358fe356fff1353517963f5d52e4a8b4e541228710"
+    },
+    {
+      "path": "docs/sdlc-documentation.md",
+      "origin": "standalone-authored",
+      "sha256": "d800ed0d8dc51e8a8051bab80450cc3fe5833cf073f6ca7d62792046cdaeebeb"
     },
     {
       "path": "docs/security.md",
@@ -794,7 +862,7 @@
     {
       "path": "docs/testing.md",
       "origin": "standalone-authored",
-      "sha256": "434746b9a995d6a8bc99840b272b3c72cfe6ad551b2fe7177284e7892efaa872"
+      "sha256": "b27c0751cab22fc7531ae126e556a74bde7dbe8246c0549a510e15bf4e0a77f7"
     },
     {
       "path": "docs/troubleshooting.md",
@@ -804,7 +872,7 @@
     {
       "path": "docs/usage.md",
       "origin": "standalone-authored",
-      "sha256": "1c99ee78d41ea83053ac8a48d0ebfdb408faea6a29202a94ea8bc11a9c358a56"
+      "sha256": "bad4d141ca30036c195e6e29ce7845d7e6fdabfd3210581ad38d3230bf493064"
     },
     {
       "path": "hooks/README.md",
@@ -866,7 +934,7 @@
       "kind": "readme",
       "source": "references/README.md",
       "source_sha256": "df42dab24b92d4b12784fd0f18d80b46956b6b831bb990044bd5626248eae7fc",
-      "sha256": "f058e71454066e5e638d963d3727d54a9db1cf187f25b587ad26c14d6763ba0e",
+      "sha256": "0f4927dc4fa1749e38f03422eb19280d7d23ccf0088704ffe8d886e441140f53",
       "identical": false,
       "adaptations": [
         "AD-11"
@@ -941,6 +1009,21 @@
       "sha256": "c177b87ddf1e047bd8471df2d567dfba5def9b1ae1c737f2520f94337d4792dd",
       "identical": true,
       "adaptations": []
+    },
+    {
+      "path": "references/sdlc-documentation-framework.md",
+      "origin": "standalone-authored",
+      "sha256": "3e7485f6c993219a654824b9295d0a67490e800a74b241c4bb4dd20d4357676a"
+    },
+    {
+      "path": "references/sdlc-documentation-registry.md",
+      "origin": "standalone-authored",
+      "sha256": "a6de9ddffaeddea50f0ed7fa2c9ac4219bfdbc9ba375783a560e22a3b6af26c3"
+    },
+    {
+      "path": "references/sdlc-mermaid-diagrams.md",
+      "origin": "standalone-authored",
+      "sha256": "93abc4afb38ce6cc2de7e2ce017a8e2ac1522d074becd584304c64e2d72f9fde"
     },
     {
       "path": "requirements-dev.txt",
@@ -1018,11 +1101,12 @@
       "kind": "rule",
       "source": "rules/django-documentation-standards/SKILL.md",
       "source_sha256": "abee7198c8973829fc92161153118b95574c22ea3d11884647b5c64a7d896730",
-      "sha256": "939665e0e7edbce3b322b1c7dafd6c755a839f78ff0f503b4c2a3f02c74de506",
+      "sha256": "f922ccf4a81f65277bc7be91c5bb449835e73791ad6c254aa39f047318a8d220",
       "identical": false,
       "adaptations": [
         "AD-06",
-        "AD-14"
+        "AD-14",
+        "AD-16"
       ]
     },
     {
@@ -3228,7 +3312,7 @@
       "kind": "readme",
       "source": "templates/README.md",
       "source_sha256": "8458ed4039c626970d15d84206c81e28af0ebcb2bca66168a5c92f1a66bf0a9c",
-      "sha256": "599aaa7c0726a873b4acbb1f6d34dbf6a4abc89def247dfb7f6726b1de1e7dcc",
+      "sha256": "f7dc215f9c7dd815216419d2586cb175f925a978d9cb53d9f8d0dedf0b29a856",
       "identical": false,
       "adaptations": [
         "AD-10",
@@ -3284,6 +3368,16 @@
       ]
     },
     {
+      "path": "templates/deployment-and-release.template.md",
+      "origin": "standalone-authored",
+      "sha256": "f8533182355d111e6241d87c9ee40c66ede999ffebcd061ff58701beae6dd411"
+    },
+    {
+      "path": "templates/detailed-design.template.md",
+      "origin": "standalone-authored",
+      "sha256": "2e9976268516d1be2e7916fe81fb51fcfbaf92b07f414ede23371d0577adcf94"
+    },
+    {
       "path": "templates/django-model-specification.template.md",
       "origin": "canonical",
       "kind": "template",
@@ -3294,6 +3388,11 @@
       "adaptations": [
         "AD-13"
       ]
+    },
+    {
+      "path": "templates/implementation-notes.template.md",
+      "origin": "standalone-authored",
+      "sha256": "4d808742910024fc6ea10f85357c33ee75efb651837dfac19e414fc88269efdf"
     },
     {
       "path": "templates/implementation-plan.template.md",
@@ -3308,6 +3407,11 @@
       ]
     },
     {
+      "path": "templates/maintenance-record.template.md",
+      "origin": "standalone-authored",
+      "sha256": "d7b911612e8b4e7cfd5c200395b0844db42d44034042363cc151f1f8e7b34c74"
+    },
+    {
       "path": "templates/migration-plan.template.md",
       "origin": "canonical",
       "kind": "template",
@@ -3318,6 +3422,11 @@
       "adaptations": [
         "AD-13"
       ]
+    },
+    {
+      "path": "templates/operational-runbook.template.md",
+      "origin": "standalone-authored",
+      "sha256": "577226110c9584e34c00bcc12918ec7f082a7434223d35ed4fddcb02271ecb3b"
     },
     {
       "path": "templates/performance-assessment.template.md",
@@ -3342,6 +3451,11 @@
       "adaptations": [
         "AD-13"
       ]
+    },
+    {
+      "path": "templates/requirements-specification.template.md",
+      "origin": "standalone-authored",
+      "sha256": "346dccb66a0b928bf3383cc49b39f3828d2d2c79dfcdafa21e48efa41285ddb0"
     },
     {
       "path": "templates/security-assessment.template.md",
@@ -3380,9 +3494,104 @@
       ]
     },
     {
+      "path": "templates/test-report.template.md",
+      "origin": "standalone-authored",
+      "sha256": "29a3effb2da80e9013e5374d6fb9e291d54a977c6bdc54c94ba5f89d4e6c33a7"
+    },
+    {
+      "path": "templates/traceability-matrix.template.md",
+      "origin": "standalone-authored",
+      "sha256": "9542b972751ab15a04638d8f1b6a46b72b0e1ba67a0b3ab13eb34b641e91e1dc"
+    },
+    {
       "path": "tests/conftest.py",
       "origin": "standalone-authored",
-      "sha256": "a36da538adef84c0e1bfe6bad7e5f52057071e4724bdbcbeac61086be2e4480a"
+      "sha256": "ca2b2840e5561281264dbd47a49e4f72fef97594e3b2c56051af46063f9dd62a"
+    },
+    {
+      "path": "tests/fixtures/shop_project/.github/workflows/ci.yml",
+      "origin": "standalone-authored",
+      "sha256": "173c68bea281cb94a82fe4b8c4fa8f87585ffac2aff5eeed89ba74e6f461cb0c"
+    },
+    {
+      "path": "tests/fixtures/shop_project/Dockerfile",
+      "origin": "standalone-authored",
+      "sha256": "34037d2de8604466db6cfe806cffa72c10ecaf1cd981f3350fd45675afff88da"
+    },
+    {
+      "path": "tests/fixtures/shop_project/config/settings.py",
+      "origin": "standalone-authored",
+      "sha256": "ea38183fd731f9bd77a58aa0364b9ea22b13c4eb9e96ec254e442ab549531bc1"
+    },
+    {
+      "path": "tests/fixtures/shop_project/config/urls.py",
+      "origin": "standalone-authored",
+      "sha256": "02a46bc426039d4f7ade2d81d7ec84c80f95b4f76a64d65be1bcfbdaaf62b8ce"
+    },
+    {
+      "path": "tests/fixtures/shop_project/docs/legacy-notes.md",
+      "origin": "standalone-authored",
+      "sha256": "b34440f311860aff0e2fe1f4a6f2155b7cfafbc388742c8f59085db235175190"
+    },
+    {
+      "path": "tests/fixtures/shop_project/docs/srs.md",
+      "origin": "standalone-authored",
+      "sha256": "f33239148a397039996e4b433bee3e27e4b7d76de76597db9453db256304a344"
+    },
+    {
+      "path": "tests/fixtures/shop_project/manage.py",
+      "origin": "standalone-authored",
+      "sha256": "30428108646cb4ce4db65635c073005a74654b2a908655f130880771e7493c14"
+    },
+    {
+      "path": "tests/fixtures/shop_project/requirements.txt",
+      "origin": "standalone-authored",
+      "sha256": "6c7ddc11d864a7aa8c551557c30617b54d350359f5044a6506dd6b23ea710d5b"
+    },
+    {
+      "path": "tests/fixtures/shop_project/shop/__init__.py",
+      "origin": "standalone-authored",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/fixtures/shop_project/shop/apps.py",
+      "origin": "standalone-authored",
+      "sha256": "68302e4eb361c5a14225871e38566a14a91a66a2cc1e3eb4ec16227f5d7bf789"
+    },
+    {
+      "path": "tests/fixtures/shop_project/shop/models.py",
+      "origin": "standalone-authored",
+      "sha256": "c11a6afa5b3d8b495ca103a681d5edeb01f9412696915c2ef64c454043d690cb"
+    },
+    {
+      "path": "tests/fixtures/shop_project/shop/serializers.py",
+      "origin": "standalone-authored",
+      "sha256": "5e7eccea855220f853549990f2024a1578e894f45815ffbedb69b17de9dda591"
+    },
+    {
+      "path": "tests/fixtures/shop_project/shop/tasks.py",
+      "origin": "standalone-authored",
+      "sha256": "958fca7207471f5567e4e97da20ef1ae72c2713100c2de1a052e6a8aad17e803"
+    },
+    {
+      "path": "tests/fixtures/shop_project/shop/tests/__init__.py",
+      "origin": "standalone-authored",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/fixtures/shop_project/shop/tests/test_orders.py",
+      "origin": "standalone-authored",
+      "sha256": "856d849b1beaad90304c00071d84b5e413daefb9adfcb81bb2ef9d2dd3b3adfd"
+    },
+    {
+      "path": "tests/fixtures/shop_project/shop/urls.py",
+      "origin": "standalone-authored",
+      "sha256": "db980de6a35084ccb933832e5f956baaaba4b90924ef41fa21515ddcf10fd532"
+    },
+    {
+      "path": "tests/fixtures/shop_project/shop/views.py",
+      "origin": "standalone-authored",
+      "sha256": "341e704882f87abc4f191866bec86b1d7441807df5984bdd1bfe6b7fc6f2299b"
     },
     {
       "path": "tests/test_copilot_adapter.py",
@@ -3397,7 +3606,7 @@
     {
       "path": "tests/test_manifest.py",
       "origin": "standalone-authored",
-      "sha256": "9bf030d7fe8a7e372467c9855eff6bbd58d06f9734c12403e82120b213d78180"
+      "sha256": "7232061226e49ac0c7e2b97cbf01397c51a646373d5efecdaf70a36ad98af4cc"
     },
     {
       "path": "tests/test_no_harness_dependency.py",
@@ -3407,7 +3616,7 @@
     {
       "path": "tests/test_orchestration_policy.py",
       "origin": "standalone-authored",
-      "sha256": "816d8743bf94d9b63c1d1834296569da39b6c390daeb9a22e4d84cfe06d61725"
+      "sha256": "98975f16f4beb75f664d2bf08336e17fb15d88cb80b37713e6d28cdacd64ec82"
     },
     {
       "path": "tests/test_plugin_live.py",
@@ -3417,7 +3626,17 @@
     {
       "path": "tests/test_plugin_structure.py",
       "origin": "standalone-authored",
-      "sha256": "9dcfbd5cf4148af11feb09562a500ed489cced0495c2d54150209a0f106d6e07"
+      "sha256": "cfe3855ea3b2c4c9f3c5cfabbd8c814c46979cd4685c8973453772894d504757"
+    },
+    {
+      "path": "tests/test_sdlc_documentation.py",
+      "origin": "standalone-authored",
+      "sha256": "499e744851031fcd6d048e3284649ea0860b85a28cb9151df1d8cdf19ead79a9"
+    },
+    {
+      "path": "tests/test_sdlc_registry.py",
+      "origin": "standalone-authored",
+      "sha256": "2974711ad2c5324770416f71dd9cff4c16023af3170decad6a0d45363fdf7461"
     },
     {
       "path": "tests/test_security_policy.py",
@@ -3430,9 +3649,14 @@
       "sha256": "b8a10e442635a7713124cf842f9136dc079b0d5293fc5468ce6e0c57d1656965"
     },
     {
+      "path": "tools/sdlc_registry.py",
+      "origin": "standalone-authored",
+      "sha256": "6d37b345243c9f5c5e589a540948549d056b3a2b40e3326189c69c47fa7c9178"
+    },
+    {
       "path": "tools/sync_copilot_adapter.py",
       "origin": "standalone-authored",
-      "sha256": "3735d3a4bc26aaf3c4f6dded1c5e5e901d0b1e452359d605624551e86c6904a2"
+      "sha256": "280cb6ba89e474a1921caf4649c5527b812edf82d12f1f13e77ced8c771a4a5e"
     }
   ],
   "copilot_adapter": {
@@ -3444,8 +3668,8 @@
         "claude_code_destination": "agents/django-api-agent.md",
         "copilot_destination": ".github/agents/django-api-agent.agent.md",
         "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
-        "source_sha256": "0ea0717b33d6d0b0b90633bf1563b99fa364f996a498782acbe551be93d39dee",
-        "generated_sha256": "7d1bf658a9096d2bba2de78d2b180bb93bc821bd8a52f9d1fe9e83d956c6b748",
+        "source_sha256": "94785861b3e6d94fbe5d7f76f1cf1e61a29264db4a7c971db6b5ccecd4dc3578",
+        "generated_sha256": "7645c7991180c24c0027707e466c85bb983ac8f6e02807b64f0f4814271a0a0b",
         "sync_status": "in-sync"
       },
       {
@@ -3453,8 +3677,8 @@
         "claude_code_destination": "agents/django-architecture-agent.md",
         "copilot_destination": ".github/agents/django-architecture-agent.agent.md",
         "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
-        "source_sha256": "1eb9ef0d7037a3080d35f43e83a9c7aa55975ebc888e52d70f2e23052a9fa8ee",
-        "generated_sha256": "59f5ad7f10c7144489cb0a383a3ddff4ed622332aeb082321a5414b2bdd90931",
+        "source_sha256": "1fce853e683686962dcf8ad07e242ae39075107dfd4adde8ba74337630cb6221",
+        "generated_sha256": "d1e52e22b5feee062e5739cd60e88b37224c6aed8d3c37cd64acaefc97a68565",
         "sync_status": "in-sync"
       },
       {
@@ -3462,8 +3686,8 @@
         "claude_code_destination": "agents/django-code-review-agent.md",
         "copilot_destination": ".github/agents/django-code-review-agent.agent.md",
         "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
-        "source_sha256": "6d21f827cc3c8160aa55c4dc89d7df786dc939a6652e9a2b115ab5da4118779e",
-        "generated_sha256": "ba2241689d189d73fa5e216bfe77e42fa5d0b1da26ea1544d2ae79671b1c1cc0",
+        "source_sha256": "04db674fc34f66784183ecbe99d6ce4e81732aaf361912097a62fd70955c19fe",
+        "generated_sha256": "a3209bff67ae42a7e6f3d5d9b0a3b5e63f7ea7b7206678f7ead3d6c0685afaa5",
         "sync_status": "in-sync"
       },
       {
@@ -3471,8 +3695,8 @@
         "claude_code_destination": "agents/django-documentation-agent.md",
         "copilot_destination": ".github/agents/django-documentation-agent.agent.md",
         "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
-        "source_sha256": "fb59bd811ab8e00768f26060ea452952543bb0aa5f56082ceb8507e8e00f314d",
-        "generated_sha256": "35ec46e088b511973d234b36d3155b9c7ecd57bebc6ff365e22a1246f8050025",
+        "source_sha256": "6544fca4014e70e267cda602fb95c4008168bdfe055c76da0cb1a6ef4f40bcbd",
+        "generated_sha256": "341b483de10492dcfd17f1918bd1495c0f9a3d9cb44d455051344aca24ff8aa3",
         "sync_status": "in-sync"
       },
       {
@@ -3480,8 +3704,8 @@
         "claude_code_destination": "agents/django-model-agent.md",
         "copilot_destination": ".github/agents/django-model-agent.agent.md",
         "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
-        "source_sha256": "5d9453ab25b490ae2cb0fb408522c42b53b92c685abe74bf5e100c2011061be7",
-        "generated_sha256": "0a88aa733d5e51255a6607c37417929c91bce28b773d173a9670a82c2071cb75",
+        "source_sha256": "f351d1127fb1602e5c6601040585bd49851ee949d652156057f97e9cb95f0bb7",
+        "generated_sha256": "c046f977d96d16373772a6eb53fbce9691b7b25497eca656a6aff6a310e94642",
         "sync_status": "in-sync"
       },
       {
@@ -3489,8 +3713,8 @@
         "claude_code_destination": "agents/django-orchestrator.md",
         "copilot_destination": ".github/agents/django-orchestrator.agent.md",
         "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
-        "source_sha256": "e5a8f2a19c5bbe8e8d8f8a51142f20f8607477badb6bf71db5bd2d9c71679cd1",
-        "generated_sha256": "a936eb50ccc5bdbc5e2fdaad73ff915cd1092ac908f755b29c2209fd263f2eb8",
+        "source_sha256": "7659aeb015c7e862b10cf1b840a2f4c81a5ef3e758112dae72d12b7c0f2f24c4",
+        "generated_sha256": "ef600fb5eb992c1dcdb3e28efa6284cb606a04ac795a6ac4dd03f83230227a10",
         "sync_status": "in-sync"
       },
       {
@@ -3498,8 +3722,8 @@
         "claude_code_destination": "agents/django-performance-agent.md",
         "copilot_destination": ".github/agents/django-performance-agent.agent.md",
         "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
-        "source_sha256": "17ce3652d83811722acdf9a1054ee1b07f2edc1a1df5200f43a3388956058cf7",
-        "generated_sha256": "4708794fa12943ad5dbce3f587cc0ff736869845c11e432878223e0d8f77d80b",
+        "source_sha256": "255319dbc31abe99fe7dffe638c138691d752a710896ce50a35c6f769a82a38e",
+        "generated_sha256": "ecee661d4f4f7657bc18be0809ee349eadfeaf1a2f2d0d6f68a718725dd51a62",
         "sync_status": "in-sync"
       },
       {
@@ -3507,8 +3731,8 @@
         "claude_code_destination": "agents/django-project-analyzer.md",
         "copilot_destination": ".github/agents/django-project-analyzer.agent.md",
         "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
-        "source_sha256": "f0dd96288b0473b508f51a08c56feffa0d9afb61fa4a3d3d72295e25c852bf14",
-        "generated_sha256": "d499c1107a76bedcb335d0c2e9f39f4c0f8b53463448a760442b4fa5d776f531",
+        "source_sha256": "b207bc9f650852a755832497c155e4be457ff814d2e08dad722ea4d5b17e94a5",
+        "generated_sha256": "793aa7c39e70063072f0a651023b50a944f97499beafe78d5a364c5b14c59463",
         "sync_status": "in-sync"
       },
       {
@@ -3516,8 +3740,8 @@
         "claude_code_destination": "agents/django-security-agent.md",
         "copilot_destination": ".github/agents/django-security-agent.agent.md",
         "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
-        "source_sha256": "7361de8143259faf0d5501bebcef2cb0aee34387a009c388d05c873e8ee83186",
-        "generated_sha256": "f6022e72dedf5a5720e0ddc3703095b42638a421e71d6ba6d283b6cabf9a6934",
+        "source_sha256": "abc9fb188fecdc102e3c70a4435acd08cecf911e5ab6079d2a3c4dbc5560d87c",
+        "generated_sha256": "28db503114903d86ded9496d70cb98e928f3ee1043e59e62b3179b32fb7f73a1",
         "sync_status": "in-sync"
       },
       {
@@ -3525,8 +3749,8 @@
         "claude_code_destination": "agents/django-testing-agent.md",
         "copilot_destination": ".github/agents/django-testing-agent.agent.md",
         "adaptation_type": "agent: frontmatter mapped (tools->aliases, visibility), body derived, skills listed",
-        "source_sha256": "564f9d7186469418bd71b7e1c280ad7fd5c4ef470598ed1e2277a94ce75478aa",
-        "generated_sha256": "e68a72115b67978658c34e76282a594f4946634a50a883bab6055f8a9d0ba0e9",
+        "source_sha256": "221d8829990684dda7979c78917a80559b8184196a9e52126d62005464ca7949",
+        "generated_sha256": "6faf6905498c542567fd18303f17c0ceeed788bc9ebba1a94ec02d36db9c9bb1",
         "sync_status": "in-sync"
       },
       {
@@ -3534,8 +3758,8 @@
         "claude_code_destination": "commands/django-analyze.md",
         "copilot_destination": ".github/skills/django-analyze/SKILL.md",
         "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
-        "source_sha256": "edc6a23c8efa17db52f76ea8f18400647628469e6181c6201fa78a42a9e4e533",
-        "generated_sha256": "9bb6887803371a416ee0ce021096778da312343e28bf1af36b05e37db1701686",
+        "source_sha256": "b1c3a0a247d479cd3bf450f818ab0b449f706a352a7285a9f8ce214ca21b08b1",
+        "generated_sha256": "cbeee652d5e360f8bd2da4321a6d10a9c392dda87589becd6a77f570547bf084",
         "sync_status": "in-sync"
       },
       {
@@ -3552,8 +3776,8 @@
         "claude_code_destination": "commands/django-api.md",
         "copilot_destination": ".github/skills/django-api/SKILL.md",
         "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
-        "source_sha256": "a7bcac903dbe54c2077a95498070eaacac8f6ddc4dc3b95fb8cbd748592fd69a",
-        "generated_sha256": "4fb65d63ac7908805d47e74aa623433a124b87607d888a13699f3045a4098969",
+        "source_sha256": "b0f1879b92167d32581b2df435558f52ab1b23ca832a3a436b9ff93d38156b77",
+        "generated_sha256": "d7b45bab6269f635e3c354e7c1141b6e34deb3d3dee65a18a23230d62d5275ef",
         "sync_status": "in-sync"
       },
       {
@@ -3624,8 +3848,8 @@
         "claude_code_destination": "commands/django-design.md",
         "copilot_destination": ".github/skills/django-design/SKILL.md",
         "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
-        "source_sha256": "9d556df44bfeadcd12b0abbe2a75e498cf65bb1db446bca9efe03ca012176d04",
-        "generated_sha256": "623a5023ca6895438d1de134177e25878efc255b1af4403c2b0748601a1233cb",
+        "source_sha256": "6967e5d39c37df531807f49ca145c896ad1d80daaf1463c004fc3e754a10f169",
+        "generated_sha256": "1462ebe2304fb65592bb28f5d4a02b394cc7a8821de0503a2661f53ee9f9f203",
         "sync_status": "in-sync"
       },
       {
@@ -3633,8 +3857,8 @@
         "claude_code_destination": "commands/django-document.md",
         "copilot_destination": ".github/skills/django-document/SKILL.md",
         "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
-        "source_sha256": "a79f58406abe9f5468b2b3c6e45cb14ec1c8a7990c352e9102118e2c341f2fc3",
-        "generated_sha256": "1e378d5bc34c2fd46bf205d2d846cb07de79cc4cc911961f504494f1afb920ab",
+        "source_sha256": "d9d431a9b41269cc7793be3ec9678e81e2c61d9588b746801527b94dea5cf8f8",
+        "generated_sha256": "488750b866a4a6b99e85011edaeb4da53982d1409c75c29aafe4384008d17ebe",
         "sync_status": "in-sync"
       },
       {
@@ -3642,8 +3866,8 @@
         "claude_code_destination": "rules/django-documentation-standards/SKILL.md",
         "copilot_destination": ".github/skills/django-documentation-standards/SKILL.md",
         "adaptation_type": "standard as internal skill: user-invocable false",
-        "source_sha256": "939665e0e7edbce3b322b1c7dafd6c755a839f78ff0f503b4c2a3f02c74de506",
-        "generated_sha256": "ae02baf132355b0c6f952cfdc9c4c9ef933d26c187f76ea28753c81516937c30",
+        "source_sha256": "f922ccf4a81f65277bc7be91c5bb449835e73791ad6c254aa39f047318a8d220",
+        "generated_sha256": "83324acbb252de1f150d8d919f5347bc38e92f231c3889b5cef54c2f917dad6c",
         "sync_status": "in-sync"
       },
       {
@@ -3687,8 +3911,8 @@
         "claude_code_destination": "commands/django-model.md",
         "copilot_destination": ".github/skills/django-model/SKILL.md",
         "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
-        "source_sha256": "1c8484b2f42a6575ec9207657a7698327f0126fd6a91ab9bce233169cbd067e0",
-        "generated_sha256": "51ba8c53d7cfdb0094a996e4c2d9f23e79eab4e211b536826293836f57d18464",
+        "source_sha256": "ca70c0f00b75f63b326b1625b7b43eadd2b740ca2da5bcbda0d93b0ef908707c",
+        "generated_sha256": "ced9b0a8b9aeee024bc95ac681c5eca8b7d2db0783b9c41114a35e6166363a2c",
         "sync_status": "in-sync"
       },
       {
@@ -3696,8 +3920,8 @@
         "claude_code_destination": "commands/django-optimize.md",
         "copilot_destination": ".github/skills/django-optimize/SKILL.md",
         "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
-        "source_sha256": "7839c32d57982b5ba3e424f1889a2dabb39bf60c401393442064efa61be084d0",
-        "generated_sha256": "8776c41ec96e65e9409e53dbcf735a00c69d81267956465cacbba153636ccf4a",
+        "source_sha256": "cdb23cf70abcc6b7a4f04c18cc4d80358b2b9f6a56be9efeff4a5758c75343f5",
+        "generated_sha256": "b3bb33b8abe3d42e52f00b6716778a6ddd3c55be96505c93c43b0a23f056f88e",
         "sync_status": "in-sync"
       },
       {
@@ -3759,8 +3983,8 @@
         "claude_code_destination": "commands/django-review.md",
         "copilot_destination": ".github/skills/django-review/SKILL.md",
         "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
-        "source_sha256": "df693e7a55c87b59afb7c87fe997a832c5695c6385224b11ef8bf997dd53f0b4",
-        "generated_sha256": "e50be760763b54a5f551d2f232c03c5ebe664f0c3ded63e5dac6e5fa4c9c622a",
+        "source_sha256": "408354a8dc1f91efb54815ae1b510adbd7eee67b4cbcfb6a7f9a8394f5b997ff",
+        "generated_sha256": "1781635233baf1c1929b8d3c8f765b580937da1cd93c51828e8e91715750fe05",
         "sync_status": "in-sync"
       },
       {
@@ -3786,8 +4010,8 @@
         "claude_code_destination": "commands/django-security.md",
         "copilot_destination": ".github/skills/django-security/SKILL.md",
         "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
-        "source_sha256": "db69ed0ebb1576338f8d46b47251a858501e24a993937fe4ea1bb8050846a88c",
-        "generated_sha256": "e51cd57e1a66884893647dddb7970b82b5b9d66136665c141cff370f632ba765",
+        "source_sha256": "ede9e2590ae3140a1a053ac2dd8bf9b76e682cff98d8d3d81f053d60292574e1",
+        "generated_sha256": "dd799b5718a50ba42d88a6567a88cd0dd5b545892f8a10f8ab65ae978bf2c66b",
         "sync_status": "in-sync"
       },
       {
@@ -3795,8 +4019,8 @@
         "claude_code_destination": "commands/django-test.md",
         "copilot_destination": ".github/skills/django-test/SKILL.md",
         "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
-        "source_sha256": "756164e95a7746fe6b5cc7472b61f6fd79f5197ec0e18df1016a23c6e62c3051",
-        "generated_sha256": "97e4979ccda775dbbf595865127e4c2b06e4fc3096656dcf70e810b104e1dfc3",
+        "source_sha256": "cb52967f81642e99ee9a64bd4f72ecaa48f68a735504a5eba9997e1eac61e9ef",
+        "generated_sha256": "08454343aafa6408f5e4fac66d6b99eda2379c776b466e815eda793f89909835",
         "sync_status": "in-sync"
       },
       {
@@ -3822,8 +4046,8 @@
         "claude_code_destination": "commands/orchestrate.md",
         "copilot_destination": ".github/skills/orchestrate/SKILL.md",
         "adaptation_type": "command -> user-invocable skill: frontmatter mapped, body derived",
-        "source_sha256": "62540218e4202539863eba3878f19ef3681de838a8093a3d4cf959ba8a4c7a17",
-        "generated_sha256": "b41fc623e1cbc863293e0b513095dab392a903a0582ca723dd5e8f7984f535aa",
+        "source_sha256": "8d199769236422e7caed1bbe844177316f617e6abc17b7104249729bc608e995",
+        "generated_sha256": "06768119eaaafa5b8b67a4d0429209c81613d38fec8ca6124b07e2e28fe3baed",
         "sync_status": "in-sync"
       },
       {
@@ -3835,6 +4059,63 @@
         "generated_sha256": "be234101cfa23afc01918a9b1a6a2779f8c10d8fa85f8548ad5ed039c66ec999",
         "sync_status": "in-sync"
       }
+    ]
+  },
+  "sdlc_documentation": {
+    "note": "One documentation system for both platforms. These shared assets are consumed in place by Claude Code and, through the derived .github files, by GitHub Copilot; the adapter generates no copy of them (checked by --check).",
+    "registry": "docs/sdlc/registry.json",
+    "shared_assets": [
+      "config/sdlc-documentation-catalog.json",
+      "references/sdlc-documentation-framework.md",
+      "references/sdlc-documentation-registry.md",
+      "references/sdlc-mermaid-diagrams.md",
+      "tools/sdlc_registry.py"
+    ],
+    "templates": [
+      "api-specification.template.md",
+      "architecture-decision-record.template.md",
+      "architecture-design.template.md",
+      "code-review-report.template.md",
+      "deployment-and-release.template.md",
+      "detailed-design.template.md",
+      "django-model-specification.template.md",
+      "implementation-notes.template.md",
+      "implementation-plan.template.md",
+      "maintenance-record.template.md",
+      "migration-plan.template.md",
+      "operational-runbook.template.md",
+      "performance-assessment.template.md",
+      "project-analysis.template.md",
+      "requirements-specification.template.md",
+      "security-assessment.template.md",
+      "technical-documentation.template.md",
+      "test-plan.template.md",
+      "test-report.template.md",
+      "traceability-matrix.template.md"
+    ],
+    "extended_canonical_files": [
+      "agents/django-api-agent.md",
+      "agents/django-architecture-agent.md",
+      "agents/django-code-review-agent.md",
+      "agents/django-documentation-agent.md",
+      "agents/django-model-agent.md",
+      "agents/django-orchestrator.md",
+      "agents/django-performance-agent.md",
+      "agents/django-project-analyzer.md",
+      "agents/django-security-agent.md",
+      "agents/django-testing-agent.md",
+      "commands/django-analyze.md",
+      "commands/django-api.md",
+      "commands/django-design.md",
+      "commands/django-document.md",
+      "commands/django-model.md",
+      "commands/django-optimize.md",
+      "commands/django-review.md",
+      "commands/django-security.md",
+      "commands/django-test.md",
+      "commands/orchestrate.md",
+      "config/orchestration-policy.yaml",
+      "rules/django-documentation-standards/SKILL.md"
     ]
   }
 }

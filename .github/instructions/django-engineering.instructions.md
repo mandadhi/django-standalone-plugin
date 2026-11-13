@@ -13,4 +13,6 @@ When you change Python code in a Django or DRF project, apply the Django Enginee
 - behaviour and quality: `django-testing-standards`, `django-performance-standards`, `django-logging-standards`
 - docs and dependencies: `django-documentation-standards`, `django-dependency-standards`
 
+Documentation first: before engineering work read `docs/sdlc/registry.json` and the documents it lists for the task, follow `django-documentation-standards` (`DOC-M9` to `DOC-M16`), never edit an approved document in place, and update the documents your change affects. The registry format, catalog and templates are the same as in Claude Code (`references/sdlc-documentation-registry.md`).
+
 For multi-step or multi-specialist work use the `/orchestrate` skill; it follows `config/orchestration-policy.yaml`. Do not copy the standards into answers; apply them.

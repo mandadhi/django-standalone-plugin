@@ -44,8 +44,9 @@ Full instructions: [docs/installation.md](docs/installation.md).
 | Specialist agents | 9 | `agents/` |
 | Skills | 12 | `skills/` |
 | Rules | 12 | `rules/` |
-| Output templates | 12 | `templates/` |
-| Shared references | 7 | `references/` |
+| Output templates | 20 | `templates/` |
+| Shared references | 10 | `references/` |
+| SDLC documentation catalog and registry validator | 1 + 1 | `config/sdlc-documentation-catalog.json`, `tools/sdlc_registry.py` |
 | Security guard | PreToolUse/PostToolUse hook | `hooks/` |
 | Orchestration policy | 1 | `config/orchestration-policy.yaml` |
 
@@ -61,6 +62,14 @@ language, and the agent loads its own skills, rules, templates and references. T
 preloaded into agents; they are never commands. Not sure which agent? Use
 `/django-engineering:orchestrate` or `@django-engineering:django-orchestrator`. See [docs/usage.md](docs/usage.md).
 
+## SDLC documentation
+
+Documentation is shared context for the orchestrator and every agent across seven SDLC stages (requirements to
+maintenance). A file-based registry (`docs/sdlc/registry.json` in your project) indexes the documents; agents read it
+first, consume current documents, review stale ones, never edit approved ones in place, update the documents they own,
+and assess documentation impact after changes. One catalog, one set of templates and one policy serve Claude Code and
+Copilot. Details: [docs/sdlc-documentation.md](docs/sdlc-documentation.md).
+
 ## Documentation
 
 | Document | For |
@@ -69,6 +78,7 @@ preloaded into agents; they are never commands. Not sure which agent? Use
 | [docs/copilot.md](docs/copilot.md) | GitHub Copilot adapter: install, visibility, security model, limitations |
 | [docs/testing.md](docs/testing.md) | Tests, live validation status, parity matrix |
 | [docs/agents.md](docs/agents.md) | The ten agents, how to invoke them, write modes |
+| [docs/sdlc-documentation.md](docs/sdlc-documentation.md) | SDLC documentation framework: registry, stages, protocol, impact assessment |
 | [docs/usage.md](docs/usage.md) | The agents, approvals, the orchestrator, examples |
 | [docs/architecture.md](docs/architecture.md) | How the pieces fit; what skills, rules, references and templates are for; orchestration model |
 | [docs/security.md](docs/security.md) | What is enforced, what is not, limitations of standalone mode |

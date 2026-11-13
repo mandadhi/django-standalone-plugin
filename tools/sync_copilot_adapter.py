@@ -104,6 +104,8 @@ def adapt_body(body: str, *, depth_to_root: str) -> str:
 def rewrite_links(body: str, canonical_dir: str) -> str:
     """`references/x.md` links in a skill resolve against the canonical skill folder, not .github/skills/."""
     prefix = f"../../../{canonical_dir}/"
+    # links from a skill or rule up to shared pack content ("../../references/x.md") re-based from .github/skills/<id>/
+    body = re.sub(r"\]\(\.\./\.\./(references|templates|config)/", r"](../../../\1/", body)
     body = re.sub(r"\]\((references/[^)]+)\)", lambda m: f"]({prefix}{m.group(1)})", body)
     # links to a sibling skill's references/ ("../other-skill/references/x.md")
     return re.sub(r"\]\(\.\./([a-z-]+/references/[^)]+)\)", lambda m: f"](../../../{canonical_dir.split('/')[0]}/{m.group(1)})", body)
@@ -211,9 +213,57 @@ def manifest_section(exp: dict) -> list[dict]:
     return rows
 
 
+#: Canonical files extended by the SDLC documentation framework (adaptation AD-16 in the manifest).
+SDLC_EXTENDED = ["rules/django-documentation-standards/SKILL.md", "config/orchestration-policy.yaml"]
+#: Shared documentation assets both platforms consume in place. The adapter must never copy or fork them.
+SDLC_SHARED = ["config/sdlc-documentation-catalog.json", "references/sdlc-documentation-framework.md",
+               "references/sdlc-documentation-registry.md", "references/sdlc-mermaid-diagrams.md",
+               "tools/sdlc_registry.py"]
+REGISTRY_PATH = "docs/sdlc/registry.json"
+
+
+def sdlc_extended() -> list[str]:
+    return sorted(SDLC_EXTENDED + [f"agents/{a}.md" for a in agents()] + [f"commands/{c}.md" for c in COMMAND_NAMES])
+
+
+def documentation_problems(exp: dict) -> list[str]:
+    """One documentation system for both platforms: same catalog, templates, registry format, rules and policy."""
+    problems = []
+    catalog = json.loads(read(ROOT / "config" / "sdlc-documentation-catalog.json"))
+    policy = yaml.safe_load(read(ROOT / "config" / "orchestration-policy.yaml"))
+    for shared in SDLC_SHARED:
+        if not (ROOT / shared).is_file():
+            problems.append(f"missing shared documentation asset: {shared}")
+        if any(Path(p).name == Path(shared).name for p in exp):
+            problems.append(f"documentation asset must not be generated for Copilot: {shared}")
+    stage_ids = {st["id"] for st in catalog["stages"]}
+    for t in catalog["types"]:
+        if t["owner"] not in policy["specialists"]:
+            problems.append(f"catalog type {t['type']}: owner {t['owner']} is not a specialist in the policy")
+        if not (ROOT / "templates" / f"{t['template']}.template.md").is_file():
+            problems.append(f"catalog type {t['type']}: template {t['template']} does not exist")
+    if {st["id"] for st in policy["documentation"]["stages"]} != stage_ids:
+        problems.append("orchestration policy documentation stages differ from the catalog stages")
+    if policy["documentation"]["registry"] != REGISTRY_PATH:
+        problems.append(f"policy registry path is not {REGISTRY_PATH}")
+    for path, (text, src, _k) in exp.items():
+        if src.startswith(("agents/", "commands/")):
+            canonical = read(ROOT / src)
+            for marker in ("DOC-M9", "sdlc-documentation-registry"):
+                if (marker in canonical) != (marker in text):
+                    problems.append(f"{path}: documentation marker {marker!r} differs from its canonical source")
+            if "Documentation context" in canonical and "Documentation context" not in text:
+                problems.append(f"{path}: lost the Documentation context section")
+        if re.search(r"\]\((\.\./)*(references|templates|config)/", text) and src.startswith(("rules/", "skills/")):
+            if re.search(r"\]\(\.\./\.\./(references|templates|config)/", text):
+                problems.append(f"{path}: pack-content link not re-based for .github/skills/<id>/")
+    return problems
+
+
 def check() -> list[str]:
     problems = []
     exp = expected()
+    problems += documentation_problems(exp)
     for path, (text, _src, _k) in exp.items():
         f = ROOT / path
         if not f.is_file():
@@ -259,6 +309,11 @@ def update_manifest() -> None:
     ad["AD-15"] = {"id": "AD-15", "reason": "Knowledge skills carry `user-invocable: false` so Claude Code lists only the ten "
                    "commands; agents still preload them and models can still invoke them.", "files": skills_changed}
     manifest["adaptations"] = list(ad.values())
+    ad["AD-16"] = {"id": "AD-16", "reason": "SDLC documentation framework: documentation-first protocol (DOC-M9..M16), registry and "
+                   "catalog references, Documentation context sections in agents and commands, documentation policy and stage "
+                   "table in the orchestration policy. One shared documentation system for Claude Code and Copilot.",
+                   "files": sdlc_extended()}
+    manifest["adaptations"] = list(ad.values())
     entries = {e["path"]: e for e in manifest["files"]}
     on_disk = sorted(p.relative_to(ROOT).as_posix() for p in ROOT.rglob("*")
                      if p.is_file() and not (set(p.relative_to(ROOT).parts) & SKIP) and p.name != "CANONICAL-MANIFEST.json")
@@ -272,6 +327,9 @@ def update_manifest() -> None:
                 entry["derived_from"] = exp[rel][1]
             entries[rel] = entry
         entry["sha256"] = digest
+        if entry["origin"] == "canonical" and rel in sdlc_extended():
+            entry["adaptations"] = sorted(set(entry.get("adaptations", [])) | {"AD-16"})
+            entry["identical"] = False
         if entry["origin"] == "canonical" and rel in skills_changed:
             entry["adaptations"] = sorted(set(entry.get("adaptations", [])) | {"AD-15"})
             entry["identical"] = False
@@ -283,6 +341,14 @@ def update_manifest() -> None:
                 "Intentional platform differences: frontmatter fields, tool aliases, skill-preload list, path tokens, "
                 "no hook port (docs/copilot.md).",
         "mappings": manifest_section(exp),
+    }
+    manifest["sdlc_documentation"] = {
+        "note": "One documentation system for both platforms. These shared assets are consumed in place by Claude Code and, through "
+                "the derived .github files, by GitHub Copilot; the adapter generates no copy of them (checked by --check).",
+        "registry": REGISTRY_PATH,
+        "shared_assets": SDLC_SHARED,
+        "templates": sorted(p.name for p in (ROOT / "templates").glob("*.template.md")),
+        "extended_canonical_files": sdlc_extended(),
     }
     mpath.write_bytes((json.dumps(manifest, indent=2, ensure_ascii=False) + "\n").encode("utf-8"))
 
